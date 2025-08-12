@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="blog romi music linux" />
+       
+      <meta name="description" content="Romi Brooks blog" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>Archlinux + U盘 打造随身系统盘 |  Romi</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Romi" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-Archlinux + U盘 打造随身系统盘"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Archlinux + U盘 打造随身系统盘
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/01/09/Archlinux%20+%20U%E7%9B%98%20%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/" class="article-date">
+  <time datetime="2023-01-08T16:00:00.000Z" itemprop="datePublished">2023-01-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.8k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">11 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/Cover.jpg" alt="封面" title="Cover"></p>
+<h1 id="最后一次编辑时间-2023-01-17-17-53"><a href="#最后一次编辑时间-2023-01-17-17-53" class="headerlink" title="最后一次编辑时间: 2023-01-17 17:53"></a>最后一次编辑时间: 2023-01-17 17:53</h1><ul>
+<li>上一次编辑时间：2023-01-15 16:53</li>
+<li>上一次编辑时间：2023-01-10 0:51</li>
+</ul>
+<center>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1393318072&auto=0&height=66"></iframe>
+
+
+<p><em>Music：<a target="_blank" rel="noopener" href="https://music.163.com/#/song?id=1393318072&userid=1369186144">Fractal</a> by <a target="_blank" rel="noopener" href="https://music.163.com/#/artist?id=742233">Tinlicker</a></em>  </p>
+</center>  
+
+
+<blockquote>
+<p>参考文献<br>1.一个完整的Arch Linux 安装流程：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/513859236">2022.5 archlinux详细安装过程</a><br>2.在可移动介质上安装Arch Linux：<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Install_Arch_Linux_on_a_removable_medium">Install Arch Linux on a removable medium</a><br>3.i3wm配置：<a target="_blank" rel="noopener" href="https://blog.csdn.net/r8l8q8/article/details/103889972">ArchLinux下i3wm简单配置和美化</a><br>4.i3wm配置：<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000022083424">一份自用的简单i3wm配置</a>  </p>
+</blockquote>
+<p>你的U盘通常要在32G以此来使用较好的图形化功能。<br>本文是一个自用的Arch Linux安装方法，针对的是我自己，如果你看到这个文章了，里头可能有一些东西你是可以用到的。这篇文章旨在帮助不会安装Arch Linux的用户，以及当我自己遗忘某些安装细节时可以回过头来查看。  </p>
+<span id="more"></span>
+<p><del>Start</del></p>
+<h1 id="安装Arch-Linux"><a href="#安装Arch-Linux" class="headerlink" title="安装Arch Linux"></a>安装Arch Linux</h1><h2 id="引导，分区，调整，安装："><a href="#引导，分区，调整，安装：" class="headerlink" title="引导，分区，调整，安装："></a>引导，分区，调整，安装：</h2><p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.1.png" alt="1.1.1" title="1.1.1">  </p>
+<h3 id="确保使用UEFI引导："><a href="#确保使用UEFI引导：" class="headerlink" title="确保使用UEFI引导："></a>确保使用UEFI引导：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> /sys/firmware/efi/efivars</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.2.png" alt="1.1.2" title="1.1.2">  </p>
+<p>输入这一行代码后，如果反馈目录不存在，不要继续，因为没有UEFI启动在后面写入引导的时候几乎绝对报错。如果有输出，说明电脑是以UEFI启动的。  </p>
+<blockquote>
+<p>Tips: 写入image用<code>Rufus</code>，这就是使用U盘安装。如果是没有多出来的U盘，则可以用虚拟机环境。</p>
+</blockquote>
+<h3 id="联网："><a href="#联网：" class="headerlink" title="联网："></a>联网：</h3><p>1.输入“iwctl”进入iwd模式，也就是终端最前方有“[iwd]#”字样。<br>2.在iwd模式下输入“device list”，查询电脑的网卡。记住你的网卡号，一般是wlan0或者wlan1（本文以多数情况wlan0为例）<br>3.在iwd模式下输入“station wlan0 scan”，然后再输入“station wlan0 get-networks”，显示周围的wifi的ssid扫描结果。<br>4.在iwd模式下输入“station wlan0 connect <ssid>”，如果是加密的wifi，系统会提示输入wifi密码，如无意外，就连上网了。<br>5.验证联网。按ctrl+c退出iwd模式，回到[root@archiso~]模式，输入“ping baidu.com”，如果有返回数据，说明已经连上网了。  </p>
+<blockquote>
+<p>一般来说，如果是网线直连，那么系统会自动连接网络，而不用使用iwd连接wifi。</p>
+</blockquote>
+<h3 id="更新时间："><a href="#更新时间：" class="headerlink" title="更新时间："></a>更新时间：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">timedatectl set-ntp <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="分区："><a href="#分区：" class="headerlink" title="分区："></a>分区：</h3><blockquote>
+<p>涉及数据相关，请认真对待！</p>
+</blockquote>
+<h4 id="这里列出的是当前所有硬盘，找到你的硬盘，我这里是-x2F-dev-x2F-sda"><a href="#这里列出的是当前所有硬盘，找到你的硬盘，我这里是-x2F-dev-x2F-sda" class="headerlink" title="这里列出的是当前所有硬盘，找到你的硬盘，我这里是&#x2F;dev&#x2F;sda"></a>这里列出的是当前所有硬盘，找到你的硬盘，我这里是&#x2F;dev&#x2F;sda</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsblk</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.3.png" alt="1.1.3" title="1.1.3">  </p>
+<h4 id="进-x2F-dev-x2F-sda分盘"><a href="#进-x2F-dev-x2F-sda分盘" class="headerlink" title="进&#x2F;dev&#x2F;sda分盘"></a>进&#x2F;dev&#x2F;sda分盘</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cfdisk /dev/sda</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.4.png" alt="1.1.4" title="1.1.4">  </p>
+<h4 id="gpt分区表，回车就行"><a href="#gpt分区表，回车就行" class="headerlink" title="gpt分区表，回车就行"></a>gpt分区表，回车就行</h4><p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.5.png" alt="1.1.5" title="1.1.5">  </p>
+<h4 id="用New新建分区，大小自定义，按照你自己来"><a href="#用New新建分区，大小自定义，按照你自己来" class="headerlink" title="用New新建分区，大小自定义，按照你自己来"></a>用New新建分区，大小自定义，按照你自己来</h4><blockquote>
+<p>sda1 -&gt; 1G boot分区<br>sda2 -&gt; 2G swap分区  （不要swap你就不分，我使用下来是没有问题的）<br>sda3 -&gt; 37G &#x2F;分区<br>sda4 -&gt; 20G &#x2F;home分区  </p>
+</blockquote>
+<h4 id="用Write，然后输入yes写入分区"><a href="#用Write，然后输入yes写入分区" class="headerlink" title="用Write，然后输入yes写入分区"></a>用Write，然后输入yes写入分区</h4><p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.6.png" alt="1.1.6" title="1.1.6">  </p>
+<h4 id="用Quit退出，然后lsblk看分的是否正确"><a href="#用Quit退出，然后lsblk看分的是否正确" class="headerlink" title="用Quit退出，然后lsblk看分的是否正确"></a>用Quit退出，然后lsblk看分的是否正确</h4><p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.7.png" alt="1.1.7" title="1.1.7">  </p>
+<h4 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkfs.fat -F32 /dev/sda1</span><br><span class="line">mkfs.ext4 /dev/sda3</span><br><span class="line">mkfs.xfs /dev/sda4</span><br><span class="line">mkswap /dev/sda2</span><br><span class="line">swapon /dev/sda2</span><br></pre></td></tr></table></figure>
+
+<h4 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/sda3 /mnt</span><br><span class="line"><span class="built_in">mkdir</span> -p /mnt/boot/efi</span><br><span class="line">mount /dev/sda1 /mnt/boot/efi</span><br><span class="line"><span class="built_in">mkdir</span> /mnt/home</span><br><span class="line">mount /dev/sda4 /mnt/home</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>确保分区挂载正确，这里的参考应该是上文你所创建的分区！</p>
+</blockquote>
+<h4 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h4><p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.8.png" alt="1.1.8" title="1.1.8">  </p>
+<h3 id="配置pacman"><a href="#配置pacman" class="headerlink" title="配置pacman"></a>配置pacman</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/pacman.d/mirrors</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>无论这个页面的内容是什么，只需要无脑修改第一条为  </p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Server = https://mirrors.bfsu.edu.cn/archlinux/<span class="variable">$repo</span>/os/<span class="variable">$arch</span>  </span><br></pre></td></tr></table></figure>
+
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.9.png" alt="1.1.9" title="1.1.9">  </p>
+<h4 id="先同步数据包，不升级"><a href="#先同步数据包，不升级" class="headerlink" title="先同步数据包，不升级"></a>先同步数据包，不升级</h4><blockquote>
+<p>注意，不升级！  </p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Syu</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.10.png" alt="1.1.10" title="1.1.10">  </p>
+<h4 id="安装archlinux-keyring防止签名出现问题"><a href="#安装archlinux-keyring防止签名出现问题" class="headerlink" title="安装archlinux-keyring防止签名出现问题"></a>安装<code>archlinux-keyring</code>防止签名出现问题</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S archlinux-keyring</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.11.png" alt="1.1.11" title="1.1.11">  </p>
+<h3 id="安装系统到U盘"><a href="#安装系统到U盘" class="headerlink" title="安装系统到U盘"></a>安装系统到U盘</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacstrap /mnt base linux-lts linux-lts-headers linux-firmware base-devel</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>我安装的是lts内核，如果不需要lts内核，那就去掉<code>-lts</code>即可。  </p>
+</blockquote>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.12.png" alt="1.1.12" title="1.1.12"> </p>
+<blockquote>
+<p><del>btw，这里如果U盘IO不怎么地，那可能会巨慢….</del></p>
+</blockquote>
+<h4 id="写分区表"><a href="#写分区表" class="headerlink" title="写分区表"></a>写分区表</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</span><br><span class="line"><span class="built_in">cat</span> /mnt/etc/fstab</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里<code>-U</code>是指使用uuid挂载硬盘，因为你使用U盘装系统所面临的问题可能有硬盘序号变化，因此我们使用uuid来避免这个问题。  </p>
+</blockquote>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.13.png" alt="1.1.13" title="1.1.13">   </p>
+<h4 id="chroot"><a href="#chroot" class="headerlink" title="chroot"></a>chroot</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arch-chroot /mnt</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.14.png" alt="1.1.14" title="1.1.14">  </p>
+<h4 id="安装必要软件"><a href="#安装必要软件" class="headerlink" title="安装必要软件"></a>安装必要软件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S neovim iwd ttf-dejavu sudo bluez usbmuxd networkmanager dhcpcd wqy-zenhei ntfs-3g</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.15.png" alt="1.1.15" title="1.1.15">  </p>
+<h4 id="软连接neovim到vim"><a href="#软连接neovim到vim" class="headerlink" title="软连接neovim到vim"></a>软连接neovim到vim</h4><blockquote>
+<p>这何尝不是一种ntr(  </p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s /bin/nvim /bin/vim</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.16.png" alt="1.1.16" title="1.1.16">  </p>
+<h4 id="同步时区"><a href="#同步时区" class="headerlink" title="同步时区"></a>同步时区</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br><span class="line">hwclock --systohc</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.17.png" alt="1.1.17" title="1.1.17">  </p>
+<h4 id="语言上的设置"><a href="#语言上的设置" class="headerlink" title="语言上的设置"></a>语言上的设置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/locale.gen</span><br></pre></td></tr></table></figure>
+<p>这里取消掉<code>en_US.UTF-8</code> , <code>zh_CN.UTF-8</code> , <code>zh_TW.UTF-8</code> ，这几个地方的注释<br>也就是前面的<code>#</code>号  </p>
+<p>然后生成语言文件：  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale-gen</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.18.png" alt="1.1.18" title="1.1.18">  </p>
+<h4 id="追加-当前系统语言-到系统文件"><a href="#追加-当前系统语言-到系统文件" class="headerlink" title="追加 当前系统语言 到系统文件"></a>追加 <code>当前系统语言</code> 到系统文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> LANG=en_US.UTF-8 &gt;&gt; /etc/locale.conf</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.19.png" alt="1.1.19" title="1.1.19">  </p>
+<h4 id="设定root密码"><a href="#设定root密码" class="headerlink" title="设定root密码"></a>设定<code>root</code>密码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.20.png" alt="1.1.20" title="1.1.20">  </p>
+<h4 id="主机名"><a href="#主机名" class="headerlink" title="主机名"></a>主机名</h4><blockquote>
+<p>设定成你自己喜欢的  </p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> livearch &gt;&gt; /etc/hostname</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.21.png" alt="1.1.21" title="1.1.21">  </p>
+<h4 id="本地回环"><a href="#本地回环" class="headerlink" title="本地回环"></a>本地回环</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hosts</span><br></pre></td></tr></table></figure>
+<p>添加以下内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 localhost</span><br><span class="line">::1 localhost</span><br><span class="line">127.0.1.1 livearch.localdomain livearch  <span class="comment">#跟着上一步改</span></span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.22.png" alt="1.1.22" title="1.1.22">  </p>
+<h4 id="安装引导"><a href="#安装引导" class="headerlink" title="安装引导"></a>安装引导</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S grub efibootmgr</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.23.png" alt="1.1.23" title="1.1.23">  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grub-install /dev/sda</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.24.png" alt="1.1.24" title="1.1.24">  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.25.png" alt="1.1.25" title="1.1.25">  </p>
+<h4 id="hook微调"><a href="#hook微调" class="headerlink" title="hook微调"></a>hook微调</h4><p>将 <code>block</code> 和 <code>keyboard</code> 放置在 <code>autodetect</code> 之前</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/mkinitcpio.conf</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.27.png" alt="1.1.27" title="1.1.27">  </p>
+<h4 id="退出，卸载，重启"><a href="#退出，卸载，重启" class="headerlink" title="退出，卸载，重启"></a>退出，卸载，重启</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exit</span></span><br><span class="line">umount -R /mnt</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<p>到这一步差不多就完成了系统的安装，下面就要开始配置系统了。<br><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.26.png" alt="1.1.26" title="1.1.26">  </p>
+<p><del>Last Edit Time: 2023-01-10 0:51</del></p>
+<h1 id="配置Arch-Linux"><a href="#配置Arch-Linux" class="headerlink" title="配置Arch Linux"></a>配置Arch Linux</h1><h2 id="网络基础服务："><a href="#网络基础服务：" class="headerlink" title="网络基础服务："></a>网络基础服务：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">systemctl start iwd.service</span><br><span class="line">systemctl <span class="built_in">enable</span> iwd.service</span><br><span class="line">systemctl start systemd-resolved.service</span><br><span class="line">systemctl <span class="built_in">enable</span> systemd-resolved.service</span><br><span class="line">systemctl <span class="built_in">enable</span> bluetooth.service</span><br><span class="line">systemctl <span class="built_in">enable</span> NetworkManager</span><br><span class="line">systemctl <span class="built_in">enable</span> dhcpcd</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.1.png" alt="2.1.1" title="2.1.1">  </p>
+<h3 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h3><p><code>iwd 设定</code>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/iwd/main.conf</span><br></pre></td></tr></table></figure>
+
+<p>写入如下内容  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[General]</span><br><span class="line">EnableNetworkConfiguration=<span class="literal">true</span></span><br><span class="line">NameResolvingService=systemd</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.2.png" alt="2.1.2" title="2.1.2">  </p>
+<p><code>Network Manager设定</code>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/NetworkManager/NetworkManager.conf</span><br></pre></td></tr></table></figure>
+<p>写入如下内容  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[device]</span><br><span class="line">wifi.backend=iwd</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.3.png" alt="2.1.3" title="2.1.3">  </p>
+<h3 id="重启以取得网络"><a href="#重启以取得网络" class="headerlink" title="重启以取得网络"></a>重启以取得网络</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<h4 id="检查是否连接到网路"><a href="#检查是否连接到网路" class="headerlink" title="检查是否连接到网路"></a>检查是否连接到网路</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Syu</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.4.png" alt="2.1.4" title="2.1.4">  </p>
+<p>这个命令只是为了检查有没有得到网络，如果报错，那就说明网络配置有问题，仔细检查一下。<br>如果没有问题，可以选择升级，也可以选择不升级，完全看自己。  </p>
+<h2 id="安装CPU编码"><a href="#安装CPU编码" class="headerlink" title="安装CPU编码"></a>安装CPU编码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S intel-ucode amd-ucode</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.5.png" alt="2.1.5" title="2.1.5">  </p>
+<blockquote>
+<p>一起装Intel和AMD的CPU编码，以确保Archlinux可以在不同下CPU成功的启动。  </p>
+</blockquote>
+<h2 id="安装显卡驱动"><a href="#安装显卡驱动" class="headerlink" title="安装显卡驱动"></a>安装显卡驱动</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S xf86-video-intel xf86-video-amdgpu mesa</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.6.png" alt="2.1.6" title="2.1.6">  </p>
+<blockquote>
+<p>这里不涉及nVidia显卡的驱动安装过程<br><code>xf86-video-intel</code>  Intel核芯显卡<br><code>xf86-video-amdgpu</code> AMD显卡<br><code>mesa</code> 是为了更好的兼容这两者(?)  </p>
+</blockquote>
+<h2 id="安装声卡驱动"><a href="#安装声卡驱动" class="headerlink" title="安装声卡驱动"></a>安装声卡驱动</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S pipewire alsa-utils pipewire-pulse pipewire-jack pipewire-alsa</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.7.png" alt="2.1.7" title="2.1.7">  </p>
+<h2 id="增加普通用户"><a href="#增加普通用户" class="headerlink" title="增加普通用户"></a>增加普通用户</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd -m -G wheel -s /bin/bash romi</span><br><span class="line">passwd romi</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.8.png" alt="2.1.8" title="2.1.8">  </p>
+<p>用 <code>passwd romi</code> 设定用户密码，输入一个你想要的密码就可以。  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sudoers</span><br></pre></td></tr></table></figure>
+<p>修改sudoer以此让<code>romi</code>有使用sudo的权限。<br>取消 <code>%wheel ALL=(ALL:ALL) ALL</code> 这条语句的注释，也就是删去语句前的 <code>#</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Uncomment to allow members of group wheel to execute any command</span></span><br><span class="line"><span class="comment"># %wheel ALL=(ALL:ALL) ALL</span></span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.9.png" alt="2.1.9" title="2.1.9"> </p>
+<h2 id="配置archlinuxcn源"><a href="#配置archlinuxcn源" class="headerlink" title="配置archlinuxcn源"></a>配置archlinuxcn源</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/pacman.conf</span><br></pre></td></tr></table></figure>
+<p>在最后插入以下内容:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/fix_2.1.10.png" alt="2.1.10" title="2.1.10">  </p>
+<p>然后安装 <code>archlinuxcn-keyring</code> 防止签名出现问题</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pacman -Sy</span><br><span class="line">pacman -S archlinuxcn-keyring</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/fix_2.1.11.png" alt="2.1.11" title="2.1.11">  </p>
+<h2 id="安装yay"><a href="#安装yay" class="headerlink" title="安装yay"></a>安装yay</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S yay</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/fix_2.1.12.png" alt="2.1.12" title="2.1.12">  </p>
+<h2 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h2><p>到这里，基本上所有系统的配置就完成了。下一次登陆系统就是一个完全可以用的Arch Linux系统了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+
+<h1 id="桌面配置"><a href="#桌面配置" class="headerlink" title="桌面配置"></a>桌面配置</h1><blockquote>
+<p>为了方便，以下使用 <code>root</code> 用户完成</p>
+</blockquote>
+<p>如果你的U盘容量小，那就选择<code>i3wm</code><br>亲测<code>/</code>分区为10G时,安装<code>KDE</code>或者是<code>Gnome</code>会Kernel Panic<br>并且为了简约，我选择<code>i3wm</code></p>
+<h2 id="首先安装桌面服务"><a href="#首先安装桌面服务" class="headerlink" title="首先安装桌面服务"></a>首先安装桌面服务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S xorg</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.2.1.png" alt="2.2.1" title="2.2.1">  </p>
+<h2 id="如果是安装KDE"><a href="#如果是安装KDE" class="headerlink" title="如果是安装KDE"></a>如果是安装<code>KDE</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S plasma sddm konsole dolphin kate ark</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>安装好后设定<code>sddm</code>的自启动</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> sddm</span><br></pre></td></tr></table></figure>
+<h2 id="如果是安装Gnome"><a href="#如果是安装Gnome" class="headerlink" title="如果是安装Gnome"></a>如果是安装<code>Gnome</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S gnome</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>安装好后设定<code>gdm</code>的自启动</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> gdm</span><br></pre></td></tr></table></figure>
+<h2 id="如果是安装i3wm"><a href="#如果是安装i3wm" class="headerlink" title="如果是安装i3wm"></a>如果是安装<code>i3wm</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S xorg-xinit xorg-server i3-gaps</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.2.2.png" alt="2.2.2" title="2.2.2">  </p>
+<h3 id="配置i3wm"><a href="#配置i3wm" class="headerlink" title="配置i3wm"></a>配置<code>i3wm</code></h3><p>使用<code>Ctrl+Alt+F2</code>跳转到一个新的tty，登录普通用户，就是前面你新创建的用户，我这里是<code>romi</code>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.xinitrc</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.2.3.png" alt="2.2.3" title="2.2.3">  </p>
+<p>写入以下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> LANG=zh_CN.UTF-8</span><br><span class="line">xrdb -merge ~/.Xresources</span><br><span class="line"><span class="built_in">exec</span> i3</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.2.4.png" alt="2.2.4" title="2.2.4">  </p>
+<p>然后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.Xresources</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.2.6.png" alt="2.2.6" title="2.2.6">  </p>
+<p>写入以下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Xft.dpi: 96</span><br></pre></td></tr></table></figure>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.2.5.png" alt="2.2.5" title="2.2.5">  </p>
+<blockquote>
+<p>原文作者有给出dpi参考值：  </p>
+<blockquote>
+<p>里面的数字填 ( 放大倍数 ) * 96 就可以了，比如192就是放到200%，给个简单参考<br>15.5寸笔记本，1920x1080,填144<br>15.5寸笔记本，2560x1440,填192<br>如果觉得太大了，可以调小, 建议为25%的倍数  </p>
+</blockquote>
+</blockquote>
+<h3 id="重启系统"><a href="#重启系统" class="headerlink" title="重启系统"></a>重启系统</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+
+<p><del>Last Edit Time: 2023-01-15 17:52</del></p>
+<h1 id="i3wm后续配置"><a href="#i3wm后续配置" class="headerlink" title="i3wm后续配置"></a>i3wm后续配置</h1><h2 id="进入i3wm"><a href="#进入i3wm" class="headerlink" title="进入i3wm"></a>进入i3wm</h2><p>登录普通用户,进入i3wm  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">startx</span><br></pre></td></tr></table></figure>
+<h3 id="i3配置文件"><a href="#i3配置文件" class="headerlink" title="i3配置文件"></a>i3配置文件</h3><p>回车,生成i3配置文件  </p>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/3.1.1.png" alt="3.1.1" title="3.1.1">  </p>
+<h3 id="mod键位"><a href="#mod键位" class="headerlink" title="mod键位"></a>mod键位</h3><p>注意,这里把<code>mod</code>键设置为<code>Win</code>  </p>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/3.1.2.png" alt="3.1.2" title="3.1.2">  </p>
+<h3 id="安装必要软件-1"><a href="#安装必要软件-1" class="headerlink" title="安装必要软件"></a>安装必要软件</h3><p>使用<code>Ctrl+Alt+F2</code>跳转到一个新的tty，登录普通用户，就是前面你新创建的用户，我这里是<code>romi</code>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S compton polybar rofi feh mate-utils konsole</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>第一次使用sudo会提示用户输入密码,正常输入即可  </p>
+</blockquote>
+<p><img src="/../../../img/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/3.1.3.png" alt="3.1.3" title="3.1.3">  </p>
+<h3 id="克隆配置文件到本地"><a href="#克隆配置文件到本地" class="headerlink" title="克隆配置文件到本地"></a><del>克隆配置文件到本地</del></h3><p>(如果区域内github被墙,那么就看跳过这一部分)  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/Romi-Brooks/i3wm_conf.git</span><br></pre></td></tr></table></figure>
+<p>这些文件的用处:  </p>
+<blockquote>
+<p><code>config</code> i3wm配置文件<br><code>config.ini</code> polybar配置文件<br><code>launch.sh</code> 用于加载 polybar<br><code>3177970.jpg</code> 背景图片</p>
+</blockquote>
+<p>他们分别应该存放到:</p>
+<blockquote>
+<p><code>3177970.jpg</code> -&gt; <code>~/Pictures/Background.jpg</code><br>这里的 <code>~/Pictures/</code>文件夹需要自行创建,背景文件你可以选一个你喜欢的,不一定要用我这个  </p>
+<blockquote>
+<p>这里你需要自己改一下文件名:<br>(很简单,只要最终文件目录是 <code>~/Pictures/Background.jpg</code>即可,方法有很多种)  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> 3177970.jpg Background.jpg  </span><br></pre></td></tr></table></figure>
+
+</blockquote>
+<p><code>config</code> -&gt; <code>~/.config/i3/config</code><br><code>config.ini</code> -&gt; <code>~/.config/polybar/config.ini</code><br><code>launch.sh</code> -&gt; <code>~/.config/polybar/launch.sh</code><br>其中 <code>~/.config/polybar</code>文件夹可能不存在,创建一个即可  </p>
+</blockquote>
+<p>最后给<code>launch.sh</code>文件可执行权限:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x launch.sh</span><br></pre></td></tr></table></figure>
+
+<p>重启,使用<code>普通用户</code>登录,用startx进入i3wm即可  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">startx</span><br></pre></td></tr></table></figure>
+<h3 id="如果不能克隆配置文件-那么直接写配置文件"><a href="#如果不能克隆配置文件-那么直接写配置文件" class="headerlink" title="如果不能克隆配置文件,那么直接写配置文件"></a>如果不能克隆配置文件,那么直接写配置文件</h3><p>这一步要写很多的东西,如果觉得麻烦直接用ssh登录,复制粘贴</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yay -S openssh</span><br><span class="line">sudo systemctl start sshd.service</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> sshd.service</span><br></pre></td></tr></table></figure>
+
+<p>得到ip地址</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr</span><br></pre></td></tr></table></figure>
+
+<p>然后使用一台设备连接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@hostip</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>初次连接,输入一次yes  </p>
+</blockquote>
+<h4 id="背景图片"><a href="#背景图片" class="headerlink" title="背景图片"></a>背景图片</h4><p>随便去找一个图片,存放在 <code>~/Pictures/Background.jpg</code><br>比如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/Pictures/</span><br><span class="line">wget https://i.328888.xyz/2023/01/17/HZUfC.jpeg</span><br><span class="line"><span class="built_in">mv</span> HZUfC.jpeg ~/Pictures/Background.jpg</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>来自<a target="_blank" rel="noopener" href="https://wallpapercave.com/">Wallpaper Cave</a>,图床的连接可能失效.  </p>
+</blockquote>
+<h4 id="编辑i3的config文件"><a href="#编辑i3的config文件" class="headerlink" title="编辑i3的config文件"></a>编辑i3的<code>config</code>文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.config/i3/config</span><br></pre></td></tr></table></figure>
+<p>在<code>set $mod Mod4</code> 这条语句下面插入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">new_window none</span><br><span class="line">new_float normal</span><br><span class="line">hide_edge_borders both</span><br><span class="line">gaps inner 8</span><br><span class="line">gaps outer 6</span><br><span class="line">bindsym <span class="variable">$mod</span>+p <span class="built_in">exec</span> mate-screenshot -i</span><br><span class="line"><span class="built_in">exec</span> --no-startup-id feh --bg-fill ~/Pictures/Background.jpg</span><br><span class="line"><span class="built_in">exec</span> --no-startup-id compton -b</span><br><span class="line"><span class="built_in">exec</span> --no-startup-id ~/.config/polybar/launch.sh</span><br></pre></td></tr></table></figure>
+
+<p>在  </p>
+<blockquote>
+<p><code># start dmenu (a program launcher)</code>  </p>
+</blockquote>
+<p>(写完上面的配置内容,那么这条语句大约在58行)<br>这条语句下面找到  </p>
+<blockquote>
+<p><code>bindsym $mod+d exec --no-startup-id dmenu_run</code>  </p>
+</blockquote>
+<p>将其注释,然后添加  </p>
+<blockquote>
+<p><code>bindsym $mod+d exec --no-startup-id rofi -show drun</code>  </p>
+</blockquote>
+<p>到这条语句下</p>
+<p>在最后一行,将</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bar &#123;</span><br><span class="line">        status_command i3status</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>全部注释 (即在开头加上#)</p>
+<h4 id="编辑-polybar-的config-ini文件"><a href="#编辑-polybar-的config-ini文件" class="headerlink" title="编辑 polybar 的config.ini文件"></a>编辑 polybar 的<code>config.ini</code>文件</h4><p>首先创建polybar的配置目录,然后把官方提供的一个样式放在里头</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/.config/polybar</span><br><span class="line"><span class="built_in">cp</span> /usr/share/doc/polybar/examples/config.ini ~/.config/polybar/config.ini</span><br></pre></td></tr></table></figure>
+
+<p>修改配色样式(实际上就改了几行),这个样式就在第一位,polybar的注释符号是<code>;</code><br>观察源文件,加以修改就行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[colors]</span><br><span class="line">;background = <span class="comment">#282A2E</span></span><br><span class="line">;background-alt = <span class="comment">#373B41</span></span><br><span class="line">background = <span class="comment">#b0222222</span></span><br><span class="line">background-alt = <span class="comment">#444</span></span><br><span class="line">;foreground = <span class="comment">#C5C8C6</span></span><br><span class="line">foreground = <span class="comment">#dfdfdf</span></span><br><span class="line">foreground-alt = <span class="comment">#555</span></span><br><span class="line">primary = <span class="comment">#ffb52a</span></span><br><span class="line">secondary = <span class="comment">#e60053</span></span><br><span class="line">alert = <span class="comment">#bd2c40</span></span><br><span class="line">disabled = <span class="comment">#707880</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="写launch-sh以启动polybar"><a href="#写launch-sh以启动polybar" class="headerlink" title="写launch.sh以启动polybar"></a>写<code>launch.sh</code>以启动polybar</h4><p>创建脚本文件  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.config/polybar/launch.sh</span><br></pre></td></tr></table></figure>
+<p>插入以下内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">killall -q polybar</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> pgrep -u <span class="variable">$UID</span> -x polybar &gt;/dev/null; <span class="keyword">do</span> <span class="built_in">sleep</span> 1; <span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">polybar example</span><br></pre></td></tr></table></figure>
+<p>给予权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x ~/.config/polybar/launch.sh</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装一些常用工具"><a href="#安装一些常用工具" class="headerlink" title="安装一些常用工具"></a>安装一些常用工具</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S mate-extra</span><br></pre></td></tr></table></figure>
+<p><del>不多说,直接干mate-extra</del></p>
+<p>到这里,i3wm的配置基本就结束了  </p>
+<h3 id="重启-1"><a href="#重启-1" class="headerlink" title="重启"></a>重启</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<p>当需要启动i3wm的时候,只需要</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">startx</span><br></pre></td></tr></table></figure>
+
+<p><del>Last Edit Time: 2023-01-17 17:46</del>  </p>
+<h1 id="ohmyzsh-美化"><a href="#ohmyzsh-美化" class="headerlink" title="ohmyzsh 美化"></a>ohmyzsh 美化</h1><h1 id="未完"><a href="#未完" class="headerlink" title="未完"></a>未完</h1><h2 id="在最后的最后，感恩。"><a href="#在最后的最后，感恩。" class="headerlink" title="在最后的最后，感恩。"></a><center>在最后的最后，感恩。</center></h2>   <p align="right">Romi Brooks♥</p> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://blog.romichan.tech/2023/01/09/Archlinux%20+%20U%E7%9B%98%20%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Archlinux/" rel="tag">Archlinux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Installation/" rel="tag">Installation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/i3wm/" rel="tag">i3wm</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/02/25/Nginx%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Nginx二级域名配置
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2022/10/28/%E5%88%A9%E7%94%A8JACK%20,%20%E7%8E%A9%E8%BD%AC%20Reaper%20For%20Linux/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">利用JACK , 玩转 Reaper For Linux</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "E3Le9vxopO9hFy1XDqS2lgLl-gzGzoHsz",
+    app_key: "5LGLOs5GpcbHfzVajrF6FQfl",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "评论",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+    
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2025
+        <i class="ri-heart-fill heart_icon"></i> Romi Brooks
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Romi"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/emotions">树洞</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friendslinks">友链</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":0.5,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-120},"mobile":{"show":false},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
