@@ -215,79 +215,6 @@
       </tags>
   </entry>
   <entry>
-    <title>通过控制LFO Speed，使你的音乐更有律动</title>
-    <url>/2022/04/27/FL-Studio-Tips-%E5%88%A9%E7%94%A8LFO-LFO-Speed%E5%81%9A%E5%87%BA%E5%8A%A0%E8%8A%B1%E6%95%88%E6%9E%9C/</url>
-    <content><![CDATA[<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/cover.png" alt="封面" title="Cover">  </p>
-<audio id="audio" controls="" preload="none">
-    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBass.mp3">
-</audio>
-
-<p><em>（音乐来自：FL Studio中DemoSong内Asher Postman-Future Bass）</em>  </p>
-<p>在了解这之前，您可以点击上方的“播放按钮”，来听一首歌，这首歌用到了我所谓<code>控制 LFO Speed</code>的技巧 (在听之前请注意音量)</p>
-<span id="more"></span>
-<h1 id="什么是LFO-Speed"><a href="#什么是LFO-Speed" class="headerlink" title="什么是LFO Speed?"></a>什么是<code>LFO Speed</code>?</h1><p>LFO（Low Frequency Oscillator，低频振荡器）是一种产生周期性信号的调制源，其频率通常低于 20Hz（人类听觉下限），因此无法直接被听到，但可以控制其他参数的变化。例如：  </p>
-<p>调制音量：通过周期性增减振幅，产生类似 “脉冲” 的抽吸效果（即震音，Tremolo）。<br>调制滤波器截止频率：通过周期性开合滤波器，使声音在高频和低频之间切换，形成 “摇晃” 的抽吸感（如 Dubstep 贝斯）。  </p>
-<p>而LFO Speed 决定了振荡的频率，直接影响抽吸效果的节奏。  </p>
-<h1 id="为什么要控制-LFO-Speed"><a href="#为什么要控制-LFO-Speed" class="headerlink" title="为什么要控制 LFO Speed?"></a>为什么要<code>控制 LFO Speed</code>?</h1><p>在音乐制作中，<strong>控制LFO Speed（低频振荡器速度）</strong> 是创造动态抽吸效果的核心技巧。<br>这种效果通过周期性调制声音参数（如音量、滤波器截止频率），使音频产生类似 “呼吸” 或 “脉冲” 的节奏性波动，常见于电子音乐、Future Bass、Dubstep 等风格中。<br>通过灵活运用 LFO Speed 和波形设计，制作人可以为声音注入生命般的动态变化。从微妙的音色润色到夸张的特效设计，是一个相对高级的声设技巧。</p>
-<h1 id="它的效果具体是如何"><a href="#它的效果具体是如何" class="headerlink" title="它的效果具体是如何?"></a>它的效果具体是如何?</h1><p>这是上面那首Demo Song中使用此技巧的一小段 (在听之前请注意音量):  </p>
-<audio id="audio" controls="" preload="none">
-    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassLFO2.mp3">
-</audio>
-
-<p>这是去掉鼓点等干扰的效果:</p>
-<audio id="audio" controls="" preload="none">
-    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassNDLFO2.mp3">
-</audio>
-
-<p>其实还有一次，是在这里:</p>
-<audio id="audio" controls="" preload="none">
-    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassLFO1.mp3">
-</audio>
-
-<p>这是去掉鼓点等干扰的效果:</p>
-<audio id="audio" controls="" preload="none">
-    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassNDLFO1.mp3">
-</audio>
-
-
-<h1 id="我是如何发现的"><a href="#我是如何发现的" class="headerlink" title="我是如何发现的?"></a>我是如何发现的?</h1><p>其实只要听的歌曲足够多，会发现这种效果用到的风格很多，哪怕是最基础的一个<code>crash下降</code>或是<code>Drop Melody</code>等很多效果，都能用这个技巧营造出很多听众的<code>爽点</code>。<br>当然，具体操作的原理以及方式我是通过开头的那首Demo Song Project学到的： </p>
-<p>来自 Asher Postman 的 Future Bass，我的fb启蒙制作者，包括其中的一种SideChain方式也是从这个工程学的。</p>
-<blockquote>
-<p>Title: Future Bass (Stock Plugins Only)<br>Author: <a href="https://soundcloud.com/asher-postman">Asher Postman</a><br>Copyright © 2018 Asher Postman.</p>
-</blockquote>
-<h2 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现?"></a>如何实现?</h2><p>  来看两张图：<br><img src="/images/posts/FL-Studio-Tips-LFO-Speed/1.gif" alt="1" title="1"><br><img src="/images/posts/FL-Studio-Tips-LFO-Speed/2.gif" alt="2" title="2"></p>
-<p>  它们都有一个共性：<strong>其中的一个AMC（Automation Clips）均为”LFO Speed”，伴随着LFO Speed的降低，它们所控制的LFO频率也随之降低。</strong></p>
-<p>  上面说，“它们所控制的LFO频率”，那么我们首先得创作出一个LFO的AMC，这里FL Studio给大家了一种方法：</p>
-<pre><code>  1.在您要实施此效果的对应旋钮上新建一个 AMC (Create automation clip)
-  2.在 View Playlist 找到它，单击它名字旁边的AMC图标
-  3.点击Channel Settings
-    （1.一个很明显的 LFO 选项，打开它，之后设计您想要的波形（我们先不管speed，您可以设定其他几个值）
-    （2.右键SPEED旋钮，新建一个AMC
-    （3.现在您得到了两个AMC，这正是我们想要的结果，接下来就要靠您的听感了
-  4.在您听感的基础上，调节LFO speed AMC使其满足您的要求
-  5.完成
-</code></pre>
-<h1 id="实践-amp-展示"><a href="#实践-amp-展示" class="headerlink" title="实践&amp;展示"></a>实践&amp;展示</h1><h2 id="一，做FutureBass的WobbleChords（无LFO-Speed-AMC，当然我们也可以加）："><a href="#一，做FutureBass的WobbleChords（无LFO-Speed-AMC，当然我们也可以加）：" class="headerlink" title="一，做FutureBass的WobbleChords（无LFO Speed AMC，当然我们也可以加）："></a>一，做FutureBass的WobbleChords（无LFO Speed AMC，当然我们也可以加）：</h2><p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/1.png" alt="1" title="1"></p>
-<h2 id="二，做Hippop的MelodySFX："><a href="#二，做Hippop的MelodySFX：" class="headerlink" title="二，做Hippop的MelodySFX："></a>二，做Hippop的MelodySFX：</h2><p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/2.png" alt="2" title="2"></p>
-<blockquote>
-<p>Tips：在这里，我们可以用Wave，Pulse等AMC Point Mode，右键AMC节点选择对应的Mode即可。</p>
-</blockquote>
-<h1 id="In-the-End"><a href="#In-the-End" class="headerlink" title="In the End"></a>In the End</h1><p>为了显得最后的结束不算很唐突，我用了<a href="https://www.youtube.com/user/OfficialVirtualRiot">Virtual Riot</a> 的采样包，堆叠了一个Melodic Dubstep.<br>just for fun，and thank u VR</p>
-<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/3.png" alt="3" title="3"></br></p>
-<audio id="audio" controls="" preload="none">
-    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/Md.mp3">
-</audio>
-
-<p align="right">在最后的最后，感恩</p>
-<p align="right">Romi Brooks♥</p>]]></content>
-      <categories>
-        <category>Music</category>
-      </categories>
-      <tags>
-        <tag>FL-Tips</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Navidrome，定义你自己离线的播放器</title>
     <url>/2023/03/04/Navidrome%EF%BC%8C%E5%AE%9A%E4%B9%89%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E7%A6%BB%E7%BA%BF%E6%92%AD%E6%94%BE%E5%99%A8/</url>
     <content><![CDATA[<p><img src="/images/posts/Navidrome-U-Own-Music-Player/cover.png" alt="封面" title="Cover"></p>
@@ -353,46 +280,6 @@
         <tag>Website</tag>
         <tag>WebDev</tag>
         <tag>code-server</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Nginx二级域名配置</title>
-    <url>/2023/02/25/Nginx%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<div style="text-align: center;">  
-
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=2020918656&auto=0&height=66"></iframe>  
-
-<p><del>YOASOBI 在 2月15号出新专辑了捏</del>  </p>
-</div>  
-
-<blockquote>
-<p>在去年Digital Ocean把我的账号突然封禁之后,我甚至没有办法迁移我的数据,所有配置文件只能重写<br>这里是为了留一份Nginx中二级域名.conf配置文件的写法,依据我的习惯,仅供参考 </p>
-</blockquote>
-<p>Nginx现在的版本应该会在<code>/etc/nginx/</code>目录存在<code>nginx.conf</code><br>这里大概是这样  </p>
-<span id="more"></span>  
-
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attribute">user</span>  nginx;</span><br><span class="line"><span class="attribute">worker_processes</span>  auto;</span><br><span class="line"></span><br><span class="line"><span class="attribute">error_log</span>  /var/log/nginx/<span class="literal">error</span>.log <span class="literal">notice</span>;</span><br><span class="line"><span class="attribute">pid</span>        /var/run/nginx.pid;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">events</span> &#123;</span><br><span class="line">    <span class="attribute">worker_connections</span>  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="attribute">include</span>       /etc/nginx/mime.types;</span><br><span class="line">    <span class="attribute">default_type</span>  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">log_format</span>  main  <span class="string">&#x27;<span class="variable">$remote_addr</span> - <span class="variable">$remote_user</span> [<span class="variable">$time_local</span>] &quot;<span class="variable">$request</span>&quot; &#x27;</span></span><br><span class="line">                      <span class="string">&#x27;<span class="variable">$status</span> <span class="variable">$body_bytes_sent</span> &quot;<span class="variable">$http_referer</span>&quot; &#x27;</span></span><br><span class="line">                      <span class="string">&#x27;&quot;<span class="variable">$http_user_agent</span>&quot; &quot;<span class="variable">$http_x_forwarded_for</span>&quot;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">access_log</span>  /var/log/nginx/access.log  main;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">sendfile</span>        <span class="literal">on</span>;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    <span class="attribute">keepalive_timeout</span>  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    <span class="attribute">include</span> /etc/nginx/conf.d/<span class="regexp">*.conf</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>可见,<code>nginx.conf</code>引用了<code>/etc/nginx/conf.d/</code>下的所有.conf文件<br>这里我习惯把我的个人网站配置文件放在这  </p>
-<h1 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h1><p>现在假设我想要创建一个名为<code>blog.romichan.me</code>的网站,用来存放我的博客<br>首先在你域名的托管商配置<code>DNS解析</code>,可以是A解析,也可以是AAAA解析,需要绑定到服务器上<br>接着在<code>/etc/nginx/conf.d/</code>下新建一个名为<code>blog.ssl.conf</code>的文件,他一般是这样的:  </p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">443</span> ssl;    <span class="comment"># 自从新版本nginx开始,启用ssl隧道得这么写</span></span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/blog.romichan.me/fullchain.pem;   <span class="comment"># 证书文件</span></span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/blog.romichan.me/privkey.pem; <span class="comment"># 证书密钥文件</span></span><br><span class="line">    <span class="attribute">server_name</span>  blog.romichan.me;  <span class="comment">#这里就是要解析到的域名,也就是你在域名托管商的DNS解析里所设置的</span></span><br><span class="line">        <span class="section">location</span> / &#123;</span><br><span class="line">            <span class="attribute">root</span>         /usr/share/webpage/blog; <span class="comment">#这里是博客的根目录.据你的需求,我只需要index.html所以下面的index只写了这些</span></span><br><span class="line">            <span class="attribute">index</span>        index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>而后我们在新建一个文件,它的名字是<code>blog.conf</code>,写入这些:  </p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">80</span>; <span class="comment"># 不作解释,8080也行</span></span><br><span class="line">    <span class="attribute">server_name</span>  blog.romichan.me; <span class="comment"># 解析到的网站</span></span><br><span class="line">    <span class="attribute">rewrite</span><span class="regexp"> ^(.*)$</span>  https://<span class="variable">$host</span><span class="variable">$1</span> <span class="literal">permanent</span>; <span class="comment"># 重点,这里是把网页强行重定向到https,这样我们上面的证书才可以起到效果!</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>总体就这么多,如果你需要通过二级域名来转发你服务器某个端口的数据 (应该是叫<code>反向代理</code>) ,也是这么写,不过需要修改<code>blog.ssl.conf</code>的一些地方:  </p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">443</span> ssl;</span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/blog.romichan.me/fullchain.pem;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/blog.romichan.me/privkey.pem;</span><br><span class="line">    <span class="attribute">server_name</span>  blog.romichan.me;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>  http://127.0.0.1:8080; <span class="comment"># 这里就是转发的地址了</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$proxy_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="That’s-all"><a href="#That’s-all" class="headerlink" title="That’s all"></a>That’s all</h1><p>这就是一个随笔  </p>
-<p>我当时在搜集这些资料的时候被很多的名字都吓到了,但其实这是一个很简单的东西,完全是一个模板化的东西,只需要记下来,以后应该都是适用的  </p>
-<p>大概就这么多,如果你看到了,希望对你有帮助.</p>
-<p align="right">在最后的最后，感恩</p>
-<p align="right">Romi Brooks♥</p>]]></content>
-      <categories>
-        <category>WebDev</category>
-      </categories>
-      <tags>
-        <tag>Nginx</tag>
-        <tag>Website</tag>
-        <tag>WebDev</tag>
       </tags>
   </entry>
   <entry>
@@ -472,16 +359,43 @@ Categories=Music;
       </tags>
   </entry>
   <entry>
-    <title>变更记录</title>
-    <url>/2000/01/01/%E5%8F%98%E6%9B%B4%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<h1 id="2022"><a href="#2022" class="headerlink" title="2022"></a>2022</h1><h2 id="2022-10-6："><a href="#2022-10-6：" class="headerlink" title="2022-10-6："></a>2022-10-6：</h2><ul>
-<li>将Github Page上托管的Blog仓库迁移至主服务器<h2 id="2022-6-23："><a href="#2022-6-23：" class="headerlink" title="2022-6-23："></a>2022-6-23：</h2></li>
-<li>将Blog从旧域名迁移至新域名<h2 id="2022-6-17："><a href="#2022-6-17：" class="headerlink" title="2022-6-17："></a>2022-6-17：</h2></li>
-<li>上传Blog仓库到Github，并且托管至Github Page</li>
-</ul>
-]]></content>
+    <title>Nginx二级域名配置</title>
+    <url>/2023/02/25/Nginx%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<div style="text-align: center;">  
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=2020918656&auto=0&height=66"></iframe>  
+
+<p><del>YOASOBI 在 2月15号出新专辑了捏</del>  </p>
+</div>  
+
+<blockquote>
+<p>在去年Digital Ocean把我的账号突然封禁之后,我甚至没有办法迁移我的数据,所有配置文件只能重写<br>这里是为了留一份Nginx中二级域名.conf配置文件的写法,依据我的习惯,仅供参考 </p>
+</blockquote>
+<p>Nginx现在的版本应该会在<code>/etc/nginx/</code>目录存在<code>nginx.conf</code><br>这里大概是这样  </p>
+<span id="more"></span>  
+
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attribute">user</span>  nginx;</span><br><span class="line"><span class="attribute">worker_processes</span>  auto;</span><br><span class="line"></span><br><span class="line"><span class="attribute">error_log</span>  /var/log/nginx/<span class="literal">error</span>.log <span class="literal">notice</span>;</span><br><span class="line"><span class="attribute">pid</span>        /var/run/nginx.pid;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">events</span> &#123;</span><br><span class="line">    <span class="attribute">worker_connections</span>  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="attribute">include</span>       /etc/nginx/mime.types;</span><br><span class="line">    <span class="attribute">default_type</span>  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">log_format</span>  main  <span class="string">&#x27;<span class="variable">$remote_addr</span> - <span class="variable">$remote_user</span> [<span class="variable">$time_local</span>] &quot;<span class="variable">$request</span>&quot; &#x27;</span></span><br><span class="line">                      <span class="string">&#x27;<span class="variable">$status</span> <span class="variable">$body_bytes_sent</span> &quot;<span class="variable">$http_referer</span>&quot; &#x27;</span></span><br><span class="line">                      <span class="string">&#x27;&quot;<span class="variable">$http_user_agent</span>&quot; &quot;<span class="variable">$http_x_forwarded_for</span>&quot;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">access_log</span>  /var/log/nginx/access.log  main;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">sendfile</span>        <span class="literal">on</span>;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    <span class="attribute">keepalive_timeout</span>  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    <span class="attribute">include</span> /etc/nginx/conf.d/<span class="regexp">*.conf</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可见,<code>nginx.conf</code>引用了<code>/etc/nginx/conf.d/</code>下的所有.conf文件<br>这里我习惯把我的个人网站配置文件放在这  </p>
+<h1 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h1><p>现在假设我想要创建一个名为<code>blog.romichan.me</code>的网站,用来存放我的博客<br>首先在你域名的托管商配置<code>DNS解析</code>,可以是A解析,也可以是AAAA解析,需要绑定到服务器上<br>接着在<code>/etc/nginx/conf.d/</code>下新建一个名为<code>blog.ssl.conf</code>的文件,他一般是这样的:  </p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">443</span> ssl;    <span class="comment"># 自从新版本nginx开始,启用ssl隧道得这么写</span></span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/blog.romichan.me/fullchain.pem;   <span class="comment"># 证书文件</span></span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/blog.romichan.me/privkey.pem; <span class="comment"># 证书密钥文件</span></span><br><span class="line">    <span class="attribute">server_name</span>  blog.romichan.me;  <span class="comment">#这里就是要解析到的域名,也就是你在域名托管商的DNS解析里所设置的</span></span><br><span class="line">        <span class="section">location</span> / &#123;</span><br><span class="line">            <span class="attribute">root</span>         /usr/share/webpage/blog; <span class="comment">#这里是博客的根目录.据你的需求,我只需要index.html所以下面的index只写了这些</span></span><br><span class="line">            <span class="attribute">index</span>        index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>而后我们在新建一个文件,它的名字是<code>blog.conf</code>,写入这些:  </p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">80</span>; <span class="comment"># 不作解释,8080也行</span></span><br><span class="line">    <span class="attribute">server_name</span>  blog.romichan.me; <span class="comment"># 解析到的网站</span></span><br><span class="line">    <span class="attribute">rewrite</span><span class="regexp"> ^(.*)$</span>  https://<span class="variable">$host</span><span class="variable">$1</span> <span class="literal">permanent</span>; <span class="comment"># 重点,这里是把网页强行重定向到https,这样我们上面的证书才可以起到效果!</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>总体就这么多,如果你需要通过二级域名来转发你服务器某个端口的数据 (应该是叫<code>反向代理</code>) ,也是这么写,不过需要修改<code>blog.ssl.conf</code>的一些地方:  </p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">443</span> ssl;</span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/blog.romichan.me/fullchain.pem;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/blog.romichan.me/privkey.pem;</span><br><span class="line">    <span class="attribute">server_name</span>  blog.romichan.me;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>  http://127.0.0.1:8080; <span class="comment"># 这里就是转发的地址了</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$proxy_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="That’s-all"><a href="#That’s-all" class="headerlink" title="That’s all"></a>That’s all</h1><p>这就是一个随笔  </p>
+<p>我当时在搜集这些资料的时候被很多的名字都吓到了,但其实这是一个很简单的东西,完全是一个模板化的东西,只需要记下来,以后应该都是适用的  </p>
+<p>大概就这么多,如果你看到了,希望对你有帮助.</p>
+<p align="right">在最后的最后，感恩</p>
+<p align="right">Romi Brooks♥</p>]]></content>
+      <categories>
+        <category>WebDev</category>
+      </categories>
       <tags>
-        <tag>SysRecord</tag>
+        <tag>Nginx</tag>
+        <tag>Website</tag>
+        <tag>WebDev</tag>
       </tags>
   </entry>
   <entry>
@@ -496,6 +410,92 @@ Categories=Music;
         <tag>Note</tag>
         <tag>Development</tag>
         <tag>C++ Lang</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>通过控制LFO Speed，使你的音乐更有律动</title>
+    <url>/2022/04/27/FL-Studio-Tips-%E5%88%A9%E7%94%A8LFO-LFO-Speed%E5%81%9A%E5%87%BA%E5%8A%A0%E8%8A%B1%E6%95%88%E6%9E%9C/</url>
+    <content><![CDATA[<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/cover.png" alt="封面" title="Cover">  </p>
+<audio id="audio" controls="" preload="none">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBass.mp3">
+</audio>
+
+<p><em>（音乐来自：FL Studio中DemoSong内Asher Postman-Future Bass）</em>  </p>
+<p>在了解这之前，您可以点击上方的“播放按钮”，来听一首歌，这首歌用到了我所谓<code>控制 LFO Speed</code>的技巧 (在听之前请注意音量)</p>
+<span id="more"></span>
+<h1 id="什么是LFO-Speed"><a href="#什么是LFO-Speed" class="headerlink" title="什么是LFO Speed?"></a>什么是<code>LFO Speed</code>?</h1><p>LFO（Low Frequency Oscillator，低频振荡器）是一种产生周期性信号的调制源，其频率通常低于 20Hz（人类听觉下限），因此无法直接被听到，但可以控制其他参数的变化。例如：  </p>
+<p>调制音量：通过周期性增减振幅，产生类似 “脉冲” 的抽吸效果（即震音，Tremolo）。<br>调制滤波器截止频率：通过周期性开合滤波器，使声音在高频和低频之间切换，形成 “摇晃” 的抽吸感（如 Dubstep 贝斯）。  </p>
+<p>而LFO Speed 决定了振荡的频率，直接影响抽吸效果的节奏。  </p>
+<h1 id="为什么要控制-LFO-Speed"><a href="#为什么要控制-LFO-Speed" class="headerlink" title="为什么要控制 LFO Speed?"></a>为什么要<code>控制 LFO Speed</code>?</h1><p>在音乐制作中，<strong>控制LFO Speed（低频振荡器速度）</strong> 是创造动态抽吸效果的核心技巧。<br>这种效果通过周期性调制声音参数（如音量、滤波器截止频率），使音频产生类似 “呼吸” 或 “脉冲” 的节奏性波动，常见于电子音乐、Future Bass、Dubstep 等风格中。<br>通过灵活运用 LFO Speed 和波形设计，制作人可以为声音注入生命般的动态变化。从微妙的音色润色到夸张的特效设计，是一个相对高级的声设技巧。</p>
+<h1 id="它的效果具体是如何"><a href="#它的效果具体是如何" class="headerlink" title="它的效果具体是如何?"></a>它的效果具体是如何?</h1><p>这是上面那首Demo Song中使用此技巧的一小段 (在听之前请注意音量):  </p>
+<audio id="audio" controls="" preload="none">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassLFO2.mp3">
+</audio>
+
+<p>这是去掉鼓点等干扰的效果:</p>
+<audio id="audio" controls="" preload="none">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassNDLFO2.mp3">
+</audio>
+
+<p>其实还有一次，是在这里:</p>
+<audio id="audio" controls="" preload="none">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassLFO1.mp3">
+</audio>
+
+<p>这是去掉鼓点等干扰的效果:</p>
+<audio id="audio" controls="" preload="none">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassNDLFO1.mp3">
+</audio>
+
+
+<h1 id="我是如何发现的"><a href="#我是如何发现的" class="headerlink" title="我是如何发现的?"></a>我是如何发现的?</h1><p>其实只要听的歌曲足够多，会发现这种效果用到的风格很多，哪怕是最基础的一个<code>crash下降</code>或是<code>Drop Melody</code>等很多效果，都能用这个技巧营造出很多听众的<code>爽点</code>。<br>当然，具体操作的原理以及方式我是通过开头的那首Demo Song Project学到的： </p>
+<p>来自 Asher Postman 的 Future Bass，我的fb启蒙制作者，包括其中的一种SideChain方式也是从这个工程学的。</p>
+<blockquote>
+<p>Title: Future Bass (Stock Plugins Only)<br>Author: <a href="https://soundcloud.com/asher-postman">Asher Postman</a><br>Copyright © 2018 Asher Postman.</p>
+</blockquote>
+<h2 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现?"></a>如何实现?</h2><p>  来看两张图：<br><img src="/images/posts/FL-Studio-Tips-LFO-Speed/1.gif" alt="1" title="1"><br><img src="/images/posts/FL-Studio-Tips-LFO-Speed/2.gif" alt="2" title="2"></p>
+<p>  它们都有一个共性：<strong>其中的一个AMC（Automation Clips）均为”LFO Speed”，伴随着LFO Speed的降低，它们所控制的LFO频率也随之降低。</strong></p>
+<p>  上面说，“它们所控制的LFO频率”，那么我们首先得创作出一个LFO的AMC，这里FL Studio给大家了一种方法：</p>
+<pre><code>  1.在您要实施此效果的对应旋钮上新建一个 AMC (Create automation clip)
+  2.在 View Playlist 找到它，单击它名字旁边的AMC图标
+  3.点击Channel Settings
+    （1.一个很明显的 LFO 选项，打开它，之后设计您想要的波形（我们先不管speed，您可以设定其他几个值）
+    （2.右键SPEED旋钮，新建一个AMC
+    （3.现在您得到了两个AMC，这正是我们想要的结果，接下来就要靠您的听感了
+  4.在您听感的基础上，调节LFO speed AMC使其满足您的要求
+  5.完成
+</code></pre>
+<h1 id="实践-amp-展示"><a href="#实践-amp-展示" class="headerlink" title="实践&amp;展示"></a>实践&amp;展示</h1><h2 id="一，做FutureBass的WobbleChords（无LFO-Speed-AMC，当然我们也可以加）："><a href="#一，做FutureBass的WobbleChords（无LFO-Speed-AMC，当然我们也可以加）：" class="headerlink" title="一，做FutureBass的WobbleChords（无LFO Speed AMC，当然我们也可以加）："></a>一，做FutureBass的WobbleChords（无LFO Speed AMC，当然我们也可以加）：</h2><p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/1.png" alt="1" title="1"></p>
+<h2 id="二，做Hippop的MelodySFX："><a href="#二，做Hippop的MelodySFX：" class="headerlink" title="二，做Hippop的MelodySFX："></a>二，做Hippop的MelodySFX：</h2><p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/2.png" alt="2" title="2"></p>
+<blockquote>
+<p>Tips：在这里，我们可以用Wave，Pulse等AMC Point Mode，右键AMC节点选择对应的Mode即可。</p>
+</blockquote>
+<h1 id="In-the-End"><a href="#In-the-End" class="headerlink" title="In the End"></a>In the End</h1><p>为了显得最后的结束不算很唐突，我用了<a href="https://www.youtube.com/user/OfficialVirtualRiot">Virtual Riot</a> 的采样包，堆叠了一个Melodic Dubstep.<br>just for fun，and thank u VR</p>
+<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/3.png" alt="3" title="3"></br></p>
+<audio id="audio" controls="" preload="none">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/Md.mp3">
+</audio>
+
+<p align="right">在最后的最后，感恩</p>
+<p align="right">Romi Brooks♥</p>]]></content>
+      <categories>
+        <category>Music</category>
+      </categories>
+      <tags>
+        <tag>FL-Tips</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>变更记录</title>
+    <url>/2000/01/01/%E5%8F%98%E6%9B%B4%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h1 id="2022"><a href="#2022" class="headerlink" title="2022"></a>2022</h1><h2 id="2022-10-6："><a href="#2022-10-6：" class="headerlink" title="2022-10-6："></a>2022-10-6：</h2><ul>
+<li>将Github Page上托管的Blog仓库迁移至主服务器<h2 id="2022-6-23："><a href="#2022-6-23：" class="headerlink" title="2022-6-23："></a>2022-6-23：</h2></li>
+<li>将Blog从旧域名迁移至新域名<h2 id="2022-6-17："><a href="#2022-6-17：" class="headerlink" title="2022-6-17："></a>2022-6-17：</h2></li>
+<li>上传Blog仓库到Github，并且托管至Github Page</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>SysRecord</tag>
       </tags>
   </entry>
 </search>

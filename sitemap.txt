@@ -1,6 +1,6 @@
+https://blog.romichan.icu/_moments/2025-10-24.html
 https://blog.romichan.icu/_moments/2025-10-23.html
 https://blog.romichan.icu/_moments/2025-10-20.html
-https://blog.romichan.icu/_moments/2025-10-24.html
 https://blog.romichan.icu/2023/04/01/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/
 https://blog.romichan.icu/2023/03/04/Navidrome%EF%BC%8C%E5%AE%9A%E4%B9%89%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E7%A6%BB%E7%BA%BF%E6%92%AD%E6%94%BE%E5%99%A8/
 https://blog.romichan.icu/2023/02/25/Nginx%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE/
@@ -22,17 +22,17 @@ https://blog.romichan.icu/tags/Archlinux/
 https://blog.romichan.icu/tags/Nvidia/
 https://blog.romichan.icu/tags/Installation/
 https://blog.romichan.icu/tags/i3wm/
-https://blog.romichan.icu/tags/FL-Tips/
 https://blog.romichan.icu/tags/Nginx/
 https://blog.romichan.icu/tags/Music/
 https://blog.romichan.icu/tags/Website/
 https://blog.romichan.icu/tags/WebDev/
 https://blog.romichan.icu/tags/code-server/
 https://blog.romichan.icu/tags/Reaper/
-https://blog.romichan.icu/tags/SysRecord/
 https://blog.romichan.icu/tags/Note/
 https://blog.romichan.icu/tags/Development/
 https://blog.romichan.icu/tags/C-Lang/
+https://blog.romichan.icu/tags/FL-Tips/
+https://blog.romichan.icu/tags/SysRecord/
 https://blog.romichan.icu/categories/Linux/
 https://blog.romichan.icu/categories/Music/
 https://blog.romichan.icu/categories/WebDev/
