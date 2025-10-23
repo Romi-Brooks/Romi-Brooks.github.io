@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 
 
-<html lang="zh-Hans">
+<html lang="zh-CN">
   
 
     <head>
       <meta charset="utf-8" />
        
-      <meta name="keywords" content="blog romi music linux" />
+      <meta name="keywords" content="blog romi" />
        
       <meta name="description" content="Romi Brooks blog" />
       
@@ -15,7 +15,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Nginx中code-server的ws配置 |  Romi</title>
+      <title>Nginx中code-server的ws配置 |  默茉的小屋</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -45,7 +45,7 @@
           font-size: 1.6rem;
         }
       </style>
-    <link rel="alternate" href="/atom.xml" title="Romi" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="默茉的小屋" type="application/atom+xml">
 </head>
   </html>
 </html>
@@ -88,8 +88,8 @@
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
-            <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">204</span>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">194</span>
         </span>
     </span>
 
@@ -97,23 +97,21 @@
         &nbsp; | &nbsp;
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
-            <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">1 分钟</span>
         </span>
     </span>
 </div>
  
     </div>
       
-    <div class="tocbot"></div>
-
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p><img src="/../../../img/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/Cover.png" alt="封面" title="Cover"></p>
+  <p><img src="/images/posts/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/Cover.png" alt="封面" title="Cover"></p>
 <blockquote>
 <p>这个问题已经有很多人出现了,github也有人提出了issues<br><a target="_blank" rel="noopener" href="https://github.com/coder/code-server/issues/4443">https://github.com/coder/code-server/issues/4443</a>  </p>
 </blockquote>
@@ -124,8 +122,8 @@
 <p>废话不多说,直接上<code>.conf</code>文件:</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    <span class="comment">#其他选项</span></span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>  http://127.0.0.1:7654;  <span class="comment">#转发地址</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#下面这些就是相关的ws转发,把这些写上了code-server才能正常工作</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> HOST <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Connection upgrade;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Accept-Encoding gzip;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$proxy_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>同样,这也是一篇随笔…  </p>
-<p><del>ps:在想一个好玩的东西</del></p>
-<h2 id="在最后的最后，感恩。"><a href="#在最后的最后，感恩。" class="headerlink" title="在最后的最后，感恩。"></a><center>在最后的最后，感恩。</center></h2>   <p align="right">Romi Brooks♥</p>
+<p align="right">在最后的最后，感恩</p>
+<p align="right">Romi Brooks♥</p>
  
       <!-- reward -->
       
@@ -138,9 +136,9 @@
       <ul class="post-copyright">
         <li>
           <i class="ri-copyright-line"></i>
-          <strong>Copyright： </strong>
+          <strong>版权声明： </strong>
           
-          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
           
         </li>
       </ul>
@@ -190,7 +188,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://blog.romichan.tech/2023/04/01/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://blog.romichan.icu/2023/04/01/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -301,9 +299,9 @@
         
         
         <span>
-  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
   <span class="division">|</span>
-  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
 </span>
         
       </li>
@@ -338,7 +336,7 @@
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="Romi"></a>
+    <a href="/"><img src="/images/ayer-side.svg" alt="默茉的小屋"></a>
   </div>
   
   <ul class="nav nav-main">
@@ -360,11 +358,19 @@
     </li>
     
     <li class="nav-item">
+      <a class="nav-item-link" href="/moments">一刻</a>
+    </li>
+    
+    <li class="nav-item">
       <a class="nav-item-link" href="/emotions">树洞</a>
     </li>
     
     <li class="nav-item">
       <a class="nav-item-link" href="/friendslinks">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about/">关于我</a>
     </li>
     
   </ul>
@@ -373,7 +379,7 @@
   <ul class="nav">
     <li class="nav-item">
       
-      <a class="nav-item-link nav-item-search"  title="Search">
+      <a class="nav-item-link nav-item-search"  title="搜索">
         <i class="ri-search-line"></i>
       </a>
       
@@ -553,6 +559,30 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 

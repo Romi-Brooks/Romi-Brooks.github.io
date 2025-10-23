@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 
 
-<html lang="zh-Hans">
+<html lang="zh-CN">
   
 
     <head>
       <meta charset="utf-8" />
        
-      <meta name="keywords" content="blog romi music linux" />
+      <meta name="keywords" content="blog romi" />
        
       <meta name="description" content="Romi Brooks blog" />
       
@@ -15,7 +15,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>FL Studio Tips: 通过控制LFO Speed，使你的音乐更有律动 |  Romi</title>
+      <title>通过控制LFO Speed，使你的音乐更有律动 |  默茉的小屋</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -45,7 +45,7 @@
           font-size: 1.6rem;
         }
       </style>
-    <link rel="alternate" href="/atom.xml" title="Romi" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="默茉的小屋" type="application/atom+xml">
 </head>
   </html>
 </html>
@@ -69,7 +69,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  FL Studio Tips: 通过控制LFO Speed，使你的音乐更有律动
+  通过控制LFO Speed，使你的音乐更有律动
 </h1>
  
 
@@ -88,8 +88,8 @@
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
-            <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">708</span>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">928</span>
         </span>
     </span>
 
@@ -97,8 +97,8 @@
         &nbsp; | &nbsp;
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
-            <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">2 min</span>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">3 分钟</span>
         </span>
     </span>
 </div>
@@ -113,42 +113,47 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p><img src="/../../../img/FL-Studio-Tips-LFO-Speed/cover.png" alt="封面" title="Cover"></p>
+  <p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/cover.png" alt="封面" title="Cover">  </p>
 <audio id="audio" controls="" preload="none">
-    <source id="mp3" src="../../../../music/FLTips/FutureBass.mp3">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBass.mp3">
 </audio>
 
-<p>在了解这之前，您可以点击上方的“播放按钮”，来听一首歌。</p>
-<p><em>（音乐来自：FL Studio中DemoSong内Asher Postman-Future Bass）</em></p>
-<p> 这首歌里用到了此文章所用到的技巧。</p>
+<p><em>（音乐来自：FL Studio中DemoSong内Asher Postman-Future Bass）</em>  </p>
+<p>在了解这之前，您可以点击上方的“播放按钮”，来听一首歌，这首歌用到了我所谓<code>控制 LFO Speed</code>的技巧 (在听之前请注意音量)</p>
 <span id="more"></span>
-<p><del>那么现在，我们开始⑧！</del></p>
-<h1 id="首先，您听到了吗？"><a href="#首先，您听到了吗？" class="headerlink" title="首先，您听到了吗？"></a>首先，您听到了吗？</h1><h2 id="在这个小节，我们可以明显的听到LFO频率交变所带来的特殊感觉"><a href="#在这个小节，我们可以明显的听到LFO频率交变所带来的特殊感觉" class="headerlink" title="在这个小节，我们可以明显的听到LFO频率交变所带来的特殊感觉:"></a>在这个小节，我们可以明显的听到LFO频率交变所带来的特殊感觉:</h2><audio id="audio" controls="" preload="none">
-    <source id="mp3" src="../../../../music/FLTips/FutureBassLFO2.mp3">
-</audio>
-
-<p> <del>什么？您没有听清？那我们去掉所有无关的sfx，和drums:</del></p>
+<h1 id="什么是LFO-Speed"><a href="#什么是LFO-Speed" class="headerlink" title="什么是LFO Speed?"></a>什么是<code>LFO Speed</code>?</h1><p>LFO（Low Frequency Oscillator，低频振荡器）是一种产生周期性信号的调制源，其频率通常低于 20Hz（人类听觉下限），因此无法直接被听到，但可以控制其他参数的变化。例如：  </p>
+<p>调制音量：通过周期性增减振幅，产生类似 “脉冲” 的抽吸效果（即震音，Tremolo）。<br>调制滤波器截止频率：通过周期性开合滤波器，使声音在高频和低频之间切换，形成 “摇晃” 的抽吸感（如 Dubstep 贝斯）。  </p>
+<p>而LFO Speed 决定了振荡的频率，直接影响抽吸效果的节奏。  </p>
+<h1 id="为什么要控制-LFO-Speed"><a href="#为什么要控制-LFO-Speed" class="headerlink" title="为什么要控制 LFO Speed?"></a>为什么要<code>控制 LFO Speed</code>?</h1><p>在音乐制作中，<strong>控制LFO Speed（低频振荡器速度）</strong> 是创造动态抽吸效果的核心技巧。<br>这种效果通过周期性调制声音参数（如音量、滤波器截止频率），使音频产生类似 “呼吸” 或 “脉冲” 的节奏性波动，常见于电子音乐、Future Bass、Dubstep 等风格中。<br>通过灵活运用 LFO Speed 和波形设计，制作人可以为声音注入生命般的动态变化。从微妙的音色润色到夸张的特效设计，是一个相对高级的声设技巧。</p>
+<h1 id="它的效果具体是如何"><a href="#它的效果具体是如何" class="headerlink" title="它的效果具体是如何?"></a>它的效果具体是如何?</h1><p>这是上面那首Demo Song中使用此技巧的一小段 (在听之前请注意音量):  </p>
 <audio id="audio" controls="" preload="none">
-    <source id="mp3" src="../../../../music/FLTips/FutureBassNDLFO2.mp3">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassLFO2.mp3">
 </audio>
 
-<h2 id="其实还有一次，是在这里"><a href="#其实还有一次，是在这里" class="headerlink" title="其实还有一次，是在这里:"></a>其实还有一次，是在这里:</h2><audio id="audio" controls="" preload="none">
-    <source id="mp3" src="../../../../music/FLTips/FutureBassLFO1.mp3">
-</audio>
-
-<p><del>什么？您还是没有听清？那我们去掉所有无关的sfx，和drums:</del>  </p>
+<p>这是去掉鼓点等干扰的效果:</p>
 <audio id="audio" controls="" preload="none">
-    <source id="mp3" src="../../../../music/FLTips/FutureBassNDLFO1.mp3">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassNDLFO2.mp3">
 </audio>
 
-<h1 id="这下，您应该能大致的理解我想表达什么了。"><a href="#这下，您应该能大致的理解我想表达什么了。" class="headerlink" title="这下，您应该能大致的理解我想表达什么了。"></a>这下，您应该能大致的理解我想表达什么了。</h1><h2 id="这个效果可以用来干啥？"><a href="#这个效果可以用来干啥？" class="headerlink" title="这个效果可以用来干啥？"></a>这个效果可以用来干啥？</h2><p>  可以用来当做SFX的加花，可以用来结束一个乐句进行，也可以当做一种特殊的“震颤”效果，做出压抑感。与其他任何您喜欢的方式来对你的音乐美化。</p>
-<h2 id="你是怎么发现的？"><a href="#你是怎么发现的？" class="headerlink" title="你是怎么发现的？"></a>你是怎么发现的？</h2><p>  来自 Asher Postman-Future Bass，我的fb启蒙制作者，包括其中的一种SideChain方式也是从这个工程学的。</p>
+<p>其实还有一次，是在这里:</p>
+<audio id="audio" controls="" preload="none">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassLFO1.mp3">
+</audio>
+
+<p>这是去掉鼓点等干扰的效果:</p>
+<audio id="audio" controls="" preload="none">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassNDLFO1.mp3">
+</audio>
+
+
+<h1 id="我是如何发现的"><a href="#我是如何发现的" class="headerlink" title="我是如何发现的?"></a>我是如何发现的?</h1><p>其实只要听的歌曲足够多，会发现这种效果用到的风格很多，哪怕是最基础的一个<code>crash下降</code>或是<code>Drop Melody</code>等很多效果，都能用这个技巧营造出很多听众的<code>爽点</code>。<br>当然，具体操作的原理以及方式我是通过开头的那首Demo Song Project学到的： </p>
+<p>来自 Asher Postman 的 Future Bass，我的fb启蒙制作者，包括其中的一种SideChain方式也是从这个工程学的。</p>
 <blockquote>
-<p>Title: Future Bass (Stock Plugins Only) </br><br>Author: <a target="_blank" rel="noopener" href="https://soundcloud.com/asher-postman">Asher Postman</a></br><br>Copyright © 2018 Asher Postman. </br></p>
+<p>Title: Future Bass (Stock Plugins Only)<br>Author: <a target="_blank" rel="noopener" href="https://soundcloud.com/asher-postman">Asher Postman</a><br>Copyright © 2018 Asher Postman.</p>
 </blockquote>
-<h2 id="如何实现？"><a href="#如何实现？" class="headerlink" title="如何实现？"></a>如何实现？</h2><p>  来看两张图：</br><br><img src="/../../../img/FL-Studio-Tips-LFO-Speed/1.gif" alt="1" title="1"></br><br><img src="/../../../img/FL-Studio-Tips-LFO-Speed/2.gif" alt="2" title="2"></br></p>
-<p>  不知道你有没有看到他们的共性，没错：<strong>其中的一个AMC（Automation Clips）均为”LFO Speed”，伴随着LFO Speed的降低，它们所控制的LFO频率也随之降低。</strong></p>
-<p>  上面说，“他们所控制的LFO频率”，那么我们首先得创作出一个LFO的AMC，这里FL Studio给大家了一种方法：</p>
+<h2 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现?"></a>如何实现?</h2><p>  来看两张图：<br><img src="/images/posts/FL-Studio-Tips-LFO-Speed/1.gif" alt="1" title="1"><br><img src="/images/posts/FL-Studio-Tips-LFO-Speed/2.gif" alt="2" title="2"></p>
+<p>  它们都有一个共性：<strong>其中的一个AMC（Automation Clips）均为”LFO Speed”，伴随着LFO Speed的降低，它们所控制的LFO频率也随之降低。</strong></p>
+<p>  上面说，“它们所控制的LFO频率”，那么我们首先得创作出一个LFO的AMC，这里FL Studio给大家了一种方法：</p>
 <pre><code>  1.在您要实施此效果的对应旋钮上新建一个 AMC (Create automation clip)
   2.在 View Playlist 找到它，单击它名字旁边的AMC图标
   3.点击Channel Settings
@@ -156,29 +161,21 @@
     （2.右键SPEED旋钮，新建一个AMC
     （3.现在您得到了两个AMC，这正是我们想要的结果，接下来就要靠您的听感了
   4.在您听感的基础上，调节LFO speed AMC使其满足您的要求
-  5.Good Job，您已经做好了一件看起来很困难的东西，但其实这并不难，不是吗？
+  5.完成
 </code></pre>
-<h1 id="原理？"><a href="#原理？" class="headerlink" title="原理？"></a>原理？</h1><p>  原理就是，LFO Speed AMC 控制LFO的频率，影响到LFO所控制的旋钮  </p>
-<h1 id="实践-amp-展示"><a href="#实践-amp-展示" class="headerlink" title="实践&amp;展示"></a>实践&amp;展示</h1><h2 id="一，做FutureBass的WobbleChords（无LFO-Speed-AMC，当然您也可以加）："><a href="#一，做FutureBass的WobbleChords（无LFO-Speed-AMC，当然您也可以加）：" class="headerlink" title="一，做FutureBass的WobbleChords（无LFO Speed AMC，当然您也可以加）："></a>一，做FutureBass的WobbleChords（无LFO Speed AMC，当然您也可以加）：</h2><p><img src="/../../../img/FL-Studio-Tips-LFO-Speed/1.png" alt="1" title="1"></br></p>
-<h2 id="二，做Hippop的MelodySFX："><a href="#二，做Hippop的MelodySFX：" class="headerlink" title="二，做Hippop的MelodySFX："></a>二，做Hippop的MelodySFX：</h2><p><img src="/../../../img/FL-Studio-Tips-LFO-Speed/2.png" alt="2" title="2"></br> </p>
+<h1 id="实践-amp-展示"><a href="#实践-amp-展示" class="headerlink" title="实践&amp;展示"></a>实践&amp;展示</h1><h2 id="一，做FutureBass的WobbleChords（无LFO-Speed-AMC，当然我们也可以加）："><a href="#一，做FutureBass的WobbleChords（无LFO-Speed-AMC，当然我们也可以加）：" class="headerlink" title="一，做FutureBass的WobbleChords（无LFO Speed AMC，当然我们也可以加）："></a>一，做FutureBass的WobbleChords（无LFO Speed AMC，当然我们也可以加）：</h2><p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/1.png" alt="1" title="1"></p>
+<h2 id="二，做Hippop的MelodySFX："><a href="#二，做Hippop的MelodySFX：" class="headerlink" title="二，做Hippop的MelodySFX："></a>二，做Hippop的MelodySFX：</h2><p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/2.png" alt="2" title="2"></p>
 <blockquote>
-<p>Tips：在这里，您可以用Wave，Pulse等AMC Point Mode，右键AMC节点即可。<br></br>  </p>
+<p>Tips：在这里，我们可以用Wave，Pulse等AMC Point Mode，右键AMC节点选择对应的Mode即可。</p>
 </blockquote>
-<h2 id="三，And-so-on……"><a href="#三，And-so-on……" class="headerlink" title="三，And so on……"></a>三，And so on……</h2></br>
-
-
-<h1 id="最后，一首Melodic-Dubstep给您，感谢您阅读此文章，这便是对我最大的认可了。"><a href="#最后，一首Melodic-Dubstep给您，感谢您阅读此文章，这便是对我最大的认可了。" class="headerlink" title="最后，一首Melodic Dubstep给您，感谢您阅读此文章，这便是对我最大的认可了。"></a>最后，一首Melodic Dubstep给您，感谢您阅读此文章，这便是对我最大的认可了。</h1><blockquote>
-<p>这里用到了<a target="_blank" rel="noopener" href="https://www.youtube.com/user/OfficialVirtualRiot">Virtual Riot</a>  的采样包，堆叠而成。我只是做了混音以及编排（哦对，还有一个自己的Long BuildUp，笑）。 </br></p>
-</blockquote>
-<p><img src="/../../../img/FL-Studio-Tips-LFO-Speed/3.png" alt="3" title="3"></br></p>
+<h1 id="In-the-End"><a href="#In-the-End" class="headerlink" title="In the End"></a>In the End</h1><p>为了显得最后的结束不算很唐突，我用了<a target="_blank" rel="noopener" href="https://www.youtube.com/user/OfficialVirtualRiot">Virtual Riot</a> 的采样包，堆叠了一个Melodic Dubstep.<br>just for fun，and thank u VR</p>
+<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/3.png" alt="3" title="3"></br></p>
 <audio id="audio" controls="" preload="none">
-    <source id="mp3" src="../../../../music/FLTips/Md.mp3">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/Md.mp3">
 </audio>
 
-</br>
-
-<h2 id="在最后的最后，感恩。"><a href="#在最后的最后，感恩。" class="headerlink" title="在最后的最后，感恩。"></a><center>在最后的最后，感恩。</center></h2>   <p align="right">Romi Brooks♥</p>
- 
+<p align="right">在最后的最后，感恩</p>
+<p align="right">Romi Brooks♥</p> 
       <!-- reward -->
       
     </div>
@@ -190,9 +187,9 @@
       <ul class="post-copyright">
         <li>
           <i class="ri-copyright-line"></i>
-          <strong>Copyright： </strong>
+          <strong>版权声明： </strong>
           
-          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
           
         </li>
       </ul>
@@ -242,7 +239,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://blog.romichan.tech/2022/04/27/FL-Studio-Tips-%E5%88%A9%E7%94%A8LFO-LFO-Speed%E5%81%9A%E5%87%BA%E5%8A%A0%E8%8A%B1%E6%95%88%E6%9E%9C/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://blog.romichan.icu/2022/04/27/FL-Studio-Tips-%E5%88%A9%E7%94%A8LFO-LFO-Speed%E5%81%9A%E5%87%BA%E5%8A%A0%E8%8A%B1%E6%95%88%E6%9E%9C/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -265,9 +262,9 @@
       </a>
     
     
-      <a href="/2022/04/17/hello-world/" class="article-nav-link">
+      <a href="/2000/01/01/%E5%8F%98%E6%9B%B4%E8%AE%B0%E5%BD%95/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Hello Hexo</div>
+        <div class="article-nav-title">变更记录</div>
       </a>
     
   </nav>
@@ -353,9 +350,9 @@
         
         
         <span>
-  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
   <span class="division">|</span>
-  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
 </span>
         
       </li>
@@ -390,7 +387,7 @@
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="Romi"></a>
+    <a href="/"><img src="/images/ayer-side.svg" alt="默茉的小屋"></a>
   </div>
   
   <ul class="nav nav-main">
@@ -412,11 +409,19 @@
     </li>
     
     <li class="nav-item">
+      <a class="nav-item-link" href="/moments">一刻</a>
+    </li>
+    
+    <li class="nav-item">
       <a class="nav-item-link" href="/emotions">树洞</a>
     </li>
     
     <li class="nav-item">
       <a class="nav-item-link" href="/friendslinks">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about/">关于我</a>
     </li>
     
   </ul>
@@ -425,7 +430,7 @@
   <ul class="nav">
     <li class="nav-item">
       
-      <a class="nav-item-link nav-item-search"  title="Search">
+      <a class="nav-item-link nav-item-search"  title="搜索">
         <i class="ri-search-line"></i>
       </a>
       
@@ -605,6 +610,30 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 
