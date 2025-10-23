@@ -215,47 +215,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Navidrome，定义你自己离线的播放器</title>
-    <url>/2023/03/04/Navidrome%EF%BC%8C%E5%AE%9A%E4%B9%89%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E7%A6%BB%E7%BA%BF%E6%92%AD%E6%94%BE%E5%99%A8/</url>
-    <content><![CDATA[<p><img src="/images/posts/Navidrome-U-Own-Music-Player/cover.png" alt="封面" title="Cover"></p>
-<p>最近在上传我的本地歌曲库的时候,发现过于麻烦,(筛选,打包,上传.如果我需要修改某个文件的时候还需要再下载回来,然后解压,再修改.重复这个步骤)于是想到了托管到VPS,并且实现流媒体播放.那么这还是蛮不错的!  </p>
-<blockquote>
-<p>PS:这个很早就打算做了,只不过懒,就一直拖下去了(因为早期下载歌曲的时候过于偷懒导致过50%的歌曲的metadata都出现了不匹配的问题…..)  </p>
-</blockquote>
-<span id="more"></span>  
-<p><strong>同样,这个东西也适用于内网用户(如NAS用户)访问自己的媒体文件,其实这类软件目标人群应该就是这个.</strong>  </p>
-<h1 id="寻找一个适合的软件"><a href="#寻找一个适合的软件" class="headerlink" title="寻找一个适合的软件"></a>寻找一个适合的软件</h1><p>我的基本要求是,颜值首先!如果不好看,我估计我会第一个舍弃…..<br>其次必须支持<code>流式媒体播放</code>,这一次托管的目的就在这里!<br>然后是功能必须齐全:比如<code>歌手排序</code>,<code>歌单排序</code>,<code>用户喜爱</code>,<code>封面展示</code>…..<br>最后是方便部署,如果部署起来特别麻烦,那是真的得不偿失…..<br>我大概花费了几个小时尝试,而后偶然发现了<code>Navidrome</code>,也就是这篇文章的主角.  </p>
-<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><p><code>Navidrome</code> 的部署分为三步,我觉得简单到天际…..  </p>
-<ul>
-<li>下载,解压</li>
-<li>配置歌曲文件夹</li>
-<li>运行</li>
-</ul>
-<p>Step 1. 下载只需要到<a href="https://github.com/navidrome/navidrome">Navidrome</a>的<a href="https://github.com/navidrome/navidrome/releases">releases</a>里下符合你系统架构的二进制文件. ez to do it.<br>然后解压,一般直接</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -xvf filename.tar.gz</span><br></pre></td></tr></table></figure>
-<p>Step 2. 在你程序目录新建一个<code>music</code>文件夹,可以直接放音乐,也可以软连接到你自己的音乐文件夹.只要有音乐就行!<br>Step 3. 启动,这里推荐用<code>screen</code>或者是你喜欢的什么软件来防止被ban.到这里<code>Navidrome</code>就部署完成了.简单的一b</p>
-<p>后续的设置基本就是<code>Nginx 反向代理</code>,让他更加简洁美观 (同时加锁,即取得https)</p>
-<p>参考上一篇博客,在<code>player.ssl.conf</code>里写入以下内容(根据自己的改):</p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">443</span> ssl;</span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/player.romichan.me/fullchain.pem;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/player.romichan.me/privkey.pem;</span><br><span class="line">    <span class="attribute">server_name</span>  player.romichan.me;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>  http://127.0.0.1:4533; <span class="comment"># 这里就是转发的地址了</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$proxy_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在<code>player.conf</code>里写入:</p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span>  player.romichan.me;</span><br><span class="line">    <span class="attribute">rewrite</span><span class="regexp"> ^(.*)$</span>  https://<span class="variable">$host</span><span class="variable">$1</span> <span class="literal">permanent</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>到这里,我认为全部就部署好了<br>这时候使用<code>player.romichan.me</code>进入你的<code>Navidrome</code>,初次使用会让你设置管理员用户和密码,记好就行了.  </p>
-<p>还有什么要说的呢?<br>哦,对….<br>你在使用这些离线音乐库的时候就要注意,你本地音乐的metadata一定不要有太多的问题,不然整个页面看起来都会很乱<br>我为什么会在文章开头我懒得去弄呢?就是因为我后续整理metadata用了将近三个小时….这真的很折磨…<br><img src="/images/posts/Navidrome-U-Own-Music-Player/1.0.1.jpg" alt="折磨" title="折磨">  </p>
-<p><del>当然如果你的习惯很好,那么这个当然对你来说没有任何问题,加油!</del></p>
-<p align="right">在最后的最后，感恩</p>
-<p align="right">Romi Brooks♥</p>]]></content>
-      <categories>
-        <category>Music</category>
-      </categories>
-      <tags>
-        <tag>Nginx</tag>
-        <tag>Music</tag>
-        <tag>Website</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>通过控制LFO Speed，使你的音乐更有律动</title>
     <url>/2022/04/27/FL-Studio-Tips-%E5%88%A9%E7%94%A8LFO-LFO-Speed%E5%81%9A%E5%87%BA%E5%8A%A0%E8%8A%B1%E6%95%88%E6%9E%9C/</url>
     <content><![CDATA[<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/cover.png" alt="封面" title="Cover">  </p>
@@ -326,6 +285,74 @@
       </categories>
       <tags>
         <tag>FL-Tips</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Navidrome，定义你自己离线的播放器</title>
+    <url>/2023/03/04/Navidrome%EF%BC%8C%E5%AE%9A%E4%B9%89%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E7%A6%BB%E7%BA%BF%E6%92%AD%E6%94%BE%E5%99%A8/</url>
+    <content><![CDATA[<p><img src="/images/posts/Navidrome-U-Own-Music-Player/cover.png" alt="封面" title="Cover"></p>
+<p>最近在上传我的本地歌曲库的时候,发现过于麻烦,(筛选,打包,上传.如果我需要修改某个文件的时候还需要再下载回来,然后解压,再修改.重复这个步骤)于是想到了托管到VPS,并且实现流媒体播放.那么这还是蛮不错的!  </p>
+<blockquote>
+<p>PS:这个很早就打算做了,只不过懒,就一直拖下去了(因为早期下载歌曲的时候过于偷懒导致过50%的歌曲的metadata都出现了不匹配的问题…..)  </p>
+</blockquote>
+<span id="more"></span>  
+<p><strong>同样,这个东西也适用于内网用户(如NAS用户)访问自己的媒体文件,其实这类软件目标人群应该就是这个.</strong>  </p>
+<h1 id="寻找一个适合的软件"><a href="#寻找一个适合的软件" class="headerlink" title="寻找一个适合的软件"></a>寻找一个适合的软件</h1><p>我的基本要求是,颜值首先!如果不好看,我估计我会第一个舍弃…..<br>其次必须支持<code>流式媒体播放</code>,这一次托管的目的就在这里!<br>然后是功能必须齐全:比如<code>歌手排序</code>,<code>歌单排序</code>,<code>用户喜爱</code>,<code>封面展示</code>…..<br>最后是方便部署,如果部署起来特别麻烦,那是真的得不偿失…..<br>我大概花费了几个小时尝试,而后偶然发现了<code>Navidrome</code>,也就是这篇文章的主角.  </p>
+<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><p><code>Navidrome</code> 的部署分为三步,我觉得简单到天际…..  </p>
+<ul>
+<li>下载,解压</li>
+<li>配置歌曲文件夹</li>
+<li>运行</li>
+</ul>
+<p>Step 1. 下载只需要到<a href="https://github.com/navidrome/navidrome">Navidrome</a>的<a href="https://github.com/navidrome/navidrome/releases">releases</a>里下符合你系统架构的二进制文件. ez to do it.<br>然后解压,一般直接</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -xvf filename.tar.gz</span><br></pre></td></tr></table></figure>
+<p>Step 2. 在你程序目录新建一个<code>music</code>文件夹,可以直接放音乐,也可以软连接到你自己的音乐文件夹.只要有音乐就行!<br>Step 3. 启动,这里推荐用<code>screen</code>或者是你喜欢的什么软件来防止被ban.到这里<code>Navidrome</code>就部署完成了.简单的一b</p>
+<p>后续的设置基本就是<code>Nginx 反向代理</code>,让他更加简洁美观 (同时加锁,即取得https)</p>
+<p>参考上一篇博客,在<code>player.ssl.conf</code>里写入以下内容(根据自己的改):</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">443</span> ssl;</span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/player.romichan.me/fullchain.pem;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/player.romichan.me/privkey.pem;</span><br><span class="line">    <span class="attribute">server_name</span>  player.romichan.me;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>  http://127.0.0.1:4533; <span class="comment"># 这里就是转发的地址了</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$proxy_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>player.conf</code>里写入:</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span>  player.romichan.me;</span><br><span class="line">    <span class="attribute">rewrite</span><span class="regexp"> ^(.*)$</span>  https://<span class="variable">$host</span><span class="variable">$1</span> <span class="literal">permanent</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>到这里,我认为全部就部署好了<br>这时候使用<code>player.romichan.me</code>进入你的<code>Navidrome</code>,初次使用会让你设置管理员用户和密码,记好就行了.  </p>
+<p>还有什么要说的呢?<br>哦,对….<br>你在使用这些离线音乐库的时候就要注意,你本地音乐的metadata一定不要有太多的问题,不然整个页面看起来都会很乱<br>我为什么会在文章开头我懒得去弄呢?就是因为我后续整理metadata用了将近三个小时….这真的很折磨…<br><img src="/images/posts/Navidrome-U-Own-Music-Player/1.0.1.jpg" alt="折磨" title="折磨">  </p>
+<p><del>当然如果你的习惯很好,那么这个当然对你来说没有任何问题,加油!</del></p>
+<p align="right">在最后的最后，感恩</p>
+<p align="right">Romi Brooks♥</p>]]></content>
+      <categories>
+        <category>Music</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
+        <tag>Music</tag>
+        <tag>Website</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nginx中code-server的ws配置</title>
+    <url>/2023/04/01/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p><img src="/images/posts/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/Cover.png" alt="封面" title="Cover"></p>
+<blockquote>
+<p>这个问题已经有很多人出现了,github也有人提出了issues<br><a href="https://github.com/coder/code-server/issues/4443">https://github.com/coder/code-server/issues/4443</a>  </p>
+</blockquote>
+<span id="more"></span>
+<blockquote>
+<p>可以看到导致这个问题的原因是由于<code>Nginx</code>反向代理并没有接受ws握手导致的<br>这里也有很多人给出了答案,但是为了方便我之后部署,我还是决定把它写下来  </p>
+</blockquote>
+<p>废话不多说,直接上<code>.conf</code>文件:</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    <span class="comment">#其他选项</span></span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>  http://127.0.0.1:7654;  <span class="comment">#转发地址</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#下面这些就是相关的ws转发,把这些写上了code-server才能正常工作</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> HOST <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Connection upgrade;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Accept-Encoding gzip;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$proxy_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同样,这也是一篇随笔…  </p>
+<p align="right">在最后的最后，感恩</p>
+<p align="right">Romi Brooks♥</p>
+]]></content>
+      <categories>
+        <category>WebDev</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
+        <tag>Website</tag>
+        <tag>WebDev</tag>
+        <tag>code-server</tag>
       </tags>
   </entry>
   <entry>
@@ -445,30 +472,16 @@ Categories=Music;
       </tags>
   </entry>
   <entry>
-    <title>Nginx中code-server的ws配置</title>
-    <url>/2023/04/01/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p><img src="/images/posts/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/Cover.png" alt="封面" title="Cover"></p>
-<blockquote>
-<p>这个问题已经有很多人出现了,github也有人提出了issues<br><a href="https://github.com/coder/code-server/issues/4443">https://github.com/coder/code-server/issues/4443</a>  </p>
-</blockquote>
-<span id="more"></span>
-<blockquote>
-<p>可以看到导致这个问题的原因是由于<code>Nginx</code>反向代理并没有接受ws握手导致的<br>这里也有很多人给出了答案,但是为了方便我之后部署,我还是决定把它写下来  </p>
-</blockquote>
-<p>废话不多说,直接上<code>.conf</code>文件:</p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    <span class="comment">#其他选项</span></span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>  http://127.0.0.1:7654;  <span class="comment">#转发地址</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#下面这些就是相关的ws转发,把这些写上了code-server才能正常工作</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> HOST <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Connection upgrade;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Accept-Encoding gzip;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$proxy_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>同样,这也是一篇随笔…  </p>
-<p align="right">在最后的最后，感恩</p>
-<p align="right">Romi Brooks♥</p>
+    <title>变更记录</title>
+    <url>/2000/01/01/%E5%8F%98%E6%9B%B4%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h1 id="2022"><a href="#2022" class="headerlink" title="2022"></a>2022</h1><h2 id="2022-10-6："><a href="#2022-10-6：" class="headerlink" title="2022-10-6："></a>2022-10-6：</h2><ul>
+<li>将Github Page上托管的Blog仓库迁移至主服务器<h2 id="2022-6-23："><a href="#2022-6-23：" class="headerlink" title="2022-6-23："></a>2022-6-23：</h2></li>
+<li>将Blog从旧域名迁移至新域名<h2 id="2022-6-17："><a href="#2022-6-17：" class="headerlink" title="2022-6-17："></a>2022-6-17：</h2></li>
+<li>上传Blog仓库到Github，并且托管至Github Page</li>
+</ul>
 ]]></content>
-      <categories>
-        <category>WebDev</category>
-      </categories>
       <tags>
-        <tag>Nginx</tag>
-        <tag>Website</tag>
-        <tag>WebDev</tag>
-        <tag>code-server</tag>
+        <tag>SysRecord</tag>
       </tags>
   </entry>
   <entry>
@@ -483,19 +496,6 @@ Categories=Music;
         <tag>Note</tag>
         <tag>Development</tag>
         <tag>C++ Lang</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>变更记录</title>
-    <url>/2000/01/01/%E5%8F%98%E6%9B%B4%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<h1 id="2022"><a href="#2022" class="headerlink" title="2022"></a>2022</h1><h2 id="2022-10-6："><a href="#2022-10-6：" class="headerlink" title="2022-10-6："></a>2022-10-6：</h2><ul>
-<li>将Github Page上托管的Blog仓库迁移至主服务器<h2 id="2022-6-23："><a href="#2022-6-23：" class="headerlink" title="2022-6-23："></a>2022-6-23：</h2></li>
-<li>将Blog从旧域名迁移至新域名<h2 id="2022-6-17："><a href="#2022-6-17：" class="headerlink" title="2022-6-17："></a>2022-6-17：</h2></li>
-<li>上传Blog仓库到Github，并且托管至Github Page</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>SysRecord</tag>
       </tags>
   </entry>
 </search>
