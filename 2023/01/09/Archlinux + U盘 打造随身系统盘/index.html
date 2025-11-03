@@ -89,7 +89,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.9k</span>
+            <span class="post-count">2k</span>
         </span>
     </span>
 
@@ -98,7 +98,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">7 分钟</span>
+            <span class="post-count">8 分钟</span>
         </span>
     </span>
 </div>
@@ -120,7 +120,8 @@
 <li>上一次编辑时间：2023-01-10 0:51</li>
 </ul>
 <div style="text-align: center;">
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1393318072&auto=0&height=66"></iframe>
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1835463109&auto=0&height=66"></iframe>
 
 
 <p><em>Music：<a target="_blank" rel="noopener" href="https://music.163.com/#/song?id=1393318072&userid=1369186144">Fractal</a> by <a target="_blank" rel="noopener" href="https://music.163.com/#/artist?id=742233">Tinlicker</a></em>  </p>
@@ -128,11 +129,11 @@
 
 
 <blockquote>
-<p>参考ref<br>1.一个完整的Arch Linux 安装流程：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/513859236">2022.5 archlinux详细安装过程</a><br>2.在可移动介质上安装Arch Linux：<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Install_Arch_Linux_on_a_removable_medium">Install Arch Linux on a removable medium</a>  </p>
+<p>参考ref<br>1.一个完整的Arch Linux 安装流程: <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/513859236">2022.5 archlinux详细安装过程</a><br>2.Installation guide - ArchWiki: <a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97">Arch Linux 安装指南</a></p>
 </blockquote>
-<p>本文是一个自用的Arch Linux安装方法，针对的是我自己，如果你看到这个文章了，里头可能有一些东西你是可以用到的。<br>这篇文章旨在帮助不会安装Arch Linux的用户，以及当我自己遗忘某些安装细节时可以回过头来查看。<br>可能有很多的安装方式与命令随着版本更新而无法使用或者不在推荐，出现问题或者是疑问应当自行查询。  </p>
+<p>本文是一个自用的Arch Linux安装方法，针对的是我自己，如果你看到这个文章了，里头可能有一些东西你是可以用到的。<br>但是在阅读本指南前确保文档最后的更新时间和当前观看时间是否相近, Arch Linux是一个滚动更新系统，过时的安装过程也许会导致一些未知的问题出现。<br>这篇文章旨在帮助不会安装Arch Linux的用户，以及当我自己遗忘某些安装细节时可以回过头来查看。<br>可能有很多的安装方式与命令随着版本更新而无法使用或者不在推荐，出现问题或者是疑问应当自行查询。  </p>
 <span id="more"></span>
-<p><del>Start</del></p>
+
 <h1 id="安装Arch-Linux"><a href="#安装Arch-Linux" class="headerlink" title="安装Arch Linux"></a>安装Arch Linux</h1><h2 id="引导，分区，调整，安装："><a href="#引导，分区，调整，安装：" class="headerlink" title="引导，分区，调整，安装："></a>引导，分区，调整，安装：</h2><p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.1.png" alt="1.1.1" title="1.1.1">  </p>
 <h3 id="确保使用UEFI引导："><a href="#确保使用UEFI引导：" class="headerlink" title="确保使用UEFI引导："></a>确保使用UEFI引导：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> /sys/firmware/efi/efivars</span><br></pre></td></tr></table></figure>
 <p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.2.png" alt="1.1.2" title="1.1.2">  </p>
@@ -155,7 +156,7 @@
 <p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.4.png" alt="1.1.4" title="1.1.4">  </p>
 <h4 id="gpt分区表，回车就行"><a href="#gpt分区表，回车就行" class="headerlink" title="gpt分区表，回车就行"></a>gpt分区表，回车就行</h4><p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.5.png" alt="1.1.5" title="1.1.5">  </p>
 <h4 id="用New新建分区，大小自定义，按照你自己来"><a href="#用New新建分区，大小自定义，按照你自己来" class="headerlink" title="用New新建分区，大小自定义，按照你自己来"></a>用New新建分区，大小自定义，按照你自己来</h4><blockquote>
-<p>sda1 -&gt; 1G boot分区<br>sda2 -&gt; 2G swap分区  （不要swap你就不分，我使用下来是没有问题的）<br>sda3 -&gt; 37G &#x2F;分区<br>sda4 -&gt; 20G &#x2F;home分区  </p>
+<p>sda1 -&gt; 1G boot分区  （引导分区，通常来说我们给1G即可）<br>sda2 -&gt; 16G swap分区  （swap的大小通常为你电脑RAM的60%，根据你空余的硬盘空间设定适当的大小）<br>sda3 -&gt; 60G &#x2F;分区  (根目录大小会影响可安装软件的数量等，理解成Windows下的系统盘大小)<br>sda4 -&gt; 50G &#x2F;home分区  （此教程分开了home卷和根目录卷，分开维护使得数据不易丢失）</p>
 </blockquote>
 <h4 id="用Write，然后输入yes写入分区"><a href="#用Write，然后输入yes写入分区" class="headerlink" title="用Write，然后输入yes写入分区"></a>用Write，然后输入yes写入分区</h4><p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.6.png" alt="1.1.6" title="1.1.6">  </p>
 <h4 id="用Quit退出，然后lsblk看分的是否正确"><a href="#用Quit退出，然后lsblk看分的是否正确" class="headerlink" title="用Quit退出，然后lsblk看分的是否正确"></a>用Quit退出，然后lsblk看分的是否正确</h4><p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.7.png" alt="1.1.7" title="1.1.7">  </p>
@@ -168,21 +169,21 @@
 <h4 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h4><p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.8.png" alt="1.1.8" title="1.1.8">  </p>
 <h3 id="配置pacman"><a href="#配置pacman" class="headerlink" title="配置pacman"></a>配置pacman</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/pacman.d/mirrors</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>无论这个页面的内容是什么，只需要无脑修改第一条为(i luv u bfsu)  </p>
+<p>无论这个页面的内容是什么，只需要无脑修改第一条为bfsu的镜像源(i luv u bfsu)  </p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Server = https://mirrors.bfsu.edu.cn/archlinux/<span class="variable">$repo</span>/os/<span class="variable">$arch</span>  </span><br></pre></td></tr></table></figure>
 
 <p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.9.png" alt="1.1.9" title="1.1.9">  </p>
-<h4 id="先同步数据包，不升级"><a href="#先同步数据包，不升级" class="headerlink" title="先同步数据包，不升级"></a>先同步数据包，不升级</h4><blockquote>
+<h4 id="同步数据包"><a href="#同步数据包" class="headerlink" title="同步数据包"></a>同步数据包</h4><blockquote>
 <p>注意，不升级！  </p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Syu</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Sy</span><br></pre></td></tr></table></figure>
 <p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.10.png" alt="1.1.10" title="1.1.10">  </p>
 <h4 id="安装archlinux-keyring防止签名出现问题"><a href="#安装archlinux-keyring防止签名出现问题" class="headerlink" title="安装archlinux-keyring防止签名出现问题"></a>安装<code>archlinux-keyring</code>防止签名出现问题</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S archlinux-keyring</span><br></pre></td></tr></table></figure>
 <p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.11.png" alt="1.1.11" title="1.1.11">  </p>
 <h3 id="安装系统到U盘"><a href="#安装系统到U盘" class="headerlink" title="安装系统到U盘"></a>安装系统到U盘</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacstrap /mnt base linux linux-headers linux-firmware base-devel</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>ArchLinux有很多内核可以选择，这是一些ref:<br>Stable 内核：标准 Linux 内核，附加少量补丁，适合大多数用户。<br>Hardened 内核：专注于安全性，包含强化补丁以缓解漏洞。<br>Longterm (LTS) 内核：长期支持版本，适合需要稳定性的服务器或长期项目。<br>Realtime 内核：提供实时性能，适用于需要低延迟的场景，如音频处理。<br>Zen 内核：优化日常使用体验，适合桌面用户。  </p>
+<p>ArchLinux有很多内核可以选择，这是一些ref:<br>Stable 内核(linux)：标准 Linux 内核，附加少量补丁，适合大多数用户。<br>Hardened 内核(linux-hardened)：专注于安全性，包含强化补丁以缓解漏洞。<br>Longterm (LTS) 内核(linux-lts)：长期支持版本，适合需要稳定性的服务器或长期项目。<br>Realtime 内核(linux-rt &#x2F; linux-rt-lts)：提供实时性能，适用于需要低延迟的场景，如音频处理。<br>Zen 内核(linux-zen)：优化日常使用体验，适合桌面用户。  </p>
 </blockquote>
 <p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.12.png" alt="1.1.12" title="1.1.12">  </p>
 <h4 id="写分区表"><a href="#写分区表" class="headerlink" title="写分区表"></a>写分区表</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</span><br><span class="line"><span class="built_in">cat</span> /mnt/etc/fstab</span><br></pre></td></tr></table></figure>
@@ -284,7 +285,7 @@
 <h1 id="桌面配置"><a href="#桌面配置" class="headerlink" title="桌面配置"></a>桌面配置</h1><blockquote>
 <p>为了方便，以下使用 <code>root</code> 用户完成</p>
 </blockquote>
-<p>如果是简约党，那不妨选择<code>i3wm</code></p>
+<p>如果是简约党，为了简单，我就选择<code>i3wm</code></p>
 <h2 id="首先安装桌面服务"><a href="#首先安装桌面服务" class="headerlink" title="首先安装桌面服务"></a>首先安装桌面服务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S xorg</span><br></pre></td></tr></table></figure>
 <p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.2.1.png" alt="2.2.1" title="2.2.1">  </p>
 <h2 id="如果是安装KDE"><a href="#如果是安装KDE" class="headerlink" title="如果是安装KDE"></a>如果是安装<code>KDE</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S plasma sddm konsole dolphin kate ark</span><br></pre></td></tr></table></figure>
@@ -299,7 +300,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> gdm</span><br></pre></td></tr></table></figure>
 <h2 id="如果是安装i3wm"><a href="#如果是安装i3wm" class="headerlink" title="如果是安装i3wm"></a>如果是安装<code>i3wm</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S xorg-xinit xorg-server i3-gaps</span><br></pre></td></tr></table></figure>
 <p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.2.2.png" alt="2.2.2" title="2.2.2"></p>
-<p><del>Last Edit Time: 2025-10-23 21:07</del>  </p>
+<p><del>Last Edit Time: 2025-11-03 22:17</del>  </p>
 <h1 id="系统美化"><a href="#系统美化" class="headerlink" title="系统美化"></a>系统美化</h1><h1 id="未完"><a href="#未完" class="headerlink" title="未完"></a>未完</h1><div style="text-align: center;">在最后的最后，感恩。</div>
 <p align="right">Romi Brooks♥</p> 
       <!-- reward -->

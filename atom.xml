@@ -6,7 +6,7 @@
   <link href="https://blog.romichan.icu/atom.xml" rel="self"/>
   
   <link href="https://blog.romichan.icu/"/>
-  <updated>2025-08-12T08:36:23.999Z</updated>
+  <updated>2025-11-03T14:21:24.844Z</updated>
   <id>https://blog.romichan.icu/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>学习人生之初见Vue3</title>
+    <link href="https://blog.romichan.icu/2025/11/03/What&#39;s%20Up%20Vue/"/>
+    <id>https://blog.romichan.icu/2025/11/03/What&#39;s%20Up%20Vue/</id>
+    <published>2025-11-02T16:00:00.000Z</published>
+    <updated>2025-11-03T14:21:24.844Z</updated>
+    
+    
+    
+    
+    <category term="学习人生" scheme="https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/"/>
+    
+    <category term="WebDev" scheme="https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/WebDev/"/>
+    
+    <category term="Vue" scheme="https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/WebDev/Vue/"/>
+    
+    
+    <category term="Note" scheme="https://blog.romichan.icu/tags/Note/"/>
+    
+    <category term="Development" scheme="https://blog.romichan.icu/tags/Development/"/>
+    
+    <category term="Vue3" scheme="https://blog.romichan.icu/tags/Vue3/"/>
+    
+    <category term="Javascript" scheme="https://blog.romichan.icu/tags/Javascript/"/>
+    
+    <category term="Typescript" scheme="https://blog.romichan.icu/tags/Typescript/"/>
+    
+    <category term="frontend" scheme="https://blog.romichan.icu/tags/frontend/"/>
+    
+  </entry>
   
   <entry>
     <title>Arch Linux 下 Nvidia 显卡驱动的安装</title>
@@ -42,14 +73,16 @@
     <link href="https://blog.romichan.icu/2025/07/01/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BC++%E8%BF%9B%E9%98%B6/"/>
     <id>https://blog.romichan.icu/2025/07/01/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BC++%E8%BF%9B%E9%98%B6/</id>
     <published>2025-06-30T16:00:00.000Z</published>
-    <updated>2025-08-12T08:39:10.423Z</updated>
+    <updated>2025-11-03T14:22:08.591Z</updated>
     
     
     
     
-    <category term="Language" scheme="https://blog.romichan.icu/categories/Language/"/>
+    <category term="学习人生" scheme="https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/"/>
     
-    <category term="C++" scheme="https://blog.romichan.icu/categories/Language/C/"/>
+    <category term="Language" scheme="https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Language/"/>
+    
+    <category term="C++" scheme="https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Language/C/"/>
     
     
     <category term="Note" scheme="https://blog.romichan.icu/tags/Note/"/>
@@ -153,7 +186,7 @@
     <link href="https://blog.romichan.icu/2023/01/09/Archlinux%20+%20U%E7%9B%98%20%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/"/>
     <id>https://blog.romichan.icu/2023/01/09/Archlinux%20+%20U%E7%9B%98%20%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/</id>
     <published>2023-01-08T16:00:00.000Z</published>
-    <updated>2025-10-23T13:29:13.035Z</updated>
+    <updated>2025-11-03T14:14:38.181Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/Cover.jpg&quot; alt=&quot;封面&quot; title=&quot;Cover&quot;&gt;&lt;/p&gt;
@@ -163,7 +196,8 @@
 &lt;li&gt;上一次编辑时间：2023-01-10 0:51&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div style=&quot;text-align: center;&quot;&gt;
-&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=1393318072&amp;auto=0&amp;height=66&quot;&gt;&lt;/iframe&gt;
+
+&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=1835463109&amp;auto=0&amp;height=66&quot;&gt;&lt;/iframe&gt;
 
 
 &lt;p&gt;&lt;em&gt;Music：&lt;a href=&quot;https://music.163.com/#/song?id=1393318072&amp;userid=1369186144&quot;&gt;Fractal&lt;/a&gt; by &lt;a href=&quot;https://music.163.com/#/artist?id=742233&quot;&gt;Tinlicker&lt;/a&gt;&lt;/em&gt;  &lt;/p&gt;
@@ -171,9 +205,9 @@
 
 
 &lt;blockquote&gt;
-&lt;p&gt;参考ref&lt;br&gt;1.一个完整的Arch Linux 安装流程：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/513859236&quot;&gt;2022.5 archlinux详细安装过程&lt;/a&gt;&lt;br&gt;2.在可移动介质上安装Arch Linux：&lt;a href=&quot;https://wiki.archlinux.org/title/Install_Arch_Linux_on_a_removable_medium&quot;&gt;Install Arch Linux on a removable medium&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;参考ref&lt;br&gt;1.一个完整的Arch Linux 安装流程: &lt;a href=&quot;https://zhuanlan.zhihu.com/p/513859236&quot;&gt;2022.5 archlinux详细安装过程&lt;/a&gt;&lt;br&gt;2.Installation guide - ArchWiki: &lt;a href=&quot;https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97&quot;&gt;Arch Linux 安装指南&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;本文是一个自用的Arch Linux安装方法，针对的是我自己，如果你看到这个文章了，里头可能有一些东西你是可以用到的。&lt;br&gt;这篇文章旨在帮助不会安装Arch Linux的用户，以及当我自己遗忘某些安装细节时可以回过头来查看。&lt;br&gt;可能有很多的安装方式与命令随着版本更新而无法使用或者不在推荐，出现问题或者是疑问应当自行查询。  &lt;/p&gt;</summary>
+&lt;p&gt;本文是一个自用的Arch Linux安装方法，针对的是我自己，如果你看到这个文章了，里头可能有一些东西你是可以用到的。&lt;br&gt;但是在阅读本指南前确保文档最后的更新时间和当前观看时间是否相近, Arch Linux是一个滚动更新系统，过时的安装过程也许会导致一些未知的问题出现。&lt;br&gt;这篇文章旨在帮助不会安装Arch Linux的用户，以及当我自己遗忘某些安装细节时可以回过头来查看。&lt;br&gt;可能有很多的安装方式与命令随着版本更新而无法使用或者不在推荐，出现问题或者是疑问应当自行查询。  &lt;/p&gt;</summary>
     
     
     
