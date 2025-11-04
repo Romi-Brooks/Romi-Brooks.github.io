@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Arch Linux 下 Nvidia 显卡驱动的安装</title>
+    <url>/2025/08/12/Arch%20Linux%20%E4%B8%8B%20Nvidia%20%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<p>注意，不是你卡了，是我还没写任何的内容 :(</p>
+<span id="more"></span>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Archlinux</tag>
+        <tag>Nvidia</tag>
+        <tag>Installation</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Navidrome，定义你自己离线的播放器</title>
     <url>/2023/03/04/Navidrome%EF%BC%8C%E5%AE%9A%E4%B9%89%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E7%A6%BB%E7%BA%BF%E6%92%AD%E6%94%BE%E5%99%A8/</url>
     <content><![CDATA[<p><img src="/images/posts/Navidrome-U-Own-Music-Player/cover.png" alt="封面" title="Cover"></p>
@@ -115,16 +129,43 @@
       </tags>
   </entry>
   <entry>
-    <title>Arch Linux 下 Nvidia 显卡驱动的安装</title>
-    <url>/2025/08/12/Arch%20Linux%20%E4%B8%8B%20Nvidia%20%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[]]></content>
+    <title>Nginx二级域名配置</title>
+    <url>/2023/02/25/Nginx%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<div style="text-align: center;">  
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=2020918656&auto=0&height=66"></iframe>  
+
+<p><del>YOASOBI 在 2月15号出新专辑了捏</del>  </p>
+</div>  
+
+<blockquote>
+<p>在去年Digital Ocean把我的账号突然封禁之后,我甚至没有办法迁移我的数据,所有配置文件只能重写<br>这里是为了留一份Nginx中二级域名.conf配置文件的写法,依据我的习惯,仅供参考 </p>
+</blockquote>
+<p>Nginx现在的版本应该会在<code>/etc/nginx/</code>目录存在<code>nginx.conf</code><br>这里大概是这样  </p>
+<span id="more"></span>  
+
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attribute">user</span>  nginx;</span><br><span class="line"><span class="attribute">worker_processes</span>  auto;</span><br><span class="line"></span><br><span class="line"><span class="attribute">error_log</span>  /var/log/nginx/<span class="literal">error</span>.log <span class="literal">notice</span>;</span><br><span class="line"><span class="attribute">pid</span>        /var/run/nginx.pid;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">events</span> &#123;</span><br><span class="line">    <span class="attribute">worker_connections</span>  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="attribute">include</span>       /etc/nginx/mime.types;</span><br><span class="line">    <span class="attribute">default_type</span>  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">log_format</span>  main  <span class="string">&#x27;<span class="variable">$remote_addr</span> - <span class="variable">$remote_user</span> [<span class="variable">$time_local</span>] &quot;<span class="variable">$request</span>&quot; &#x27;</span></span><br><span class="line">                      <span class="string">&#x27;<span class="variable">$status</span> <span class="variable">$body_bytes_sent</span> &quot;<span class="variable">$http_referer</span>&quot; &#x27;</span></span><br><span class="line">                      <span class="string">&#x27;&quot;<span class="variable">$http_user_agent</span>&quot; &quot;<span class="variable">$http_x_forwarded_for</span>&quot;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">access_log</span>  /var/log/nginx/access.log  main;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">sendfile</span>        <span class="literal">on</span>;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    <span class="attribute">keepalive_timeout</span>  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    <span class="attribute">include</span> /etc/nginx/conf.d/<span class="regexp">*.conf</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可见,<code>nginx.conf</code>引用了<code>/etc/nginx/conf.d/</code>下的所有.conf文件<br>这里我习惯把我的个人网站配置文件放在这  </p>
+<h1 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h1><p>现在假设我想要创建一个名为<code>blog.romichan.me</code>的网站,用来存放我的博客<br>首先在你域名的托管商配置<code>DNS解析</code>,可以是A解析,也可以是AAAA解析,需要绑定到服务器上<br>接着在<code>/etc/nginx/conf.d/</code>下新建一个名为<code>blog.ssl.conf</code>的文件,他一般是这样的:  </p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">443</span> ssl;    <span class="comment"># 自从新版本nginx开始,启用ssl隧道得这么写</span></span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/blog.romichan.me/fullchain.pem;   <span class="comment"># 证书文件</span></span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/blog.romichan.me/privkey.pem; <span class="comment"># 证书密钥文件</span></span><br><span class="line">    <span class="attribute">server_name</span>  blog.romichan.me;  <span class="comment">#这里就是要解析到的域名,也就是你在域名托管商的DNS解析里所设置的</span></span><br><span class="line">        <span class="section">location</span> / &#123;</span><br><span class="line">            <span class="attribute">root</span>         /usr/share/webpage/blog; <span class="comment">#这里是博客的根目录.据你的需求,我只需要index.html所以下面的index只写了这些</span></span><br><span class="line">            <span class="attribute">index</span>        index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>而后我们在新建一个文件,它的名字是<code>blog.conf</code>,写入这些:  </p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">80</span>; <span class="comment"># 不作解释,8080也行</span></span><br><span class="line">    <span class="attribute">server_name</span>  blog.romichan.me; <span class="comment"># 解析到的网站</span></span><br><span class="line">    <span class="attribute">rewrite</span><span class="regexp"> ^(.*)$</span>  https://<span class="variable">$host</span><span class="variable">$1</span> <span class="literal">permanent</span>; <span class="comment"># 重点,这里是把网页强行重定向到https,这样我们上面的证书才可以起到效果!</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>总体就这么多,如果你需要通过二级域名来转发你服务器某个端口的数据 (应该是叫<code>反向代理</code>) ,也是这么写,不过需要修改<code>blog.ssl.conf</code>的一些地方:  </p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">443</span> ssl;</span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/blog.romichan.me/fullchain.pem;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/blog.romichan.me/privkey.pem;</span><br><span class="line">    <span class="attribute">server_name</span>  blog.romichan.me;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>  http://127.0.0.1:8080; <span class="comment"># 这里就是转发的地址了</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$proxy_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="That’s-all"><a href="#That’s-all" class="headerlink" title="That’s all"></a>That’s all</h1><p>这就是一个随笔  </p>
+<p>我当时在搜集这些资料的时候被很多的名字都吓到了,但其实这是一个很简单的东西,完全是一个模板化的东西,只需要记下来,以后应该都是适用的  </p>
+<p>大概就这么多,如果你看到了,希望对你有帮助.</p>
+<p align="right">在最后的最后，感恩</p>
+<p align="right">Romi Brooks♥</p>]]></content>
       <categories>
-        <category>Linux</category>
+        <category>WebDev</category>
       </categories>
       <tags>
-        <tag>Archlinux</tag>
-        <tag>Nvidia</tag>
-        <tag>Installation</tag>
+        <tag>Nginx</tag>
+        <tag>Website</tag>
+        <tag>WebDev</tag>
       </tags>
   </entry>
   <entry>
@@ -177,7 +218,8 @@
 </blockquote>
 <h4 id="用Write，然后输入yes写入分区"><a href="#用Write，然后输入yes写入分区" class="headerlink" title="用Write，然后输入yes写入分区"></a>用Write，然后输入yes写入分区</h4><p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.6.png" alt="1.1.6" title="1.1.6">  </p>
 <h4 id="用Quit退出，然后lsblk看分的是否正确"><a href="#用Quit退出，然后lsblk看分的是否正确" class="headerlink" title="用Quit退出，然后lsblk看分的是否正确"></a>用Quit退出，然后lsblk看分的是否正确</h4><p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.7.png" alt="1.1.7" title="1.1.7">  </p>
-<h4 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkfs.fat -F32 /dev/sda1</span><br><span class="line">mkfs.ext4 /dev/sda3</span><br><span class="line">mkfs.xfs /dev/sda4</span><br><span class="line">mkswap /dev/sda2</span><br><span class="line">swapon /dev/sda2</span><br></pre></td></tr></table></figure>
+<h4 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h4><p>这里需要注意的是:<br><code>/dev/sda1</code>是Linux的Boot分区，所以我们使用<code>FAT32</code>的文件系统来格式化次分区。<br><code>/dev/sda3</code>与<code>/dev/sda4</code>是Linux的根分区，根据不同需求推荐的文件系统类型也不同，<a href="https://zhuanlan.zhihu.com/p/1887926575850304663">这里有一个文章</a>，可以以此为基准。<br><code>/dev/sda2</code>是swap分区，使用如下命令开启swap。  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkfs.fat -F32 /dev/sda1</span><br><span class="line">mkfs.ext4 /dev/sda3</span><br><span class="line">mkfs.xfs /dev/sda4</span><br><span class="line">mkswap /dev/sda2</span><br><span class="line">swapon /dev/sda2</span><br></pre></td></tr></table></figure>
 
 <h4 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/sda3 /mnt</span><br><span class="line"><span class="built_in">mkdir</span> -p /mnt/boot/efi</span><br><span class="line">mount /dev/sda1 /mnt/boot/efi</span><br><span class="line"><span class="built_in">mkdir</span> /mnt/home</span><br><span class="line">mount /dev/sda4 /mnt/home</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -186,7 +228,7 @@
 <h4 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h4><p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.8.png" alt="1.1.8" title="1.1.8">  </p>
 <h3 id="配置pacman"><a href="#配置pacman" class="headerlink" title="配置pacman"></a>配置pacman</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/pacman.d/mirrors</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>无论这个页面的内容是什么，只需要无脑修改第一条为bfsu的镜像源(i luv u bfsu)  </p>
+<p>无论这个页面的内容是什么，只需要无脑修改第一条为bfsu的镜像源 (i luv u bfsu)  </p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Server = https://mirrors.bfsu.edu.cn/archlinux/<span class="variable">$repo</span>/os/<span class="variable">$arch</span>  </span><br></pre></td></tr></table></figure>
 
@@ -330,91 +372,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Nginx中code-server的ws配置</title>
-    <url>/2023/04/01/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p><img src="/images/posts/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/Cover.png" alt="封面" title="Cover"></p>
-<blockquote>
-<p>这个问题已经有很多人出现了,github也有人提出了issues<br><a href="https://github.com/coder/code-server/issues/4443">https://github.com/coder/code-server/issues/4443</a>  </p>
-</blockquote>
-<span id="more"></span>
-<blockquote>
-<p>可以看到导致这个问题的原因是由于<code>Nginx</code>反向代理并没有接受ws握手导致的<br>这里也有很多人给出了答案,但是为了方便我之后部署,我还是决定把它写下来  </p>
-</blockquote>
-<p>废话不多说,直接上<code>.conf</code>文件:</p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    <span class="comment">#其他选项</span></span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>  http://127.0.0.1:7654;  <span class="comment">#转发地址</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#下面这些就是相关的ws转发,把这些写上了code-server才能正常工作</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> HOST <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Connection upgrade;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Accept-Encoding gzip;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$proxy_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>同样,这也是一篇随笔…  </p>
-<p align="right">在最后的最后，感恩</p>
-<p align="right">Romi Brooks♥</p>
-]]></content>
-      <categories>
-        <category>WebDev</category>
-      </categories>
-      <tags>
-        <tag>Nginx</tag>
-        <tag>Website</tag>
-        <tag>WebDev</tag>
-        <tag>code-server</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Nginx二级域名配置</title>
-    <url>/2023/02/25/Nginx%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<div style="text-align: center;">  
-
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=2020918656&auto=0&height=66"></iframe>  
-
-<p><del>YOASOBI 在 2月15号出新专辑了捏</del>  </p>
-</div>  
-
-<blockquote>
-<p>在去年Digital Ocean把我的账号突然封禁之后,我甚至没有办法迁移我的数据,所有配置文件只能重写<br>这里是为了留一份Nginx中二级域名.conf配置文件的写法,依据我的习惯,仅供参考 </p>
-</blockquote>
-<p>Nginx现在的版本应该会在<code>/etc/nginx/</code>目录存在<code>nginx.conf</code><br>这里大概是这样  </p>
-<span id="more"></span>  
-
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attribute">user</span>  nginx;</span><br><span class="line"><span class="attribute">worker_processes</span>  auto;</span><br><span class="line"></span><br><span class="line"><span class="attribute">error_log</span>  /var/log/nginx/<span class="literal">error</span>.log <span class="literal">notice</span>;</span><br><span class="line"><span class="attribute">pid</span>        /var/run/nginx.pid;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">events</span> &#123;</span><br><span class="line">    <span class="attribute">worker_connections</span>  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="attribute">include</span>       /etc/nginx/mime.types;</span><br><span class="line">    <span class="attribute">default_type</span>  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">log_format</span>  main  <span class="string">&#x27;<span class="variable">$remote_addr</span> - <span class="variable">$remote_user</span> [<span class="variable">$time_local</span>] &quot;<span class="variable">$request</span>&quot; &#x27;</span></span><br><span class="line">                      <span class="string">&#x27;<span class="variable">$status</span> <span class="variable">$body_bytes_sent</span> &quot;<span class="variable">$http_referer</span>&quot; &#x27;</span></span><br><span class="line">                      <span class="string">&#x27;&quot;<span class="variable">$http_user_agent</span>&quot; &quot;<span class="variable">$http_x_forwarded_for</span>&quot;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">access_log</span>  /var/log/nginx/access.log  main;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">sendfile</span>        <span class="literal">on</span>;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    <span class="attribute">keepalive_timeout</span>  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    <span class="attribute">include</span> /etc/nginx/conf.d/<span class="regexp">*.conf</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>可见,<code>nginx.conf</code>引用了<code>/etc/nginx/conf.d/</code>下的所有.conf文件<br>这里我习惯把我的个人网站配置文件放在这  </p>
-<h1 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h1><p>现在假设我想要创建一个名为<code>blog.romichan.me</code>的网站,用来存放我的博客<br>首先在你域名的托管商配置<code>DNS解析</code>,可以是A解析,也可以是AAAA解析,需要绑定到服务器上<br>接着在<code>/etc/nginx/conf.d/</code>下新建一个名为<code>blog.ssl.conf</code>的文件,他一般是这样的:  </p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">443</span> ssl;    <span class="comment"># 自从新版本nginx开始,启用ssl隧道得这么写</span></span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/blog.romichan.me/fullchain.pem;   <span class="comment"># 证书文件</span></span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/blog.romichan.me/privkey.pem; <span class="comment"># 证书密钥文件</span></span><br><span class="line">    <span class="attribute">server_name</span>  blog.romichan.me;  <span class="comment">#这里就是要解析到的域名,也就是你在域名托管商的DNS解析里所设置的</span></span><br><span class="line">        <span class="section">location</span> / &#123;</span><br><span class="line">            <span class="attribute">root</span>         /usr/share/webpage/blog; <span class="comment">#这里是博客的根目录.据你的需求,我只需要index.html所以下面的index只写了这些</span></span><br><span class="line">            <span class="attribute">index</span>        index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>而后我们在新建一个文件,它的名字是<code>blog.conf</code>,写入这些:  </p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">80</span>; <span class="comment"># 不作解释,8080也行</span></span><br><span class="line">    <span class="attribute">server_name</span>  blog.romichan.me; <span class="comment"># 解析到的网站</span></span><br><span class="line">    <span class="attribute">rewrite</span><span class="regexp"> ^(.*)$</span>  https://<span class="variable">$host</span><span class="variable">$1</span> <span class="literal">permanent</span>; <span class="comment"># 重点,这里是把网页强行重定向到https,这样我们上面的证书才可以起到效果!</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>总体就这么多,如果你需要通过二级域名来转发你服务器某个端口的数据 (应该是叫<code>反向代理</code>) ,也是这么写,不过需要修改<code>blog.ssl.conf</code>的一些地方:  </p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">443</span> ssl;</span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/blog.romichan.me/fullchain.pem;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/blog.romichan.me/privkey.pem;</span><br><span class="line">    <span class="attribute">server_name</span>  blog.romichan.me;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>  http://127.0.0.1:8080; <span class="comment"># 这里就是转发的地址了</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$proxy_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="That’s-all"><a href="#That’s-all" class="headerlink" title="That’s all"></a>That’s all</h1><p>这就是一个随笔  </p>
-<p>我当时在搜集这些资料的时候被很多的名字都吓到了,但其实这是一个很简单的东西,完全是一个模板化的东西,只需要记下来,以后应该都是适用的  </p>
-<p>大概就这么多,如果你看到了,希望对你有帮助.</p>
-<p align="right">在最后的最后，感恩</p>
-<p align="right">Romi Brooks♥</p>]]></content>
-      <categories>
-        <category>WebDev</category>
-      </categories>
-      <tags>
-        <tag>Nginx</tag>
-        <tag>Website</tag>
-        <tag>WebDev</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>学习人生之初见Vue3</title>
-    <url>/2025/11/03/What&#39;s%20Up%20Vue/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>学习人生</category>
-        <category>WebDev</category>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Note</tag>
-        <tag>Development</tag>
-        <tag>Vue3</tag>
-        <tag>Javascript</tag>
-        <tag>Typescript</tag>
-        <tag>frontend</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>利用JACK , 玩转 Reaper For Linux</title>
     <url>/2022/10/28/%E5%88%A9%E7%94%A8JACK%20,%20%E7%8E%A9%E8%BD%AC%20Reaper%20For%20Linux/</url>
     <content><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>笔者在这里用的 Linux 发行版是 <code>Arch Linux</code> , 并且使用 <a href="https://www.reaper.fm/">Reaper 官网</a> 所提供的 <code>Linux x86_64</code> 版本。  </p>
@@ -485,28 +442,45 @@ Categories=Music;
 <p align="right">Romi Brooks♥</p>]]></content>
       <categories>
         <category>Linux</category>
+        <category>Music</category>
       </categories>
       <tags>
+        <tag>Music</tag>
         <tag>Reaper</tag>
       </tags>
   </entry>
   <entry>
-    <title>变更记录</title>
-    <url>/2000/01/01/%E5%8F%98%E6%9B%B4%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<h1 id="2022"><a href="#2022" class="headerlink" title="2022"></a>2022</h1><h2 id="2022-10-6："><a href="#2022-10-6：" class="headerlink" title="2022-10-6："></a>2022-10-6：</h2><ul>
-<li>将Github Page上托管的Blog仓库迁移至主服务器<h2 id="2022-6-23："><a href="#2022-6-23：" class="headerlink" title="2022-6-23："></a>2022-6-23：</h2></li>
-<li>将Blog从旧域名迁移至新域名<h2 id="2022-6-17："><a href="#2022-6-17：" class="headerlink" title="2022-6-17："></a>2022-6-17：</h2></li>
-<li>上传Blog仓库到Github，并且托管至Github Page</li>
-</ul>
+    <title>Nginx中code-server的ws配置</title>
+    <url>/2023/04/01/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p><img src="/images/posts/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/Cover.png" alt="封面" title="Cover"></p>
+<blockquote>
+<p>这个问题已经有很多人出现了,github也有人提出了issues<br><a href="https://github.com/coder/code-server/issues/4443">https://github.com/coder/code-server/issues/4443</a>  </p>
+</blockquote>
+<span id="more"></span>
+<blockquote>
+<p>可以看到导致这个问题的原因是由于<code>Nginx</code>反向代理并没有接受ws握手导致的<br>这里也有很多人给出了答案,但是为了方便我之后部署,我还是决定把它写下来  </p>
+</blockquote>
+<p>废话不多说,直接上<code>.conf</code>文件:</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    <span class="comment">#其他选项</span></span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>  http://127.0.0.1:7654;  <span class="comment">#转发地址</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#下面这些就是相关的ws转发,把这些写上了code-server才能正常工作</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> HOST <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Connection upgrade;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Accept-Encoding gzip;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$proxy_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同样,这也是一篇随笔…  </p>
+<p align="right">在最后的最后，感恩</p>
+<p align="right">Romi Brooks♥</p>
 ]]></content>
+      <categories>
+        <category>WebDev</category>
+      </categories>
       <tags>
-        <tag>SysRecord</tag>
+        <tag>Nginx</tag>
+        <tag>Website</tag>
+        <tag>WebDev</tag>
+        <tag>code-server</tag>
       </tags>
   </entry>
   <entry>
     <title>学习人生之C++进阶</title>
     <url>/2025/07/01/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BC++%E8%BF%9B%E9%98%B6/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p>注意，不是你卡了，是我还没写任何的内容 :(</p>
+<span id="more"></span>]]></content>
       <categories>
         <category>学习人生</category>
         <category>Language</category>
@@ -516,6 +490,73 @@ Categories=Music;
         <tag>Note</tag>
         <tag>Development</tag>
         <tag>C++ Lang</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>学习人生之深度学习</title>
+    <url>/2025/11/04/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BDeepLearning/</url>
+    <content><![CDATA[<p>注意，不是你卡了，是我还没写任何的内容 :(</p>
+<span id="more"></span>]]></content>
+      <categories>
+        <category>学习人生</category>
+        <category>Language</category>
+        <category>DeepLearning</category>
+      </categories>
+      <tags>
+        <tag>Note</tag>
+        <tag>AI</tag>
+        <tag>DeepLearning</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>学习人生之初见Vue3</title>
+    <url>/2025/11/03/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8B%E5%88%9D%E8%A7%81Vue3/</url>
+    <content><![CDATA[<h1 id="什么是Vue"><a href="#什么是Vue" class="headerlink" title="什么是Vue?"></a>什么是Vue?</h1><p>Vue 是一套用于构建用户界面的渐进式 JavaScript 框架，其特点：易学易用，性能出色，适用场景丰富的 Web 前端框架。  </p>
+<p>Vue基于 Nodejs，目前 Vue 的最新稳定版本是 Vue 3，引入了 Composition API、TypeScript 支持等新特性。  </p>
+<p>本文基于Vue3，记录从零开始学习Vue3框架的历程。</p>
+<span id="more"></span>
+
+]]></content>
+      <categories>
+        <category>学习人生</category>
+        <category>WebDev</category>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Note</tag>
+        <tag>Development</tag>
+        <tag>Vue3</tag>
+        <tag>Javascript</tag>
+        <tag>Typescript</tag>
+        <tag>frontend</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>变更记录</title>
+    <url>/2000/01/01/%E5%8F%98%E6%9B%B4%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h1 id="2022"><a href="#2022" class="headerlink" title="2022"></a>2022</h1><h2 id="Aug-27-2022"><a href="#Aug-27-2022" class="headerlink" title="Aug 27, 2022"></a>Aug 27, 2022</h2><ul>
+<li>将Blog从旧域名迁移至新域名<h2 id="May-2-2022"><a href="#May-2-2022" class="headerlink" title="May 2, 2022"></a>May 2, 2022</h2></li>
+<li>将Github Page上托管的Blog仓库迁移至主服务器<h2 id="Apr-16-2022"><a href="#Apr-16-2022" class="headerlink" title="Apr 16, 2022"></a>Apr 16, 2022</h2></li>
+<li>上传Blog仓库到Github，并且托管至Github Page</li>
+</ul>
+<hr>
+<h1 id="2023"><a href="#2023" class="headerlink" title="2023"></a>2023</h1><h2 id="备考高考"><a href="#备考高考" class="headerlink" title="备考高考"></a>备考高考</h2><h2 id="Mar-5-2023"><a href="#Mar-5-2023" class="headerlink" title="Mar 5, 2023"></a>Mar 5, 2023</h2><ul>
+<li>将Blog从旧域名迁移至新域名</li>
+</ul>
+<hr>
+<h1 id="2024"><a href="#2024" class="headerlink" title="2024"></a>2024</h1><h2 id="进入大学"><a href="#进入大学" class="headerlink" title="进入大学"></a>进入大学</h2><ul>
+<li>停更<h2 id="高考"><a href="#高考" class="headerlink" title="高考"></a>高考</h2></li>
+<li>停更</li>
+</ul>
+<hr>
+<h1 id="2025"><a href="#2025" class="headerlink" title="2025"></a>2025</h1><h2 id="Aug-12-2022"><a href="#Aug-12-2022" class="headerlink" title="Aug 12, 2022"></a>Aug 12, 2022</h2><ul>
+<li>开始更新<h2 id="Aug-12-2022-1"><a href="#Aug-12-2022-1" class="headerlink" title="Aug 12, 2022"></a>Aug 12, 2022</h2></li>
+<li>将Blog从旧域名迁移至新域名</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>SysRecord</tag>
       </tags>
   </entry>
 </search>

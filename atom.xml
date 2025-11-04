@@ -6,7 +6,7 @@
   <link href="https://blog.romichan.icu/atom.xml" rel="self"/>
   
   <link href="https://blog.romichan.icu/"/>
-  <updated>2025-11-03T14:21:24.844Z</updated>
+  <updated>2025-11-04T16:41:11.547Z</updated>
   <id>https://blog.romichan.icu/</id>
   
   <author>
@@ -17,12 +17,45 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>学习人生之初见Vue3</title>
-    <link href="https://blog.romichan.icu/2025/11/03/What&#39;s%20Up%20Vue/"/>
-    <id>https://blog.romichan.icu/2025/11/03/What&#39;s%20Up%20Vue/</id>
-    <published>2025-11-02T16:00:00.000Z</published>
-    <updated>2025-11-03T14:21:24.844Z</updated>
+    <title>学习人生之深度学习</title>
+    <link href="https://blog.romichan.icu/2025/11/04/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BDeepLearning/"/>
+    <id>https://blog.romichan.icu/2025/11/04/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BDeepLearning/</id>
+    <published>2025-11-03T16:00:00.000Z</published>
+    <updated>2025-11-04T16:41:11.547Z</updated>
     
+    
+    <summary type="html">&lt;p&gt;注意，不是你卡了，是我还没写任何的内容 :(&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学习人生" scheme="https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/"/>
+    
+    <category term="Language" scheme="https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Language/"/>
+    
+    <category term="DeepLearning" scheme="https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Language/DeepLearning/"/>
+    
+    
+    <category term="Note" scheme="https://blog.romichan.icu/tags/Note/"/>
+    
+    <category term="AI" scheme="https://blog.romichan.icu/tags/AI/"/>
+    
+    <category term="DeepLearning" scheme="https://blog.romichan.icu/tags/DeepLearning/"/>
+    
+    <category term="Python" scheme="https://blog.romichan.icu/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习人生之初见Vue3</title>
+    <link href="https://blog.romichan.icu/2025/11/03/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8B%E5%88%9D%E8%A7%81Vue3/"/>
+    <id>https://blog.romichan.icu/2025/11/03/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8B%E5%88%9D%E8%A7%81Vue3/</id>
+    <published>2025-11-02T16:00:00.000Z</published>
+    <updated>2025-11-04T10:12:59.575Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;什么是Vue&quot;&gt;&lt;a href=&quot;#什么是Vue&quot; class=&quot;headerlink&quot; title=&quot;什么是Vue?&quot;&gt;&lt;/a&gt;什么是Vue?&lt;/h1&gt;&lt;p&gt;Vue 是一套用于构建用户界面的渐进式 JavaScript 框架，其特点：易学易用，性能出色，适用场景丰富的 Web 前端框架。  &lt;/p&gt;
+&lt;p&gt;Vue基于 Nodejs，目前 Vue 的最新稳定版本是 Vue 3，引入了 Composition API、TypeScript 支持等新特性。  &lt;/p&gt;
+&lt;p&gt;本文基于Vue3，记录从零开始学习Vue3框架的历程。&lt;/p&gt;</summary>
     
     
     
@@ -52,8 +85,10 @@
     <link href="https://blog.romichan.icu/2025/08/12/Arch%20Linux%20%E4%B8%8B%20Nvidia%20%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%AE%89%E8%A3%85/"/>
     <id>https://blog.romichan.icu/2025/08/12/Arch%20Linux%20%E4%B8%8B%20Nvidia%20%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%AE%89%E8%A3%85/</id>
     <published>2025-08-11T16:00:00.000Z</published>
-    <updated>2025-08-12T08:36:23.999Z</updated>
+    <updated>2025-11-04T16:41:11.541Z</updated>
     
+    
+    <summary type="html">&lt;p&gt;注意，不是你卡了，是我还没写任何的内容 :(&lt;/p&gt;</summary>
     
     
     
@@ -73,8 +108,10 @@
     <link href="https://blog.romichan.icu/2025/07/01/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BC++%E8%BF%9B%E9%98%B6/"/>
     <id>https://blog.romichan.icu/2025/07/01/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BC++%E8%BF%9B%E9%98%B6/</id>
     <published>2025-06-30T16:00:00.000Z</published>
-    <updated>2025-11-03T14:22:08.591Z</updated>
+    <updated>2025-11-04T16:41:11.535Z</updated>
     
+    
+    <summary type="html">&lt;p&gt;注意，不是你卡了，是我还没写任何的内容 :(&lt;/p&gt;</summary>
     
     
     
@@ -98,7 +135,7 @@
     <link href="https://blog.romichan.icu/2023/04/01/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/"/>
     <id>https://blog.romichan.icu/2023/04/01/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/</id>
     <published>2023-03-31T16:00:00.000Z</published>
-    <updated>2025-10-23T14:04:54.301Z</updated>
+    <updated>2025-11-03T14:45:28.489Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/posts/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/Cover.png&quot; alt=&quot;封面&quot; title=&quot;Cover&quot;&gt;&lt;/p&gt;
@@ -126,7 +163,7 @@
     <link href="https://blog.romichan.icu/2023/03/04/Navidrome%EF%BC%8C%E5%AE%9A%E4%B9%89%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E7%A6%BB%E7%BA%BF%E6%92%AD%E6%94%BE%E5%99%A8/"/>
     <id>https://blog.romichan.icu/2023/03/04/Navidrome%EF%BC%8C%E5%AE%9A%E4%B9%89%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E7%A6%BB%E7%BA%BF%E6%92%AD%E6%94%BE%E5%99%A8/</id>
     <published>2023-03-03T16:00:00.000Z</published>
-    <updated>2025-10-23T14:04:08.241Z</updated>
+    <updated>2025-11-03T14:45:23.290Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/posts/Navidrome-U-Own-Music-Player/cover.png&quot; alt=&quot;封面&quot; title=&quot;Cover&quot;&gt;&lt;/p&gt;
@@ -153,7 +190,7 @@
     <link href="https://blog.romichan.icu/2023/02/25/Nginx%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE/"/>
     <id>https://blog.romichan.icu/2023/02/25/Nginx%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE/</id>
     <published>2023-02-24T16:00:00.000Z</published>
-    <updated>2025-10-23T14:03:23.015Z</updated>
+    <updated>2025-11-03T14:45:25.871Z</updated>
     
     
     <summary type="html">&lt;div style=&quot;text-align: center;&quot;&gt;  
@@ -186,7 +223,7 @@
     <link href="https://blog.romichan.icu/2023/01/09/Archlinux%20+%20U%E7%9B%98%20%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/"/>
     <id>https://blog.romichan.icu/2023/01/09/Archlinux%20+%20U%E7%9B%98%20%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/</id>
     <published>2023-01-08T16:00:00.000Z</published>
-    <updated>2025-11-03T14:14:38.181Z</updated>
+    <updated>2025-11-04T10:21:49.278Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/Cover.jpg&quot; alt=&quot;封面&quot; title=&quot;Cover&quot;&gt;&lt;/p&gt;
@@ -227,7 +264,7 @@
     <link href="https://blog.romichan.icu/2022/10/28/%E5%88%A9%E7%94%A8JACK%20,%20%E7%8E%A9%E8%BD%AC%20Reaper%20For%20Linux/"/>
     <id>https://blog.romichan.icu/2022/10/28/%E5%88%A9%E7%94%A8JACK%20,%20%E7%8E%A9%E8%BD%AC%20Reaper%20For%20Linux/</id>
     <published>2022-10-27T16:00:00.000Z</published>
-    <updated>2025-10-23T14:03:23.007Z</updated>
+    <updated>2025-11-03T14:46:51.824Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;笔者在这里用的 Linux 发行版是 &lt;code&gt;Arch Linux&lt;/code&gt; , 并且使用 &lt;a href=&quot;https://www.reaper.fm/&quot;&gt;Reaper 官网&lt;/a&gt; 所提供的 &lt;code&gt;Linux x86_64&lt;/code&gt; 版本。  &lt;/p&gt;
@@ -237,6 +274,10 @@
     
     <category term="Linux" scheme="https://blog.romichan.icu/categories/Linux/"/>
     
+    <category term="Music" scheme="https://blog.romichan.icu/categories/Linux/Music/"/>
+    
+    
+    <category term="Music" scheme="https://blog.romichan.icu/tags/Music/"/>
     
     <category term="Reaper" scheme="https://blog.romichan.icu/tags/Reaper/"/>
     
@@ -247,7 +288,7 @@
     <link href="https://blog.romichan.icu/2022/04/27/FL-Studio-Tips-%E5%88%A9%E7%94%A8LFO-LFO-Speed%E5%81%9A%E5%87%BA%E5%8A%A0%E8%8A%B1%E6%95%88%E6%9E%9C/"/>
     <id>https://blog.romichan.icu/2022/04/27/FL-Studio-Tips-%E5%88%A9%E7%94%A8LFO-LFO-Speed%E5%81%9A%E5%87%BA%E5%8A%A0%E8%8A%B1%E6%95%88%E6%9E%9C/</id>
     <published>2022-04-26T16:00:00.000Z</published>
-    <updated>2025-10-23T13:39:18.962Z</updated>
+    <updated>2025-11-03T14:45:21.220Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/posts/FL-Studio-Tips-LFO-Speed/cover.png&quot; alt=&quot;封面&quot; title=&quot;Cover&quot;&gt;  &lt;/p&gt;
@@ -272,14 +313,14 @@
     <link href="https://blog.romichan.icu/2000/01/01/%E5%8F%98%E6%9B%B4%E8%AE%B0%E5%BD%95/"/>
     <id>https://blog.romichan.icu/2000/01/01/%E5%8F%98%E6%9B%B4%E8%AE%B0%E5%BD%95/</id>
     <published>1999-12-31T16:00:00.000Z</published>
-    <updated>2023-07-31T07:12:08.665Z</updated>
+    <updated>2025-11-04T17:00:22.031Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;2022&quot;&gt;&lt;a href=&quot;#2022&quot; class=&quot;headerlink&quot; title=&quot;2022&quot;&gt;&lt;/a&gt;2022&lt;/h1&gt;&lt;h2 id=&quot;2022-10-6：&quot;&gt;&lt;a href=&quot;#2022-10-6：&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;2022&quot;&gt;&lt;a href=&quot;#2022&quot; class=&quot;headerlink&quot; title=&quot;2022&quot;&gt;&lt;/a&gt;2022&lt;/h1&gt;&lt;h2 id=&quot;Aug-27-2022&quot;&gt;&lt;a href=&quot;#Aug-27-2022&quot; class=&quot;headerlink&quot;</summary>
         
       
     
