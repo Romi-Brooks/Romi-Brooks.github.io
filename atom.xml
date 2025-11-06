@@ -97,9 +97,9 @@
     
     <category term="Archlinux" scheme="https://blog.romichan.icu/tags/Archlinux/"/>
     
-    <category term="Installation" scheme="https://blog.romichan.icu/tags/Installation/"/>
-    
     <category term="Nvidia" scheme="https://blog.romichan.icu/tags/Nvidia/"/>
+    
+    <category term="Installation" scheme="https://blog.romichan.icu/tags/Installation/"/>
     
   </entry>
   
@@ -223,7 +223,7 @@
     <link href="https://blog.romichan.icu/2023/01/09/Archlinux%20+%20U%E7%9B%98%20%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/"/>
     <id>https://blog.romichan.icu/2023/01/09/Archlinux%20+%20U%E7%9B%98%20%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/</id>
     <published>2023-01-08T16:00:00.000Z</published>
-    <updated>2025-11-04T10:21:49.278Z</updated>
+    <updated>2025-11-06T13:19:45.410Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/Cover.jpg&quot; alt=&quot;封面&quot; title=&quot;Cover&quot;&gt;&lt;/p&gt;
@@ -233,13 +233,8 @@
 &lt;li&gt;上一次编辑时间：2023-01-10 0:51&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div style=&quot;text-align: center;&quot;&gt;
-
 &lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=1835463109&amp;auto=0&amp;height=66&quot;&gt;&lt;/iframe&gt;
-
-
-&lt;p&gt;&lt;em&gt;Music：&lt;a href=&quot;https://music.163.com/#/song?id=1393318072&amp;userid=1369186144&quot;&gt;Fractal&lt;/a&gt; by &lt;a href=&quot;https://music.163.com/#/artist?id=742233&quot;&gt;Tinlicker&lt;/a&gt;&lt;/em&gt;  &lt;/p&gt;
-&lt;/div&gt;  
-
+&lt;/div&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;参考ref&lt;br&gt;1.一个完整的Arch Linux 安装流程: &lt;a href=&quot;https://zhuanlan.zhihu.com/p/513859236&quot;&gt;2022.5 archlinux详细安装过程&lt;/a&gt;&lt;br&gt;2.Installation guide - ArchWiki: &lt;a href=&quot;https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97&quot;&gt;Arch Linux 安装指南&lt;/a&gt;&lt;/p&gt;
