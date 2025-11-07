@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Arch Linux 下 Nvidia 显卡驱动的安装</title>
+    <url>/2025/08/12/Arch%20Linux%20%E4%B8%8B%20Nvidia%20%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<p>注意，不是你卡了，是我还没写任何的内容 :(</p>
+<span id="more"></span>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Archlinux</tag>
+        <tag>Nvidia</tag>
+        <tag>Installation</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>通过控制LFO Speed，使你的音乐更有律动</title>
     <url>/2022/04/27/FL-Studio-Tips-%E5%88%A9%E7%94%A8LFO-LFO-Speed%E5%81%9A%E5%87%BA%E5%8A%A0%E8%8A%B1%E6%95%88%E6%9E%9C/</url>
     <content><![CDATA[<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/cover.png" alt="封面" title="Cover">  </p>
@@ -71,88 +85,6 @@
       </categories>
       <tags>
         <tag>FL-Tips</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Arch Linux 下 Nvidia 显卡驱动的安装</title>
-    <url>/2025/08/12/Arch%20Linux%20%E4%B8%8B%20Nvidia%20%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<p>注意，不是你卡了，是我还没写任何的内容 :(</p>
-<span id="more"></span>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Archlinux</tag>
-        <tag>Nvidia</tag>
-        <tag>Installation</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Navidrome，定义你自己离线的播放器</title>
-    <url>/2023/03/04/Navidrome%EF%BC%8C%E5%AE%9A%E4%B9%89%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E7%A6%BB%E7%BA%BF%E6%92%AD%E6%94%BE%E5%99%A8/</url>
-    <content><![CDATA[<p><img src="/images/posts/Navidrome-U-Own-Music-Player/cover.png" alt="封面" title="Cover"></p>
-<p>最近在上传我的本地歌曲库的时候,发现过于麻烦,(筛选,打包,上传.如果我需要修改某个文件的时候还需要再下载回来,然后解压,再修改.重复这个步骤)于是想到了托管到VPS,并且实现流媒体播放.那么这还是蛮不错的!  </p>
-<blockquote>
-<p>PS:这个很早就打算做了,只不过懒,就一直拖下去了(因为早期下载歌曲的时候过于偷懒导致过50%的歌曲的metadata都出现了不匹配的问题…..)  </p>
-</blockquote>
-<span id="more"></span>  
-<p><strong>同样,这个东西也适用于内网用户(如NAS用户)访问自己的媒体文件,其实这类软件目标人群应该就是这个.</strong>  </p>
-<h1 id="寻找一个适合的软件"><a href="#寻找一个适合的软件" class="headerlink" title="寻找一个适合的软件"></a>寻找一个适合的软件</h1><p>我的基本要求是,颜值首先!如果不好看,我估计我会第一个舍弃…..<br>其次必须支持<code>流式媒体播放</code>,这一次托管的目的就在这里!<br>然后是功能必须齐全:比如<code>歌手排序</code>,<code>歌单排序</code>,<code>用户喜爱</code>,<code>封面展示</code>…..<br>最后是方便部署,如果部署起来特别麻烦,那是真的得不偿失…..<br>我大概花费了几个小时尝试,而后偶然发现了<code>Navidrome</code>,也就是这篇文章的主角.  </p>
-<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><p><code>Navidrome</code> 的部署分为三步,我觉得简单到天际…..  </p>
-<ul>
-<li>下载,解压</li>
-<li>配置歌曲文件夹</li>
-<li>运行</li>
-</ul>
-<p>Step 1. 下载只需要到<a href="https://github.com/navidrome/navidrome">Navidrome</a>的<a href="https://github.com/navidrome/navidrome/releases">releases</a>里下符合你系统架构的二进制文件. ez to do it.<br>然后解压,一般直接</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -xvf filename.tar.gz</span><br></pre></td></tr></table></figure>
-<p>Step 2. 在你程序目录新建一个<code>music</code>文件夹,可以直接放音乐,也可以软连接到你自己的音乐文件夹.只要有音乐就行!<br>Step 3. 启动,这里推荐用<code>screen</code>或者是你喜欢的什么软件来防止被ban.到这里<code>Navidrome</code>就部署完成了.简单的一b</p>
-<p>后续的设置基本就是<code>Nginx 反向代理</code>,让他更加简洁美观 (同时加锁,即取得https)</p>
-<p>参考上一篇博客,在<code>player.ssl.conf</code>里写入以下内容(根据自己的改):</p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">443</span> ssl;</span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/player.romichan.me/fullchain.pem;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/player.romichan.me/privkey.pem;</span><br><span class="line">    <span class="attribute">server_name</span>  player.romichan.me;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>  http://127.0.0.1:4533; <span class="comment"># 这里就是转发的地址了</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$proxy_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在<code>player.conf</code>里写入:</p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span>  player.romichan.me;</span><br><span class="line">    <span class="attribute">rewrite</span><span class="regexp"> ^(.*)$</span>  https://<span class="variable">$host</span><span class="variable">$1</span> <span class="literal">permanent</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>到这里,我认为全部就部署好了<br>这时候使用<code>player.romichan.me</code>进入你的<code>Navidrome</code>,初次使用会让你设置管理员用户和密码,记好就行了.  </p>
-<p>还有什么要说的呢?<br>哦,对….<br>你在使用这些离线音乐库的时候就要注意,你本地音乐的metadata一定不要有太多的问题,不然整个页面看起来都会很乱<br>我为什么会在文章开头我懒得去弄呢?就是因为我后续整理metadata用了将近三个小时….这真的很折磨…<br><img src="/images/posts/Navidrome-U-Own-Music-Player/1.0.1.jpg" alt="折磨" title="折磨">  </p>
-<p><del>当然如果你的习惯很好,那么这个当然对你来说没有任何问题,加油!</del></p>
-<p align="right">在最后的最后，感恩</p>
-<p align="right">Romi Brooks♥</p>]]></content>
-      <categories>
-        <category>Music</category>
-      </categories>
-      <tags>
-        <tag>Nginx</tag>
-        <tag>Music</tag>
-        <tag>Website</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Nginx中code-server的ws配置</title>
-    <url>/2023/04/01/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p><img src="/images/posts/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/Cover.png" alt="封面" title="Cover"></p>
-<blockquote>
-<p>这个问题已经有很多人出现了,github也有人提出了issues<br><a href="https://github.com/coder/code-server/issues/4443">https://github.com/coder/code-server/issues/4443</a>  </p>
-</blockquote>
-<span id="more"></span>
-<blockquote>
-<p>可以看到导致这个问题的原因是由于<code>Nginx</code>反向代理并没有接受ws握手导致的<br>这里也有很多人给出了答案,但是为了方便我之后部署,我还是决定把它写下来  </p>
-</blockquote>
-<p>废话不多说,直接上<code>.conf</code>文件:</p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    <span class="comment">#其他选项</span></span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>  http://127.0.0.1:7654;  <span class="comment">#转发地址</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#下面这些就是相关的ws转发,把这些写上了code-server才能正常工作</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> HOST <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Connection upgrade;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Accept-Encoding gzip;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$proxy_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>同样,这也是一篇随笔…  </p>
-<p align="right">在最后的最后，感恩</p>
-<p align="right">Romi Brooks♥</p>
-]]></content>
-      <categories>
-        <category>WebDev</category>
-      </categories>
-      <tags>
-        <tag>Nginx</tag>
-        <tag>Website</tag>
-        <tag>WebDev</tag>
-        <tag>code-server</tag>
       </tags>
   </entry>
   <entry>
@@ -354,19 +286,44 @@
       </tags>
   </entry>
   <entry>
-    <title>学习人生之C++进阶</title>
-    <url>/2025/07/01/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BC++%E8%BF%9B%E9%98%B6/</url>
-    <content><![CDATA[<p>注意，不是你卡了，是我还没写任何的内容 :(</p>
-<span id="more"></span>]]></content>
+    <title>Navidrome，定义你自己离线的播放器</title>
+    <url>/2023/03/04/Navidrome%EF%BC%8C%E5%AE%9A%E4%B9%89%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E7%A6%BB%E7%BA%BF%E6%92%AD%E6%94%BE%E5%99%A8/</url>
+    <content><![CDATA[<p><img src="/images/posts/Navidrome-U-Own-Music-Player/cover.png" alt="封面" title="Cover"></p>
+<p>最近在上传我的本地歌曲库的时候,发现过于麻烦,(筛选,打包,上传.如果我需要修改某个文件的时候还需要再下载回来,然后解压,再修改.重复这个步骤)于是想到了托管到VPS,并且实现流媒体播放.那么这还是蛮不错的!  </p>
+<blockquote>
+<p>PS:这个很早就打算做了,只不过懒,就一直拖下去了(因为早期下载歌曲的时候过于偷懒导致过50%的歌曲的metadata都出现了不匹配的问题…..)  </p>
+</blockquote>
+<span id="more"></span>  
+<p><strong>同样,这个东西也适用于内网用户(如NAS用户)访问自己的媒体文件,其实这类软件目标人群应该就是这个.</strong>  </p>
+<h1 id="寻找一个适合的软件"><a href="#寻找一个适合的软件" class="headerlink" title="寻找一个适合的软件"></a>寻找一个适合的软件</h1><p>我的基本要求是,颜值首先!如果不好看,我估计我会第一个舍弃…..<br>其次必须支持<code>流式媒体播放</code>,这一次托管的目的就在这里!<br>然后是功能必须齐全:比如<code>歌手排序</code>,<code>歌单排序</code>,<code>用户喜爱</code>,<code>封面展示</code>…..<br>最后是方便部署,如果部署起来特别麻烦,那是真的得不偿失…..<br>我大概花费了几个小时尝试,而后偶然发现了<code>Navidrome</code>,也就是这篇文章的主角.  </p>
+<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><p><code>Navidrome</code> 的部署分为三步,我觉得简单到天际…..  </p>
+<ul>
+<li>下载,解压</li>
+<li>配置歌曲文件夹</li>
+<li>运行</li>
+</ul>
+<p>Step 1. 下载只需要到<a href="https://github.com/navidrome/navidrome">Navidrome</a>的<a href="https://github.com/navidrome/navidrome/releases">releases</a>里下符合你系统架构的二进制文件. ez to do it.<br>然后解压,一般直接</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -xvf filename.tar.gz</span><br></pre></td></tr></table></figure>
+<p>Step 2. 在你程序目录新建一个<code>music</code>文件夹,可以直接放音乐,也可以软连接到你自己的音乐文件夹.只要有音乐就行!<br>Step 3. 启动,这里推荐用<code>screen</code>或者是你喜欢的什么软件来防止被ban.到这里<code>Navidrome</code>就部署完成了.简单的一b</p>
+<p>后续的设置基本就是<code>Nginx 反向代理</code>,让他更加简洁美观 (同时加锁,即取得https)</p>
+<p>参考上一篇博客,在<code>player.ssl.conf</code>里写入以下内容(根据自己的改):</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">443</span> ssl;</span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/player.romichan.me/fullchain.pem;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/player.romichan.me/privkey.pem;</span><br><span class="line">    <span class="attribute">server_name</span>  player.romichan.me;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>  http://127.0.0.1:4533; <span class="comment"># 这里就是转发的地址了</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$proxy_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>player.conf</code>里写入:</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span>  player.romichan.me;</span><br><span class="line">    <span class="attribute">rewrite</span><span class="regexp"> ^(.*)$</span>  https://<span class="variable">$host</span><span class="variable">$1</span> <span class="literal">permanent</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>到这里,我认为全部就部署好了<br>这时候使用<code>player.romichan.me</code>进入你的<code>Navidrome</code>,初次使用会让你设置管理员用户和密码,记好就行了.  </p>
+<p>还有什么要说的呢?<br>哦,对….<br>你在使用这些离线音乐库的时候就要注意,你本地音乐的metadata一定不要有太多的问题,不然整个页面看起来都会很乱<br>我为什么会在文章开头我懒得去弄呢?就是因为我后续整理metadata用了将近三个小时….这真的很折磨…<br><img src="/images/posts/Navidrome-U-Own-Music-Player/1.0.1.jpg" alt="折磨" title="折磨">  </p>
+<p><del>当然如果你的习惯很好,那么这个当然对你来说没有任何问题,加油!</del></p>
+<p align="right">在最后的最后，感恩</p>
+<p align="right">Romi Brooks♥</p>]]></content>
       <categories>
-        <category>学习人生</category>
-        <category>Language</category>
-        <category>C++</category>
+        <category>Music</category>
       </categories>
       <tags>
-        <tag>Note</tag>
-        <tag>Development</tag>
-        <tag>C++ Lang</tag>
+        <tag>Nginx</tag>
+        <tag>Music</tag>
+        <tag>Website</tag>
       </tags>
   </entry>
   <entry>
@@ -407,6 +364,396 @@
         <tag>Nginx</tag>
         <tag>Website</tag>
         <tag>WebDev</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nginx中code-server的ws配置</title>
+    <url>/2023/04/01/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p><img src="/images/posts/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/Cover.png" alt="封面" title="Cover"></p>
+<blockquote>
+<p>这个问题已经有很多人出现了,github也有人提出了issues<br><a href="https://github.com/coder/code-server/issues/4443">https://github.com/coder/code-server/issues/4443</a>  </p>
+</blockquote>
+<span id="more"></span>
+<blockquote>
+<p>可以看到导致这个问题的原因是由于<code>Nginx</code>反向代理并没有接受ws握手导致的<br>这里也有很多人给出了答案,但是为了方便我之后部署,我还是决定把它写下来  </p>
+</blockquote>
+<p>废话不多说,直接上<code>.conf</code>文件:</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    <span class="comment">#其他选项</span></span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>  http://127.0.0.1:7654;  <span class="comment">#转发地址</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#下面这些就是相关的ws转发,把这些写上了code-server才能正常工作</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> HOST <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Connection upgrade;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Accept-Encoding gzip;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$proxy_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同样,这也是一篇随笔…  </p>
+<p align="right">在最后的最后，感恩</p>
+<p align="right">Romi Brooks♥</p>
+]]></content>
+      <categories>
+        <category>WebDev</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
+        <tag>Website</tag>
+        <tag>WebDev</tag>
+        <tag>code-server</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pytorch 张量计算</title>
+    <url>/2025/11/07/Pytorch%E5%BC%A0%E9%87%8F%E8%AE%A1%E7%AE%97/</url>
+    <content><![CDATA[<h1 id="什么是-Tensor"><a href="#什么是-Tensor" class="headerlink" title="什么是 Tensor?"></a>什么是 Tensor?</h1><p>张量（Tensor）是物理的语言，在力学和广义相对论等领域发挥着不可替代的作用。但是在深度学习中，张量是基础数据结构，可以看作是多维数据容器。  </p>
+<p>现代深度学习框架（如 TensorFlow、PyTorch）的核心数据结构就是张量，所有模型运算（卷积、全连接、注意力机制）本质上都是张量操作：</p>
+<ul>
+<li>卷积神经网络（CNN）通过二维张量卷积提取图像局部特征。  </li>
+<li>Transformer 模型利用张量的多头注意力机制处理序列数据的长距离依赖。  </li>
+<li>张量分解（如 CP 分解、Tucker 分解）可用于模型压缩、特征降维，解决高维数据的 “维度灾难” 问题。</li>
+</ul>
+<p>学习张量计算能帮助理解深度学习的底层数学逻辑，而非仅停留在 API 调用层面。  </p>
+<blockquote>
+<p>Attention: 本文假设读者拥有使用Python的经验，不对基础语法进行解释, 在教学部分使用英文教学。</p>
+</blockquote>
+<span id="more"></span> 
+<h1 id="为何选择-PyTorch"><a href="#为何选择-PyTorch" class="headerlink" title="为何选择 PyTorch?"></a>为何选择 PyTorch?</h1><p>作为主流深度学习框架，PyTorch 以简洁易用、动态计算图特性著称，兼顾科研灵活性与工业落地能力：  </p>
+<ul>
+<li>对初学者友好，API 设计直观，能快速上手搭建神经网络。</li>
+<li>生态丰富，覆盖计算机视觉、自然语言处理、强化学习等多领域，适配科研实验与实际项目开发。  </li>
+<li>深度集成 Python 生态，支持即时调试，大幅降低模型开发与优化成本。</li>
+</ul>
+<h1 id="PyTorch的安装与引入"><a href="#PyTorch的安装与引入" class="headerlink" title="PyTorch的安装与引入"></a>PyTorch的安装与引入</h1><h2 id="安装PyTorch"><a href="#安装PyTorch" class="headerlink" title="安装PyTorch:"></a>安装PyTorch:</h2><p>首先进入PyTorch官网中的<a href="https://pytorch.org/get-started/locally/">GetStart</a>页面，我们通过pip包管理器来安装PyTorch。<br>对于版本，选择Stable版本即可，通常来说系统的选择不影响pip的安装，所以我们不做解释，对于语言我们选择Python语言，而版本，选择最新即可。<br><img src="/../images/posts/PyTorch%E5%BC%A0%E9%87%8F%E8%AE%A1%E7%AE%97/torchInstall.png" alt="安装PyTorch"><br>复制<code>Run this Command</code>下的内容，比如我这里是：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126</span><br></pre></td></tr></table></figure>
+<p>这时候打开你的venv环境或者在终端下粘贴即可安装。</p>
+<h2 id="引入PyTorch"><a href="#引入PyTorch" class="headerlink" title="引入PyTorch:"></a>引入PyTorch:</h2><p>使用<code>torch.__version__</code>来查看PyTorch的版本。<br>使用<code>torch.cuda.is_available()</code>来查看当前PyTorch是否支持Cuda计算。<br>什么是Cuda，我们可以把它理解为一个在GPU上加速计算的一个工具：  </p>
+<blockquote>
+<p>By Nvidia Cuda Zone:<br><em>CUDA® is a parallel computing platform and programming model developed by NVIDIA for general computing on graphical processing units (GPUs)</em><br><em>With CUDA, developers are able to dramatically speed up computing applications by harnessing the power of GPUs.</em></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="built_in">print</span>(torch.__version__)</span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br></pre></td></tr></table></figure>
+<p>这将会输出类似的内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2.8.0+cu126</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+
+<h1 id="开始学习PyTorch"><a href="#开始学习PyTorch" class="headerlink" title="开始学习PyTorch"></a>开始学习PyTorch</h1><h2 id="Before-we-begin-our-studies"><a href="#Before-we-begin-our-studies" class="headerlink" title="Before we begin our studies:"></a>Before we begin our studies:</h2><p>This function allows us to quickly get the properties of PyTorch tensors.<br>We will not explain the purpose of this function in subsequent content.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_tensor_info</span>(<span class="params">p_type : <span class="built_in">str</span>, p_tensor : torch.Tensor</span>) :</span><br><span class="line">    <span class="built_in">print</span>(p_type, <span class="string">&quot;Tensor belong&quot;</span>, p_tensor.ndim, <span class="string">&quot;Dimension with Data Type&quot;</span>, p_tensor.dtype, <span class="string">&quot;On&quot;</span>, p_tensor.device)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;and the Shape of&quot;</span>, p_type, <span class="string">&quot;is&quot;</span>, p_tensor.shape)</span><br></pre></td></tr></table></figure>
+
+<h2 id="PyTorch-Tensor-Unit"><a href="#PyTorch-Tensor-Unit" class="headerlink" title="PyTorch Tensor Unit"></a>PyTorch Tensor Unit</h2><p>Before we continue, we need to understand PyTorch’s <code>Dimension</code> and <code>Shape</code>.<br>It is <strong>not</strong> a comprehensive data structure reference, as tensors may also have other data structures.<br>Therefore, we only present the key properties of tensors relevant to this chapter.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Tensor Dimension</strong></td>
+<td>Return this tensor’s dimension</td>
+<td><code>tensor.ndim</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Scalar: 0 Dim</td>
+<td><code>torch.tensor(5).ndim</code> -&gt; 0</td>
+</tr>
+<tr>
+<td></td>
+<td>Vector: 1 Dim</td>
+<td><code>torch.tensor([1,2,3]).ndim</code> -&gt; 1</td>
+</tr>
+<tr>
+<td></td>
+<td>Matrix: 2 Dim</td>
+<td><code>torch.tensor([[1,2],[3,4]]).ndim</code> -&gt; 2</td>
+</tr>
+<tr>
+<td><strong>Tensor Shape</strong></td>
+<td>Return this tensor’s shape (size)</td>
+<td><code>tensor.shape</code> or <code>tensor.size()</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Scalar: will return <code>torch.size([])</code></td>
+<td><code>torch.tensor(7).shape</code> -&gt; torch.size([])</td>
+</tr>
+<tr>
+<td></td>
+<td>Vector: will return <code>length in this vector</code></td>
+<td><code>torch.tensor([2,3]).shape</code> -&gt; torch.size([2])</td>
+</tr>
+<tr>
+<td></td>
+<td>Matrix: will return <code>items in this matrix and length in item</code></td>
+<td><code>torch.tensor([[1,2,3],[4,5,6]].shape</code> -&gt; torch.size([2,3])</td>
+</tr>
+</tbody></table>
+<h2 id="Get-a-Tensor"><a href="#Get-a-Tensor" class="headerlink" title="Get a Tensor"></a>Get a Tensor</h2><p><strong>How to get a Tensor, and what is the Tensor’s Data Type?</strong><br>Use <code>torch.tensor()</code> to get a Tensor<br>Use <code>tensor.dtype</code> to get tensor’s type<br>Use <code>tensor.shape</code> to get tensor’s shape<br>Use <code>tensor.device</code> to get tensor’s device</p>
+<p>E.g.:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">int_tensor = torch.tensor(<span class="number">1</span>) <span class="comment"># Get a tensor</span></span><br><span class="line">get_tensor_info(<span class="string">&quot;int_tensor&quot;</span>, int_tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Or Specify the type explicitly</span></span><br><span class="line">float32_tensor = torch.tensor(<span class="number">1.0</span>, dtype=torch.float32)</span><br><span class="line">get_tensor_info(<span class="string">&quot;float32_tensor&quot;</span>, float32_tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Explicit type conversion</span></span><br><span class="line">float16_tensor = float32_tensor.<span class="built_in">type</span>(torch.float16)</span><br><span class="line">get_tensor_info(<span class="string">&quot;float16_tensor&quot;</span>, float16_tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># More additional condition</span></span><br><span class="line">condition_tensor = torch.tensor([<span class="number">3.0</span>, <span class="number">6.0</span>, <span class="number">8.0</span>],</span><br><span class="line">                                dtype=torch.float32, <span class="comment"># Data type for this tensor</span></span><br><span class="line">                                device=torch.device(<span class="string">&quot;cuda:0&quot;</span>), <span class="comment"># Put this tensor to where ?</span></span><br><span class="line">                                requires_grad=<span class="literal">True</span>) <span class="comment"># Is Track the gradients with this tensor operation ?</span></span><br></pre></td></tr></table></figure>
+
+<p>This will output content similar to the following:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int_tensor Tensor belong 0 Dimension with Data Type torch.int64 On cpu</span><br><span class="line">and the Shape of int_tensor is torch.Size([])</span><br><span class="line">float32_tensor Tensor belong 0 Dimension with Data Type torch.float32 On cpu</span><br><span class="line">and the Shape of float32_tensor is torch.Size([])</span><br><span class="line">float16_tensor Tensor belong 0 Dimension with Data Type torch.float16 On cpu</span><br><span class="line">and the Shape of float16_tensor is torch.Size([])</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Scalar-Tensor"><a href="#Scalar-Tensor" class="headerlink" title="Scalar Tensor:"></a>Scalar Tensor:</h2><p><strong>What is the <code>Scalar Tensor</code>:</strong><br>A scalar is a zero-dimensional tensor representing a single numerical value (such as an integer or floating-point number) without spatial dimensions (ndim&#x3D;0).<br>It constitutes one of the most fundamental units within PyTorch’s tensor system, enabling seamless operations with higher-dimensional tensors (vectors, matrices, etc.).</p>
+<p>E.g.:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Scalar</span></span><br><span class="line">scalar = torch.tensor(<span class="number">7</span>)</span><br><span class="line"><span class="comment"># scalar.item() # get that tensor as the python data</span></span><br><span class="line">get_tensor_info(<span class="string">&quot;Scalar&quot;</span>, scalar)</span><br></pre></td></tr></table></figure>
+
+<p>This will output content similar to the following:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Scalar Tensor belong 0 Dimension with Data Type torch.int64 On cpu</span><br><span class="line">and the Shape of Scalar is torch.Size([])</span><br></pre></td></tr></table></figure>
+
+<h2 id="Vector-Tensor"><a href="#Vector-Tensor" class="headerlink" title="Vector Tensor:"></a>Vector Tensor:</h2><p><strong>What is the <code>Vector Tensor</code>:</strong><br>A Vector Tensor is a one-dimensional tensor (1-dimensional tensor) corresponding to the mathematical concept of a “vector”.<br>It consists of an ordered sequence of numerical values and possesses only one dimension (ndim&#x3D;1).<br>It serves as an extension of the scalar (zero-dimensional) and forms the foundation for constructing higher-dimensional tensors such as matrices and 3D tensors.</p>
+<p>E.g.:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Vector</span></span><br><span class="line">vector = torch.tensor([<span class="number">1</span>, <span class="number">3</span>])</span><br><span class="line">get_tensor_info(<span class="string">&quot;Vector&quot;</span>, vector)</span><br></pre></td></tr></table></figure>
+
+<p>This will output content similar to the following:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Vector Tensor belong 1 Dimension with Data Type torch.int64 On cpu</span><br><span class="line">and the Shape of Vector is torch.Size([2])</span><br></pre></td></tr></table></figure>
+
+<h2 id="Matrix-Tensor"><a href="#Matrix-Tensor" class="headerlink" title="Matrix Tensor:"></a>Matrix Tensor:</h2><p><strong>What is the <code>Matrix Tensor</code>:</strong><br>A Matrix Tensor is a two-dimensional tensor corresponding to the mathematical concept of a “matrix”.<br>It is a two-dimensional numerical array composed of <strong>rows and columns</strong>, possessing a dimension of 2 (ndim&#x3D;2).</p>
+<p>E.g.:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Matrix</span></span><br><span class="line">matrix = torch.tensor([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">                       [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]])</span><br><span class="line">get_tensor_info(<span class="string">&quot;Matrix&quot;</span>, matrix)</span><br></pre></td></tr></table></figure>
+
+<p>This will output content similar to the following:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Matrix Tensor belong 2 Dimension with Data Type torch.int64 On cpu</span><br><span class="line">and the Shape of Matrix is torch.Size([2, 3])</span><br></pre></td></tr></table></figure>
+
+<h2 id="What-is-Tensor’s-Shape"><a href="#What-is-Tensor’s-Shape" class="headerlink" title="What is Tensor’s Shape?"></a>What is Tensor’s Shape?</h2><p>We will give an E.g. Tensor:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Tensor</span></span><br><span class="line">tensor = torch.tensor([[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">                        [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],</span><br><span class="line">                        [<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]]])</span><br><span class="line">get_tensor_info(<span class="string">&quot;Tensor&quot;</span>, tensor)</span><br></pre></td></tr></table></figure>
+
+<p>This will output content similar to the following:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Tensor Tensor belong 3 Dimension with Data Type torch.int64 On cpu</span><br><span class="line">and the Shape of Tensor is torch.Size([1, 3, 3])</span><br></pre></td></tr></table></figure>
+
+<p><strong>Therefore, in PyTorch, the shape of a tensor signifies:</strong><br>A Tensor’s Shape refers to the number of elements across each dimension of the tensor.<br>It is represented as a tuple (of type torch.Size, a subclass of tuple) to describe the structure of the tensor (such as “how many rows, how many columns, how many channels”, etc.).   </p>
+<p>But why the tensor’s shape is torch.Size([1,3,3]) here:<br>1: Meaning that for the 3Dim tensor, the outer [] layer only contain one [] item<br>2: the middle [] layer contain three [] item<br>3: the inner [] layer contain three element item.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">t_tensor = torch.tensor(</span><br><span class="line">[                     <span class="comment"># ← 第1层括号 → 第1维度（大小=1）</span></span><br><span class="line">  [                   <span class="comment"># ← 第2层括号 → 第2维度（大小=3）</span></span><br><span class="line">    [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],        <span class="comment"># ← 第3层括号 → 第3维度（大小=3）</span></span><br><span class="line">    [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>],</span><br><span class="line">    [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br><span class="line">  ]</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+
+<h2 id="Radom-Tensor"><a href="#Radom-Tensor" class="headerlink" title="Radom Tensor:"></a>Radom Tensor:</h2><p><strong>Why Random Tensor:</strong><br>Fundamentally, random numbers are indispensable in scenarios such as model training, algorithm validation, and data augmentation.<br>Amidst the continuous updating of data, our ultimate objective is to arrive at a result that meets our requirements.<br>Random numbers provide us with a starting point, thereby ensuring that computations commence correctly.</p>
+<blockquote>
+<p>just like:<br>Start with random numbers -&gt; look at data -&gt; update random numbers -&gt; look at data ….</p>
+</blockquote>
+<p>E.g.:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">random_tensor = torch.randn(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(random_tensor)</span><br><span class="line">get_tensor_info(<span class="string">&quot;Random&quot;</span>, random_tensor)</span><br></pre></td></tr></table></figure>
+
+<p>This will output content similar to the following:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tensor([[ 0.0503,  0.0958, -0.6131, -0.2491],</span><br><span class="line">        [ 0.0630,  0.0489,  0.4874, -1.5149],</span><br><span class="line">        [-0.0070, -1.4396, -0.1872, -0.0911]])</span><br><span class="line">Random Tensor belong 2 Dimension with Data Type torch.float32 On cpu</span><br><span class="line">and the Shape of Random is torch.Size([3, 4])</span><br></pre></td></tr></table></figure>
+
+<h3 id="Create-a-Radom-Tensor-with-similar-shape-to-an-image-tensor"><a href="#Create-a-Radom-Tensor-with-similar-shape-to-an-image-tensor" class="headerlink" title="Create a Radom Tensor with similar shape to an image tensor"></a>Create a Radom Tensor with similar shape to an image tensor</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">random_image_tensor = torch.randn(size=(<span class="number">224</span>, <span class="number">224</span>, <span class="number">3</span>)) <span class="comment"># 224 height, 224 weight, 3 color (R,G,B)</span></span><br><span class="line">get_tensor_info(<span class="string">&quot;Random Image&quot;</span>, random_image_tensor)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Random Image Tensor belong 3 Dimension with Data Type torch.float32 On cpu
+and the Shape of Random Image is torch.Size([224, 224, 3])
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Zero Tensor and One Tensor</span></span><br><span class="line">zero_tensor = torch.zeros(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(zero_tensor)</span><br><span class="line"></span><br><span class="line">one_tensor = torch.ones(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(one_tensor)</span><br></pre></td></tr></table></figure>
+
+<pre><code>tensor([[0., 0., 0., 0.],
+        [0., 0., 0., 0.],
+        [0., 0., 0., 0.]])
+tensor([[1., 1., 1., 1.],
+        [1., 1., 1., 1.],
+        [1., 1., 1., 1.]])
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Range of Tensor</span></span><br><span class="line">range_tensor = torch.arange(<span class="number">0</span>,<span class="number">10</span>)</span><br><span class="line"><span class="built_in">print</span>(range_tensor)</span><br><span class="line"><span class="comment"># Or addition condition</span></span><br><span class="line">range_addition_tensor = torch.arange(start=<span class="number">0</span>, end=<span class="number">10</span>, step=<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(range_addition_tensor)</span><br></pre></td></tr></table></figure>
+
+<pre><code>tensor([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+tensor([0, 2, 4, 6, 8])
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Tensors-Like</span></span><br><span class="line"><span class="comment"># Create a tensor like what you choose tensor</span></span><br><span class="line">zero_like_tensor = torch.zeros_like(range_tensor)</span><br><span class="line"><span class="built_in">print</span>(zero_like_tensor)</span><br></pre></td></tr></table></figure>
+
+<pre><code>tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+</code></pre>
+<h2 id="Tensor’s-Operations"><a href="#Tensor’s-Operations" class="headerlink" title="Tensor’s Operations"></a>Tensor’s Operations</h2><h3 id="Make-sure-that-calculate-tensor-with-this"><a href="#Make-sure-that-calculate-tensor-with-this" class="headerlink" title="Make sure that calculate tensor with this:"></a>Make sure that calculate tensor with this:</h3><p><em>The rules for computing tensors are very similar to those for matrices</em></p>
+<ul>
+<li>The right Data Type</li>
+<li>The right Device</li>
+<li>The right Shape (like: float16 tensor * float16 tensor)</li>
+</ul>
+<p>E.g.:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">op_tensor = torch.tensor([<span class="number">1.5</span>,<span class="number">2.4</span>,<span class="number">6.9</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Tensor:&quot;</span>, op_tensor)</span><br><span class="line"></span><br><span class="line">op_plus_tensor = op_tensor + <span class="number">10</span> <span class="comment"># Or use: op_plus_tensor = torch.add(op_tensor, 10)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Plus 10 to tensor:&quot;</span>, op_plus_tensor)</span><br><span class="line"></span><br><span class="line">op_mul_tensor = op_tensor * <span class="number">10</span> <span class="comment"># Or use: op_mul_tensor = torch.mul(op_tensor, 10)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Mul 10 to tensor:&quot;</span>, op_mul_tensor)</span><br><span class="line"></span><br><span class="line">op_sub_tensor = op_tensor - <span class="number">10</span> <span class="comment"># Or use: op_sub_tensor = torch.sub(op_tensor, 10)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Sub 10 to tensor:&quot;</span>, op_sub_tensor)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Tensor: tensor([1.5000, 2.4000, 6.9000])
+Plus 10 to tensor: tensor([11.5000, 12.4000, 16.9000])
+Mul 10 to tensor: tensor([15., 24., 69.])
+Sub 10 to tensor: tensor([-8.5000, -7.6000, -3.1000])
+</code></pre>
+<h2 id="矩阵相乘的条件"><a href="#矩阵相乘的条件" class="headerlink" title="矩阵相乘的条件"></a>矩阵相乘的条件</h2><h3 id="维度表示"><a href="#维度表示" class="headerlink" title="维度表示"></a>维度表示</h3><ul>
+<li>设矩阵 <strong>A</strong> 的维度为 <strong>m × n</strong></li>
+<li>设矩阵 <strong>B</strong> 的维度为 <strong>p × q</strong></li>
+<li><strong>可相乘条件</strong>：n &#x3D; p</li>
+</ul>
+<h3 id="维度特性"><a href="#维度特性" class="headerlink" title="维度特性"></a>维度特性</h3><ul>
+<li>C 的行数 &#x3D; A 的行数</li>
+<li>C 的列数 &#x3D; B 的列数</li>
+<li>维度公式：(m × n) · (n × p) &#x3D; (m × p)</li>
+</ul>
+<h3 id="示例说明"><a href="#示例说明" class="headerlink" title="示例说明"></a>示例说明</h3><table>
+<thead>
+<tr>
+<th>矩阵 A 维度</th>
+<th>矩阵 B 维度</th>
+<th>可否相乘</th>
+<th>结果维度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2×3</td>
+<td>3×4</td>
+<td>✅ 可以</td>
+<td>2×4</td>
+</tr>
+<tr>
+<td>4×2</td>
+<td>3×4</td>
+<td>❌ 不可以</td>
+<td>-</td>
+</tr>
+<tr>
+<td>5×5</td>
+<td>5×1</td>
+<td>✅ 可以</td>
+<td>5×1</td>
+</tr>
+<tr>
+<td>3×2</td>
+<td>2×3</td>
+<td>✅ 可以</td>
+<td>3×3</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Wise multiplication axb (aka. Fork Multiplication)</span></span><br><span class="line">op_wisemul_tensor = op_tensor * op_tensor</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;ForkMul tensor x tensor:&quot;</span>, op_wisemul_tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Matrix Multiplication a.b (aka. Dot Product)</span></span><br><span class="line">op_matmul_tensor = torch.matmul(op_tensor, op_tensor)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;MatMul tensor . tensor:&quot;</span>, op_matmul_tensor)</span><br></pre></td></tr></table></figure>
+
+<pre><code>ForkMul tensor x tensor: tensor([ 2.2500,  5.7600, 47.6100])
+MatMul tensor . tensor: tensor(55.6200)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Matrix Transpose</span></span><br><span class="line"><span class="comment"># Use tensor.T to get this matrix&#x27;s Transpose matrix</span></span><br><span class="line">before_tensor = torch.tensor([[<span class="number">1.5</span>,<span class="number">2.4</span>,<span class="number">6.9</span>],</span><br><span class="line">                             [<span class="number">2.4</span>,<span class="number">8.3</span>,<span class="number">9.2</span>]])</span><br><span class="line">after_tensor = before_tensor.T</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Before Transpose:\n&quot;</span>, before_tensor, <span class="string">&quot;\nShape:&quot;</span>, before_tensor.shape)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;After Transpose:\n&quot;</span>, after_tensor, <span class="string">&quot;\nShape:&quot;</span>, after_tensor.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Before Transpose:
+ tensor([[1.5000, 2.4000, 6.9000],
+        [2.4000, 8.3000, 9.2000]]) 
+Shape: torch.Size([2, 3])
+After Transpose:
+ tensor([[1.5000, 2.4000],
+        [2.4000, 8.3000],
+        [6.9000, 9.2000]]) 
+Shape: torch.Size([3, 2])
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Tensor Aggregation (min,max,avg,sum)</span></span><br><span class="line">agg_tensor = torch.tensor([<span class="number">1.5</span>,<span class="number">2.4</span>,<span class="number">6.9</span>,<span class="number">42</span>,<span class="number">6.4</span>,<span class="number">25</span>,<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(agg_tensor)</span><br><span class="line">agg_min_tensor = agg_tensor.<span class="built_in">min</span>() <span class="comment"># Or use: agg_min_tensor = torch.min(agg_tensor)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Tensor&#x27;s Min elem:&quot;</span>, agg_min_tensor)</span><br><span class="line">agg_max_tensor = agg_tensor.<span class="built_in">max</span>() <span class="comment"># Or use: agg_max_tensor = torch.max(agg_tensor)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Tensor&#x27;s Max elem:&quot;</span>, agg_max_tensor)</span><br><span class="line">agg_avg_tensor = agg_tensor.mean() <span class="comment"># Or use: agg_avg_tensor = torch.mean(agg_tensor)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Tensor&#x27;s Mean(Avg):&quot;</span>, agg_avg_tensor)</span><br><span class="line">agg_sum_tensor = agg_tensor.<span class="built_in">sum</span>() <span class="comment"># Or use: agg_sum_tensor = torch.sum(agg_tensor)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Tensor&#x27;s Sum:&quot;</span>, agg_sum_tensor)</span><br></pre></td></tr></table></figure>
+
+<pre><code>tensor([ 1.5000,  2.4000,  6.9000, 42.0000,  6.4000, 25.0000,  1.0000])
+Tensor&#39;s Min elem: tensor(1.)
+Tensor&#39;s Max elem: tensor(42.)
+Tensor&#39;s Mean(Avg): tensor(12.1714)
+Tensor&#39;s Sum: tensor(85.2000)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Tensor&#x27;s item position</span></span><br><span class="line"><span class="comment"># Find min item index</span></span><br><span class="line">min_pos = agg_tensor.argmin()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Tensor&#x27;s minimal item&quot;</span>, agg_tensor[min_pos], <span class="string">&quot;with index:&quot;</span>, min_pos)</span><br><span class="line">max_pos = agg_tensor.argmax()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Tensor&#x27;s maximum item&quot;</span>, agg_tensor[max_pos], <span class="string">&quot;with index:&quot;</span>, max_pos)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Tensor&#39;s minimal item tensor(1.) with index: tensor(6)
+Tensor&#39;s maximum item tensor(42.) with index: tensor(3)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Reshaping Tensor</span></span><br><span class="line"><span class="comment"># Reshape the input tensor to a defined shape</span></span><br><span class="line">x_tensor = torch.arange(<span class="number">0</span>, <span class="number">10</span>).<span class="built_in">float</span>()</span><br><span class="line"><span class="built_in">print</span>(x_tensor, x_tensor.shape)</span><br><span class="line">x_reshape_tensor = x_tensor.reshape(<span class="number">2</span>,<span class="number">5</span>) <span class="comment"># tensor.reshape(n,m) -&gt; n*m must be equal to torch size</span></span><br><span class="line"><span class="built_in">print</span>(x_reshape_tensor)</span><br></pre></td></tr></table></figure>
+
+<pre><code>tensor([0., 1., 2., 3., 4., 5., 6., 7., 8., 9.]) torch.Size([10])
+tensor([[0., 1., 2., 3., 4.],
+        [5., 6., 7., 8., 9.]])
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># View</span></span><br><span class="line"><span class="comment"># Change the tensor&#x27;s View (change memory also)</span></span><br><span class="line">x_view_tensor = x_tensor.view(<span class="number">1</span>,<span class="number">10</span>) <span class="comment"># now x_view_tensor linked with x_tensor</span></span><br><span class="line"><span class="built_in">print</span>(x_view_tensor)</span><br><span class="line"></span><br><span class="line">x_view_tensor[:,<span class="number">0</span>] = <span class="number">123</span></span><br><span class="line"><span class="built_in">print</span>(x_view_tensor,<span class="string">&quot;\n&quot;</span>, x_tensor) <span class="comment"># also changed the x_tensor</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>tensor([[0., 1., 2., 3., 4., 5., 6., 7., 8., 9.]])
+tensor([[123.,   1.,   2.,   3.,   4.,   5.,   6.,   7.,   8.,   9.]]) 
+ tensor([123.,   1.,   2.,   3.,   4.,   5.,   6.,   7.,   8.,   9.])
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Stack Tensor</span></span><br><span class="line"><span class="comment"># Stack tensors together</span></span><br><span class="line">y_tensor = torch.arange(<span class="number">0</span>, <span class="number">5</span>).<span class="built_in">float</span>()</span><br><span class="line">y_stack_tensor_H = torch.stack([y_tensor, y_tensor, y_tensor],dim=<span class="number">1</span>)</span><br><span class="line">y_stack_tensor_V = torch.stack([y_tensor, y_tensor, y_tensor],dim=<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;HStack:\n&quot;</span>, y_stack_tensor_H, <span class="string">&quot;\nVStack:\n&quot;</span>, y_stack_tensor_V)</span><br></pre></td></tr></table></figure>
+
+<pre><code>HStack:
+ tensor([[0., 0., 0.],
+        [1., 1., 1.],
+        [2., 2., 2.],
+        [3., 3., 3.],
+        [4., 4., 4.]]) 
+VStack:
+ tensor([[0., 1., 2., 3., 4.],
+        [0., 1., 2., 3., 4.],
+        [0., 1., 2., 3., 4.]])
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Squeeze</span></span><br><span class="line"><span class="comment"># Delete the tensor&#x27;s 1 dim</span></span><br><span class="line">z_tensor = torch.tensor([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>]]).<span class="built_in">float</span>()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Before Squeeze:&quot;</span>, z_tensor, <span class="string">&quot;\n&quot;</span>, z_tensor.shape)</span><br><span class="line">z_squeeze_tensor = torch.squeeze(z_tensor)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;After Squeeze:&quot;</span>, z_squeeze_tensor, <span class="string">&quot;\n&quot;</span>, z_squeeze_tensor.shape)</span><br><span class="line"><span class="comment"># Unsqueeze</span></span><br><span class="line"><span class="comment"># Add 1 dim to tensor</span></span><br><span class="line">z_unsqueeze_tensor = torch.unsqueeze(z_squeeze_tensor, dim=<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;After Unsqueeze:&quot;</span>, z_unsqueeze_tensor, <span class="string">&quot;\n&quot;</span>, z_unsqueeze_tensor.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Before Squeeze: tensor([[1., 2., 3., 1., 2., 2.]]) 
+ torch.Size([1, 6])
+After Squeeze: tensor([1., 2., 3., 1., 2., 2.]) 
+ torch.Size([6])
+After Unsqueeze: tensor([[1., 2., 3., 1., 2., 2.]]) 
+ torch.Size([1, 6])
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Permute</span></span><br><span class="line">o_img_tensor = torch.randn(size=(<span class="number">224</span>, <span class="number">224</span>, <span class="number">3</span>)) <span class="comment"># 224 height, 224 weight, 3 color (R,G,B)</span></span><br><span class="line">o_permute_img_tenser = o_img_tensor.permute(<span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>) <span class="comment"># Shift to 3 color, 224 height, 224 weight</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Permute(Shift)&quot;</span>, o_img_tensor.shape, <span class="string">&quot;to&quot;</span>, o_permute_img_tenser.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Permute(Shift) torch.Size([224, 224, 3]) to torch.Size([3, 224, 224])
+</code></pre>
+]]></content>
+      <categories>
+        <category>学习人生</category>
+        <category>Theories</category>
+        <category>张量计算</category>
+      </categories>
+      <tags>
+        <tag>Note</tag>
+        <tag>AI</tag>
+        <tag>DeepLearning</tag>
+        <tag>Python</tag>
+        <tag>PyTorch</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>变更记录</title>
+    <url>/2000/01/01/%E5%8F%98%E6%9B%B4%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h1 id="2022"><a href="#2022" class="headerlink" title="2022"></a>2022</h1><h2 id="Aug-27-2022"><a href="#Aug-27-2022" class="headerlink" title="Aug 27, 2022"></a>Aug 27, 2022</h2><ul>
+<li>将Blog从旧域名迁移至新域名<h2 id="May-2-2022"><a href="#May-2-2022" class="headerlink" title="May 2, 2022"></a>May 2, 2022</h2></li>
+<li>将Github Page上托管的Blog仓库迁移至主服务器<h2 id="Apr-16-2022"><a href="#Apr-16-2022" class="headerlink" title="Apr 16, 2022"></a>Apr 16, 2022</h2></li>
+<li>上传Blog仓库到Github，并且托管至Github Page</li>
+</ul>
+<hr>
+<h1 id="2023"><a href="#2023" class="headerlink" title="2023"></a>2023</h1><h2 id="备考高考"><a href="#备考高考" class="headerlink" title="备考高考"></a>备考高考</h2><h2 id="Mar-5-2023"><a href="#Mar-5-2023" class="headerlink" title="Mar 5, 2023"></a>Mar 5, 2023</h2><ul>
+<li>将Blog从旧域名迁移至新域名</li>
+</ul>
+<hr>
+<h1 id="2024"><a href="#2024" class="headerlink" title="2024"></a>2024</h1><h2 id="进入大学"><a href="#进入大学" class="headerlink" title="进入大学"></a>进入大学</h2><ul>
+<li>停更<h2 id="高考"><a href="#高考" class="headerlink" title="高考"></a>高考</h2></li>
+<li>停更</li>
+</ul>
+<hr>
+<h1 id="2025"><a href="#2025" class="headerlink" title="2025"></a>2025</h1><h2 id="Aug-12-2022"><a href="#Aug-12-2022" class="headerlink" title="Aug 12, 2022"></a>Aug 12, 2022</h2><ul>
+<li>开始更新<h2 id="Aug-12-2022-1"><a href="#Aug-12-2022-1" class="headerlink" title="Aug 12, 2022"></a>Aug 12, 2022</h2></li>
+<li>将Blog从旧域名迁移至新域名</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>SysRecord</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>学习人生之C++进阶</title>
+    <url>/2025/07/01/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BC++%E8%BF%9B%E9%98%B6/</url>
+    <content><![CDATA[<p>注意，不是你卡了，是我还没写任何的内容 :(</p>
+<span id="more"></span>]]></content>
+      <categories>
+        <category>学习人生</category>
+        <category>Language</category>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>Note</tag>
+        <tag>Development</tag>
+        <tag>C++ Lang</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>学习人生之初见Vue3</title>
+    <url>/2025/11/03/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8B%E5%88%9D%E8%A7%81Vue3/</url>
+    <content><![CDATA[<h1 id="什么是Vue"><a href="#什么是Vue" class="headerlink" title="什么是Vue?"></a>什么是Vue?</h1><p>Vue 是一套用于构建用户界面的渐进式 JavaScript 框架，其特点：易学易用，性能出色，适用场景丰富的 Web 前端框架。  </p>
+<p>Vue基于 Nodejs，目前 Vue 的最新稳定版本是 Vue 3，引入了 Composition API、TypeScript 支持等新特性。  </p>
+<p>本文基于Vue3，记录从零开始学习Vue3框架的历程。</p>
+<span id="more"></span>
+
+]]></content>
+      <categories>
+        <category>学习人生</category>
+        <category>WebDev</category>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Note</tag>
+        <tag>Development</tag>
+        <tag>Vue3</tag>
+        <tag>Javascript</tag>
+        <tag>Typescript</tag>
+        <tag>frontend</tag>
       </tags>
   </entry>
   <entry>
@@ -488,70 +835,18 @@ Categories=Music;
       </tags>
   </entry>
   <entry>
-    <title>变更记录</title>
-    <url>/2000/01/01/%E5%8F%98%E6%9B%B4%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<h1 id="2022"><a href="#2022" class="headerlink" title="2022"></a>2022</h1><h2 id="Aug-27-2022"><a href="#Aug-27-2022" class="headerlink" title="Aug 27, 2022"></a>Aug 27, 2022</h2><ul>
-<li>将Blog从旧域名迁移至新域名<h2 id="May-2-2022"><a href="#May-2-2022" class="headerlink" title="May 2, 2022"></a>May 2, 2022</h2></li>
-<li>将Github Page上托管的Blog仓库迁移至主服务器<h2 id="Apr-16-2022"><a href="#Apr-16-2022" class="headerlink" title="Apr 16, 2022"></a>Apr 16, 2022</h2></li>
-<li>上传Blog仓库到Github，并且托管至Github Page</li>
-</ul>
-<hr>
-<h1 id="2023"><a href="#2023" class="headerlink" title="2023"></a>2023</h1><h2 id="备考高考"><a href="#备考高考" class="headerlink" title="备考高考"></a>备考高考</h2><h2 id="Mar-5-2023"><a href="#Mar-5-2023" class="headerlink" title="Mar 5, 2023"></a>Mar 5, 2023</h2><ul>
-<li>将Blog从旧域名迁移至新域名</li>
-</ul>
-<hr>
-<h1 id="2024"><a href="#2024" class="headerlink" title="2024"></a>2024</h1><h2 id="进入大学"><a href="#进入大学" class="headerlink" title="进入大学"></a>进入大学</h2><ul>
-<li>停更<h2 id="高考"><a href="#高考" class="headerlink" title="高考"></a>高考</h2></li>
-<li>停更</li>
-</ul>
-<hr>
-<h1 id="2025"><a href="#2025" class="headerlink" title="2025"></a>2025</h1><h2 id="Aug-12-2022"><a href="#Aug-12-2022" class="headerlink" title="Aug 12, 2022"></a>Aug 12, 2022</h2><ul>
-<li>开始更新<h2 id="Aug-12-2022-1"><a href="#Aug-12-2022-1" class="headerlink" title="Aug 12, 2022"></a>Aug 12, 2022</h2></li>
-<li>将Blog从旧域名迁移至新域名</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>SysRecord</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>学习人生之深度学习</title>
-    <url>/2025/11/04/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BDeepLearning/</url>
-    <content><![CDATA[<p>注意，不是你卡了，是我还没写任何的内容 :(</p>
-<span id="more"></span>]]></content>
+    <title>学习人生之数据分析</title>
+    <url>/2025/11/04/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BDataAnalysis/</url>
+    <content><![CDATA[<span id="more"></span>]]></content>
       <categories>
         <category>学习人生</category>
-        <category>Language</category>
-        <category>DeepLearning</category>
+        <category>Theories</category>
+        <category>数据分析</category>
       </categories>
       <tags>
         <tag>Note</tag>
-        <tag>AI</tag>
-        <tag>DeepLearning</tag>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>学习人生之初见Vue3</title>
-    <url>/2025/11/03/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8B%E5%88%9D%E8%A7%81Vue3/</url>
-    <content><![CDATA[<h1 id="什么是Vue"><a href="#什么是Vue" class="headerlink" title="什么是Vue?"></a>什么是Vue?</h1><p>Vue 是一套用于构建用户界面的渐进式 JavaScript 框架，其特点：易学易用，性能出色，适用场景丰富的 Web 前端框架。  </p>
-<p>Vue基于 Nodejs，目前 Vue 的最新稳定版本是 Vue 3，引入了 Composition API、TypeScript 支持等新特性。  </p>
-<p>本文基于Vue3，记录从零开始学习Vue3框架的历程。</p>
-<span id="more"></span>
-
-]]></content>
-      <categories>
-        <category>学习人生</category>
-        <category>WebDev</category>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Note</tag>
-        <tag>Development</tag>
-        <tag>Vue3</tag>
-        <tag>Javascript</tag>
-        <tag>Typescript</tag>
-        <tag>frontend</tag>
+        <tag>DataAnalysis</tag>
       </tags>
   </entry>
 </search>

@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.romichan.icu/2025/11/07/Pytorch%E5%BC%A0%E9%87%8F%E8%AE%A1%E7%AE%97/</loc>
+    <lastmod>2025-11-07</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.romichan.icu/2025/11/04/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BDataAnalysis/</loc>
+    <lastmod>2025-11-07</lastmod>
+  </url>
+  <url>
     <loc>https://blog.romichan.icu/2023/01/09/Archlinux%20+%20U%E7%9B%98%20%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/</loc>
     <lastmod>2025-11-06</lastmod>
   </url>
   <url>
     <loc>https://blog.romichan.icu/2000/01/01/%E5%8F%98%E6%9B%B4%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2025-11-04</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.romichan.icu/2025/11/04/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BDeepLearning/</loc>
     <lastmod>2025-11-04</lastmod>
   </url>
   <url>

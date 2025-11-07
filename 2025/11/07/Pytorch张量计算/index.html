@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="blog romi" />
+       
+      <meta name="description" content="Romi Brooks blog" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>Pytorch 张量计算 |  默茉的小屋</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="默茉的小屋" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-Pytorch张量计算"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Pytorch 张量计算
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2025/11/07/Pytorch%E5%BC%A0%E9%87%8F%E8%AE%A1%E7%AE%97/" class="article-date">
+  <time datetime="2025-11-06T16:00:00.000Z" itemprop="datePublished">2025-11-07</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/">学习人生</a> / <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Theories/">Theories</a> / <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Theories/%E5%BC%A0%E9%87%8F%E8%AE%A1%E7%AE%97/">张量计算</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.9k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">15 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="什么是-Tensor"><a href="#什么是-Tensor" class="headerlink" title="什么是 Tensor?"></a>什么是 Tensor?</h1><p>张量（Tensor）是物理的语言，在力学和广义相对论等领域发挥着不可替代的作用。但是在深度学习中，张量是基础数据结构，可以看作是多维数据容器。  </p>
+<p>现代深度学习框架（如 TensorFlow、PyTorch）的核心数据结构就是张量，所有模型运算（卷积、全连接、注意力机制）本质上都是张量操作：</p>
+<ul>
+<li>卷积神经网络（CNN）通过二维张量卷积提取图像局部特征。  </li>
+<li>Transformer 模型利用张量的多头注意力机制处理序列数据的长距离依赖。  </li>
+<li>张量分解（如 CP 分解、Tucker 分解）可用于模型压缩、特征降维，解决高维数据的 “维度灾难” 问题。</li>
+</ul>
+<p>学习张量计算能帮助理解深度学习的底层数学逻辑，而非仅停留在 API 调用层面。  </p>
+<blockquote>
+<p>Attention: 本文假设读者拥有使用Python的经验，不对基础语法进行解释, 在教学部分使用英文教学。</p>
+</blockquote>
+<span id="more"></span> 
+<h1 id="为何选择-PyTorch"><a href="#为何选择-PyTorch" class="headerlink" title="为何选择 PyTorch?"></a>为何选择 PyTorch?</h1><p>作为主流深度学习框架，PyTorch 以简洁易用、动态计算图特性著称，兼顾科研灵活性与工业落地能力：  </p>
+<ul>
+<li>对初学者友好，API 设计直观，能快速上手搭建神经网络。</li>
+<li>生态丰富，覆盖计算机视觉、自然语言处理、强化学习等多领域，适配科研实验与实际项目开发。  </li>
+<li>深度集成 Python 生态，支持即时调试，大幅降低模型开发与优化成本。</li>
+</ul>
+<h1 id="PyTorch的安装与引入"><a href="#PyTorch的安装与引入" class="headerlink" title="PyTorch的安装与引入"></a>PyTorch的安装与引入</h1><h2 id="安装PyTorch"><a href="#安装PyTorch" class="headerlink" title="安装PyTorch:"></a>安装PyTorch:</h2><p>首先进入PyTorch官网中的<a target="_blank" rel="noopener" href="https://pytorch.org/get-started/locally/">GetStart</a>页面，我们通过pip包管理器来安装PyTorch。<br>对于版本，选择Stable版本即可，通常来说系统的选择不影响pip的安装，所以我们不做解释，对于语言我们选择Python语言，而版本，选择最新即可。<br><img src="/../images/posts/PyTorch%E5%BC%A0%E9%87%8F%E8%AE%A1%E7%AE%97/torchInstall.png" alt="安装PyTorch"><br>复制<code>Run this Command</code>下的内容，比如我这里是：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126</span><br></pre></td></tr></table></figure>
+<p>这时候打开你的venv环境或者在终端下粘贴即可安装。</p>
+<h2 id="引入PyTorch"><a href="#引入PyTorch" class="headerlink" title="引入PyTorch:"></a>引入PyTorch:</h2><p>使用<code>torch.__version__</code>来查看PyTorch的版本。<br>使用<code>torch.cuda.is_available()</code>来查看当前PyTorch是否支持Cuda计算。<br>什么是Cuda，我们可以把它理解为一个在GPU上加速计算的一个工具：  </p>
+<blockquote>
+<p>By Nvidia Cuda Zone:<br><em>CUDA® is a parallel computing platform and programming model developed by NVIDIA for general computing on graphical processing units (GPUs)</em><br><em>With CUDA, developers are able to dramatically speed up computing applications by harnessing the power of GPUs.</em></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="built_in">print</span>(torch.__version__)</span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br></pre></td></tr></table></figure>
+<p>这将会输出类似的内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2.8.0+cu126</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+
+<h1 id="开始学习PyTorch"><a href="#开始学习PyTorch" class="headerlink" title="开始学习PyTorch"></a>开始学习PyTorch</h1><h2 id="Before-we-begin-our-studies"><a href="#Before-we-begin-our-studies" class="headerlink" title="Before we begin our studies:"></a>Before we begin our studies:</h2><p>This function allows us to quickly get the properties of PyTorch tensors.<br>We will not explain the purpose of this function in subsequent content.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_tensor_info</span>(<span class="params">p_type : <span class="built_in">str</span>, p_tensor : torch.Tensor</span>) :</span><br><span class="line">    <span class="built_in">print</span>(p_type, <span class="string">&quot;Tensor belong&quot;</span>, p_tensor.ndim, <span class="string">&quot;Dimension with Data Type&quot;</span>, p_tensor.dtype, <span class="string">&quot;On&quot;</span>, p_tensor.device)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;and the Shape of&quot;</span>, p_type, <span class="string">&quot;is&quot;</span>, p_tensor.shape)</span><br></pre></td></tr></table></figure>
+
+<h2 id="PyTorch-Tensor-Unit"><a href="#PyTorch-Tensor-Unit" class="headerlink" title="PyTorch Tensor Unit"></a>PyTorch Tensor Unit</h2><p>Before we continue, we need to understand PyTorch’s <code>Dimension</code> and <code>Shape</code>.<br>It is <strong>not</strong> a comprehensive data structure reference, as tensors may also have other data structures.<br>Therefore, we only present the key properties of tensors relevant to this chapter.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Tensor Dimension</strong></td>
+<td>Return this tensor’s dimension</td>
+<td><code>tensor.ndim</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Scalar: 0 Dim</td>
+<td><code>torch.tensor(5).ndim</code> -&gt; 0</td>
+</tr>
+<tr>
+<td></td>
+<td>Vector: 1 Dim</td>
+<td><code>torch.tensor([1,2,3]).ndim</code> -&gt; 1</td>
+</tr>
+<tr>
+<td></td>
+<td>Matrix: 2 Dim</td>
+<td><code>torch.tensor([[1,2],[3,4]]).ndim</code> -&gt; 2</td>
+</tr>
+<tr>
+<td><strong>Tensor Shape</strong></td>
+<td>Return this tensor’s shape (size)</td>
+<td><code>tensor.shape</code> or <code>tensor.size()</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Scalar: will return <code>torch.size([])</code></td>
+<td><code>torch.tensor(7).shape</code> -&gt; torch.size([])</td>
+</tr>
+<tr>
+<td></td>
+<td>Vector: will return <code>length in this vector</code></td>
+<td><code>torch.tensor([2,3]).shape</code> -&gt; torch.size([2])</td>
+</tr>
+<tr>
+<td></td>
+<td>Matrix: will return <code>items in this matrix and length in item</code></td>
+<td><code>torch.tensor([[1,2,3],[4,5,6]].shape</code> -&gt; torch.size([2,3])</td>
+</tr>
+</tbody></table>
+<h2 id="Get-a-Tensor"><a href="#Get-a-Tensor" class="headerlink" title="Get a Tensor"></a>Get a Tensor</h2><p><strong>How to get a Tensor, and what is the Tensor’s Data Type?</strong><br>Use <code>torch.tensor()</code> to get a Tensor<br>Use <code>tensor.dtype</code> to get tensor’s type<br>Use <code>tensor.shape</code> to get tensor’s shape<br>Use <code>tensor.device</code> to get tensor’s device</p>
+<p>E.g.:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">int_tensor = torch.tensor(<span class="number">1</span>) <span class="comment"># Get a tensor</span></span><br><span class="line">get_tensor_info(<span class="string">&quot;int_tensor&quot;</span>, int_tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Or Specify the type explicitly</span></span><br><span class="line">float32_tensor = torch.tensor(<span class="number">1.0</span>, dtype=torch.float32)</span><br><span class="line">get_tensor_info(<span class="string">&quot;float32_tensor&quot;</span>, float32_tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Explicit type conversion</span></span><br><span class="line">float16_tensor = float32_tensor.<span class="built_in">type</span>(torch.float16)</span><br><span class="line">get_tensor_info(<span class="string">&quot;float16_tensor&quot;</span>, float16_tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># More additional condition</span></span><br><span class="line">condition_tensor = torch.tensor([<span class="number">3.0</span>, <span class="number">6.0</span>, <span class="number">8.0</span>],</span><br><span class="line">                                dtype=torch.float32, <span class="comment"># Data type for this tensor</span></span><br><span class="line">                                device=torch.device(<span class="string">&quot;cuda:0&quot;</span>), <span class="comment"># Put this tensor to where ?</span></span><br><span class="line">                                requires_grad=<span class="literal">True</span>) <span class="comment"># Is Track the gradients with this tensor operation ?</span></span><br></pre></td></tr></table></figure>
+
+<p>This will output content similar to the following:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int_tensor Tensor belong 0 Dimension with Data Type torch.int64 On cpu</span><br><span class="line">and the Shape of int_tensor is torch.Size([])</span><br><span class="line">float32_tensor Tensor belong 0 Dimension with Data Type torch.float32 On cpu</span><br><span class="line">and the Shape of float32_tensor is torch.Size([])</span><br><span class="line">float16_tensor Tensor belong 0 Dimension with Data Type torch.float16 On cpu</span><br><span class="line">and the Shape of float16_tensor is torch.Size([])</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Scalar-Tensor"><a href="#Scalar-Tensor" class="headerlink" title="Scalar Tensor:"></a>Scalar Tensor:</h2><p><strong>What is the <code>Scalar Tensor</code>:</strong><br>A scalar is a zero-dimensional tensor representing a single numerical value (such as an integer or floating-point number) without spatial dimensions (ndim&#x3D;0).<br>It constitutes one of the most fundamental units within PyTorch’s tensor system, enabling seamless operations with higher-dimensional tensors (vectors, matrices, etc.).</p>
+<p>E.g.:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Scalar</span></span><br><span class="line">scalar = torch.tensor(<span class="number">7</span>)</span><br><span class="line"><span class="comment"># scalar.item() # get that tensor as the python data</span></span><br><span class="line">get_tensor_info(<span class="string">&quot;Scalar&quot;</span>, scalar)</span><br></pre></td></tr></table></figure>
+
+<p>This will output content similar to the following:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Scalar Tensor belong 0 Dimension with Data Type torch.int64 On cpu</span><br><span class="line">and the Shape of Scalar is torch.Size([])</span><br></pre></td></tr></table></figure>
+
+<h2 id="Vector-Tensor"><a href="#Vector-Tensor" class="headerlink" title="Vector Tensor:"></a>Vector Tensor:</h2><p><strong>What is the <code>Vector Tensor</code>:</strong><br>A Vector Tensor is a one-dimensional tensor (1-dimensional tensor) corresponding to the mathematical concept of a “vector”.<br>It consists of an ordered sequence of numerical values and possesses only one dimension (ndim&#x3D;1).<br>It serves as an extension of the scalar (zero-dimensional) and forms the foundation for constructing higher-dimensional tensors such as matrices and 3D tensors.</p>
+<p>E.g.:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Vector</span></span><br><span class="line">vector = torch.tensor([<span class="number">1</span>, <span class="number">3</span>])</span><br><span class="line">get_tensor_info(<span class="string">&quot;Vector&quot;</span>, vector)</span><br></pre></td></tr></table></figure>
+
+<p>This will output content similar to the following:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Vector Tensor belong 1 Dimension with Data Type torch.int64 On cpu</span><br><span class="line">and the Shape of Vector is torch.Size([2])</span><br></pre></td></tr></table></figure>
+
+<h2 id="Matrix-Tensor"><a href="#Matrix-Tensor" class="headerlink" title="Matrix Tensor:"></a>Matrix Tensor:</h2><p><strong>What is the <code>Matrix Tensor</code>:</strong><br>A Matrix Tensor is a two-dimensional tensor corresponding to the mathematical concept of a “matrix”.<br>It is a two-dimensional numerical array composed of <strong>rows and columns</strong>, possessing a dimension of 2 (ndim&#x3D;2).</p>
+<p>E.g.:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Matrix</span></span><br><span class="line">matrix = torch.tensor([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">                       [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]])</span><br><span class="line">get_tensor_info(<span class="string">&quot;Matrix&quot;</span>, matrix)</span><br></pre></td></tr></table></figure>
+
+<p>This will output content similar to the following:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Matrix Tensor belong 2 Dimension with Data Type torch.int64 On cpu</span><br><span class="line">and the Shape of Matrix is torch.Size([2, 3])</span><br></pre></td></tr></table></figure>
+
+<h2 id="What-is-Tensor’s-Shape"><a href="#What-is-Tensor’s-Shape" class="headerlink" title="What is Tensor’s Shape?"></a>What is Tensor’s Shape?</h2><p>We will give an E.g. Tensor:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Tensor</span></span><br><span class="line">tensor = torch.tensor([[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">                        [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],</span><br><span class="line">                        [<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]]])</span><br><span class="line">get_tensor_info(<span class="string">&quot;Tensor&quot;</span>, tensor)</span><br></pre></td></tr></table></figure>
+
+<p>This will output content similar to the following:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Tensor Tensor belong 3 Dimension with Data Type torch.int64 On cpu</span><br><span class="line">and the Shape of Tensor is torch.Size([1, 3, 3])</span><br></pre></td></tr></table></figure>
+
+<p><strong>Therefore, in PyTorch, the shape of a tensor signifies:</strong><br>A Tensor’s Shape refers to the number of elements across each dimension of the tensor.<br>It is represented as a tuple (of type torch.Size, a subclass of tuple) to describe the structure of the tensor (such as “how many rows, how many columns, how many channels”, etc.).   </p>
+<p>But why the tensor’s shape is torch.Size([1,3,3]) here:<br>1: Meaning that for the 3Dim tensor, the outer [] layer only contain one [] item<br>2: the middle [] layer contain three [] item<br>3: the inner [] layer contain three element item.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">t_tensor = torch.tensor(</span><br><span class="line">[                     <span class="comment"># ← 第1层括号 → 第1维度（大小=1）</span></span><br><span class="line">  [                   <span class="comment"># ← 第2层括号 → 第2维度（大小=3）</span></span><br><span class="line">    [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],        <span class="comment"># ← 第3层括号 → 第3维度（大小=3）</span></span><br><span class="line">    [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>],</span><br><span class="line">    [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br><span class="line">  ]</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+
+<h2 id="Radom-Tensor"><a href="#Radom-Tensor" class="headerlink" title="Radom Tensor:"></a>Radom Tensor:</h2><p><strong>Why Random Tensor:</strong><br>Fundamentally, random numbers are indispensable in scenarios such as model training, algorithm validation, and data augmentation.<br>Amidst the continuous updating of data, our ultimate objective is to arrive at a result that meets our requirements.<br>Random numbers provide us with a starting point, thereby ensuring that computations commence correctly.</p>
+<blockquote>
+<p>just like:<br>Start with random numbers -&gt; look at data -&gt; update random numbers -&gt; look at data ….</p>
+</blockquote>
+<p>E.g.:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">random_tensor = torch.randn(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(random_tensor)</span><br><span class="line">get_tensor_info(<span class="string">&quot;Random&quot;</span>, random_tensor)</span><br></pre></td></tr></table></figure>
+
+<p>This will output content similar to the following:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tensor([[ 0.0503,  0.0958, -0.6131, -0.2491],</span><br><span class="line">        [ 0.0630,  0.0489,  0.4874, -1.5149],</span><br><span class="line">        [-0.0070, -1.4396, -0.1872, -0.0911]])</span><br><span class="line">Random Tensor belong 2 Dimension with Data Type torch.float32 On cpu</span><br><span class="line">and the Shape of Random is torch.Size([3, 4])</span><br></pre></td></tr></table></figure>
+
+<h3 id="Create-a-Radom-Tensor-with-similar-shape-to-an-image-tensor"><a href="#Create-a-Radom-Tensor-with-similar-shape-to-an-image-tensor" class="headerlink" title="Create a Radom Tensor with similar shape to an image tensor"></a>Create a Radom Tensor with similar shape to an image tensor</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">random_image_tensor = torch.randn(size=(<span class="number">224</span>, <span class="number">224</span>, <span class="number">3</span>)) <span class="comment"># 224 height, 224 weight, 3 color (R,G,B)</span></span><br><span class="line">get_tensor_info(<span class="string">&quot;Random Image&quot;</span>, random_image_tensor)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Random Image Tensor belong 3 Dimension with Data Type torch.float32 On cpu
+and the Shape of Random Image is torch.Size([224, 224, 3])
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Zero Tensor and One Tensor</span></span><br><span class="line">zero_tensor = torch.zeros(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(zero_tensor)</span><br><span class="line"></span><br><span class="line">one_tensor = torch.ones(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(one_tensor)</span><br></pre></td></tr></table></figure>
+
+<pre><code>tensor([[0., 0., 0., 0.],
+        [0., 0., 0., 0.],
+        [0., 0., 0., 0.]])
+tensor([[1., 1., 1., 1.],
+        [1., 1., 1., 1.],
+        [1., 1., 1., 1.]])
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Range of Tensor</span></span><br><span class="line">range_tensor = torch.arange(<span class="number">0</span>,<span class="number">10</span>)</span><br><span class="line"><span class="built_in">print</span>(range_tensor)</span><br><span class="line"><span class="comment"># Or addition condition</span></span><br><span class="line">range_addition_tensor = torch.arange(start=<span class="number">0</span>, end=<span class="number">10</span>, step=<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(range_addition_tensor)</span><br></pre></td></tr></table></figure>
+
+<pre><code>tensor([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+tensor([0, 2, 4, 6, 8])
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Tensors-Like</span></span><br><span class="line"><span class="comment"># Create a tensor like what you choose tensor</span></span><br><span class="line">zero_like_tensor = torch.zeros_like(range_tensor)</span><br><span class="line"><span class="built_in">print</span>(zero_like_tensor)</span><br></pre></td></tr></table></figure>
+
+<pre><code>tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+</code></pre>
+<h2 id="Tensor’s-Operations"><a href="#Tensor’s-Operations" class="headerlink" title="Tensor’s Operations"></a>Tensor’s Operations</h2><h3 id="Make-sure-that-calculate-tensor-with-this"><a href="#Make-sure-that-calculate-tensor-with-this" class="headerlink" title="Make sure that calculate tensor with this:"></a>Make sure that calculate tensor with this:</h3><p><em>The rules for computing tensors are very similar to those for matrices</em></p>
+<ul>
+<li>The right Data Type</li>
+<li>The right Device</li>
+<li>The right Shape (like: float16 tensor * float16 tensor)</li>
+</ul>
+<p>E.g.:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">op_tensor = torch.tensor([<span class="number">1.5</span>,<span class="number">2.4</span>,<span class="number">6.9</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Tensor:&quot;</span>, op_tensor)</span><br><span class="line"></span><br><span class="line">op_plus_tensor = op_tensor + <span class="number">10</span> <span class="comment"># Or use: op_plus_tensor = torch.add(op_tensor, 10)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Plus 10 to tensor:&quot;</span>, op_plus_tensor)</span><br><span class="line"></span><br><span class="line">op_mul_tensor = op_tensor * <span class="number">10</span> <span class="comment"># Or use: op_mul_tensor = torch.mul(op_tensor, 10)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Mul 10 to tensor:&quot;</span>, op_mul_tensor)</span><br><span class="line"></span><br><span class="line">op_sub_tensor = op_tensor - <span class="number">10</span> <span class="comment"># Or use: op_sub_tensor = torch.sub(op_tensor, 10)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Sub 10 to tensor:&quot;</span>, op_sub_tensor)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Tensor: tensor([1.5000, 2.4000, 6.9000])
+Plus 10 to tensor: tensor([11.5000, 12.4000, 16.9000])
+Mul 10 to tensor: tensor([15., 24., 69.])
+Sub 10 to tensor: tensor([-8.5000, -7.6000, -3.1000])
+</code></pre>
+<h2 id="矩阵相乘的条件"><a href="#矩阵相乘的条件" class="headerlink" title="矩阵相乘的条件"></a>矩阵相乘的条件</h2><h3 id="维度表示"><a href="#维度表示" class="headerlink" title="维度表示"></a>维度表示</h3><ul>
+<li>设矩阵 <strong>A</strong> 的维度为 <strong>m × n</strong></li>
+<li>设矩阵 <strong>B</strong> 的维度为 <strong>p × q</strong></li>
+<li><strong>可相乘条件</strong>：n &#x3D; p</li>
+</ul>
+<h3 id="维度特性"><a href="#维度特性" class="headerlink" title="维度特性"></a>维度特性</h3><ul>
+<li>C 的行数 &#x3D; A 的行数</li>
+<li>C 的列数 &#x3D; B 的列数</li>
+<li>维度公式：(m × n) · (n × p) &#x3D; (m × p)</li>
+</ul>
+<h3 id="示例说明"><a href="#示例说明" class="headerlink" title="示例说明"></a>示例说明</h3><table>
+<thead>
+<tr>
+<th>矩阵 A 维度</th>
+<th>矩阵 B 维度</th>
+<th>可否相乘</th>
+<th>结果维度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2×3</td>
+<td>3×4</td>
+<td>✅ 可以</td>
+<td>2×4</td>
+</tr>
+<tr>
+<td>4×2</td>
+<td>3×4</td>
+<td>❌ 不可以</td>
+<td>-</td>
+</tr>
+<tr>
+<td>5×5</td>
+<td>5×1</td>
+<td>✅ 可以</td>
+<td>5×1</td>
+</tr>
+<tr>
+<td>3×2</td>
+<td>2×3</td>
+<td>✅ 可以</td>
+<td>3×3</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Wise multiplication axb (aka. Fork Multiplication)</span></span><br><span class="line">op_wisemul_tensor = op_tensor * op_tensor</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;ForkMul tensor x tensor:&quot;</span>, op_wisemul_tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Matrix Multiplication a.b (aka. Dot Product)</span></span><br><span class="line">op_matmul_tensor = torch.matmul(op_tensor, op_tensor)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;MatMul tensor . tensor:&quot;</span>, op_matmul_tensor)</span><br></pre></td></tr></table></figure>
+
+<pre><code>ForkMul tensor x tensor: tensor([ 2.2500,  5.7600, 47.6100])
+MatMul tensor . tensor: tensor(55.6200)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Matrix Transpose</span></span><br><span class="line"><span class="comment"># Use tensor.T to get this matrix&#x27;s Transpose matrix</span></span><br><span class="line">before_tensor = torch.tensor([[<span class="number">1.5</span>,<span class="number">2.4</span>,<span class="number">6.9</span>],</span><br><span class="line">                             [<span class="number">2.4</span>,<span class="number">8.3</span>,<span class="number">9.2</span>]])</span><br><span class="line">after_tensor = before_tensor.T</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Before Transpose:\n&quot;</span>, before_tensor, <span class="string">&quot;\nShape:&quot;</span>, before_tensor.shape)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;After Transpose:\n&quot;</span>, after_tensor, <span class="string">&quot;\nShape:&quot;</span>, after_tensor.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Before Transpose:
+ tensor([[1.5000, 2.4000, 6.9000],
+        [2.4000, 8.3000, 9.2000]]) 
+Shape: torch.Size([2, 3])
+After Transpose:
+ tensor([[1.5000, 2.4000],
+        [2.4000, 8.3000],
+        [6.9000, 9.2000]]) 
+Shape: torch.Size([3, 2])
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Tensor Aggregation (min,max,avg,sum)</span></span><br><span class="line">agg_tensor = torch.tensor([<span class="number">1.5</span>,<span class="number">2.4</span>,<span class="number">6.9</span>,<span class="number">42</span>,<span class="number">6.4</span>,<span class="number">25</span>,<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(agg_tensor)</span><br><span class="line">agg_min_tensor = agg_tensor.<span class="built_in">min</span>() <span class="comment"># Or use: agg_min_tensor = torch.min(agg_tensor)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Tensor&#x27;s Min elem:&quot;</span>, agg_min_tensor)</span><br><span class="line">agg_max_tensor = agg_tensor.<span class="built_in">max</span>() <span class="comment"># Or use: agg_max_tensor = torch.max(agg_tensor)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Tensor&#x27;s Max elem:&quot;</span>, agg_max_tensor)</span><br><span class="line">agg_avg_tensor = agg_tensor.mean() <span class="comment"># Or use: agg_avg_tensor = torch.mean(agg_tensor)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Tensor&#x27;s Mean(Avg):&quot;</span>, agg_avg_tensor)</span><br><span class="line">agg_sum_tensor = agg_tensor.<span class="built_in">sum</span>() <span class="comment"># Or use: agg_sum_tensor = torch.sum(agg_tensor)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Tensor&#x27;s Sum:&quot;</span>, agg_sum_tensor)</span><br></pre></td></tr></table></figure>
+
+<pre><code>tensor([ 1.5000,  2.4000,  6.9000, 42.0000,  6.4000, 25.0000,  1.0000])
+Tensor&#39;s Min elem: tensor(1.)
+Tensor&#39;s Max elem: tensor(42.)
+Tensor&#39;s Mean(Avg): tensor(12.1714)
+Tensor&#39;s Sum: tensor(85.2000)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Tensor&#x27;s item position</span></span><br><span class="line"><span class="comment"># Find min item index</span></span><br><span class="line">min_pos = agg_tensor.argmin()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Tensor&#x27;s minimal item&quot;</span>, agg_tensor[min_pos], <span class="string">&quot;with index:&quot;</span>, min_pos)</span><br><span class="line">max_pos = agg_tensor.argmax()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Tensor&#x27;s maximum item&quot;</span>, agg_tensor[max_pos], <span class="string">&quot;with index:&quot;</span>, max_pos)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Tensor&#39;s minimal item tensor(1.) with index: tensor(6)
+Tensor&#39;s maximum item tensor(42.) with index: tensor(3)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Reshaping Tensor</span></span><br><span class="line"><span class="comment"># Reshape the input tensor to a defined shape</span></span><br><span class="line">x_tensor = torch.arange(<span class="number">0</span>, <span class="number">10</span>).<span class="built_in">float</span>()</span><br><span class="line"><span class="built_in">print</span>(x_tensor, x_tensor.shape)</span><br><span class="line">x_reshape_tensor = x_tensor.reshape(<span class="number">2</span>,<span class="number">5</span>) <span class="comment"># tensor.reshape(n,m) -&gt; n*m must be equal to torch size</span></span><br><span class="line"><span class="built_in">print</span>(x_reshape_tensor)</span><br></pre></td></tr></table></figure>
+
+<pre><code>tensor([0., 1., 2., 3., 4., 5., 6., 7., 8., 9.]) torch.Size([10])
+tensor([[0., 1., 2., 3., 4.],
+        [5., 6., 7., 8., 9.]])
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># View</span></span><br><span class="line"><span class="comment"># Change the tensor&#x27;s View (change memory also)</span></span><br><span class="line">x_view_tensor = x_tensor.view(<span class="number">1</span>,<span class="number">10</span>) <span class="comment"># now x_view_tensor linked with x_tensor</span></span><br><span class="line"><span class="built_in">print</span>(x_view_tensor)</span><br><span class="line"></span><br><span class="line">x_view_tensor[:,<span class="number">0</span>] = <span class="number">123</span></span><br><span class="line"><span class="built_in">print</span>(x_view_tensor,<span class="string">&quot;\n&quot;</span>, x_tensor) <span class="comment"># also changed the x_tensor</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>tensor([[0., 1., 2., 3., 4., 5., 6., 7., 8., 9.]])
+tensor([[123.,   1.,   2.,   3.,   4.,   5.,   6.,   7.,   8.,   9.]]) 
+ tensor([123.,   1.,   2.,   3.,   4.,   5.,   6.,   7.,   8.,   9.])
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Stack Tensor</span></span><br><span class="line"><span class="comment"># Stack tensors together</span></span><br><span class="line">y_tensor = torch.arange(<span class="number">0</span>, <span class="number">5</span>).<span class="built_in">float</span>()</span><br><span class="line">y_stack_tensor_H = torch.stack([y_tensor, y_tensor, y_tensor],dim=<span class="number">1</span>)</span><br><span class="line">y_stack_tensor_V = torch.stack([y_tensor, y_tensor, y_tensor],dim=<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;HStack:\n&quot;</span>, y_stack_tensor_H, <span class="string">&quot;\nVStack:\n&quot;</span>, y_stack_tensor_V)</span><br></pre></td></tr></table></figure>
+
+<pre><code>HStack:
+ tensor([[0., 0., 0.],
+        [1., 1., 1.],
+        [2., 2., 2.],
+        [3., 3., 3.],
+        [4., 4., 4.]]) 
+VStack:
+ tensor([[0., 1., 2., 3., 4.],
+        [0., 1., 2., 3., 4.],
+        [0., 1., 2., 3., 4.]])
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Squeeze</span></span><br><span class="line"><span class="comment"># Delete the tensor&#x27;s 1 dim</span></span><br><span class="line">z_tensor = torch.tensor([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>]]).<span class="built_in">float</span>()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Before Squeeze:&quot;</span>, z_tensor, <span class="string">&quot;\n&quot;</span>, z_tensor.shape)</span><br><span class="line">z_squeeze_tensor = torch.squeeze(z_tensor)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;After Squeeze:&quot;</span>, z_squeeze_tensor, <span class="string">&quot;\n&quot;</span>, z_squeeze_tensor.shape)</span><br><span class="line"><span class="comment"># Unsqueeze</span></span><br><span class="line"><span class="comment"># Add 1 dim to tensor</span></span><br><span class="line">z_unsqueeze_tensor = torch.unsqueeze(z_squeeze_tensor, dim=<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;After Unsqueeze:&quot;</span>, z_unsqueeze_tensor, <span class="string">&quot;\n&quot;</span>, z_unsqueeze_tensor.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Before Squeeze: tensor([[1., 2., 3., 1., 2., 2.]]) 
+ torch.Size([1, 6])
+After Squeeze: tensor([1., 2., 3., 1., 2., 2.]) 
+ torch.Size([6])
+After Unsqueeze: tensor([[1., 2., 3., 1., 2., 2.]]) 
+ torch.Size([1, 6])
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Permute</span></span><br><span class="line">o_img_tensor = torch.randn(size=(<span class="number">224</span>, <span class="number">224</span>, <span class="number">3</span>)) <span class="comment"># 224 height, 224 weight, 3 color (R,G,B)</span></span><br><span class="line">o_permute_img_tenser = o_img_tensor.permute(<span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>) <span class="comment"># Shift to 3 color, 224 height, 224 weight</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Permute(Shift)&quot;</span>, o_img_tensor.shape, <span class="string">&quot;to&quot;</span>, o_permute_img_tenser.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Permute(Shift) torch.Size([224, 224, 3]) to torch.Size([3, 224, 224])
+</code></pre>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://blog.romichan.icu/2025/11/07/Pytorch%E5%BC%A0%E9%87%8F%E8%AE%A1%E7%AE%97/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DeepLearning/" rel="tag">DeepLearning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Note/" rel="tag">Note</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PyTorch/" rel="tag">PyTorch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2025/11/04/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BDataAnalysis/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">学习人生之数据分析</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "E3Le9vxopO9hFy1XDqS2lgLl-gzGzoHsz",
+    app_key: "5LGLOs5GpcbHfzVajrF6FQfl",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "评论",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+    
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2025
+        <i class="ri-heart-fill heart_icon"></i> Romi Brooks
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="默茉的小屋"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/moments">一刻</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/emotions">树洞</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friendslinks">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about/">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":0.5,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-120},"mobile":{"show":false},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
