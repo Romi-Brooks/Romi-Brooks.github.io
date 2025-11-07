@@ -138,9 +138,9 @@
     
     <category term="Archlinux" scheme="https://blog.romichan.icu/tags/Archlinux/"/>
     
-    <category term="Installation" scheme="https://blog.romichan.icu/tags/Installation/"/>
-    
     <category term="Nvidia" scheme="https://blog.romichan.icu/tags/Nvidia/"/>
+    
+    <category term="Installation" scheme="https://blog.romichan.icu/tags/Installation/"/>
     
   </entry>
   
@@ -320,9 +320,9 @@
     <category term="Music" scheme="https://blog.romichan.icu/categories/Linux/Music/"/>
     
     
-    <category term="Reaper" scheme="https://blog.romichan.icu/tags/Reaper/"/>
-    
     <category term="Music" scheme="https://blog.romichan.icu/tags/Music/"/>
+    
+    <category term="Reaper" scheme="https://blog.romichan.icu/tags/Reaper/"/>
     
   </entry>
   

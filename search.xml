@@ -1,270 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>一份自用的ArchLinux安装指南</title>
-    <url>/2023/01/09/Archlinux%20+%20U%E7%9B%98%20%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/</url>
-    <content><![CDATA[<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/Cover.jpg" alt="封面" title="Cover"></p>
-<h1>最后一次编辑时间: 2025-10-23 25:26</h1>
-<ul>
-<li>上一次编辑时间：2023-01-17 17:53</li>
-<li>上一次编辑时间：2023-01-15 16:53</li>
-<li>上一次编辑时间：2023-01-10 0:51</li>
-</ul>
-<div style="text-align: center;">
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1835463109&auto=0&height=66"></iframe>
-</div>
+    <title>Nginx中code-server的ws配置</title>
+    <url>/2023/04/01/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p><img src="/images/posts/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/Cover.png" alt="封面" title="Cover"></p>
 <blockquote>
-<p>参考ref<br>
-1.一个完整的Arch Linux 安装流程: <a href="https://zhuanlan.zhihu.com/p/513859236">2022.5 archlinux详细安装过程</a><br>
-2.Installation guide - ArchWiki: <a href="https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97">Arch Linux 安装指南</a></p>
+<p>这个问题已经有很多人出现了,github也有人提出了issues<br>
+<a href="https://github.com/coder/code-server/issues/4443">https://github.com/coder/code-server/issues/4443</a></p>
 </blockquote>
-<p>本文是一个自用的Arch Linux安装方法，针对的是我自己，如果你看到这个文章了，里头可能有一些东西你是可以用到的。<br>
-但是在阅读本指南前确保文档最后的更新时间和当前观看时间是否相近, Arch Linux是一个滚动更新系统，过时的安装过程也许会导致一些未知的问题出现。<br>
-这篇文章旨在帮助不会安装Arch Linux的用户，以及当我自己遗忘某些安装细节时可以回过头来查看。<br>
-可能有很多的安装方式与命令随着版本更新而无法使用或者不在推荐，出现问题或者是疑问应当自行查询。</p>
 <span id="more"></span>
-<h1>安装Arch Linux</h1>
-<h2 id="引导-分区-调整-安装：">引导，分区，调整，安装：</h2>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.1.png" alt="1.1.1" title="1.1.1"></p>
-<h3 id="确保使用uefi引导：">确保使用UEFI引导：</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> /sys/firmware/efi/efivars</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.2.png" alt="1.1.2" title="1.1.2"></p>
-<p>输入这一行代码后，如果反馈目录不存在，不要继续，因为没有UEFI启动在后面写入引导的时候几乎绝对报错。如果有输出，说明电脑是以UEFI启动的。</p>
 <blockquote>
-<p>Tips: 在这里我写入linux image用<code>Rufus</code>。</p>
+<p>可以看到导致这个问题的原因是由于<code>Nginx</code>反向代理并没有接受ws握手导致的<br>
+这里也有很多人给出了答案,但是为了方便我之后部署,我还是决定把它写下来</p>
 </blockquote>
-<h3 id="联网：">联网：</h3>
-<p>1.输入“iwctl”进入iwd模式，也就是终端最前方有“[iwd]#”字样。<br>
-2.在iwd模式下输入“device list”，查询电脑的网卡。记住你的网卡号，一般是wlan0或者wlan1（本文以多数情况wlan0为例）<br>
-3.在iwd模式下输入“station wlan0 scan”，然后再输入“station wlan0 get-networks”，显示周围的wifi的ssid扫描结果。<br>
-4.在iwd模式下输入“station wlan0 connect <ssid>”，如果是加密的wifi，系统会提示输入wifi密码，如无意外，就连上网了。<br>
-5.验证联网。按ctrl+c退出iwd模式，回到[root@archiso~]模式，输入“ping <a href="http://baidu.com">baidu.com</a>”，如果有返回数据，说明已经连上网了。</p>
-<blockquote>
-<p>一般来说，如果是网线直连，那么系统会自动连接网络，而不用使用iwd连接wifi。</p>
-</blockquote>
-<h3 id="更新时间：">更新时间：</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">timedatectl set-ntp <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<h3 id="分区：">分区：</h3>
-<blockquote>
-<p>涉及数据相关，请认真对待！</p>
-</blockquote>
-<h4 id="这里列出的是当前所有硬盘-找到你的硬盘-我这里是-dev-sda">这里列出的是当前所有硬盘，找到你的硬盘，我这里是/dev/sda</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">lsblk</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.3.png" alt="1.1.3" title="1.1.3"></p>
-<h4 id="进-dev-sda分盘">进/dev/sda分盘</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cfdisk /dev/sda</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.4.png" alt="1.1.4" title="1.1.4"></p>
-<h4 id="gpt分区表-回车就行">gpt分区表，回车就行</h4>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.5.png" alt="1.1.5" title="1.1.5"></p>
-<h4 id="用new新建分区-大小自定义-按照你自己来">用New新建分区，大小自定义，按照你自己来</h4>
-<blockquote>
-<p>sda1 -&gt; 1G boot分区  （引导分区，通常来说我们给1G即可）<br>
-sda2 -&gt; 16G swap分区  （swap的大小通常为你电脑RAM的60%，根据你空余的硬盘空间设定适当的大小）<br>
-sda3 -&gt; 60G /分区  (根目录大小会影响可安装软件的数量等，理解成Windows下的系统盘大小)<br>
-sda4 -&gt; 50G /home分区  （此教程分开了home卷和根目录卷，分开维护使得数据不易丢失）</p>
-</blockquote>
-<h4 id="用write-然后输入yes写入分区">用Write，然后输入yes写入分区</h4>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.6.png" alt="1.1.6" title="1.1.6"></p>
-<h4 id="用quit退出-然后lsblk看分的是否正确">用Quit退出，然后lsblk看分的是否正确</h4>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.7.png" alt="1.1.7" title="1.1.7"></p>
-<h4 id="格式化">格式化</h4>
-<p>这里需要注意的是:<br>
-<code>/dev/sda1</code>是Linux的Boot分区，所以我们使用<code>FAT32</code>的文件系统来格式化次分区。<br>
-<code>/dev/sda3</code>与<code>/dev/sda4</code>是Linux的根分区，根据不同需求推荐的文件系统类型也不同，<a href="https://zhuanlan.zhihu.com/p/1887926575850304663">这里有一个文章</a>，可以以此为基准。<br>
-<code>/dev/sda2</code>是swap分区，使用如下命令开启swap。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkfs.fat -F32 /dev/sda1</span><br><span class="line">mkfs.ext4 /dev/sda3</span><br><span class="line">mkfs.xfs /dev/sda4</span><br><span class="line">mkswap /dev/sda2</span><br><span class="line">swapon /dev/sda2</span><br></pre></td></tr></table></figure>
-<h4 id="挂载">挂载</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/sda3 /mnt</span><br><span class="line"><span class="built_in">mkdir</span> -p /mnt/boot/efi</span><br><span class="line">mount /dev/sda1 /mnt/boot/efi</span><br><span class="line"><span class="built_in">mkdir</span> /mnt/home</span><br><span class="line">mount /dev/sda4 /mnt/home</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>确保分区挂载正确，这里的参考应该是上文你所创建的分区！</p>
-</blockquote>
-<h4 id="检查">检查</h4>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.8.png" alt="1.1.8" title="1.1.8"></p>
-<h3 id="配置pacman">配置pacman</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/pacman.d/mirrors</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>无论这个页面的内容是什么，只需要无脑修改第一条为bfsu的镜像源 (i luv u bfsu)</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Server = https://mirrors.bfsu.edu.cn/archlinux/<span class="variable">$repo</span>/os/<span class="variable">$arch</span>  </span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.9.png" alt="1.1.9" title="1.1.9"></p>
-<h4 id="同步数据包">同步数据包</h4>
-<blockquote>
-<p>注意，不升级！</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -Sy</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.10.png" alt="1.1.10" title="1.1.10"></p>
-<h4 id="安装archlinux-keyring防止签名出现问题">安装<code>archlinux-keyring</code>防止签名出现问题</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S archlinux-keyring</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.11.png" alt="1.1.11" title="1.1.11"></p>
-<h3 id="安装系统到u盘">安装系统到U盘</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacstrap /mnt base linux linux-headers linux-firmware base-devel</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>ArchLinux有很多内核可以选择，这是一些ref:<br>
-Stable 内核(linux)：标准 Linux 内核，附加少量补丁，适合大多数用户。<br>
-Hardened 内核(linux-hardened)：专注于安全性，包含强化补丁以缓解漏洞。<br>
-Longterm (LTS) 内核(linux-lts)：长期支持版本，适合需要稳定性的服务器或长期项目。<br>
-Realtime 内核(linux-rt / linux-rt-lts)：提供实时性能，适用于需要低延迟的场景，如音频处理。<br>
-Zen 内核(linux-zen)：优化日常使用体验，适合桌面用户。</p>
-</blockquote>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.12.png" alt="1.1.12" title="1.1.12"></p>
-<h4 id="写分区表">写分区表</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</span><br><span class="line"><span class="built_in">cat</span> /mnt/etc/fstab</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这里<code>-U</code>是指使用uuid挂载硬盘，这会避免一些因为切换硬盘顺序而导致的无法加载系统的问题。</p>
-</blockquote>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.13.png" alt="1.1.13" title="1.1.13"></p>
-<h4 id="chroot">chroot</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">arch-chroot /mnt</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.14.png" alt="1.1.14" title="1.1.14"></p>
-<h4 id="安装必要软件">安装必要软件</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S neovim iwd ttf-dejavu sudo bluez usbmuxd networkmanager dhcpcd wqy-zenhei ntfs-3g</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.15.png" alt="1.1.15" title="1.1.15"></p>
-<h4 id="软连接neovim到vim">软连接neovim到vim</h4>
-<blockquote>
-<p>这何尝不是一种ntr(</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s /bin/nvim /bin/vim</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.16.png" alt="1.1.16" title="1.1.16"></p>
-<h4 id="同步时区">同步时区</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br><span class="line">hwclock --systohc</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.17.png" alt="1.1.17" title="1.1.17"></p>
-<h4 id="语言上的设置">语言上的设置</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/locale.gen</span><br></pre></td></tr></table></figure>
-<p>这里取消掉<code>en_US.UTF-8</code> , <code>zh_CN.UTF-8</code> , <code>zh_TW.UTF-8</code> ，这几个地方的注释<br>
-也就是前面的<code>#</code>号</p>
-<p>然后生成语言文件：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">locale-gen</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.18.png" alt="1.1.18" title="1.1.18"></p>
-<h4 id="追加-当前系统语言-到系统文件">追加 <code>当前系统语言</code> 到系统文件</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> LANG=en_US.UTF-8 &gt;&gt; /etc/locale.conf</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.19.png" alt="1.1.19" title="1.1.19"></p>
-<h4 id="设定root密码">设定<code>root</code>密码</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.20.png" alt="1.1.20" title="1.1.20"></p>
-<h4 id="主机名">主机名</h4>
-<blockquote>
-<p>设定成你自己喜欢的</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> livearch &gt;&gt; /etc/hostname</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.21.png" alt="1.1.21" title="1.1.21"></p>
-<h4 id="本地回环">本地回环</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/hosts</span><br></pre></td></tr></table></figure>
-<p>添加以下内容</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">127.0.0.1 localhost</span><br><span class="line">::1 localhost</span><br><span class="line">127.0.1.1 livearch.localdomain livearch  <span class="comment">#跟着上一步改</span></span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.22.png" alt="1.1.22" title="1.1.22"></p>
-<h4 id="安装引导">安装引导</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S grub efibootmgr</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.23.png" alt="1.1.23" title="1.1.23"></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grub-install /dev/sda</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.24.png" alt="1.1.24" title="1.1.24"></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.25.png" alt="1.1.25" title="1.1.25"></p>
-<h4 id="退出-卸载-重启">退出，卸载，重启</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">exit</span></span><br><span class="line">umount -R /mnt</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
-<p>到这一步差不多就完成了系统的安装，下面就要开始配置系统了。<br>
-<img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.26.png" alt="1.1.26" title="1.1.26"></p>
-<p><s>Last Edit Time: 2025-10-23 21:02</s></p>
-<h1>配置Arch Linux</h1>
-<p>确保以下内容是重启之后所运行的，这里使用root用户登录即可。</p>
-<h2 id="网络基础服务：">网络基础服务：</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start iwd.service</span><br><span class="line">systemctl <span class="built_in">enable</span> iwd.service</span><br><span class="line">systemctl start systemd-resolved.service</span><br><span class="line">systemctl <span class="built_in">enable</span> systemd-resolved.service</span><br><span class="line">systemctl <span class="built_in">enable</span> bluetooth.service</span><br><span class="line">systemctl <span class="built_in">enable</span> NetworkManager</span><br><span class="line">systemctl <span class="built_in">enable</span> dhcpcd</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.1.png" alt="2.1.1" title="2.1.1"></p>
-<h3 id="网络配置">网络配置</h3>
-<p><code>iwd 设定</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/iwd/main.conf</span><br></pre></td></tr></table></figure>
-<p>写入如下内容</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[General]</span><br><span class="line">EnableNetworkConfiguration=<span class="literal">true</span></span><br><span class="line">NameResolvingService=systemd</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.2.png" alt="2.1.2" title="2.1.2"></p>
-<p><code>Network Manager设定</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/NetworkManager/NetworkManager.conf</span><br></pre></td></tr></table></figure>
-<p>写入如下内容</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[device]</span><br><span class="line">wifi.backend=iwd</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.3.png" alt="2.1.3" title="2.1.3"></p>
-<h3 id="重启以取得网络">重启以取得网络</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
-<h4 id="检查是否连接到网路">检查是否连接到网路</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -Syu</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.4.png" alt="2.1.4" title="2.1.4"></p>
-<p>这个命令只是为了检查有没有得到网络，如果报错，那就说明网络配置有问题，仔细检查一下。<br>
-如果没有问题，可以选择升级，也可以选择不升级，完全看自己。</p>
-<h2 id="安装cpu编码">安装CPU编码</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S intel-ucode</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S amd-ucode</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.5.png" alt="2.1.5" title="2.1.5"></p>
-<blockquote>
-<p>根据你的CPU，来确定安装什么版本的编码。</p>
-</blockquote>
-<h2 id="安装显卡驱动">安装显卡驱动</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S xf86-video-intel xf86-video-amdgpu mesa</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.6.png" alt="2.1.6" title="2.1.6"></p>
-<blockquote>
-<p>这里不涉及nVidia显卡的驱动安装过程，如果可以，我会在后面写一篇文章。<br>
-<code>xf86-video-intel</code>  Intel核芯显卡<br>
-<code>xf86-video-amdgpu</code> AMD显卡<br>
-<code>mesa</code> 是为了更好的兼容这两者(?)</p>
-</blockquote>
-<h2 id="安装声卡驱动">安装声卡驱动</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S pipewire alsa-utils pipewire-pulse pipewire-jack pipewire-alsa</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.7.png" alt="2.1.7" title="2.1.7"></p>
-<h2 id="增加普通用户">增加普通用户</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">useradd -m -G wheel -s /bin/bash username</span><br><span class="line">passwd username</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.8.png" alt="2.1.8" title="2.1.8"></p>
-<p>用 <code>passwd username</code> 设定用户密码，输入一个你想要的密码就可以。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/sudoers</span><br></pre></td></tr></table></figure>
-<p>修改sudoer以此让<code>romi</code>有使用sudo的权限。<br>
-取消 <code>%wheel ALL=(ALL:ALL) ALL</code> 这条语句的注释，也就是删去语句前的 <code>#</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## Uncomment to allow members of group wheel to execute any command</span></span><br><span class="line"><span class="comment"># %wheel ALL=(ALL:ALL) ALL</span></span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.9.png" alt="2.1.9" title="2.1.9"></p>
-<h2 id="配置archlinuxcn源">配置archlinuxcn源</h2>
-<p>archlinuxcn有很多有用的软件，十分实用：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/pacman.conf</span><br></pre></td></tr></table></figure>
-<p>在最后插入以下内容:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/fix_2.1.10.png" alt="2.1.10" title="2.1.10"></p>
-<p>然后安装 <code>archlinuxcn-keyring</code> 防止签名出现问题</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -Sy</span><br><span class="line">pacman -S archlinuxcn-keyring</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/fix_2.1.11.png" alt="2.1.11" title="2.1.11"></p>
-<h2 id="安装yay">安装yay</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S yay</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/fix_2.1.12.png" alt="2.1.12" title="2.1.12"></p>
-<h2 id="重启">重启</h2>
-<p>到这里，基本上所有系统的配置就完成了。下一次登陆系统就是一个完全可以用的Arch Linux系统了。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
-<h1>桌面配置</h1>
-<blockquote>
-<p>为了方便，以下使用 <code>root</code> 用户完成</p>
-</blockquote>
-<p>如果是简约党，为了简单，我就选择<code>i3wm</code></p>
-<h2 id="首先安装桌面服务">首先安装桌面服务</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S xorg</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.2.1.png" alt="2.2.1" title="2.2.1"></p>
-<h2 id="如果是安装kde">如果是安装<code>KDE</code></h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S plasma sddm konsole dolphin kate ark</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>安装好后设定<code>sddm</code>的自启动</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> sddm</span><br></pre></td></tr></table></figure>
-<h2 id="如果是安装gnome">如果是安装<code>Gnome</code></h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S gnome</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>安装好后设定<code>gdm</code>的自启动</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> gdm</span><br></pre></td></tr></table></figure>
-<h2 id="如果是安装i3wm">如果是安装<code>i3wm</code></h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S xorg-xinit xorg-server i3-gaps</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.2.2.png" alt="2.2.2" title="2.2.2"></p>
-<p><s>Last Edit Time: 2025-11-03 22:17</s></p>
-<h1>系统美化</h1>
-<h1>未完</h1>
-<div style="text-align: center;">在最后的最后，感恩。</div>
-<p align="right">Romi Brooks♥</p>]]></content>
+<p>废话不多说,直接上<code>.conf</code>文件:</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    <span class="comment">#其他选项</span></span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>  http://127.0.0.1:7654;  <span class="comment">#转发地址</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#下面这些就是相关的ws转发,把这些写上了code-server才能正常工作</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> HOST <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Connection upgrade;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Accept-Encoding gzip;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$proxy_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同样,这也是一篇随笔…</p>
+<p align="right">在最后的最后，感恩</p>
+<p align="right">Romi Brooks♥</p>
+]]></content>
       <categories>
-        <category>Linux</category>
+        <category>WebDev</category>
       </categories>
       <tags>
-        <tag>Archlinux</tag>
-        <tag>Installation</tag>
-        <tag>i3wm</tag>
+        <tag>Nginx</tag>
+        <tag>WebDev</tag>
+        <tag>Website</tag>
+        <tag>code-server</tag>
       </tags>
   </entry>
   <entry>
@@ -277,8 +39,145 @@ Zen 内核(linux-zen)：优化日常使用体验，适合桌面用户。</p>
       </categories>
       <tags>
         <tag>Archlinux</tag>
-        <tag>Installation</tag>
         <tag>Nvidia</tag>
+        <tag>Installation</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Navidrome，定义你自己离线的播放器</title>
+    <url>/2023/03/04/Navidrome%EF%BC%8C%E5%AE%9A%E4%B9%89%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E7%A6%BB%E7%BA%BF%E6%92%AD%E6%94%BE%E5%99%A8/</url>
+    <content><![CDATA[<p><img src="/images/posts/Navidrome-U-Own-Music-Player/cover.png" alt="封面" title="Cover"></p>
+<p>最近在上传我的本地歌曲库的时候,发现过于麻烦,(筛选,打包,上传.如果我需要修改某个文件的时候还需要再下载回来,然后解压,再修改.重复这个步骤)于是想到了托管到VPS,并且实现流媒体播放.那么这还是蛮不错的!</p>
+<blockquote>
+<p>PS:这个很早就打算做了,只不过懒,就一直拖下去了(因为早期下载歌曲的时候过于偷懒导致过50%的歌曲的metadata都出现了不匹配的问题…)</p>
+</blockquote>
+<span id="more"></span>  
+<p><strong>同样,这个东西也适用于内网用户(如NAS用户)访问自己的媒体文件,其实这类软件目标人群应该就是这个.</strong></p>
+<h1>寻找一个适合的软件</h1>
+<p>我的基本要求是,颜值首先!如果不好看,我估计我会第一个舍弃…<br>
+其次必须支持<code>流式媒体播放</code>,这一次托管的目的就在这里!<br>
+然后是功能必须齐全:比如<code>歌手排序</code>,<code>歌单排序</code>,<code>用户喜爱</code>,<code>封面展示</code>…<br>
+最后是方便部署,如果部署起来特别麻烦,那是真的得不偿失…<br>
+我大概花费了几个小时尝试,而后偶然发现了<code>Navidrome</code>,也就是这篇文章的主角.</p>
+<h1>部署</h1>
+<p><code>Navidrome</code> 的部署分为三步,我觉得简单到天际…</p>
+<ul>
+<li>下载,解压</li>
+<li>配置歌曲文件夹</li>
+<li>运行</li>
+</ul>
+<p>Step 1. 下载只需要到<a href="https://github.com/navidrome/navidrome">Navidrome</a>的<a href="https://github.com/navidrome/navidrome/releases">releases</a>里下符合你系统架构的二进制文件. ez to do it.<br>
+然后解压,一般直接</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -xvf filename.tar.gz</span><br></pre></td></tr></table></figure>
+<p>Step 2. 在你程序目录新建一个<code>music</code>文件夹,可以直接放音乐,也可以软连接到你自己的音乐文件夹.只要有音乐就行!<br>
+Step 3. 启动,这里推荐用<code>screen</code>或者是你喜欢的什么软件来防止被ban.到这里<code>Navidrome</code>就部署完成了.简单的一b</p>
+<p>后续的设置基本就是<code>Nginx 反向代理</code>,让他更加简洁美观 (同时加锁,即取得https)</p>
+<p>参考上一篇博客,在<code>player.ssl.conf</code>里写入以下内容(根据自己的改):</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">443</span> ssl;</span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/player.romichan.me/fullchain.pem;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/player.romichan.me/privkey.pem;</span><br><span class="line">    <span class="attribute">server_name</span>  player.romichan.me;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>  http://127.0.0.1:4533; <span class="comment"># 这里就是转发的地址了</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$proxy_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在<code>player.conf</code>里写入:</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span>  player.romichan.me;</span><br><span class="line">    <span class="attribute">rewrite</span><span class="regexp"> ^(.*)$</span>  https://<span class="variable">$host</span><span class="variable">$1</span> <span class="literal">permanent</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1>最后</h1>
+<p>到这里,我认为全部就部署好了<br>
+这时候使用<code>player.romichan.me</code>进入你的<code>Navidrome</code>,初次使用会让你设置管理员用户和密码,记好就行了.</p>
+<p>还有什么要说的呢?<br>
+哦,对…<br>
+你在使用这些离线音乐库的时候就要注意,你本地音乐的metadata一定不要有太多的问题,不然整个页面看起来都会很乱<br>
+我为什么会在文章开头我懒得去弄呢?就是因为我后续整理metadata用了将近三个小时…这真的很折磨…<br>
+<img src="/images/posts/Navidrome-U-Own-Music-Player/1.0.1.jpg" alt="折磨" title="折磨"></p>
+<p>~当然如果你的习惯很好,那么这个当然对你来说没有任何问题,加油!~</p>
+<p align="right">在最后的最后，感恩</p>
+<p align="right">Romi Brooks♥</p>]]></content>
+      <categories>
+        <category>Music</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
+        <tag>Website</tag>
+        <tag>Music</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>通过控制LFO Speed，使你的音乐更有律动</title>
+    <url>/2022/04/27/FL-Studio-Tips-%E5%88%A9%E7%94%A8LFO-LFO-Speed%E5%81%9A%E5%87%BA%E5%8A%A0%E8%8A%B1%E6%95%88%E6%9E%9C/</url>
+    <content><![CDATA[<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/cover.png" alt="封面" title="Cover"></p>
+<audio id="audio" controls="" preload="none">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBass.mp3">
+</audio>
+<p><em>（音乐来自：FL Studio中DemoSong内Asher Postman-Future Bass）</em></p>
+<p>在了解这之前，您可以点击上方的“播放按钮”，来听一首歌，这首歌用到了我所谓<code>控制 LFO Speed</code>的技巧 (在听之前请注意音量)</p>
+<span id="more"></span>
+<h1>什么是<code>LFO Speed</code>?</h1>
+<p>LFO（Low Frequency Oscillator，低频振荡器）是一种产生周期性信号的调制源，其频率通常低于 20Hz（人类听觉下限），因此无法直接被听到，但可以控制其他参数的变化。例如：</p>
+<p>调制音量：通过周期性增减振幅，产生类似 “脉冲” 的抽吸效果（即震音，Tremolo）。<br>
+调制滤波器截止频率：通过周期性开合滤波器，使声音在高频和低频之间切换，形成 “摇晃” 的抽吸感（如 Dubstep 贝斯）。</p>
+<p>而LFO Speed 决定了振荡的频率，直接影响抽吸效果的节奏。</p>
+<h1>为什么要<code>控制 LFO Speed</code>?</h1>
+<p>在音乐制作中，<strong>控制LFO Speed（低频振荡器速度）</strong> 是创造动态抽吸效果的核心技巧。<br>
+这种效果通过周期性调制声音参数（如音量、滤波器截止频率），使音频产生类似 “呼吸” 或 “脉冲” 的节奏性波动，常见于电子音乐、Future Bass、Dubstep 等风格中。<br>
+通过灵活运用 LFO Speed 和波形设计，制作人可以为声音注入生命般的动态变化。从微妙的音色润色到夸张的特效设计，是一个相对高级的声设技巧。</p>
+<h1>它的效果具体是如何?</h1>
+<p>这是上面那首Demo Song中使用此技巧的一小段 (在听之前请注意音量):</p>
+<audio id="audio" controls="" preload="none">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassLFO2.mp3">
+</audio>
+<p>这是去掉鼓点等干扰的效果:</p>
+<audio id="audio" controls="" preload="none">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassNDLFO2.mp3">
+</audio>
+<p>其实还有一次，是在这里:</p>
+<audio id="audio" controls="" preload="none">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassLFO1.mp3">
+</audio>
+<p>这是去掉鼓点等干扰的效果:</p>
+<audio id="audio" controls="" preload="none">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassNDLFO1.mp3">
+</audio>
+<h1>我是如何发现的?</h1>
+<p>其实只要听的歌曲足够多，会发现这种效果用到的风格很多，哪怕是最基础的一个<code>crash下降</code>或是<code>Drop Melody</code>等很多效果，都能用这个技巧营造出很多听众的<code>爽点</code>。<br>
+当然，具体操作的原理以及方式我是通过开头的那首Demo Song Project学到的：</p>
+<p>来自 Asher Postman 的 Future Bass，我的fb启蒙制作者，包括其中的一种SideChain方式也是从这个工程学的。</p>
+<blockquote>
+<p>Title: Future Bass (Stock Plugins Only)<br>
+Author: <a href="https://soundcloud.com/asher-postman">Asher Postman</a><br>
+Copyright © 2018 Asher Postman.</p>
+</blockquote>
+<h2 id="如何实现">如何实现?</h2>
+<p>来看两张图：<br>
+<img src="/images/posts/FL-Studio-Tips-LFO-Speed/1.gif" alt="1" title="1"><br>
+<img src="/images/posts/FL-Studio-Tips-LFO-Speed/2.gif" alt="2" title="2"></p>
+<p>它们都有一个共性：<strong>其中的一个AMC（Automation Clips）均为&quot;LFO Speed&quot;，伴随着LFO Speed的降低，它们所控制的LFO频率也随之降低。</strong></p>
+<p>上面说，“它们所控制的LFO频率”，那么我们首先得创作出一个LFO的AMC，这里FL Studio给大家了一种方法：</p>
+<pre><code>  1.在您要实施此效果的对应旋钮上新建一个 AMC (Create automation clip)
+  2.在 View Playlist 找到它，单击它名字旁边的AMC图标
+  3.点击Channel Settings
+    （1.一个很明显的 LFO 选项，打开它，之后设计您想要的波形（我们先不管speed，您可以设定其他几个值）
+    （2.右键SPEED旋钮，新建一个AMC
+    （3.现在您得到了两个AMC，这正是我们想要的结果，接下来就要靠您的听感了
+  4.在您听感的基础上，调节LFO speed AMC使其满足您的要求
+  5.完成
+</code></pre>
+<h1>实践&amp;展示</h1>
+<h2 id="一-做futurebass的wobblechords-无lfo-speed-amc-当然我们也可以加-：">一，做FutureBass的WobbleChords（无LFO Speed AMC，当然我们也可以加）：</h2>
+<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/1.png" alt="1" title="1"></p>
+<h2 id="二-做hippop的melodysfx：">二，做Hippop的MelodySFX：</h2>
+<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/2.png" alt="2" title="2"></p>
+<blockquote>
+<p>Tips：在这里，我们可以用Wave，Pulse等AMC Point Mode，右键AMC节点选择对应的Mode即可。</p>
+</blockquote>
+<h1>In the End</h1>
+<p>为了显得最后的结束不算很唐突，我用了<a href="https://www.youtube.com/user/OfficialVirtualRiot">Virtual Riot</a> 的采样包，堆叠了一个Melodic Dubstep.<br>
+just for fun，and thank u VR</p>
+<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/3.png" alt="3" title="3"></br></p>
+<audio id="audio" controls="" preload="none">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/Md.mp3">
+</audio>
+<p align="right">在最后的最后，感恩</p>
+<p align="right">Romi Brooks♥</p>]]></content>
+      <categories>
+        <category>Music</category>
+      </categories>
+      <tags>
+        <tag>FL-Tips</tag>
       </tags>
   </entry>
   <entry>
@@ -320,35 +219,6 @@ Zen 内核(linux-zen)：优化日常使用体验，适合桌面用户。</p>
         <tag>Nginx</tag>
         <tag>WebDev</tag>
         <tag>Website</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Nginx中code-server的ws配置</title>
-    <url>/2023/04/01/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p><img src="/images/posts/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/Cover.png" alt="封面" title="Cover"></p>
-<blockquote>
-<p>这个问题已经有很多人出现了,github也有人提出了issues<br>
-<a href="https://github.com/coder/code-server/issues/4443">https://github.com/coder/code-server/issues/4443</a></p>
-</blockquote>
-<span id="more"></span>
-<blockquote>
-<p>可以看到导致这个问题的原因是由于<code>Nginx</code>反向代理并没有接受ws握手导致的<br>
-这里也有很多人给出了答案,但是为了方便我之后部署,我还是决定把它写下来</p>
-</blockquote>
-<p>废话不多说,直接上<code>.conf</code>文件:</p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    <span class="comment">#其他选项</span></span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>  http://127.0.0.1:7654;  <span class="comment">#转发地址</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#下面这些就是相关的ws转发,把这些写上了code-server才能正常工作</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> HOST <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Connection upgrade;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Accept-Encoding gzip;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$proxy_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>同样,这也是一篇随笔…</p>
-<p align="right">在最后的最后，感恩</p>
-<p align="right">Romi Brooks♥</p>
-]]></content>
-      <categories>
-        <category>WebDev</category>
-      </categories>
-      <tags>
-        <tag>Nginx</tag>
-        <tag>WebDev</tag>
-        <tag>Website</tag>
-        <tag>code-server</tag>
       </tags>
   </entry>
   <entry>
@@ -455,125 +325,8 @@ Categories=Music;
         <category>Music</category>
       </categories>
       <tags>
+        <tag>Music</tag>
         <tag>Reaper</tag>
-        <tag>Music</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Navidrome，定义你自己离线的播放器</title>
-    <url>/2023/03/04/Navidrome%EF%BC%8C%E5%AE%9A%E4%B9%89%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E7%A6%BB%E7%BA%BF%E6%92%AD%E6%94%BE%E5%99%A8/</url>
-    <content><![CDATA[<p><img src="/images/posts/Navidrome-U-Own-Music-Player/cover.png" alt="封面" title="Cover"></p>
-<p>最近在上传我的本地歌曲库的时候,发现过于麻烦,(筛选,打包,上传.如果我需要修改某个文件的时候还需要再下载回来,然后解压,再修改.重复这个步骤)于是想到了托管到VPS,并且实现流媒体播放.那么这还是蛮不错的!</p>
-<blockquote>
-<p>PS:这个很早就打算做了,只不过懒,就一直拖下去了(因为早期下载歌曲的时候过于偷懒导致过50%的歌曲的metadata都出现了不匹配的问题…)</p>
-</blockquote>
-<span id="more"></span>  
-<p><strong>同样,这个东西也适用于内网用户(如NAS用户)访问自己的媒体文件,其实这类软件目标人群应该就是这个.</strong></p>
-<h1>寻找一个适合的软件</h1>
-<p>我的基本要求是,颜值首先!如果不好看,我估计我会第一个舍弃…<br>
-其次必须支持<code>流式媒体播放</code>,这一次托管的目的就在这里!<br>
-然后是功能必须齐全:比如<code>歌手排序</code>,<code>歌单排序</code>,<code>用户喜爱</code>,<code>封面展示</code>…<br>
-最后是方便部署,如果部署起来特别麻烦,那是真的得不偿失…<br>
-我大概花费了几个小时尝试,而后偶然发现了<code>Navidrome</code>,也就是这篇文章的主角.</p>
-<h1>部署</h1>
-<p><code>Navidrome</code> 的部署分为三步,我觉得简单到天际…</p>
-<ul>
-<li>下载,解压</li>
-<li>配置歌曲文件夹</li>
-<li>运行</li>
-</ul>
-<p>Step 1. 下载只需要到<a href="https://github.com/navidrome/navidrome">Navidrome</a>的<a href="https://github.com/navidrome/navidrome/releases">releases</a>里下符合你系统架构的二进制文件. ez to do it.<br>
-然后解压,一般直接</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -xvf filename.tar.gz</span><br></pre></td></tr></table></figure>
-<p>Step 2. 在你程序目录新建一个<code>music</code>文件夹,可以直接放音乐,也可以软连接到你自己的音乐文件夹.只要有音乐就行!<br>
-Step 3. 启动,这里推荐用<code>screen</code>或者是你喜欢的什么软件来防止被ban.到这里<code>Navidrome</code>就部署完成了.简单的一b</p>
-<p>后续的设置基本就是<code>Nginx 反向代理</code>,让他更加简洁美观 (同时加锁,即取得https)</p>
-<p>参考上一篇博客,在<code>player.ssl.conf</code>里写入以下内容(根据自己的改):</p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">443</span> ssl;</span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/player.romichan.me/fullchain.pem;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/player.romichan.me/privkey.pem;</span><br><span class="line">    <span class="attribute">server_name</span>  player.romichan.me;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>  http://127.0.0.1:4533; <span class="comment"># 这里就是转发的地址了</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$proxy_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在<code>player.conf</code>里写入:</p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span>  player.romichan.me;</span><br><span class="line">    <span class="attribute">rewrite</span><span class="regexp"> ^(.*)$</span>  https://<span class="variable">$host</span><span class="variable">$1</span> <span class="literal">permanent</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1>最后</h1>
-<p>到这里,我认为全部就部署好了<br>
-这时候使用<code>player.romichan.me</code>进入你的<code>Navidrome</code>,初次使用会让你设置管理员用户和密码,记好就行了.</p>
-<p>还有什么要说的呢?<br>
-哦,对…<br>
-你在使用这些离线音乐库的时候就要注意,你本地音乐的metadata一定不要有太多的问题,不然整个页面看起来都会很乱<br>
-我为什么会在文章开头我懒得去弄呢?就是因为我后续整理metadata用了将近三个小时…这真的很折磨…<br>
-<img src="/images/posts/Navidrome-U-Own-Music-Player/1.0.1.jpg" alt="折磨" title="折磨"></p>
-<p>~当然如果你的习惯很好,那么这个当然对你来说没有任何问题,加油!~</p>
-<p align="right">在最后的最后，感恩</p>
-<p align="right">Romi Brooks♥</p>]]></content>
-      <categories>
-        <category>Music</category>
-      </categories>
-      <tags>
-        <tag>Nginx</tag>
-        <tag>Website</tag>
-        <tag>Music</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>变更记录</title>
-    <url>/2000/01/01/%E5%8F%98%E6%9B%B4%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<h1>2022</h1>
-<h2 id="aug-27-2022">Aug 27, 2022</h2>
-<ul>
-<li>将Blog从旧域名迁移至新域名</li>
-</ul>
-<h2 id="may-2-2022">May 2, 2022</h2>
-<ul>
-<li>将Github Page上托管的Blog仓库迁移至主服务器</li>
-</ul>
-<h2 id="apr-16-2022">Apr 16, 2022</h2>
-<ul>
-<li>上传Blog仓库到Github，并且托管至Github Page</li>
-</ul>
-<hr>
-<h1>2023</h1>
-<h2 id="备考高考">备考高考</h2>
-<h2 id="mar-5-2023">Mar 5, 2023</h2>
-<ul>
-<li>将Blog从旧域名迁移至新域名</li>
-</ul>
-<hr>
-<h1>2024</h1>
-<h2 id="进入大学">进入大学</h2>
-<ul>
-<li>停更</li>
-</ul>
-<h2 id="高考">高考</h2>
-<ul>
-<li>停更</li>
-</ul>
-<hr>
-<h1>2025</h1>
-<h2 id="aug-12-2022">Aug 12, 2022</h2>
-<ul>
-<li>开始更新</li>
-</ul>
-<h2 id="aug-12-2022">Aug 12, 2022</h2>
-<ul>
-<li>将Blog从旧域名迁移至新域名</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>SysRecord</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>学习人生之C++进阶</title>
-    <url>/2025/07/01/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BC++%E8%BF%9B%E9%98%B6/</url>
-    <content><![CDATA[<p>注意，不是你卡了，是我还没写任何的内容 :(</p>
-<span id="more"></span>]]></content>
-      <categories>
-        <category>学习人生</category>
-        <category>Language</category>
-        <category>C++</category>
-      </categories>
-      <tags>
-        <tag>Note</tag>
-        <tag>Development</tag>
-        <tag>C++ Lang</tag>
       </tags>
   </entry>
   <entry>
@@ -919,6 +672,22 @@ Should we then require the colour channel to be placed at the front, resulting i
       </tags>
   </entry>
   <entry>
+    <title>学习人生之C++进阶</title>
+    <url>/2025/07/01/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BC++%E8%BF%9B%E9%98%B6/</url>
+    <content><![CDATA[<p>注意，不是你卡了，是我还没写任何的内容 :(</p>
+<span id="more"></span>]]></content>
+      <categories>
+        <category>学习人生</category>
+        <category>Language</category>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>Note</tag>
+        <tag>Development</tag>
+        <tag>C++ Lang</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>学习人生之数据分析</title>
     <url>/2025/11/04/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BDataAnalysis/</url>
     <content><![CDATA[<p>注意，不是你卡了，是我还没写任何的内容 :(</p>
@@ -958,87 +727,318 @@ Should we then require the colour channel to be placed at the front, resulting i
       </tags>
   </entry>
   <entry>
-    <title>通过控制LFO Speed，使你的音乐更有律动</title>
-    <url>/2022/04/27/FL-Studio-Tips-%E5%88%A9%E7%94%A8LFO-LFO-Speed%E5%81%9A%E5%87%BA%E5%8A%A0%E8%8A%B1%E6%95%88%E6%9E%9C/</url>
-    <content><![CDATA[<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/cover.png" alt="封面" title="Cover"></p>
-<audio id="audio" controls="" preload="none">
-    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBass.mp3">
-</audio>
-<p><em>（音乐来自：FL Studio中DemoSong内Asher Postman-Future Bass）</em></p>
-<p>在了解这之前，您可以点击上方的“播放按钮”，来听一首歌，这首歌用到了我所谓<code>控制 LFO Speed</code>的技巧 (在听之前请注意音量)</p>
+    <title>变更记录</title>
+    <url>/2000/01/01/%E5%8F%98%E6%9B%B4%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h1>2022</h1>
+<h2 id="aug-27-2022">Aug 27, 2022</h2>
+<ul>
+<li>将Blog从旧域名迁移至新域名</li>
+</ul>
+<h2 id="may-2-2022">May 2, 2022</h2>
+<ul>
+<li>将Github Page上托管的Blog仓库迁移至主服务器</li>
+</ul>
+<h2 id="apr-16-2022">Apr 16, 2022</h2>
+<ul>
+<li>上传Blog仓库到Github，并且托管至Github Page</li>
+</ul>
+<hr>
+<h1>2023</h1>
+<h2 id="备考高考">备考高考</h2>
+<h2 id="mar-5-2023">Mar 5, 2023</h2>
+<ul>
+<li>将Blog从旧域名迁移至新域名</li>
+</ul>
+<hr>
+<h1>2024</h1>
+<h2 id="进入大学">进入大学</h2>
+<ul>
+<li>停更</li>
+</ul>
+<h2 id="高考">高考</h2>
+<ul>
+<li>停更</li>
+</ul>
+<hr>
+<h1>2025</h1>
+<h2 id="aug-12-2022">Aug 12, 2022</h2>
+<ul>
+<li>开始更新</li>
+</ul>
+<h2 id="aug-12-2022">Aug 12, 2022</h2>
+<ul>
+<li>将Blog从旧域名迁移至新域名</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>SysRecord</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一份自用的ArchLinux安装指南</title>
+    <url>/2023/01/09/Archlinux%20+%20U%E7%9B%98%20%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/</url>
+    <content><![CDATA[<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/Cover.jpg" alt="封面" title="Cover"></p>
+<h1>最后一次编辑时间: 2025-10-23 25:26</h1>
+<ul>
+<li>上一次编辑时间：2023-01-17 17:53</li>
+<li>上一次编辑时间：2023-01-15 16:53</li>
+<li>上一次编辑时间：2023-01-10 0:51</li>
+</ul>
+<div style="text-align: center;">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1835463109&auto=0&height=66"></iframe>
+</div>
+<blockquote>
+<p>参考ref<br>
+1.一个完整的Arch Linux 安装流程: <a href="https://zhuanlan.zhihu.com/p/513859236">2022.5 archlinux详细安装过程</a><br>
+2.Installation guide - ArchWiki: <a href="https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97">Arch Linux 安装指南</a></p>
+</blockquote>
+<p>本文是一个自用的Arch Linux安装方法，针对的是我自己，如果你看到这个文章了，里头可能有一些东西你是可以用到的。<br>
+但是在阅读本指南前确保文档最后的更新时间和当前观看时间是否相近, Arch Linux是一个滚动更新系统，过时的安装过程也许会导致一些未知的问题出现。<br>
+这篇文章旨在帮助不会安装Arch Linux的用户，以及当我自己遗忘某些安装细节时可以回过头来查看。<br>
+可能有很多的安装方式与命令随着版本更新而无法使用或者不在推荐，出现问题或者是疑问应当自行查询。</p>
 <span id="more"></span>
-<h1>什么是<code>LFO Speed</code>?</h1>
-<p>LFO（Low Frequency Oscillator，低频振荡器）是一种产生周期性信号的调制源，其频率通常低于 20Hz（人类听觉下限），因此无法直接被听到，但可以控制其他参数的变化。例如：</p>
-<p>调制音量：通过周期性增减振幅，产生类似 “脉冲” 的抽吸效果（即震音，Tremolo）。<br>
-调制滤波器截止频率：通过周期性开合滤波器，使声音在高频和低频之间切换，形成 “摇晃” 的抽吸感（如 Dubstep 贝斯）。</p>
-<p>而LFO Speed 决定了振荡的频率，直接影响抽吸效果的节奏。</p>
-<h1>为什么要<code>控制 LFO Speed</code>?</h1>
-<p>在音乐制作中，<strong>控制LFO Speed（低频振荡器速度）</strong> 是创造动态抽吸效果的核心技巧。<br>
-这种效果通过周期性调制声音参数（如音量、滤波器截止频率），使音频产生类似 “呼吸” 或 “脉冲” 的节奏性波动，常见于电子音乐、Future Bass、Dubstep 等风格中。<br>
-通过灵活运用 LFO Speed 和波形设计，制作人可以为声音注入生命般的动态变化。从微妙的音色润色到夸张的特效设计，是一个相对高级的声设技巧。</p>
-<h1>它的效果具体是如何?</h1>
-<p>这是上面那首Demo Song中使用此技巧的一小段 (在听之前请注意音量):</p>
-<audio id="audio" controls="" preload="none">
-    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassLFO2.mp3">
-</audio>
-<p>这是去掉鼓点等干扰的效果:</p>
-<audio id="audio" controls="" preload="none">
-    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassNDLFO2.mp3">
-</audio>
-<p>其实还有一次，是在这里:</p>
-<audio id="audio" controls="" preload="none">
-    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassLFO1.mp3">
-</audio>
-<p>这是去掉鼓点等干扰的效果:</p>
-<audio id="audio" controls="" preload="none">
-    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassNDLFO1.mp3">
-</audio>
-<h1>我是如何发现的?</h1>
-<p>其实只要听的歌曲足够多，会发现这种效果用到的风格很多，哪怕是最基础的一个<code>crash下降</code>或是<code>Drop Melody</code>等很多效果，都能用这个技巧营造出很多听众的<code>爽点</code>。<br>
-当然，具体操作的原理以及方式我是通过开头的那首Demo Song Project学到的：</p>
-<p>来自 Asher Postman 的 Future Bass，我的fb启蒙制作者，包括其中的一种SideChain方式也是从这个工程学的。</p>
+<h1>安装Arch Linux</h1>
+<h2 id="引导-分区-调整-安装：">引导，分区，调整，安装：</h2>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.1.png" alt="1.1.1" title="1.1.1"></p>
+<h3 id="确保使用uefi引导：">确保使用UEFI引导：</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> /sys/firmware/efi/efivars</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.2.png" alt="1.1.2" title="1.1.2"></p>
+<p>输入这一行代码后，如果反馈目录不存在，不要继续，因为没有UEFI启动在后面写入引导的时候几乎绝对报错。如果有输出，说明电脑是以UEFI启动的。</p>
 <blockquote>
-<p>Title: Future Bass (Stock Plugins Only)<br>
-Author: <a href="https://soundcloud.com/asher-postman">Asher Postman</a><br>
-Copyright © 2018 Asher Postman.</p>
+<p>Tips: 在这里我写入linux image用<code>Rufus</code>。</p>
 </blockquote>
-<h2 id="如何实现">如何实现?</h2>
-<p>来看两张图：<br>
-<img src="/images/posts/FL-Studio-Tips-LFO-Speed/1.gif" alt="1" title="1"><br>
-<img src="/images/posts/FL-Studio-Tips-LFO-Speed/2.gif" alt="2" title="2"></p>
-<p>它们都有一个共性：<strong>其中的一个AMC（Automation Clips）均为&quot;LFO Speed&quot;，伴随着LFO Speed的降低，它们所控制的LFO频率也随之降低。</strong></p>
-<p>上面说，“它们所控制的LFO频率”，那么我们首先得创作出一个LFO的AMC，这里FL Studio给大家了一种方法：</p>
-<pre><code>  1.在您要实施此效果的对应旋钮上新建一个 AMC (Create automation clip)
-  2.在 View Playlist 找到它，单击它名字旁边的AMC图标
-  3.点击Channel Settings
-    （1.一个很明显的 LFO 选项，打开它，之后设计您想要的波形（我们先不管speed，您可以设定其他几个值）
-    （2.右键SPEED旋钮，新建一个AMC
-    （3.现在您得到了两个AMC，这正是我们想要的结果，接下来就要靠您的听感了
-  4.在您听感的基础上，调节LFO speed AMC使其满足您的要求
-  5.完成
-</code></pre>
-<h1>实践&amp;展示</h1>
-<h2 id="一-做futurebass的wobblechords-无lfo-speed-amc-当然我们也可以加-：">一，做FutureBass的WobbleChords（无LFO Speed AMC，当然我们也可以加）：</h2>
-<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/1.png" alt="1" title="1"></p>
-<h2 id="二-做hippop的melodysfx：">二，做Hippop的MelodySFX：</h2>
-<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/2.png" alt="2" title="2"></p>
+<h3 id="联网：">联网：</h3>
+<p>1.输入“iwctl”进入iwd模式，也就是终端最前方有“[iwd]#”字样。<br>
+2.在iwd模式下输入“device list”，查询电脑的网卡。记住你的网卡号，一般是wlan0或者wlan1（本文以多数情况wlan0为例）<br>
+3.在iwd模式下输入“station wlan0 scan”，然后再输入“station wlan0 get-networks”，显示周围的wifi的ssid扫描结果。<br>
+4.在iwd模式下输入“station wlan0 connect <ssid>”，如果是加密的wifi，系统会提示输入wifi密码，如无意外，就连上网了。<br>
+5.验证联网。按ctrl+c退出iwd模式，回到[root@archiso~]模式，输入“ping <a href="http://baidu.com">baidu.com</a>”，如果有返回数据，说明已经连上网了。</p>
 <blockquote>
-<p>Tips：在这里，我们可以用Wave，Pulse等AMC Point Mode，右键AMC节点选择对应的Mode即可。</p>
+<p>一般来说，如果是网线直连，那么系统会自动连接网络，而不用使用iwd连接wifi。</p>
 </blockquote>
-<h1>In the End</h1>
-<p>为了显得最后的结束不算很唐突，我用了<a href="https://www.youtube.com/user/OfficialVirtualRiot">Virtual Riot</a> 的采样包，堆叠了一个Melodic Dubstep.<br>
-just for fun，and thank u VR</p>
-<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/3.png" alt="3" title="3"></br></p>
-<audio id="audio" controls="" preload="none">
-    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/Md.mp3">
-</audio>
-<p align="right">在最后的最后，感恩</p>
+<h3 id="更新时间：">更新时间：</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">timedatectl set-ntp <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="分区：">分区：</h3>
+<blockquote>
+<p>涉及数据相关，请认真对待！</p>
+</blockquote>
+<h4 id="这里列出的是当前所有硬盘-找到你的硬盘-我这里是-dev-sda">这里列出的是当前所有硬盘，找到你的硬盘，我这里是/dev/sda</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">lsblk</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.3.png" alt="1.1.3" title="1.1.3"></p>
+<h4 id="进-dev-sda分盘">进/dev/sda分盘</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cfdisk /dev/sda</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.4.png" alt="1.1.4" title="1.1.4"></p>
+<h4 id="gpt分区表-回车就行">gpt分区表，回车就行</h4>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.5.png" alt="1.1.5" title="1.1.5"></p>
+<h4 id="用new新建分区-大小自定义-按照你自己来">用New新建分区，大小自定义，按照你自己来</h4>
+<blockquote>
+<p>sda1 -&gt; 1G boot分区  （引导分区，通常来说我们给1G即可）<br>
+sda2 -&gt; 16G swap分区  （swap的大小通常为你电脑RAM的60%，根据你空余的硬盘空间设定适当的大小）<br>
+sda3 -&gt; 60G /分区  (根目录大小会影响可安装软件的数量等，理解成Windows下的系统盘大小)<br>
+sda4 -&gt; 50G /home分区  （此教程分开了home卷和根目录卷，分开维护使得数据不易丢失）</p>
+</blockquote>
+<h4 id="用write-然后输入yes写入分区">用Write，然后输入yes写入分区</h4>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.6.png" alt="1.1.6" title="1.1.6"></p>
+<h4 id="用quit退出-然后lsblk看分的是否正确">用Quit退出，然后lsblk看分的是否正确</h4>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.7.png" alt="1.1.7" title="1.1.7"></p>
+<h4 id="格式化">格式化</h4>
+<p>这里需要注意的是:<br>
+<code>/dev/sda1</code>是Linux的Boot分区，所以我们使用<code>FAT32</code>的文件系统来格式化次分区。<br>
+<code>/dev/sda3</code>与<code>/dev/sda4</code>是Linux的根分区，根据不同需求推荐的文件系统类型也不同，<a href="https://zhuanlan.zhihu.com/p/1887926575850304663">这里有一个文章</a>，可以以此为基准。<br>
+<code>/dev/sda2</code>是swap分区，使用如下命令开启swap。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkfs.fat -F32 /dev/sda1</span><br><span class="line">mkfs.ext4 /dev/sda3</span><br><span class="line">mkfs.xfs /dev/sda4</span><br><span class="line">mkswap /dev/sda2</span><br><span class="line">swapon /dev/sda2</span><br></pre></td></tr></table></figure>
+<h4 id="挂载">挂载</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/sda3 /mnt</span><br><span class="line"><span class="built_in">mkdir</span> -p /mnt/boot/efi</span><br><span class="line">mount /dev/sda1 /mnt/boot/efi</span><br><span class="line"><span class="built_in">mkdir</span> /mnt/home</span><br><span class="line">mount /dev/sda4 /mnt/home</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>确保分区挂载正确，这里的参考应该是上文你所创建的分区！</p>
+</blockquote>
+<h4 id="检查">检查</h4>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.8.png" alt="1.1.8" title="1.1.8"></p>
+<h3 id="配置pacman">配置pacman</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/pacman.d/mirrors</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>无论这个页面的内容是什么，只需要无脑修改第一条为bfsu的镜像源 (i luv u bfsu)</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Server = https://mirrors.bfsu.edu.cn/archlinux/<span class="variable">$repo</span>/os/<span class="variable">$arch</span>  </span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.9.png" alt="1.1.9" title="1.1.9"></p>
+<h4 id="同步数据包">同步数据包</h4>
+<blockquote>
+<p>注意，不升级！</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -Sy</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.10.png" alt="1.1.10" title="1.1.10"></p>
+<h4 id="安装archlinux-keyring防止签名出现问题">安装<code>archlinux-keyring</code>防止签名出现问题</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S archlinux-keyring</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.11.png" alt="1.1.11" title="1.1.11"></p>
+<h3 id="安装系统到u盘">安装系统到U盘</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacstrap /mnt base linux linux-headers linux-firmware base-devel</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>ArchLinux有很多内核可以选择，这是一些ref:<br>
+Stable 内核(linux)：标准 Linux 内核，附加少量补丁，适合大多数用户。<br>
+Hardened 内核(linux-hardened)：专注于安全性，包含强化补丁以缓解漏洞。<br>
+Longterm (LTS) 内核(linux-lts)：长期支持版本，适合需要稳定性的服务器或长期项目。<br>
+Realtime 内核(linux-rt / linux-rt-lts)：提供实时性能，适用于需要低延迟的场景，如音频处理。<br>
+Zen 内核(linux-zen)：优化日常使用体验，适合桌面用户。</p>
+</blockquote>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.12.png" alt="1.1.12" title="1.1.12"></p>
+<h4 id="写分区表">写分区表</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</span><br><span class="line"><span class="built_in">cat</span> /mnt/etc/fstab</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里<code>-U</code>是指使用uuid挂载硬盘，这会避免一些因为切换硬盘顺序而导致的无法加载系统的问题。</p>
+</blockquote>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.13.png" alt="1.1.13" title="1.1.13"></p>
+<h4 id="chroot">chroot</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">arch-chroot /mnt</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.14.png" alt="1.1.14" title="1.1.14"></p>
+<h4 id="安装必要软件">安装必要软件</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S neovim iwd ttf-dejavu sudo bluez usbmuxd networkmanager dhcpcd wqy-zenhei ntfs-3g</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.15.png" alt="1.1.15" title="1.1.15"></p>
+<h4 id="软连接neovim到vim">软连接neovim到vim</h4>
+<blockquote>
+<p>这何尝不是一种ntr(</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s /bin/nvim /bin/vim</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.16.png" alt="1.1.16" title="1.1.16"></p>
+<h4 id="同步时区">同步时区</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br><span class="line">hwclock --systohc</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.17.png" alt="1.1.17" title="1.1.17"></p>
+<h4 id="语言上的设置">语言上的设置</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/locale.gen</span><br></pre></td></tr></table></figure>
+<p>这里取消掉<code>en_US.UTF-8</code> , <code>zh_CN.UTF-8</code> , <code>zh_TW.UTF-8</code> ，这几个地方的注释<br>
+也就是前面的<code>#</code>号</p>
+<p>然后生成语言文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">locale-gen</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.18.png" alt="1.1.18" title="1.1.18"></p>
+<h4 id="追加-当前系统语言-到系统文件">追加 <code>当前系统语言</code> 到系统文件</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> LANG=en_US.UTF-8 &gt;&gt; /etc/locale.conf</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.19.png" alt="1.1.19" title="1.1.19"></p>
+<h4 id="设定root密码">设定<code>root</code>密码</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.20.png" alt="1.1.20" title="1.1.20"></p>
+<h4 id="主机名">主机名</h4>
+<blockquote>
+<p>设定成你自己喜欢的</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> livearch &gt;&gt; /etc/hostname</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.21.png" alt="1.1.21" title="1.1.21"></p>
+<h4 id="本地回环">本地回环</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/hosts</span><br></pre></td></tr></table></figure>
+<p>添加以下内容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">127.0.0.1 localhost</span><br><span class="line">::1 localhost</span><br><span class="line">127.0.1.1 livearch.localdomain livearch  <span class="comment">#跟着上一步改</span></span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.22.png" alt="1.1.22" title="1.1.22"></p>
+<h4 id="安装引导">安装引导</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S grub efibootmgr</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.23.png" alt="1.1.23" title="1.1.23"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grub-install /dev/sda</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.24.png" alt="1.1.24" title="1.1.24"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.25.png" alt="1.1.25" title="1.1.25"></p>
+<h4 id="退出-卸载-重启">退出，卸载，重启</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">exit</span></span><br><span class="line">umount -R /mnt</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<p>到这一步差不多就完成了系统的安装，下面就要开始配置系统了。<br>
+<img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.26.png" alt="1.1.26" title="1.1.26"></p>
+<p><s>Last Edit Time: 2025-10-23 21:02</s></p>
+<h1>配置Arch Linux</h1>
+<p>确保以下内容是重启之后所运行的，这里使用root用户登录即可。</p>
+<h2 id="网络基础服务：">网络基础服务：</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start iwd.service</span><br><span class="line">systemctl <span class="built_in">enable</span> iwd.service</span><br><span class="line">systemctl start systemd-resolved.service</span><br><span class="line">systemctl <span class="built_in">enable</span> systemd-resolved.service</span><br><span class="line">systemctl <span class="built_in">enable</span> bluetooth.service</span><br><span class="line">systemctl <span class="built_in">enable</span> NetworkManager</span><br><span class="line">systemctl <span class="built_in">enable</span> dhcpcd</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.1.png" alt="2.1.1" title="2.1.1"></p>
+<h3 id="网络配置">网络配置</h3>
+<p><code>iwd 设定</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/iwd/main.conf</span><br></pre></td></tr></table></figure>
+<p>写入如下内容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[General]</span><br><span class="line">EnableNetworkConfiguration=<span class="literal">true</span></span><br><span class="line">NameResolvingService=systemd</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.2.png" alt="2.1.2" title="2.1.2"></p>
+<p><code>Network Manager设定</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/NetworkManager/NetworkManager.conf</span><br></pre></td></tr></table></figure>
+<p>写入如下内容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[device]</span><br><span class="line">wifi.backend=iwd</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.3.png" alt="2.1.3" title="2.1.3"></p>
+<h3 id="重启以取得网络">重启以取得网络</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<h4 id="检查是否连接到网路">检查是否连接到网路</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -Syu</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.4.png" alt="2.1.4" title="2.1.4"></p>
+<p>这个命令只是为了检查有没有得到网络，如果报错，那就说明网络配置有问题，仔细检查一下。<br>
+如果没有问题，可以选择升级，也可以选择不升级，完全看自己。</p>
+<h2 id="安装cpu编码">安装CPU编码</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S intel-ucode</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S amd-ucode</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.5.png" alt="2.1.5" title="2.1.5"></p>
+<blockquote>
+<p>根据你的CPU，来确定安装什么版本的编码。</p>
+</blockquote>
+<h2 id="安装显卡驱动">安装显卡驱动</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S xf86-video-intel xf86-video-amdgpu mesa</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.6.png" alt="2.1.6" title="2.1.6"></p>
+<blockquote>
+<p>这里不涉及nVidia显卡的驱动安装过程，如果可以，我会在后面写一篇文章。<br>
+<code>xf86-video-intel</code>  Intel核芯显卡<br>
+<code>xf86-video-amdgpu</code> AMD显卡<br>
+<code>mesa</code> 是为了更好的兼容这两者(?)</p>
+</blockquote>
+<h2 id="安装声卡驱动">安装声卡驱动</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S pipewire alsa-utils pipewire-pulse pipewire-jack pipewire-alsa</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.7.png" alt="2.1.7" title="2.1.7"></p>
+<h2 id="增加普通用户">增加普通用户</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">useradd -m -G wheel -s /bin/bash username</span><br><span class="line">passwd username</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.8.png" alt="2.1.8" title="2.1.8"></p>
+<p>用 <code>passwd username</code> 设定用户密码，输入一个你想要的密码就可以。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/sudoers</span><br></pre></td></tr></table></figure>
+<p>修改sudoer以此让<code>romi</code>有使用sudo的权限。<br>
+取消 <code>%wheel ALL=(ALL:ALL) ALL</code> 这条语句的注释，也就是删去语句前的 <code>#</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## Uncomment to allow members of group wheel to execute any command</span></span><br><span class="line"><span class="comment"># %wheel ALL=(ALL:ALL) ALL</span></span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.9.png" alt="2.1.9" title="2.1.9"></p>
+<h2 id="配置archlinuxcn源">配置archlinuxcn源</h2>
+<p>archlinuxcn有很多有用的软件，十分实用：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/pacman.conf</span><br></pre></td></tr></table></figure>
+<p>在最后插入以下内容:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/fix_2.1.10.png" alt="2.1.10" title="2.1.10"></p>
+<p>然后安装 <code>archlinuxcn-keyring</code> 防止签名出现问题</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -Sy</span><br><span class="line">pacman -S archlinuxcn-keyring</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/fix_2.1.11.png" alt="2.1.11" title="2.1.11"></p>
+<h2 id="安装yay">安装yay</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S yay</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/fix_2.1.12.png" alt="2.1.12" title="2.1.12"></p>
+<h2 id="重启">重启</h2>
+<p>到这里，基本上所有系统的配置就完成了。下一次登陆系统就是一个完全可以用的Arch Linux系统了。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<h1>桌面配置</h1>
+<blockquote>
+<p>为了方便，以下使用 <code>root</code> 用户完成</p>
+</blockquote>
+<p>如果是简约党，为了简单，我就选择<code>i3wm</code></p>
+<h2 id="首先安装桌面服务">首先安装桌面服务</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S xorg</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.2.1.png" alt="2.2.1" title="2.2.1"></p>
+<h2 id="如果是安装kde">如果是安装<code>KDE</code></h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S plasma sddm konsole dolphin kate ark</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>安装好后设定<code>sddm</code>的自启动</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> sddm</span><br></pre></td></tr></table></figure>
+<h2 id="如果是安装gnome">如果是安装<code>Gnome</code></h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S gnome</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>安装好后设定<code>gdm</code>的自启动</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> gdm</span><br></pre></td></tr></table></figure>
+<h2 id="如果是安装i3wm">如果是安装<code>i3wm</code></h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S xorg-xinit xorg-server i3-gaps</span><br></pre></td></tr></table></figure>
+<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.2.2.png" alt="2.2.2" title="2.2.2"></p>
+<p><s>Last Edit Time: 2025-11-03 22:17</s></p>
+<h1>系统美化</h1>
+<h1>未完</h1>
+<div style="text-align: center;">在最后的最后，感恩。</div>
 <p align="right">Romi Brooks♥</p>]]></content>
       <categories>
-        <category>Music</category>
+        <category>Linux</category>
       </categories>
       <tags>
-        <tag>FL-Tips</tag>
+        <tag>Archlinux</tag>
+        <tag>Installation</tag>
+        <tag>i3wm</tag>
       </tags>
   </entry>
 </search>
