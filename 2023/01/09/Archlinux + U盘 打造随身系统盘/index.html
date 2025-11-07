@@ -113,7 +113,7 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/Cover.jpg" alt="封面" title="Cover"></p>
+  <p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/Cover.jpg" alt="封面" title="Cover"></p>
 <h1>最后一次编辑时间: 2025-10-23 25:26</h1>
 <ul>
 <li>上一次编辑时间：2023-01-17 17:53</li>
@@ -135,10 +135,10 @@
 <span id="more"></span>
 <h1>安装Arch Linux</h1>
 <h2 id="引导-分区-调整-安装：">引导，分区，调整，安装：</h2>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.1.png" alt="1.1.1" title="1.1.1"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.1.png" alt="1.1.1" title="1.1.1"></p>
 <h3 id="确保使用uefi引导：">确保使用UEFI引导：</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> /sys/firmware/efi/efivars</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.2.png" alt="1.1.2" title="1.1.2"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.2.png" alt="1.1.2" title="1.1.2"></p>
 <p>输入这一行代码后，如果反馈目录不存在，不要继续，因为没有UEFI启动在后面写入引导的时候几乎绝对报错。如果有输出，说明电脑是以UEFI启动的。</p>
 <blockquote>
 <p>Tips: 在这里我写入linux image用<code>Rufus</code>。</p>
@@ -160,12 +160,12 @@
 </blockquote>
 <h4 id="这里列出的是当前所有硬盘-找到你的硬盘-我这里是-dev-sda">这里列出的是当前所有硬盘，找到你的硬盘，我这里是/dev/sda</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsblk</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.3.png" alt="1.1.3" title="1.1.3"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.3.png" alt="1.1.3" title="1.1.3"></p>
 <h4 id="进-dev-sda分盘">进/dev/sda分盘</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cfdisk /dev/sda</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.4.png" alt="1.1.4" title="1.1.4"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.4.png" alt="1.1.4" title="1.1.4"></p>
 <h4 id="gpt分区表-回车就行">gpt分区表，回车就行</h4>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.5.png" alt="1.1.5" title="1.1.5"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.5.png" alt="1.1.5" title="1.1.5"></p>
 <h4 id="用new新建分区-大小自定义-按照你自己来">用New新建分区，大小自定义，按照你自己来</h4>
 <blockquote>
 <p>sda1 -&gt; 1G boot分区  （引导分区，通常来说我们给1G即可）<br>
@@ -174,9 +174,9 @@ sda3 -&gt; 60G /分区  (根目录大小会影响可安装软件的数量等，�
 sda4 -&gt; 50G /home分区  （此教程分开了home卷和根目录卷，分开维护使得数据不易丢失）</p>
 </blockquote>
 <h4 id="用write-然后输入yes写入分区">用Write，然后输入yes写入分区</h4>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.6.png" alt="1.1.6" title="1.1.6"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.6.png" alt="1.1.6" title="1.1.6"></p>
 <h4 id="用quit退出-然后lsblk看分的是否正确">用Quit退出，然后lsblk看分的是否正确</h4>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.7.png" alt="1.1.7" title="1.1.7"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.7.png" alt="1.1.7" title="1.1.7"></p>
 <h4 id="格式化">格式化</h4>
 <p>这里需要注意的是:<br>
 <code>/dev/sda1</code>是Linux的Boot分区，所以我们使用<code>FAT32</code>的文件系统来格式化次分区。<br>
@@ -189,23 +189,23 @@ sda4 -&gt; 50G /home分区  （此教程分开了home卷和根目录卷，分开
 <p>确保分区挂载正确，这里的参考应该是上文你所创建的分区！</p>
 </blockquote>
 <h4 id="检查">检查</h4>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.8.png" alt="1.1.8" title="1.1.8"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.8.png" alt="1.1.8" title="1.1.8"></p>
 <h3 id="配置pacman">配置pacman</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/pacman.d/mirrors</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>无论这个页面的内容是什么，只需要无脑修改第一条为bfsu的镜像源 (i luv u bfsu)</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Server = https://mirrors.bfsu.edu.cn/archlinux/<span class="variable">$repo</span>/os/<span class="variable">$arch</span>  </span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.9.png" alt="1.1.9" title="1.1.9"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.9.png" alt="1.1.9" title="1.1.9"></p>
 <h4 id="同步数据包">同步数据包</h4>
 <blockquote>
 <p>注意，不升级！</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Sy</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.10.png" alt="1.1.10" title="1.1.10"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.10.png" alt="1.1.10" title="1.1.10"></p>
 <h4 id="安装archlinux-keyring防止签名出现问题">安装<code>archlinux-keyring</code>防止签名出现问题</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S archlinux-keyring</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.11.png" alt="1.1.11" title="1.1.11"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.11.png" alt="1.1.11" title="1.1.11"></p>
 <h3 id="安装系统到u盘">安装系统到U盘</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacstrap /mnt base linux linux-headers linux-firmware base-devel</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -216,97 +216,97 @@ Longterm (LTS) 内核(linux-lts)：长期支持版本，适合需要稳定性的
 Realtime 内核(linux-rt / linux-rt-lts)：提供实时性能，适用于需要低延迟的场景，如音频处理。<br>
 Zen 内核(linux-zen)：优化日常使用体验，适合桌面用户。</p>
 </blockquote>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.12.png" alt="1.1.12" title="1.1.12"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.12.png" alt="1.1.12" title="1.1.12"></p>
 <h4 id="写分区表">写分区表</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</span><br><span class="line"><span class="built_in">cat</span> /mnt/etc/fstab</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>这里<code>-U</code>是指使用uuid挂载硬盘，这会避免一些因为切换硬盘顺序而导致的无法加载系统的问题。</p>
 </blockquote>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.13.png" alt="1.1.13" title="1.1.13"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.13.png" alt="1.1.13" title="1.1.13"></p>
 <h4 id="chroot">chroot</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arch-chroot /mnt</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.14.png" alt="1.1.14" title="1.1.14"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.14.png" alt="1.1.14" title="1.1.14"></p>
 <h4 id="安装必要软件">安装必要软件</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S neovim iwd ttf-dejavu sudo bluez usbmuxd networkmanager dhcpcd wqy-zenhei ntfs-3g</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.15.png" alt="1.1.15" title="1.1.15"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.15.png" alt="1.1.15" title="1.1.15"></p>
 <h4 id="软连接neovim到vim">软连接neovim到vim</h4>
 <blockquote>
 <p>这何尝不是一种ntr(</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s /bin/nvim /bin/vim</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.16.png" alt="1.1.16" title="1.1.16"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.16.png" alt="1.1.16" title="1.1.16"></p>
 <h4 id="同步时区">同步时区</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br><span class="line">hwclock --systohc</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.17.png" alt="1.1.17" title="1.1.17"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.17.png" alt="1.1.17" title="1.1.17"></p>
 <h4 id="语言上的设置">语言上的设置</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/locale.gen</span><br></pre></td></tr></table></figure>
 <p>这里取消掉<code>en_US.UTF-8</code> , <code>zh_CN.UTF-8</code> , <code>zh_TW.UTF-8</code> ，这几个地方的注释<br>
 也就是前面的<code>#</code>号</p>
 <p>然后生成语言文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale-gen</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.18.png" alt="1.1.18" title="1.1.18"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.18.png" alt="1.1.18" title="1.1.18"></p>
 <h4 id="追加-当前系统语言-到系统文件">追加 <code>当前系统语言</code> 到系统文件</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> LANG=en_US.UTF-8 &gt;&gt; /etc/locale.conf</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.19.png" alt="1.1.19" title="1.1.19"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.19.png" alt="1.1.19" title="1.1.19"></p>
 <h4 id="设定root密码">设定<code>root</code>密码</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.20.png" alt="1.1.20" title="1.1.20"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.20.png" alt="1.1.20" title="1.1.20"></p>
 <h4 id="主机名">主机名</h4>
 <blockquote>
 <p>设定成你自己喜欢的</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> livearch &gt;&gt; /etc/hostname</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.21.png" alt="1.1.21" title="1.1.21"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.21.png" alt="1.1.21" title="1.1.21"></p>
 <h4 id="本地回环">本地回环</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hosts</span><br></pre></td></tr></table></figure>
 <p>添加以下内容</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 localhost</span><br><span class="line">::1 localhost</span><br><span class="line">127.0.1.1 livearch.localdomain livearch  <span class="comment">#跟着上一步改</span></span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.22.png" alt="1.1.22" title="1.1.22"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.22.png" alt="1.1.22" title="1.1.22"></p>
 <h4 id="安装引导">安装引导</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S grub efibootmgr</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.23.png" alt="1.1.23" title="1.1.23"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.23.png" alt="1.1.23" title="1.1.23"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grub-install /dev/sda</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.24.png" alt="1.1.24" title="1.1.24"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.24.png" alt="1.1.24" title="1.1.24"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.25.png" alt="1.1.25" title="1.1.25"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.25.png" alt="1.1.25" title="1.1.25"></p>
 <h4 id="退出-卸载-重启">退出，卸载，重启</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exit</span></span><br><span class="line">umount -R /mnt</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
 <p>到这一步差不多就完成了系统的安装，下面就要开始配置系统了。<br>
-<img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.26.png" alt="1.1.26" title="1.1.26"></p>
+<img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/1.1.26.png" alt="1.1.26" title="1.1.26"></p>
 <p><s>Last Edit Time: 2025-10-23 21:02</s></p>
 <h1>配置Arch Linux</h1>
 <p>确保以下内容是重启之后所运行的，这里使用root用户登录即可。</p>
 <h2 id="网络基础服务：">网络基础服务：</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">systemctl start iwd.service</span><br><span class="line">systemctl <span class="built_in">enable</span> iwd.service</span><br><span class="line">systemctl start systemd-resolved.service</span><br><span class="line">systemctl <span class="built_in">enable</span> systemd-resolved.service</span><br><span class="line">systemctl <span class="built_in">enable</span> bluetooth.service</span><br><span class="line">systemctl <span class="built_in">enable</span> NetworkManager</span><br><span class="line">systemctl <span class="built_in">enable</span> dhcpcd</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.1.png" alt="2.1.1" title="2.1.1"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.1.png" alt="2.1.1" title="2.1.1"></p>
 <h3 id="网络配置">网络配置</h3>
 <p><code>iwd 设定</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/iwd/main.conf</span><br></pre></td></tr></table></figure>
 <p>写入如下内容</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[General]</span><br><span class="line">EnableNetworkConfiguration=<span class="literal">true</span></span><br><span class="line">NameResolvingService=systemd</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.2.png" alt="2.1.2" title="2.1.2"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.2.png" alt="2.1.2" title="2.1.2"></p>
 <p><code>Network Manager设定</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/NetworkManager/NetworkManager.conf</span><br></pre></td></tr></table></figure>
 <p>写入如下内容</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[device]</span><br><span class="line">wifi.backend=iwd</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.3.png" alt="2.1.3" title="2.1.3"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.3.png" alt="2.1.3" title="2.1.3"></p>
 <h3 id="重启以取得网络">重启以取得网络</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
 <h4 id="检查是否连接到网路">检查是否连接到网路</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Syu</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.4.png" alt="2.1.4" title="2.1.4"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.4.png" alt="2.1.4" title="2.1.4"></p>
 <p>这个命令只是为了检查有没有得到网络，如果报错，那就说明网络配置有问题，仔细检查一下。<br>
 如果没有问题，可以选择升级，也可以选择不升级，完全看自己。</p>
 <h2 id="安装cpu编码">安装CPU编码</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S intel-ucode</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S amd-ucode</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.5.png" alt="2.1.5" title="2.1.5"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.5.png" alt="2.1.5" title="2.1.5"></p>
 <blockquote>
 <p>根据你的CPU，来确定安装什么版本的编码。</p>
 </blockquote>
 <h2 id="安装显卡驱动">安装显卡驱动</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S xf86-video-intel xf86-video-amdgpu mesa</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.6.png" alt="2.1.6" title="2.1.6"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.6.png" alt="2.1.6" title="2.1.6"></p>
 <blockquote>
 <p>这里不涉及nVidia显卡的驱动安装过程，如果可以，我会在后面写一篇文章。<br>
 <code>xf86-video-intel</code>  Intel核芯显卡<br>
@@ -315,28 +315,28 @@ Zen 内核(linux-zen)：优化日常使用体验，适合桌面用户。</p>
 </blockquote>
 <h2 id="安装声卡驱动">安装声卡驱动</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S pipewire alsa-utils pipewire-pulse pipewire-jack pipewire-alsa</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.7.png" alt="2.1.7" title="2.1.7"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.7.png" alt="2.1.7" title="2.1.7"></p>
 <h2 id="增加普通用户">增加普通用户</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd -m -G wheel -s /bin/bash username</span><br><span class="line">passwd username</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.8.png" alt="2.1.8" title="2.1.8"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.8.png" alt="2.1.8" title="2.1.8"></p>
 <p>用 <code>passwd username</code> 设定用户密码，输入一个你想要的密码就可以。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sudoers</span><br></pre></td></tr></table></figure>
 <p>修改sudoer以此让<code>romi</code>有使用sudo的权限。<br>
 取消 <code>%wheel ALL=(ALL:ALL) ALL</code> 这条语句的注释，也就是删去语句前的 <code>#</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Uncomment to allow members of group wheel to execute any command</span></span><br><span class="line"><span class="comment"># %wheel ALL=(ALL:ALL) ALL</span></span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.9.png" alt="2.1.9" title="2.1.9"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.1.9.png" alt="2.1.9" title="2.1.9"></p>
 <h2 id="配置archlinuxcn源">配置archlinuxcn源</h2>
 <p>archlinuxcn有很多有用的软件，十分实用：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/pacman.conf</span><br></pre></td></tr></table></figure>
 <p>在最后插入以下内容:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/fix_2.1.10.png" alt="2.1.10" title="2.1.10"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/fix_2.1.10.png" alt="2.1.10" title="2.1.10"></p>
 <p>然后安装 <code>archlinuxcn-keyring</code> 防止签名出现问题</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pacman -Sy</span><br><span class="line">pacman -S archlinuxcn-keyring</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/fix_2.1.11.png" alt="2.1.11" title="2.1.11"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/fix_2.1.11.png" alt="2.1.11" title="2.1.11"></p>
 <h2 id="安装yay">安装yay</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S yay</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/fix_2.1.12.png" alt="2.1.12" title="2.1.12"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/fix_2.1.12.png" alt="2.1.12" title="2.1.12"></p>
 <h2 id="重启">重启</h2>
 <p>到这里，基本上所有系统的配置就完成了。下一次登陆系统就是一个完全可以用的Arch Linux系统了。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
@@ -347,7 +347,7 @@ Zen 内核(linux-zen)：优化日常使用体验，适合桌面用户。</p>
 <p>如果是简约党，为了简单，我就选择<code>i3wm</code></p>
 <h2 id="首先安装桌面服务">首先安装桌面服务</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S xorg</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.2.1.png" alt="2.2.1" title="2.2.1"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.2.1.png" alt="2.2.1" title="2.2.1"></p>
 <h2 id="如果是安装kde">如果是安装<code>KDE</code></h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S plasma sddm konsole dolphin kate ark</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -362,7 +362,7 @@ Zen 内核(linux-zen)：优化日常使用体验，适合桌面用户。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> gdm</span><br></pre></td></tr></table></figure>
 <h2 id="如果是安装i3wm">如果是安装<code>i3wm</code></h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S xorg-xinit xorg-server i3-gaps</span><br></pre></td></tr></table></figure>
-<p><img src="images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.2.2.png" alt="2.2.2" title="2.2.2"></p>
+<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/2.2.2.png" alt="2.2.2" title="2.2.2"></p>
 <p><s>Last Edit Time: 2025-11-03 22:17</s></p>
 <h1>系统美化</h1>
 <h1>未完</h1>
@@ -444,11 +444,11 @@ Zen 内核(linux-zen)：优化日常使用体验，适合桌面用户。</p>
    
   <nav class="article-nav">
     
-      <a href="/2023/02/25/Nginx%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE/" class="article-nav-link">
+      <a href="/2023/01/20/Arch%20Linux%20%E4%B8%8B%20Nvidia%20%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%AE%89%E8%A3%85/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            Nginx二级域名配置
+            Arch Linux 下 Nvidia 显卡驱动的安装
           
         </div>
       </a>

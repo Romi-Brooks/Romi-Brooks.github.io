@@ -154,11 +154,11 @@
 <p>这将会输出类似的内容：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2.8.0+cu126</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
 <h1>开始学习PyTorch</h1>
-<h2 id="before-we-begin-our-studies">Before we begin our studies:</h2>
+<h2 id="before-we-begin-our-studies">Before we begin our studies</h2>
 <p>This function allows us to quickly get the properties of PyTorch tensors.<br>
 We will not explain the purpose of this function in subsequent content.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_tensor_info</span>(<span class="params">p_type : <span class="built_in">str</span>, p_tensor : torch.Tensor</span>) :</span><br><span class="line">    <span class="built_in">print</span>(p_type, <span class="string">&quot;Tensor belong&quot;</span>, p_tensor.ndim, <span class="string">&quot;Dimension with Data Type&quot;</span>, p_tensor.dtype, <span class="string">&quot;On&quot;</span>, p_tensor.device)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;and the Shape of&quot;</span>, p_type, <span class="string">&quot;is&quot;</span>, p_tensor.shape)</span><br></pre></td></tr></table></figure>
-<h2 id="pytorch-tensor-unit">PyTorch Tensor Unit:</h2>
+<h2 id="pytorch-tensor-unit">PyTorch Tensor Unit</h2>
 <p>Before we continue, we need to understand PyTorch’s <code>Dimension</code> and <code>Shape</code>.<br>
 It is <strong>not</strong> a comprehensive data structure reference, as tensors may also have other data structures.<br>
 Therefore, we only present the key properties of tensors relevant to this chapter.</p>
@@ -213,7 +213,7 @@ Therefore, we only present the key properties of tensors relevant to this chapte
 </tr>
 </tbody>
 </table>
-<h2 id="get-a-tensor">Get a Tensor:</h2>
+<h2 id="get-a-tensor">Get a Tensor</h2>
 <p><strong>How to get a Tensor, and what is the Tensor’s Data Type?</strong><br>
 Use <code>torch.tensor()</code> to get a Tensor<br>
 Use <code>tensor.dtype</code> to get tensor’s type<br>
@@ -223,7 +223,7 @@ Use <code>tensor.device</code> to get tensor’s device</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">int_tensor = torch.tensor(<span class="number">1</span>) <span class="comment"># Get a tensor</span></span><br><span class="line">get_tensor_info(<span class="string">&quot;int_tensor&quot;</span>, int_tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Or Specify the type explicitly</span></span><br><span class="line">float32_tensor = torch.tensor(<span class="number">1.0</span>, dtype=torch.float32)</span><br><span class="line">get_tensor_info(<span class="string">&quot;float32_tensor&quot;</span>, float32_tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Explicit type conversion</span></span><br><span class="line">float16_tensor = float32_tensor.<span class="built_in">type</span>(torch.float16)</span><br><span class="line">get_tensor_info(<span class="string">&quot;float16_tensor&quot;</span>, float16_tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># More additional condition</span></span><br><span class="line">condition_tensor = torch.tensor([<span class="number">3.0</span>, <span class="number">6.0</span>, <span class="number">8.0</span>],</span><br><span class="line">                                dtype=torch.float32, <span class="comment"># Data type for this tensor</span></span><br><span class="line">                                device=torch.device(<span class="string">&quot;cuda:0&quot;</span>), <span class="comment"># Put this tensor to where ?</span></span><br><span class="line">                                requires_grad=<span class="literal">True</span>) <span class="comment"># Is Track the gradients with this tensor operation ?</span></span><br></pre></td></tr></table></figure>
 <p>This will output content similar to the following:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int_tensor Tensor belong 0 Dimension with Data Type torch.int64 On cpu</span><br><span class="line">and the Shape of int_tensor is torch.Size([])</span><br><span class="line">float32_tensor Tensor belong 0 Dimension with Data Type torch.float32 On cpu</span><br><span class="line">and the Shape of float32_tensor is torch.Size([])</span><br><span class="line">float16_tensor Tensor belong 0 Dimension with Data Type torch.float16 On cpu</span><br><span class="line">and the Shape of float16_tensor is torch.Size([])</span><br></pre></td></tr></table></figure>
-<h2 id="scalar-tensor">Scalar Tensor:</h2>
+<h2 id="scalar-tensor">Scalar Tensor</h2>
 <p><strong>What is the <code>Scalar Tensor</code>:</strong><br>
 A scalar is a zero-dimensional tensor representing a single numerical value (such as an integer or floating-point number) without spatial dimensions (ndim=0).<br>
 It constitutes one of the most fundamental units within PyTorch’s tensor system, enabling seamless operations with higher-dimensional tensors (vectors, matrices, etc.).</p>
@@ -231,7 +231,7 @@ It constitutes one of the most fundamental units within PyTorch’s tensor syste
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Scalar</span></span><br><span class="line">scalar = torch.tensor(<span class="number">7</span>)</span><br><span class="line"><span class="comment"># scalar.item() # get that tensor as the python data</span></span><br><span class="line">get_tensor_info(<span class="string">&quot;Scalar&quot;</span>, scalar)</span><br></pre></td></tr></table></figure>
 <p>This will output content similar to the following:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Scalar Tensor belong 0 Dimension with Data Type torch.int64 On cpu</span><br><span class="line">and the Shape of Scalar is torch.Size([])</span><br></pre></td></tr></table></figure>
-<h2 id="vector-tensor">Vector Tensor:</h2>
+<h2 id="vector-tensor">Vector Tensor</h2>
 <p><strong>What is the <code>Vector Tensor</code>:</strong><br>
 A Vector Tensor is a one-dimensional tensor (1-dimensional tensor) corresponding to the mathematical concept of a “vector”.<br>
 It consists of an ordered sequence of numerical values and possesses only one dimension (ndim=1).<br>
@@ -240,7 +240,7 @@ It serves as an extension of the scalar (zero-dimensional) and forms the foundat
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Vector</span></span><br><span class="line">vector = torch.tensor([<span class="number">1</span>, <span class="number">3</span>])</span><br><span class="line">get_tensor_info(<span class="string">&quot;Vector&quot;</span>, vector)</span><br></pre></td></tr></table></figure>
 <p>This will output content similar to the following:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Vector Tensor belong 1 Dimension with Data Type torch.int64 On cpu</span><br><span class="line">and the Shape of Vector is torch.Size([2])</span><br></pre></td></tr></table></figure>
-<h2 id="matrix-tensor">Matrix Tensor:</h2>
+<h2 id="matrix-tensor">Matrix Tensor</h2>
 <p><strong>What is the <code>Matrix Tensor</code>:</strong><br>
 A Matrix Tensor is a two-dimensional tensor corresponding to the mathematical concept of a “matrix”.<br>
 It is a two-dimensional numerical array composed of <strong>rows and columns</strong>, possessing a dimension of 2 (ndim=2).</p>
@@ -248,7 +248,7 @@ It is a two-dimensional numerical array composed of <strong>rows and columns</st
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Matrix</span></span><br><span class="line">matrix = torch.tensor([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">                       [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]])</span><br><span class="line">get_tensor_info(<span class="string">&quot;Matrix&quot;</span>, matrix)</span><br></pre></td></tr></table></figure>
 <p>This will output content similar to the following:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Matrix Tensor belong 2 Dimension with Data Type torch.int64 On cpu</span><br><span class="line">and the Shape of Matrix is torch.Size([2, 3])</span><br></pre></td></tr></table></figure>
-<h2 id="what-is-tensor-s-shape">What is Tensor’s Shape?</h2>
+<h2 id="what-is-the-tensor-s-shape">What is the Tensor’s Shape</h2>
 <p>We will give an E.g. Tensor:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Tensor</span></span><br><span class="line">tensor = torch.tensor([[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">                        [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],</span><br><span class="line">                        [<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]]])</span><br><span class="line">get_tensor_info(<span class="string">&quot;Tensor&quot;</span>, tensor)</span><br></pre></td></tr></table></figure>
 <p>This will output content similar to the following:</p>
@@ -261,14 +261,14 @@ It is represented as a tuple (of type torch.Size, a subclass of tuple) to descri
 2: the middle [] layer contain three [] item<br>
 3: the inner [] layer contain three element item.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">t_tensor = torch.tensor(</span><br><span class="line">[                     <span class="comment"># ← 第1层括号 → 第1维度（大小=1）</span></span><br><span class="line">  [                   <span class="comment"># ← 第2层括号 → 第2维度（大小=3）</span></span><br><span class="line">    [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],        <span class="comment"># ← 第3层括号 → 第3维度（大小=3）</span></span><br><span class="line">    [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>],</span><br><span class="line">    [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br><span class="line">  ]</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
-<h2 id="radom-tensor">Radom Tensor:</h2>
+<h2 id="radom-tensor">Radom Tensor</h2>
 <p><strong>Why Random Tensor:</strong><br>
 Fundamentally, random numbers are indispensable in scenarios such as model training, algorithm validation, and data augmentation.<br>
 Amidst the continuous updating of data, our ultimate objective is to arrive at a result that meets our requirements.<br>
 Random numbers provide us with a starting point, thereby ensuring that computations commence correctly.</p>
 <blockquote>
 <p>just like:<br>
-Start with random numbers -&gt; look at data -&gt; update random numbers -&gt; look at data …</p>
+Start with random numbers -&gt; look at data -&gt; update random numbers -&gt; look at data -&gt; … -&gt; Expected data</p>
 </blockquote>
 <p>E.g.:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">random_tensor = torch.randn(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(random_tensor)</span><br><span class="line">get_tensor_info(<span class="string">&quot;Random&quot;</span>, random_tensor)</span><br></pre></td></tr></table></figure>
