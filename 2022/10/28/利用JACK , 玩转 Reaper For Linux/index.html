@@ -46,7 +46,7 @@
         }
       </style>
     <link rel="alternate" href="/atom.xml" title="默茉的小屋" type="application/atom+xml">
-</head>
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
   </html>
 </html>
 
@@ -113,39 +113,60 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>笔者在这里用的 Linux 发行版是 <code>Arch Linux</code> , 并且使用 <a target="_blank" rel="noopener" href="https://www.reaper.fm/">Reaper 官网</a> 所提供的 <code>Linux x86_64</code> 版本。  </p>
-<p>不同的系统有不同的操作方式,但是大体逻辑是一样的。这篇Post的目的在于成功的利用Jack在Linux上运行daw。并且由于Reaper在linux有提供Build包,所以我们应当首选Reaper来作为我们要使用的Daw，这样会节省很多时间。  </p>
+  <p><img src="../images/posts/JACK-Reaper-For-Linux/Cover.png" alt="Cover"></p>
+<h1>写在前面</h1>
+<p>笔者在这里用的 Linux 发行版是 <code>Arch Linux</code> , 并且使用 <a target="_blank" rel="noopener" href="https://www.reaper.fm/">Reaper 官网</a> 所提供的 <code>Linux x86_64</code> 版本。</p>
+<p>不同的系统有不同的操作方式,但是大体逻辑是一样的。这篇Post的目的在于成功的利用Jack在Linux上运行daw。并且由于Reaper在linux有提供Build包,所以我们应当首选Reaper来作为我们要使用的Daw，这样会节省很多时间。</p>
 <span id="more"></span>
-
-<h1 id="1-安装，启动并设定JACK2"><a href="#1-安装，启动并设定JACK2" class="headerlink" title="1.安装，启动并设定JACK2"></a>1.安装，启动并设定<code>JACK2</code></h1><blockquote>
-<p>参考： <a target="_blank" rel="noopener" href="https://anclark.github.io/2020/12/08/Linux_Audio_Production/Make_Your_ArchLinux_An_Audio_Workstation_01/">把Arch Linux打造成音乐工作站</a>  </p>
+<h1>1.安装，启动并设定<code>JACK2</code></h1>
+<blockquote>
+<p>参考： <a target="_blank" rel="noopener" href="https://anclark.github.io/2020/12/08/Linux_Audio_Production/Make_Your_ArchLinux_An_Audio_Workstation_01/">把Arch Linux打造成音乐工作站</a></p>
 </blockquote>
 <p><code>JACK</code> 分为两个版本，分别是：</p>
 <ul>
 <li><code>JACK1</code> 由C编写，这是最初的版本</li>
 <li><code>JACK2</code> 由C++重写</li>
 </ul>
-<p><code>JACK2</code>相比<code>JACK1</code>来说，要方便配置很多，它不需要配置多的用户权限就可以使用，并且可以把<code>PulseAudio</code>,<code>ALSA</code> 桥接到 <code>JACK2</code> 。并且如果你之前在Windows体验过被ASIO4ALL所独占声卡的悲痛，那么<code>JACK1</code>也是如此。<br>所以我们果断选择<code>JACK2</code>。  </p>
-<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h2><h3 id="打开您的Terminal，首先安装JACK2主程序："><a href="#打开您的Terminal，首先安装JACK2主程序：" class="headerlink" title="打开您的Terminal，首先安装JACK2主程序："></a>打开您的Terminal，首先安装<code>JACK2</code>主程序：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -S jack2</span><br></pre></td></tr></table></figure>
-<h3 id="根据需求安装您需要桥接到JACK2的接口："><a href="#根据需求安装您需要桥接到JACK2的接口：" class="headerlink" title="根据需求安装您需要桥接到JACK2的接口："></a>根据需求安装您需要桥接到<code>JACK2</code>的接口：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -S pulseaudio-jack <span class="comment">#这是PulseAudio -&gt; JACK2</span></span><br><span class="line">$ sudo pacman -S zita-ajbridge   <span class="comment">#这是ALSA -&gt; JACK2</span></span><br></pre></td></tr></table></figure>
-<h3 id="安装Cadence来托管JACK2："><a href="#安装Cadence来托管JACK2：" class="headerlink" title="安装Cadence来托管JACK2："></a>安装<code>Cadence</code>来托管<code>JACK2</code>：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -S cadence</span><br></pre></td></tr></table></figure>
-<h3 id="添加您到audio用户组："><a href="#添加您到audio用户组：" class="headerlink" title="添加您到audio用户组："></a>添加您到<code>audio</code>用户组：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo usermod --append -G audio username  <span class="comment">#其中username是您的用户名</span></span><br></pre></td></tr></table></figure>
-<h3 id="Final-Step："><a href="#Final-Step：" class="headerlink" title="Final Step："></a>Final Step：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ reboot</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-启动并设定JACK2"><a href="#2-启动并设定JACK2" class="headerlink" title="2.启动并设定JACK2"></a>2.启动并设定<code>JACK2</code></h2><h3 id="启动-Cadence，通常来说，它安装到了您的桌面，只需要搜索就可以启动它。"><a href="#启动-Cadence，通常来说，它安装到了您的桌面，只需要搜索就可以启动它。" class="headerlink" title="启动 Cadence，通常来说，它安装到了您的桌面，只需要搜索就可以启动它。"></a>启动 <code>Cadence</code>，通常来说，它安装到了您的桌面，只需要搜索就可以启动它。</h3><p><img src="/images/posts/JACK-Reaper-For-Linux/1.png" alt="1.2.1" title="1.2.1"></br></p>
-<h3 id="点击-JACK-Bridges-中的-Bridge-Type-来设定桥接-（这里根据您所安装的接口来选择，我选择了ALSA-gt-JACK）："><a href="#点击-JACK-Bridges-中的-Bridge-Type-来设定桥接-（这里根据您所安装的接口来选择，我选择了ALSA-gt-JACK）：" class="headerlink" title="点击 JACK Bridges 中的 Bridge Type 来设定桥接 （这里根据您所安装的接口来选择，我选择了ALSA -&gt; JACK）："></a>点击 <code>JACK Bridges</code> 中的 <code>Bridge Type</code> 来设定桥接 （这里根据您所安装的接口来选择，我选择了<code>ALSA -&gt; JACK</code>）：</h3><p><img src="/images/posts/JACK-Reaper-For-Linux/2.png" alt="1.2.2" title="1.2.2"></br></p>
-<h3 id="点击-JACK-Status-中的-Configure-来配置桥接-（您设定的桥接是什么接口就选择什么Driver）："><a href="#点击-JACK-Status-中的-Configure-来配置桥接-（您设定的桥接是什么接口就选择什么Driver）：" class="headerlink" title="点击 JACK Status 中的 Configure 来配置桥接 （您设定的桥接是什么接口就选择什么Driver）："></a>点击 <code>JACK Status</code> 中的 <code>Configure</code> 来配置桥接 （您设定的桥接是什么接口就选择什么<code>Driver</code>）：</h3><p><img src="/images/posts/JACK-Reaper-For-Linux/3.png" alt="1.2.3" title="1.2.3"></br></p>
-<h3 id="点击OK-退回到主界面之后点击Start即可启动JACK2。（您也可以点击Auto-start-JACK-or-LADISH-at-login来登陆自动启动JACK2）："><a href="#点击OK-退回到主界面之后点击Start即可启动JACK2。（您也可以点击Auto-start-JACK-or-LADISH-at-login来登陆自动启动JACK2）：" class="headerlink" title="点击OK 退回到主界面之后点击Start即可启动JACK2。（您也可以点击Auto-start JACK or LADISH at login来登陆自动启动JACK2）："></a>点击<code>OK</code> 退回到主界面之后点击<code>Start</code>即可启动<code>JACK2</code>。（您也可以点击<code>Auto-start JACK or LADISH at login</code>来登陆自动启动<code>JACK2</code>）：</h3><p><img src="/images/posts/JACK-Reaper-For-Linux/4.png" alt="1.2.4" title="1.2.4"></br><br>看到<code>JACK Status</code> 中的 <code>Server Status</code> 是<code>Start</code>就说明 <code>Cadence</code>已经托管了<code>JACK2</code>并且<code>JACK2</code>也桥接了我们的音频设备。（后续您就可以为<code>Cadence</code>添加自启动项，这样一开机音频驱动就会自动桥接到JACK2啦）</p>
-<h1 id="2-安装，启动并配置Reaper"><a href="#2-安装，启动并配置Reaper" class="headerlink" title="2.安装，启动并配置Reaper"></a>2.安装，启动并配置<code>Reaper</code></h1><h2 id="1-安装-1"><a href="#1-安装-1" class="headerlink" title="1.安装"></a>1.安装</h2><h3 id="首先去-Reaper的官网-然后点击DOWNLOAD-REAPER-来下载Reaper："><a href="#首先去-Reaper的官网-然后点击DOWNLOAD-REAPER-来下载Reaper：" class="headerlink" title="首先去 Reaper的官网 然后点击DOWNLOAD REAPER 来下载Reaper："></a>首先去 <a target="_blank" rel="noopener" href="https://www.reaper.fm/">Reaper的官网</a> 然后点击<code>DOWNLOAD REAPER</code> 来下载<code>Reaper</code>：</h3><blockquote>
-<p>此处根据您的系统架构选择版本（<code>一般选择Linux x86_64</code>）：  </p>
+<p><code>JACK2</code>相比<code>JACK1</code>来说，要方便配置很多，它不需要配置多的用户权限就可以使用，并且可以把<code>PulseAudio</code>,<code>ALSA</code> 桥接到 <code>JACK2</code> 。并且如果你之前在Windows体验过被ASIO4ALL所独占声卡的悲痛，那么<code>JACK1</code>也是如此。<br>
+所以我们果断选择<code>JACK2</code>。</p>
+<h2 id="1-安装">1.安装</h2>
+<h3 id="打开您的terminal-首先安装jack2主程序：">打开您的Terminal，首先安装<code>JACK2</code>主程序：</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -S jack2</span><br></pre></td></tr></table></figure>
+<h3 id="根据需求安装您需要桥接到jack2的接口：">根据需求安装您需要桥接到<code>JACK2</code>的接口：</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -S pulseaudio-jack <span class="comment">#这是PulseAudio -&gt; JACK2</span></span><br><span class="line">$ sudo pacman -S zita-ajbridge   <span class="comment">#这是ALSA -&gt; JACK2</span></span><br></pre></td></tr></table></figure>
+<h3 id="安装cadence来托管jack2：">安装<code>Cadence</code>来托管<code>JACK2</code>：</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -S cadence</span><br></pre></td></tr></table></figure>
+<h3 id="添加您到audio用户组：">添加您到<code>audio</code>用户组：</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo usermod --append -G audio username  <span class="comment">#其中username是您的用户名</span></span><br></pre></td></tr></table></figure>
+<h3 id="final-step：">Final Step：</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ reboot</span><br></pre></td></tr></table></figure>
+<h2 id="2-启动并设定jack2">2.启动并设定<code>JACK2</code></h2>
+<h3 id="启动-cadence-通常来说-它安装到了您的桌面-只需要搜索就可以启动它">启动 <code>Cadence</code>，通常来说，它安装到了您的桌面，只需要搜索就可以启动它。</h3>
+<p><img src="/images/posts/JACK-Reaper-For-Linux/1.png" alt="1.2.1" title="1.2.1"></br></p>
+<h3 id="点击-jack-bridges-中的-bridge-type-来设定桥接-这里根据您所安装的接口来选择-我选择了alsa-jack-：">点击 <code>JACK Bridges</code> 中的 <code>Bridge Type</code> 来设定桥接 （这里根据您所安装的接口来选择，我选择了<code>ALSA -&gt; JACK</code>）：</h3>
+<p><img src="/images/posts/JACK-Reaper-For-Linux/2.png" alt="1.2.2" title="1.2.2"></br></p>
+<h3 id="点击-jack-status-中的-configure-来配置桥接-您设定的桥接是什么接口就选择什么driver-：">点击 <code>JACK Status</code> 中的 <code>Configure</code> 来配置桥接 （您设定的桥接是什么接口就选择什么<code>Driver</code>）：</h3>
+<p><img src="/images/posts/JACK-Reaper-For-Linux/3.png" alt="1.2.3" title="1.2.3"></br></p>
+<h3 id="点击ok-退回到主界面之后点击start即可启动jack2-您也可以点击auto-start-jack-or-ladish-at-login来登陆自动启动jack2-：">点击<code>OK</code> 退回到主界面之后点击<code>Start</code>即可启动<code>JACK2</code>。（您也可以点击<code>Auto-start JACK or LADISH at login</code>来登陆自动启动<code>JACK2</code>）：</h3>
+<p><img src="/images/posts/JACK-Reaper-For-Linux/4.png" alt="1.2.4" title="1.2.4"></br><br>
+看到<code>JACK Status</code> 中的 <code>Server Status</code> 是<code>Start</code>就说明 <code>Cadence</code>已经托管了<code>JACK2</code>并且<code>JACK2</code>也桥接了我们的音频设备。（后续您就可以为<code>Cadence</code>添加自启动项，这样一开机音频驱动就会自动桥接到JACK2啦）</p>
+<h1>2.安装，启动并配置<code>Reaper</code></h1>
+<h2 id="1-安装">1.安装</h2>
+<h3 id="首先去-reaper的官网-然后点击download-reaper-来下载reaper：">首先去 <a target="_blank" rel="noopener" href="https://www.reaper.fm/">Reaper的官网</a> 然后点击<code>DOWNLOAD REAPER</code> 来下载<code>Reaper</code>：</h3>
+<blockquote>
+<p>此处根据您的系统架构选择版本（<code>一般选择Linux x86_64</code>）：</p>
 </blockquote>
-<h3 id="解压-进入主程序目录："><a href="#解压-进入主程序目录：" class="headerlink" title="解压,进入主程序目录："></a>解压,进入主程序目录：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xvf reaper669_linux_x86_64.tar.xz &amp;&amp; <span class="built_in">rm</span> reaper669_linux_x86_64.tar.xz &amp;&amp; <span class="built_in">cd</span> reaper669_linux_x86_64  <span class="comment">#注意，这里669根据版本号来自行更改哦</span></span><br></pre></td></tr></table></figure>
-<h3 id="在当前目录执行安装脚本："><a href="#在当前目录执行安装脚本：" class="headerlink" title="在当前目录执行安装脚本："></a>在当前目录执行安装脚本：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">chmod</span> +x install-reaper.sh</span><br><span class="line">$ ./install-reaper.sh  </span><br></pre></td></tr></table></figure>
+<h3 id="解压-进入主程序目录：">解压,进入主程序目录：</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xvf reaper669_linux_x86_64.tar.xz &amp;&amp; <span class="built_in">rm</span> reaper669_linux_x86_64.tar.xz &amp;&amp; <span class="built_in">cd</span> reaper669_linux_x86_64  <span class="comment">#注意，这里669根据版本号来自行更改哦</span></span><br></pre></td></tr></table></figure>
+<h3 id="在当前目录执行安装脚本：">在当前目录执行安装脚本：</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">chmod</span> +x install-reaper.sh</span><br><span class="line">$ ./install-reaper.sh  </span><br></pre></td></tr></table></figure>
 <p>输入<code>I</code>，之后<code>Reaper</code>会被安装到<code>～/opt/REAPER/</code>目录下</p>
-<h3 id="软连接到-usr-bin"><a href="#软连接到-usr-bin" class="headerlink" title="软连接到/usr/bin"></a>软连接到<code>/usr/bin</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo <span class="built_in">ln</span> -s /home/username/opt/REAPER/reaper /usr/bin/reaper  <span class="comment">#其中username是您的用户名</span></span><br></pre></td></tr></table></figure>
-<h3 id="写Desktop-File以便于从桌面启动："><a href="#写Desktop-File以便于从桌面启动：" class="headerlink" title="写Desktop File以便于从桌面启动："></a>写<code>Desktop File</code>以便于从桌面启动：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /usr/share/applications/reaper.desktop</span><br></pre></td></tr></table></figure>
+<h3 id="软连接到-usr-bin">软连接到<code>/usr/bin</code></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo <span class="built_in">ln</span> -s /home/username/opt/REAPER/reaper /usr/bin/reaper  <span class="comment">#其中username是您的用户名</span></span><br></pre></td></tr></table></figure>
+<h3 id="写desktop-file以便于从桌面启动：">写<code>Desktop File</code>以便于从桌面启动：</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /usr/share/applications/reaper.desktop</span><br></pre></td></tr></table></figure>
 <p>按<code>I</code>进入插入模式，输入：</p>
-<pre><code class="bash">[Desktop Entry]  
+<pre><code class="language-bash">[Desktop Entry]  
 Name=Reaper  
 Comment=A Complete Digital Audio Production Application For Linux  
 Exec=/usr/bin/reaper  
@@ -154,19 +175,27 @@ Terminal=false
 Type=Application  
 Categories=Music;
 </code></pre>
-<h3 id="现在您搜索Reaper应该就有匹配项了（如果没有，您可能需要等一小会儿）"><a href="#现在您搜索Reaper应该就有匹配项了（如果没有，您可能需要等一小会儿）" class="headerlink" title="现在您搜索Reaper应该就有匹配项了（如果没有，您可能需要等一小会儿）"></a>现在您搜索<code>Reaper</code>应该就有匹配项了（如果没有，您可能需要等一小会儿）</h3><h2 id="2-启动并配置Reaper"><a href="#2-启动并配置Reaper" class="headerlink" title="2.启动并配置Reaper"></a>2.启动并配置<code>Reaper</code></h2><h3 id="打开Reaper，无论您是从命令行启动，还是桌面启动"><a href="#打开Reaper，无论您是从命令行启动，还是桌面启动" class="headerlink" title="打开Reaper，无论您是从命令行启动，还是桌面启动"></a>打开<code>Reaper</code>，无论您是从命令行启动，还是桌面启动</h3><h3 id="等待几秒的许可证要求窗口，然后点击Still-Evaluating"><a href="#等待几秒的许可证要求窗口，然后点击Still-Evaluating" class="headerlink" title="等待几秒的许可证要求窗口，然后点击Still Evaluating"></a>等待几秒的许可证要求窗口，然后点击<code>Still Evaluating</code></h3><p><img src="/images/posts/JACK-Reaper-For-Linux/5.png" alt="2.2.1" title="2.2.1"></br></p>
+<h3 id="现在您搜索reaper应该就有匹配项了-如果没有-您可能需要等一小会儿">现在您搜索<code>Reaper</code>应该就有匹配项了（如果没有，您可能需要等一小会儿）</h3>
+<h2 id="2-启动并配置reaper">2.启动并配置<code>Reaper</code></h2>
+<h3 id="打开reaper-无论您是从命令行启动-还是桌面启动">打开<code>Reaper</code>，无论您是从命令行启动，还是桌面启动</h3>
+<h3 id="等待几秒的许可证要求窗口-然后点击still-evaluating">等待几秒的许可证要求窗口，然后点击<code>Still Evaluating</code></h3>
+<p><img src="/images/posts/JACK-Reaper-For-Linux/5.png" alt="2.2.1" title="2.2.1"></br></p>
 <blockquote>
 <p><code>Reaper</code>是一款轻量强大的DAW，如果您觉得它还不错，并且您已经在Windows使用Reaper许久，却还没有注册license的话，请支持制作商<code>Cockos</code>，买一份<code>Reaper</code>的License吧！</p>
 </blockquote>
-<h3 id="点击Options-gt-Preferences-gt-Audio-gt-Device，选择Audio-system-gt-JACK，然后Apply即可。"><a href="#点击Options-gt-Preferences-gt-Audio-gt-Device，选择Audio-system-gt-JACK，然后Apply即可。" class="headerlink" title="点击Options-&gt;Preferences-&gt;Audio-&gt;Device，选择Audio system-&gt;JACK，然后Apply即可。"></a>点击<code>Options-&gt;Preferences-&gt;Audio-&gt;Device</code>，选择<code>Audio system</code>-&gt;<code>JACK</code>，然后<code>Apply</code>即可。</h3><p><img src="/images/posts/JACK-Reaper-For-Linux/6.png" alt="2.2.2" title="2.2.3"></br></p>
-<h3 id="恭喜您，配置完成了！现在开始Reaper已经以JACK2为音频驱动，为您工作了！"><a href="#恭喜您，配置完成了！现在开始Reaper已经以JACK2为音频驱动，为您工作了！" class="headerlink" title="恭喜您，配置完成了！现在开始Reaper已经以JACK2为音频驱动，为您工作了！"></a>恭喜您，配置完成了！现在开始<code>Reaper</code>已经以<code>JACK2</code>为音频驱动，为您工作了！</h3><h1 id="Wait…-Somethings-is-Wrong…"><a href="#Wait…-Somethings-is-Wrong…" class="headerlink" title="Wait…. Somethings is Wrong…"></a>Wait…. Somethings is Wrong…</h1><p>你有没有发现，我在封面展示的那张图中，显示了中文，但是当您兴冲冲的开始自己的Linux音乐之路的时候，发现您的输入中文或者是其它字符时却出现了方块！</p>
-<h2 id="这个问题的解决方法来自Cockos-REAPER-中文群的大佬Tee"><a href="#这个问题的解决方法来自Cockos-REAPER-中文群的大佬Tee" class="headerlink" title="这个问题的解决方法来自Cockos REAPER 中文群的大佬Tee"></a>这个问题的解决方法来自<code>Cockos REAPER 中文群</code>的大佬<a target="_blank" rel="noopener" href="https://lado.me/">Tee</a></h2><blockquote>
+<h3 id="点击options-preferences-audio-device-选择audio-system-jack-然后apply即可">点击<code>Options-&gt;Preferences-&gt;Audio-&gt;Device</code>，选择<code>Audio system</code>-&gt;<code>JACK</code>，然后<code>Apply</code>即可。</h3>
+<p><img src="/images/posts/JACK-Reaper-For-Linux/6.png" alt="2.2.2" title="2.2.3"></br></p>
+<h3 id="恭喜您-配置完成了-现在开始reaper已经以jack2为音频驱动-为您工作了">恭喜您，配置完成了！现在开始<code>Reaper</code>已经以<code>JACK2</code>为音频驱动，为您工作了！</h3>
+<h1>Wait… Somethings is Wrong…</h1>
+<p>你有没有发现，我在封面展示的那张图中，显示了中文，但是当您兴冲冲的开始自己的Linux音乐之路的时候，发现您的输入中文或者是其它字符时却出现了方块！</p>
+<h2 id="这个问题的解决方法来自cockos-reaper-中文群的大佬tee">这个问题的解决方法来自<code>Cockos REAPER 中文群</code>的大佬<a target="_blank" rel="noopener" href="https://lado.me/">Tee</a></h2>
+<blockquote>
 <p>原帖地址是这里：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/364000143">如何在Linux REAPER里显示中文</a></p>
 </blockquote>
-<pre><code class="bash">sudo vim /etc/fonts/fonts.conf
+<pre><code class="language-bash">sudo vim /etc/fonts/fonts.conf
 </code></pre>
-<p>按下<code>I</code>，插入以下内容：  </p>
-<pre><code class="bash">    &lt;!-- REAPER fonts patch --&gt;
+<p>按下<code>I</code>，插入以下内容：</p>
+<pre><code class="language-bash">    &lt;!-- REAPER fonts patch --&gt;
     &lt;match target=&quot;pattern&quot;&gt;
       &lt;test name=&quot;prgname&quot;&gt;
        &lt;string&gt;reaper&lt;/string&gt;
@@ -177,7 +206,8 @@ Categories=Music;
     &lt;/match&gt;  
 </code></pre>
 <p>注意插入的位置，位于 <strong>fontconfig标签之间。</strong> 这里涉及系统文件，请务必小心。</p>
-<h3 id="现在输入中文，它的显示就会正常了！"><a href="#现在输入中文，它的显示就会正常了！" class="headerlink" title="现在输入中文，它的显示就会正常了！"></a>现在输入中文，它的显示就会正常了！</h3><p align="right">在最后的最后，感恩</p>
+<h3 id="现在输入中文-它的显示就会正常了">现在输入中文，它的显示就会正常了！</h3>
+<p align="right">在最后的最后，感恩</p>
 <p align="right">Romi Brooks♥</p> 
       <!-- reward -->
       
@@ -639,7 +669,9 @@ Categories=Music;
 </script>
 
 <!-- Katex -->
-
+ 
+    
+ 
 <!-- busuanzi  -->
  
 <script src="/js/busuanzi-2.3.pure.min.js"></script>

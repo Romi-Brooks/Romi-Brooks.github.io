@@ -46,7 +46,7 @@
         }
       </style>
     <link rel="alternate" href="/atom.xml" title="默茉的小屋" type="application/atom+xml">
-</head>
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
   </html>
 </html>
 
@@ -89,7 +89,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">928</span>
+            <span class="post-count">931</span>
         </span>
     </span>
 
@@ -113,47 +113,54 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/cover.png" alt="封面" title="Cover">  </p>
+  <p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/cover.png" alt="封面" title="Cover"></p>
 <audio id="audio" controls="" preload="none">
     <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBass.mp3">
 </audio>
-
-<p><em>（音乐来自：FL Studio中DemoSong内Asher Postman-Future Bass）</em>  </p>
+<p><em>（音乐来自：FL Studio中DemoSong内Asher Postman-Future Bass）</em></p>
 <p>在了解这之前，您可以点击上方的“播放按钮”，来听一首歌，这首歌用到了我所谓<code>控制 LFO Speed</code>的技巧 (在听之前请注意音量)</p>
 <span id="more"></span>
-<h1 id="什么是LFO-Speed"><a href="#什么是LFO-Speed" class="headerlink" title="什么是LFO Speed?"></a>什么是<code>LFO Speed</code>?</h1><p>LFO（Low Frequency Oscillator，低频振荡器）是一种产生周期性信号的调制源，其频率通常低于 20Hz（人类听觉下限），因此无法直接被听到，但可以控制其他参数的变化。例如：  </p>
-<p>调制音量：通过周期性增减振幅，产生类似 “脉冲” 的抽吸效果（即震音，Tremolo）。<br>调制滤波器截止频率：通过周期性开合滤波器，使声音在高频和低频之间切换，形成 “摇晃” 的抽吸感（如 Dubstep 贝斯）。  </p>
-<p>而LFO Speed 决定了振荡的频率，直接影响抽吸效果的节奏。  </p>
-<h1 id="为什么要控制-LFO-Speed"><a href="#为什么要控制-LFO-Speed" class="headerlink" title="为什么要控制 LFO Speed?"></a>为什么要<code>控制 LFO Speed</code>?</h1><p>在音乐制作中，<strong>控制LFO Speed（低频振荡器速度）</strong> 是创造动态抽吸效果的核心技巧。<br>这种效果通过周期性调制声音参数（如音量、滤波器截止频率），使音频产生类似 “呼吸” 或 “脉冲” 的节奏性波动，常见于电子音乐、Future Bass、Dubstep 等风格中。<br>通过灵活运用 LFO Speed 和波形设计，制作人可以为声音注入生命般的动态变化。从微妙的音色润色到夸张的特效设计，是一个相对高级的声设技巧。</p>
-<h1 id="它的效果具体是如何"><a href="#它的效果具体是如何" class="headerlink" title="它的效果具体是如何?"></a>它的效果具体是如何?</h1><p>这是上面那首Demo Song中使用此技巧的一小段 (在听之前请注意音量):  </p>
+<h1>什么是<code>LFO Speed</code>?</h1>
+<p>LFO（Low Frequency Oscillator，低频振荡器）是一种产生周期性信号的调制源，其频率通常低于 20Hz（人类听觉下限），因此无法直接被听到，但可以控制其他参数的变化。例如：</p>
+<p>调制音量：通过周期性增减振幅，产生类似 “脉冲” 的抽吸效果（即震音，Tremolo）。<br>
+调制滤波器截止频率：通过周期性开合滤波器，使声音在高频和低频之间切换，形成 “摇晃” 的抽吸感（如 Dubstep 贝斯）。</p>
+<p>而LFO Speed 决定了振荡的频率，直接影响抽吸效果的节奏。</p>
+<h1>为什么要<code>控制 LFO Speed</code>?</h1>
+<p>在音乐制作中，<strong>控制LFO Speed（低频振荡器速度）</strong> 是创造动态抽吸效果的核心技巧。<br>
+这种效果通过周期性调制声音参数（如音量、滤波器截止频率），使音频产生类似 “呼吸” 或 “脉冲” 的节奏性波动，常见于电子音乐、Future Bass、Dubstep 等风格中。<br>
+通过灵活运用 LFO Speed 和波形设计，制作人可以为声音注入生命般的动态变化。从微妙的音色润色到夸张的特效设计，是一个相对高级的声设技巧。</p>
+<h1>它的效果具体是如何?</h1>
+<p>这是上面那首Demo Song中使用此技巧的一小段 (在听之前请注意音量):</p>
 <audio id="audio" controls="" preload="none">
     <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassLFO2.mp3">
 </audio>
-
 <p>这是去掉鼓点等干扰的效果:</p>
 <audio id="audio" controls="" preload="none">
     <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassNDLFO2.mp3">
 </audio>
-
 <p>其实还有一次，是在这里:</p>
 <audio id="audio" controls="" preload="none">
     <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassLFO1.mp3">
 </audio>
-
 <p>这是去掉鼓点等干扰的效果:</p>
 <audio id="audio" controls="" preload="none">
     <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassNDLFO1.mp3">
 </audio>
-
-
-<h1 id="我是如何发现的"><a href="#我是如何发现的" class="headerlink" title="我是如何发现的?"></a>我是如何发现的?</h1><p>其实只要听的歌曲足够多，会发现这种效果用到的风格很多，哪怕是最基础的一个<code>crash下降</code>或是<code>Drop Melody</code>等很多效果，都能用这个技巧营造出很多听众的<code>爽点</code>。<br>当然，具体操作的原理以及方式我是通过开头的那首Demo Song Project学到的： </p>
+<h1>我是如何发现的?</h1>
+<p>其实只要听的歌曲足够多，会发现这种效果用到的风格很多，哪怕是最基础的一个<code>crash下降</code>或是<code>Drop Melody</code>等很多效果，都能用这个技巧营造出很多听众的<code>爽点</code>。<br>
+当然，具体操作的原理以及方式我是通过开头的那首Demo Song Project学到的：</p>
 <p>来自 Asher Postman 的 Future Bass，我的fb启蒙制作者，包括其中的一种SideChain方式也是从这个工程学的。</p>
 <blockquote>
-<p>Title: Future Bass (Stock Plugins Only)<br>Author: <a target="_blank" rel="noopener" href="https://soundcloud.com/asher-postman">Asher Postman</a><br>Copyright © 2018 Asher Postman.</p>
+<p>Title: Future Bass (Stock Plugins Only)<br>
+Author: <a target="_blank" rel="noopener" href="https://soundcloud.com/asher-postman">Asher Postman</a><br>
+Copyright © 2018 Asher Postman.</p>
 </blockquote>
-<h2 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现?"></a>如何实现?</h2><p>  来看两张图：<br><img src="/images/posts/FL-Studio-Tips-LFO-Speed/1.gif" alt="1" title="1"><br><img src="/images/posts/FL-Studio-Tips-LFO-Speed/2.gif" alt="2" title="2"></p>
-<p>  它们都有一个共性：<strong>其中的一个AMC（Automation Clips）均为”LFO Speed”，伴随着LFO Speed的降低，它们所控制的LFO频率也随之降低。</strong></p>
-<p>  上面说，“它们所控制的LFO频率”，那么我们首先得创作出一个LFO的AMC，这里FL Studio给大家了一种方法：</p>
+<h2 id="如何实现">如何实现?</h2>
+<p>来看两张图：<br>
+<img src="/images/posts/FL-Studio-Tips-LFO-Speed/1.gif" alt="1" title="1"><br>
+<img src="/images/posts/FL-Studio-Tips-LFO-Speed/2.gif" alt="2" title="2"></p>
+<p>它们都有一个共性：<strong>其中的一个AMC（Automation Clips）均为&quot;LFO Speed&quot;，伴随着LFO Speed的降低，它们所控制的LFO频率也随之降低。</strong></p>
+<p>上面说，“它们所控制的LFO频率”，那么我们首先得创作出一个LFO的AMC，这里FL Studio给大家了一种方法：</p>
 <pre><code>  1.在您要实施此效果的对应旋钮上新建一个 AMC (Create automation clip)
   2.在 View Playlist 找到它，单击它名字旁边的AMC图标
   3.点击Channel Settings
@@ -163,17 +170,21 @@
   4.在您听感的基础上，调节LFO speed AMC使其满足您的要求
   5.完成
 </code></pre>
-<h1 id="实践-amp-展示"><a href="#实践-amp-展示" class="headerlink" title="实践&amp;展示"></a>实践&amp;展示</h1><h2 id="一，做FutureBass的WobbleChords（无LFO-Speed-AMC，当然我们也可以加）："><a href="#一，做FutureBass的WobbleChords（无LFO-Speed-AMC，当然我们也可以加）：" class="headerlink" title="一，做FutureBass的WobbleChords（无LFO Speed AMC，当然我们也可以加）："></a>一，做FutureBass的WobbleChords（无LFO Speed AMC，当然我们也可以加）：</h2><p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/1.png" alt="1" title="1"></p>
-<h2 id="二，做Hippop的MelodySFX："><a href="#二，做Hippop的MelodySFX：" class="headerlink" title="二，做Hippop的MelodySFX："></a>二，做Hippop的MelodySFX：</h2><p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/2.png" alt="2" title="2"></p>
+<h1>实践&amp;展示</h1>
+<h2 id="一-做futurebass的wobblechords-无lfo-speed-amc-当然我们也可以加-：">一，做FutureBass的WobbleChords（无LFO Speed AMC，当然我们也可以加）：</h2>
+<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/1.png" alt="1" title="1"></p>
+<h2 id="二-做hippop的melodysfx：">二，做Hippop的MelodySFX：</h2>
+<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/2.png" alt="2" title="2"></p>
 <blockquote>
 <p>Tips：在这里，我们可以用Wave，Pulse等AMC Point Mode，右键AMC节点选择对应的Mode即可。</p>
 </blockquote>
-<h1 id="In-the-End"><a href="#In-the-End" class="headerlink" title="In the End"></a>In the End</h1><p>为了显得最后的结束不算很唐突，我用了<a target="_blank" rel="noopener" href="https://www.youtube.com/user/OfficialVirtualRiot">Virtual Riot</a> 的采样包，堆叠了一个Melodic Dubstep.<br>just for fun，and thank u VR</p>
+<h1>In the End</h1>
+<p>为了显得最后的结束不算很唐突，我用了<a target="_blank" rel="noopener" href="https://www.youtube.com/user/OfficialVirtualRiot">Virtual Riot</a> 的采样包，堆叠了一个Melodic Dubstep.<br>
+just for fun，and thank u VR</p>
 <p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/3.png" alt="3" title="3"></br></p>
 <audio id="audio" controls="" preload="none">
     <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/Md.mp3">
 </audio>
-
 <p align="right">在最后的最后，感恩</p>
 <p align="right">Romi Brooks♥</p> 
       <!-- reward -->
@@ -636,7 +647,9 @@
 </script>
 
 <!-- Katex -->
-
+ 
+    
+ 
 <!-- busuanzi  -->
  
 <script src="/js/busuanzi-2.3.pure.min.js"></script>

@@ -6,7 +6,7 @@
   <link href="https://blog.romichan.icu/atom.xml" rel="self"/>
   
   <link href="https://blog.romichan.icu/"/>
-  <updated>2025-11-07T09:49:37.887Z</updated>
+  <updated>2025-11-07T15:49:32.725Z</updated>
   <id>https://blog.romichan.icu/</id>
   
   <author>
@@ -21,17 +21,18 @@
     <link href="https://blog.romichan.icu/2025/11/07/Pytorch%E5%BC%A0%E9%87%8F%E8%AE%A1%E7%AE%97/"/>
     <id>https://blog.romichan.icu/2025/11/07/Pytorch%E5%BC%A0%E9%87%8F%E8%AE%A1%E7%AE%97/</id>
     <published>2025-11-06T16:00:00.000Z</published>
-    <updated>2025-11-07T09:49:37.887Z</updated>
+    <updated>2025-11-07T15:49:32.725Z</updated>
     
     
-    <summary type="html">&lt;h1 id=&quot;什么是-Tensor&quot;&gt;&lt;a href=&quot;#什么是-Tensor&quot; class=&quot;headerlink&quot; title=&quot;什么是 Tensor?&quot;&gt;&lt;/a&gt;什么是 Tensor?&lt;/h1&gt;&lt;p&gt;张量（Tensor）是物理的语言，在力学和广义相对论等领域发挥着不可替代的作用。但是在深度学习中，张量是基础数据结构，可以看作是多维数据容器。  &lt;/p&gt;
+    <summary type="html">&lt;h1&gt;什么是 Tensor?&lt;/h1&gt;
+&lt;p&gt;张量（Tensor）是物理的语言，在力学和广义相对论等领域发挥着不可替代的作用。但是在深度学习中，张量是基础数据结构，可以看作是多维数据容器。&lt;/p&gt;
 &lt;p&gt;现代深度学习框架（如 TensorFlow、PyTorch）的核心数据结构就是张量，所有模型运算（卷积、全连接、注意力机制）本质上都是张量操作：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;卷积神经网络（CNN）通过二维张量卷积提取图像局部特征。  &lt;/li&gt;
-&lt;li&gt;Transformer 模型利用张量的多头注意力机制处理序列数据的长距离依赖。  &lt;/li&gt;
+&lt;li&gt;卷积神经网络（CNN）通过二维张量卷积提取图像局部特征。&lt;/li&gt;
+&lt;li&gt;Transformer 模型利用张量的多头注意力机制处理序列数据的长距离依赖。&lt;/li&gt;
 &lt;li&gt;张量分解（如 CP 分解、Tucker 分解）可用于模型压缩、特征降维，解决高维数据的 “维度灾难” 问题。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;学习张量计算能帮助理解深度学习的底层数学逻辑，而非仅停留在 API 调用层面。  &lt;/p&gt;
+&lt;p&gt;学习张量计算能帮助理解深度学习的底层数学逻辑，而非仅停留在 API 调用层面。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Attention: 本文假设读者拥有使用Python的经验，不对基础语法进行解释, 在教学部分使用英文教学。&lt;/p&gt;
 &lt;/blockquote&gt;</summary>
@@ -62,16 +63,10 @@
     <link href="https://blog.romichan.icu/2025/11/04/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BDataAnalysis/"/>
     <id>https://blog.romichan.icu/2025/11/04/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BDataAnalysis/</id>
     <published>2025-11-03T16:00:00.000Z</published>
-    <updated>2025-11-07T09:25:43.084Z</updated>
+    <updated>2025-11-07T15:58:24.864Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;span</summary>
-        
-      
+    <summary type="html">&lt;p&gt;注意，不是你卡了，是我还没写任何的内容 :(&lt;/p&gt;</summary>
     
     
     
@@ -98,8 +93,9 @@
     <updated>2025-11-04T10:12:59.575Z</updated>
     
     
-    <summary type="html">&lt;h1 id=&quot;什么是Vue&quot;&gt;&lt;a href=&quot;#什么是Vue&quot; class=&quot;headerlink&quot; title=&quot;什么是Vue?&quot;&gt;&lt;/a&gt;什么是Vue?&lt;/h1&gt;&lt;p&gt;Vue 是一套用于构建用户界面的渐进式 JavaScript 框架，其特点：易学易用，性能出色，适用场景丰富的 Web 前端框架。  &lt;/p&gt;
-&lt;p&gt;Vue基于 Nodejs，目前 Vue 的最新稳定版本是 Vue 3，引入了 Composition API、TypeScript 支持等新特性。  &lt;/p&gt;
+    <summary type="html">&lt;h1&gt;什么是Vue?&lt;/h1&gt;
+&lt;p&gt;Vue 是一套用于构建用户界面的渐进式 JavaScript 框架，其特点：易学易用，性能出色，适用场景丰富的 Web 前端框架。&lt;/p&gt;
+&lt;p&gt;Vue基于 Nodejs，目前 Vue 的最新稳定版本是 Vue 3，引入了 Composition API、TypeScript 支持等新特性。&lt;/p&gt;
 &lt;p&gt;本文基于Vue3，记录从零开始学习Vue3框架的历程。&lt;/p&gt;</summary>
     
     
@@ -142,9 +138,9 @@
     
     <category term="Archlinux" scheme="https://blog.romichan.icu/tags/Archlinux/"/>
     
-    <category term="Nvidia" scheme="https://blog.romichan.icu/tags/Nvidia/"/>
-    
     <category term="Installation" scheme="https://blog.romichan.icu/tags/Installation/"/>
+    
+    <category term="Nvidia" scheme="https://blog.romichan.icu/tags/Nvidia/"/>
     
   </entry>
   
@@ -185,7 +181,8 @@
     
     <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/posts/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/Cover.png&quot; alt=&quot;封面&quot; title=&quot;Cover&quot;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;这个问题已经有很多人出现了,github也有人提出了issues&lt;br&gt;&lt;a href=&quot;https://github.com/coder/code-server/issues/4443&quot;&gt;https://github.com/coder/code-server/issues/4443&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;这个问题已经有很多人出现了,github也有人提出了issues&lt;br&gt;
+&lt;a href=&quot;https://github.com/coder/code-server/issues/4443&quot;&gt;https://github.com/coder/code-server/issues/4443&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;</summary>
     
     
@@ -195,9 +192,9 @@
     
     <category term="Nginx" scheme="https://blog.romichan.icu/tags/Nginx/"/>
     
-    <category term="Website" scheme="https://blog.romichan.icu/tags/Website/"/>
-    
     <category term="WebDev" scheme="https://blog.romichan.icu/tags/WebDev/"/>
+    
+    <category term="Website" scheme="https://blog.romichan.icu/tags/Website/"/>
     
     <category term="code-server" scheme="https://blog.romichan.icu/tags/code-server/"/>
     
@@ -212,9 +209,9 @@
     
     
     <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/posts/Navidrome-U-Own-Music-Player/cover.png&quot; alt=&quot;封面&quot; title=&quot;Cover&quot;&gt;&lt;/p&gt;
-&lt;p&gt;最近在上传我的本地歌曲库的时候,发现过于麻烦,(筛选,打包,上传.如果我需要修改某个文件的时候还需要再下载回来,然后解压,再修改.重复这个步骤)于是想到了托管到VPS,并且实现流媒体播放.那么这还是蛮不错的!  &lt;/p&gt;
+&lt;p&gt;最近在上传我的本地歌曲库的时候,发现过于麻烦,(筛选,打包,上传.如果我需要修改某个文件的时候还需要再下载回来,然后解压,再修改.重复这个步骤)于是想到了托管到VPS,并且实现流媒体播放.那么这还是蛮不错的!&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;PS:这个很早就打算做了,只不过懒,就一直拖下去了(因为早期下载歌曲的时候过于偷懒导致过50%的歌曲的metadata都出现了不匹配的问题…..)  &lt;/p&gt;
+&lt;p&gt;PS:这个很早就打算做了,只不过懒,就一直拖下去了(因为早期下载歌曲的时候过于偷懒导致过50%的歌曲的metadata都出现了不匹配的问题…)&lt;/p&gt;
 &lt;/blockquote&gt;</summary>
     
     
@@ -224,9 +221,9 @@
     
     <category term="Nginx" scheme="https://blog.romichan.icu/tags/Nginx/"/>
     
-    <category term="Music" scheme="https://blog.romichan.icu/tags/Music/"/>
-    
     <category term="Website" scheme="https://blog.romichan.icu/tags/Website/"/>
+    
+    <category term="Music" scheme="https://blog.romichan.icu/tags/Music/"/>
     
   </entry>
   
@@ -239,16 +236,15 @@
     
     
     <summary type="html">&lt;div style=&quot;text-align: center;&quot;&gt;  
-
 &lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=2020918656&amp;auto=0&amp;height=66&quot;&gt;&lt;/iframe&gt;  
-
-&lt;p&gt;&lt;del&gt;YOASOBI 在 2月15号出新专辑了捏&lt;/del&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;s&gt;YOASOBI 在 2月15号出新专辑了捏&lt;/s&gt;&lt;/p&gt;
 &lt;/div&gt;  
-
 &lt;blockquote&gt;
-&lt;p&gt;在去年Digital Ocean把我的账号突然封禁之后,我甚至没有办法迁移我的数据,所有配置文件只能重写&lt;br&gt;这里是为了留一份Nginx中二级域名.conf配置文件的写法,依据我的习惯,仅供参考 &lt;/p&gt;
+&lt;p&gt;在去年Digital Ocean把我的账号突然封禁之后,我甚至没有办法迁移我的数据,所有配置文件只能重写&lt;br&gt;
+这里是为了留一份Nginx中二级域名.conf配置文件的写法,依据我的习惯,仅供参考&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Nginx现在的版本应该会在&lt;code&gt;/etc/nginx/&lt;/code&gt;目录存在&lt;code&gt;nginx.conf&lt;/code&gt;&lt;br&gt;这里大概是这样  &lt;/p&gt;</summary>
+&lt;p&gt;Nginx现在的版本应该会在&lt;code&gt;/etc/nginx/&lt;/code&gt;目录存在&lt;code&gt;nginx.conf&lt;/code&gt;&lt;br&gt;
+这里大概是这样&lt;/p&gt;</summary>
     
     
     
@@ -257,9 +253,9 @@
     
     <category term="Nginx" scheme="https://blog.romichan.icu/tags/Nginx/"/>
     
-    <category term="Website" scheme="https://blog.romichan.icu/tags/Website/"/>
-    
     <category term="WebDev" scheme="https://blog.romichan.icu/tags/WebDev/"/>
+    
+    <category term="Website" scheme="https://blog.romichan.icu/tags/Website/"/>
     
   </entry>
   
@@ -271,8 +267,9 @@
     <updated>2025-11-06T13:19:45.410Z</updated>
     
     
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/Cover.jpg&quot; alt=&quot;封面&quot; title=&quot;Cover&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;最后一次编辑时间-2025-10-23-25-26&quot;&gt;&lt;a href=&quot;#最后一次编辑时间-2025-10-23-25-26&quot; class=&quot;headerlink&quot; title=&quot;最后一次编辑时间: 2025-10-23 25:26&quot;&gt;&lt;/a&gt;最后一次编辑时间: 2025-10-23 25:26&lt;/h1&gt;&lt;ul&gt;
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/Cover.jpg&quot; alt=&quot;封面&quot; title=&quot;Cover&quot;&gt;&lt;/p&gt;
+&lt;h1&gt;最后一次编辑时间: 2025-10-23 25:26&lt;/h1&gt;
+&lt;ul&gt;
 &lt;li&gt;上一次编辑时间：2023-01-17 17:53&lt;/li&gt;
 &lt;li&gt;上一次编辑时间：2023-01-15 16:53&lt;/li&gt;
 &lt;li&gt;上一次编辑时间：2023-01-10 0:51&lt;/li&gt;
@@ -280,11 +277,15 @@
 &lt;div style=&quot;text-align: center;&quot;&gt;
 &lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=1835463109&amp;auto=0&amp;height=66&quot;&gt;&lt;/iframe&gt;
 &lt;/div&gt;
-
 &lt;blockquote&gt;
-&lt;p&gt;参考ref&lt;br&gt;1.一个完整的Arch Linux 安装流程: &lt;a href=&quot;https://zhuanlan.zhihu.com/p/513859236&quot;&gt;2022.5 archlinux详细安装过程&lt;/a&gt;&lt;br&gt;2.Installation guide - ArchWiki: &lt;a href=&quot;https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97&quot;&gt;Arch Linux 安装指南&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考ref&lt;br&gt;
+1.一个完整的Arch Linux 安装流程: &lt;a href=&quot;https://zhuanlan.zhihu.com/p/513859236&quot;&gt;2022.5 archlinux详细安装过程&lt;/a&gt;&lt;br&gt;
+2.Installation guide - ArchWiki: &lt;a href=&quot;https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97&quot;&gt;Arch Linux 安装指南&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;本文是一个自用的Arch Linux安装方法，针对的是我自己，如果你看到这个文章了，里头可能有一些东西你是可以用到的。&lt;br&gt;但是在阅读本指南前确保文档最后的更新时间和当前观看时间是否相近, Arch Linux是一个滚动更新系统，过时的安装过程也许会导致一些未知的问题出现。&lt;br&gt;这篇文章旨在帮助不会安装Arch Linux的用户，以及当我自己遗忘某些安装细节时可以回过头来查看。&lt;br&gt;可能有很多的安装方式与命令随着版本更新而无法使用或者不在推荐，出现问题或者是疑问应当自行查询。  &lt;/p&gt;</summary>
+&lt;p&gt;本文是一个自用的Arch Linux安装方法，针对的是我自己，如果你看到这个文章了，里头可能有一些东西你是可以用到的。&lt;br&gt;
+但是在阅读本指南前确保文档最后的更新时间和当前观看时间是否相近, Arch Linux是一个滚动更新系统，过时的安装过程也许会导致一些未知的问题出现。&lt;br&gt;
+这篇文章旨在帮助不会安装Arch Linux的用户，以及当我自己遗忘某些安装细节时可以回过头来查看。&lt;br&gt;
+可能有很多的安装方式与命令随着版本更新而无法使用或者不在推荐，出现问题或者是疑问应当自行查询。&lt;/p&gt;</summary>
     
     
     
@@ -304,11 +305,13 @@
     <link href="https://blog.romichan.icu/2022/10/28/%E5%88%A9%E7%94%A8JACK%20,%20%E7%8E%A9%E8%BD%AC%20Reaper%20For%20Linux/"/>
     <id>https://blog.romichan.icu/2022/10/28/%E5%88%A9%E7%94%A8JACK%20,%20%E7%8E%A9%E8%BD%AC%20Reaper%20For%20Linux/</id>
     <published>2022-10-27T16:00:00.000Z</published>
-    <updated>2025-11-03T14:46:51.824Z</updated>
+    <updated>2025-11-07T15:59:18.869Z</updated>
     
     
-    <summary type="html">&lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;笔者在这里用的 Linux 发行版是 &lt;code&gt;Arch Linux&lt;/code&gt; , 并且使用 &lt;a href=&quot;https://www.reaper.fm/&quot;&gt;Reaper 官网&lt;/a&gt; 所提供的 &lt;code&gt;Linux x86_64&lt;/code&gt; 版本。  &lt;/p&gt;
-&lt;p&gt;不同的系统有不同的操作方式,但是大体逻辑是一样的。这篇Post的目的在于成功的利用Jack在Linux上运行daw。并且由于Reaper在linux有提供Build包,所以我们应当首选Reaper来作为我们要使用的Daw，这样会节省很多时间。  &lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;../images/posts/JACK-Reaper-For-Linux/Cover.png&quot; alt=&quot;Cover&quot;&gt;&lt;/p&gt;
+&lt;h1&gt;写在前面&lt;/h1&gt;
+&lt;p&gt;笔者在这里用的 Linux 发行版是 &lt;code&gt;Arch Linux&lt;/code&gt; , 并且使用 &lt;a href=&quot;https://www.reaper.fm/&quot;&gt;Reaper 官网&lt;/a&gt; 所提供的 &lt;code&gt;Linux x86_64&lt;/code&gt; 版本。&lt;/p&gt;
+&lt;p&gt;不同的系统有不同的操作方式,但是大体逻辑是一样的。这篇Post的目的在于成功的利用Jack在Linux上运行daw。并且由于Reaper在linux有提供Build包,所以我们应当首选Reaper来作为我们要使用的Daw，这样会节省很多时间。&lt;/p&gt;</summary>
     
     
     
@@ -317,9 +320,9 @@
     <category term="Music" scheme="https://blog.romichan.icu/categories/Linux/Music/"/>
     
     
-    <category term="Music" scheme="https://blog.romichan.icu/tags/Music/"/>
-    
     <category term="Reaper" scheme="https://blog.romichan.icu/tags/Reaper/"/>
+    
+    <category term="Music" scheme="https://blog.romichan.icu/tags/Music/"/>
     
   </entry>
   
@@ -328,15 +331,14 @@
     <link href="https://blog.romichan.icu/2022/04/27/FL-Studio-Tips-%E5%88%A9%E7%94%A8LFO-LFO-Speed%E5%81%9A%E5%87%BA%E5%8A%A0%E8%8A%B1%E6%95%88%E6%9E%9C/"/>
     <id>https://blog.romichan.icu/2022/04/27/FL-Studio-Tips-%E5%88%A9%E7%94%A8LFO-LFO-Speed%E5%81%9A%E5%87%BA%E5%8A%A0%E8%8A%B1%E6%95%88%E6%9E%9C/</id>
     <published>2022-04-26T16:00:00.000Z</published>
-    <updated>2025-11-03T14:45:21.220Z</updated>
+    <updated>2025-11-07T16:00:24.928Z</updated>
     
     
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/posts/FL-Studio-Tips-LFO-Speed/cover.png&quot; alt=&quot;封面&quot; title=&quot;Cover&quot;&gt;  &lt;/p&gt;
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/posts/FL-Studio-Tips-LFO-Speed/cover.png&quot; alt=&quot;封面&quot; title=&quot;Cover&quot;&gt;&lt;/p&gt;
 &lt;audio id=&quot;audio&quot; controls=&quot;&quot; preload=&quot;none&quot;&gt;
     &lt;source id=&quot;mp3&quot; src=&quot;/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBass.mp3&quot;&gt;
 &lt;/audio&gt;
-
-&lt;p&gt;&lt;em&gt;（音乐来自：FL Studio中DemoSong内Asher Postman-Future Bass）&lt;/em&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;（音乐来自：FL Studio中DemoSong内Asher Postman-Future Bass）&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;在了解这之前，您可以点击上方的“播放按钮”，来听一首歌，这首歌用到了我所谓&lt;code&gt;控制 LFO Speed&lt;/code&gt;的技巧 (在听之前请注意音量)&lt;/p&gt;</summary>
     
     
@@ -360,7 +362,12 @@
       
         
         
-    <summary type="html">&lt;h1 id=&quot;2022&quot;&gt;&lt;a href=&quot;#2022&quot; class=&quot;headerlink&quot; title=&quot;2022&quot;&gt;&lt;/a&gt;2022&lt;/h1&gt;&lt;h2 id=&quot;Aug-27-2022&quot;&gt;&lt;a href=&quot;#Aug-27-2022&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h1&gt;2022&lt;/h1&gt;
+&lt;h2 id=&quot;aug-27-2022&quot;&gt;Aug 27, 2022&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;将Blog从旧域名迁移至新域名&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;may-2-2022&quot;&gt;May 2,</summary>
         
       
     
