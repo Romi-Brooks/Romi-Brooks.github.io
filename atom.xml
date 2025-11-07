@@ -48,11 +48,11 @@
     
     <category term="Note" scheme="https://blog.romichan.icu/tags/Note/"/>
     
+    <category term="Python" scheme="https://blog.romichan.icu/tags/Python/"/>
+    
     <category term="AI" scheme="https://blog.romichan.icu/tags/AI/"/>
     
     <category term="DeepLearning" scheme="https://blog.romichan.icu/tags/DeepLearning/"/>
-    
-    <category term="Python" scheme="https://blog.romichan.icu/tags/Python/"/>
     
     <category term="PyTorch" scheme="https://blog.romichan.icu/tags/PyTorch/"/>
     
@@ -79,9 +79,9 @@
     
     <category term="Note" scheme="https://blog.romichan.icu/tags/Note/"/>
     
-    <category term="Python" scheme="https://blog.romichan.icu/tags/Python/"/>
-    
     <category term="DataAnalysis" scheme="https://blog.romichan.icu/tags/DataAnalysis/"/>
+    
+    <category term="Python" scheme="https://blog.romichan.icu/tags/Python/"/>
     
   </entry>
   
@@ -138,9 +138,9 @@
     
     <category term="Archlinux" scheme="https://blog.romichan.icu/tags/Archlinux/"/>
     
-    <category term="Installation" scheme="https://blog.romichan.icu/tags/Installation/"/>
-    
     <category term="Nvidia" scheme="https://blog.romichan.icu/tags/Nvidia/"/>
+    
+    <category term="Installation" scheme="https://blog.romichan.icu/tags/Installation/"/>
     
   </entry>
   

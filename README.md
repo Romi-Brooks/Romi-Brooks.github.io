@@ -1,0 +1,1 @@
+基于[hexo](https://hexo.io/zh-cn/)和[ayer](https://github.com/Shen-Yu/hexo-theme-ayer)主题的个人博客，这里只放生成的静态资源文件。
