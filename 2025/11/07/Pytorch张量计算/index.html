@@ -292,7 +292,7 @@ They serve numerous purposes, some of which may be quite advanced. However, at t
 <p>This will output content similar to the following:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tensor([[0., 0., 0., 0.],</span><br><span class="line">        [0., 0., 0., 0.],</span><br><span class="line">        [0., 0., 0., 0.]])</span><br><span class="line">tensor([[1., 1., 1., 1.],</span><br><span class="line">        [1., 1., 1., 1.],</span><br><span class="line">        [1., 1., 1., 1.]])</span><br></pre></td></tr></table></figure>
 <h2 id="range-of-tensor">Range of Tensor</h2>
-<p>Occasionally, we may need to generate tensors within a specific range or with a specific stride.<br>
+<p>Occasionally, we may need to generate tensors within a specific range or with a specific step.<br>
 This can be achieved as follows:<br>
 E.g.:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">range_tensor = torch.arange(<span class="number">0</span>,<span class="number">10</span>)</span><br><span class="line"><span class="built_in">print</span>(range_tensor)</span><br><span class="line"><span class="comment"># Or addition condition</span></span><br><span class="line">range_addition_tensor = torch.arange(start=<span class="number">0</span>, end=<span class="number">10</span>, step=<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(range_addition_tensor)</span><br></pre></td></tr></table></figure>
@@ -306,15 +306,15 @@ E.g.:</p>
 <p>This will output content similar to the following:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])</span><br></pre></td></tr></table></figure>
 <h2 id="tensor-s-operations">Tensor’s Operations</h2>
-<p><strong>Make sure that calculate tensor with this:</strong><br>
-<em>The rules governing tensor operations bear a striking resemblance to those of matrix operations.<br>
-Should you have studied linear algebra, you will be thoroughly familiar with them.</em></p>
+<p><strong>Make sure that calculate tensor with this:</strong></p>
 <ul>
 <li>The right Data Type</li>
 <li>The right Device</li>
 <li>The right Shape (like: float16 tensor * float16 tensor)</li>
 </ul>
-<p>The following code examples illustrate the expressions for addition, multiplication, and subtraction operations on a tensor, along with their results, enabling us to grasp these concepts quickly.</p>
+<p><em>The rules governing tensor operations bear a striking resemblance to those of matrix operations.<br>
+Should you have studied linear algebra, you will be thoroughly familiar with them.</em></p>
+<p>The following code examples illustrate the expressions for <code>addition</code>, <code>multiplication</code>, and <code>subtraction</code> operations on a tensor, along with their results, enabling us to grasp these concepts quickly.</p>
 <blockquote>
 <p><em>Please note that we have not included <code>element-wise division</code> or <code>inverse operations on two-dimensional tensors (i.e., matrices)</code>.</em></p>
 </blockquote>
