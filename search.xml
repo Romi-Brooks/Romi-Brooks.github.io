@@ -15,119 +15,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Nginx中code-server的ws配置</title>
-    <url>/2023/04/01/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p><img src="/images/posts/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/Cover.png" alt="封面" title="Cover"></p>
-<blockquote>
-<p>这个问题已经有很多人出现了,github也有人提出了issues<br>
-<a href="https://github.com/coder/code-server/issues/4443">https://github.com/coder/code-server/issues/4443</a></p>
-</blockquote>
-<span id="more"></span>
-<blockquote>
-<p>可以看到导致这个问题的原因是由于<code>Nginx</code>反向代理并没有接受ws握手导致的<br>
-这里也有很多人给出了答案,但是为了方便我之后部署,我还是决定把它写下来</p>
-</blockquote>
-<p>废话不多说,直接上<code>.conf</code>文件:</p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    <span class="comment">#其他选项</span></span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>  http://127.0.0.1:7654;  <span class="comment">#转发地址</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#下面这些就是相关的ws转发,把这些写上了code-server才能正常工作</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> HOST <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Connection upgrade;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Accept-Encoding gzip;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$proxy_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>同样,这也是一篇随笔…</p>
-<p align="right">在最后的最后，感恩</p>
-<p align="right">Romi Brooks♥</p>
-]]></content>
-      <categories>
-        <category>WebDev</category>
-      </categories>
-      <tags>
-        <tag>Nginx</tag>
-        <tag>WebDev</tag>
-        <tag>Website</tag>
-        <tag>code-server</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>通过控制LFO Speed，使你的音乐更有律动</title>
-    <url>/2022/04/27/FL-Studio-Tips-%E5%88%A9%E7%94%A8LFO-LFO-Speed%E5%81%9A%E5%87%BA%E5%8A%A0%E8%8A%B1%E6%95%88%E6%9E%9C/</url>
-    <content><![CDATA[<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/cover.png" alt="封面" title="Cover"></p>
-<audio id="audio" controls="" preload="none">
-    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBass.mp3">
-</audio>
-<p><em>（音乐来自：FL Studio中DemoSong内Asher Postman-Future Bass）</em></p>
-<p>在了解这之前，您可以点击上方的“播放按钮”，来听一首歌，这首歌用到了我所谓<code>控制 LFO Speed</code>的技巧 (在听之前请注意音量)</p>
-<span id="more"></span>
-<h1>什么是<code>LFO Speed</code>?</h1>
-<p>LFO（Low Frequency Oscillator，低频振荡器）是一种产生周期性信号的调制源，其频率通常低于 20Hz（人类听觉下限），因此无法直接被听到，但可以控制其他参数的变化。例如：</p>
-<p>调制音量：通过周期性增减振幅，产生类似 “脉冲” 的抽吸效果（即震音，Tremolo）。<br>
-调制滤波器截止频率：通过周期性开合滤波器，使声音在高频和低频之间切换，形成 “摇晃” 的抽吸感（如 Dubstep 贝斯）。</p>
-<p>而LFO Speed 决定了振荡的频率，直接影响抽吸效果的节奏。</p>
-<h1>为什么要<code>控制 LFO Speed</code>?</h1>
-<p>在音乐制作中，<strong>控制LFO Speed（低频振荡器速度）</strong> 是创造动态抽吸效果的核心技巧。<br>
-这种效果通过周期性调制声音参数（如音量、滤波器截止频率），使音频产生类似 “呼吸” 或 “脉冲” 的节奏性波动，常见于电子音乐、Future Bass、Dubstep 等风格中。<br>
-通过灵活运用 LFO Speed 和波形设计，制作人可以为声音注入生命般的动态变化。从微妙的音色润色到夸张的特效设计，是一个相对高级的声设技巧。</p>
-<h1>它的效果具体是如何?</h1>
-<p>这是上面那首Demo Song中使用此技巧的一小段 (在听之前请注意音量):</p>
-<audio id="audio" controls="" preload="none">
-    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassLFO2.mp3">
-</audio>
-<p>这是去掉鼓点等干扰的效果:</p>
-<audio id="audio" controls="" preload="none">
-    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassNDLFO2.mp3">
-</audio>
-<p>其实还有一次，是在这里:</p>
-<audio id="audio" controls="" preload="none">
-    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassLFO1.mp3">
-</audio>
-<p>这是去掉鼓点等干扰的效果:</p>
-<audio id="audio" controls="" preload="none">
-    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassNDLFO1.mp3">
-</audio>
-<h1>我是如何发现的?</h1>
-<p>其实只要听的歌曲足够多，会发现这种效果用到的风格很多，哪怕是最基础的一个<code>crash下降</code>或是<code>Drop Melody</code>等很多效果，都能用这个技巧营造出很多听众的<code>爽点</code>。<br>
-当然，具体操作的原理以及方式我是通过开头的那首Demo Song Project学到的：</p>
-<p>来自 Asher Postman 的 Future Bass，我的fb启蒙制作者，包括其中的一种SideChain方式也是从这个工程学的。</p>
-<blockquote>
-<p>Title: Future Bass (Stock Plugins Only)<br>
-Author: <a href="https://soundcloud.com/asher-postman">Asher Postman</a><br>
-Copyright © 2018 Asher Postman.</p>
-</blockquote>
-<h2 id="如何实现">如何实现?</h2>
-<p>来看两张图：<br>
-<img src="/images/posts/FL-Studio-Tips-LFO-Speed/1.gif" alt="1" title="1"><br>
-<img src="/images/posts/FL-Studio-Tips-LFO-Speed/2.gif" alt="2" title="2"></p>
-<p>它们都有一个共性：<strong>其中的一个AMC（Automation Clips）均为&quot;LFO Speed&quot;，伴随着LFO Speed的降低，它们所控制的LFO频率也随之降低。</strong></p>
-<p>上面说，“它们所控制的LFO频率”，那么我们首先得创作出一个LFO的AMC，这里FL Studio给大家了一种方法：</p>
-<pre><code>  1.在您要实施此效果的对应旋钮上新建一个 AMC (Create automation clip)
-  2.在 View Playlist 找到它，单击它名字旁边的AMC图标
-  3.点击Channel Settings
-    （1.一个很明显的 LFO 选项，打开它，之后设计您想要的波形（我们先不管speed，您可以设定其他几个值）
-    （2.右键SPEED旋钮，新建一个AMC
-    （3.现在您得到了两个AMC，这正是我们想要的结果，接下来就要靠您的听感了
-  4.在您听感的基础上，调节LFO speed AMC使其满足您的要求
-  5.完成
-</code></pre>
-<h1>实践&amp;展示</h1>
-<h2 id="一-做futurebass的wobblechords-无lfo-speed-amc-当然我们也可以加-：">一，做FutureBass的WobbleChords（无LFO Speed AMC，当然我们也可以加）：</h2>
-<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/1.png" alt="1" title="1"></p>
-<h2 id="二-做hippop的melodysfx：">二，做Hippop的MelodySFX：</h2>
-<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/2.png" alt="2" title="2"></p>
-<blockquote>
-<p>Tips：在这里，我们可以用Wave，Pulse等AMC Point Mode，右键AMC节点选择对应的Mode即可。</p>
-</blockquote>
-<h1>In the End</h1>
-<p>为了显得最后的结束不算很唐突，我用了<a href="https://www.youtube.com/user/OfficialVirtualRiot">Virtual Riot</a> 的采样包，堆叠了一个Melodic Dubstep.<br>
-just for fun，and thank u VR</p>
-<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/3.png" alt="3" title="3"></br></p>
-<audio id="audio" controls="" preload="none">
-    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/Md.mp3">
-</audio>
-<p align="right">在最后的最后，感恩</p>
-<p align="right">Romi Brooks♥</p>]]></content>
-      <categories>
-        <category>Music</category>
-      </categories>
-      <tags>
-        <tag>FL-Tips</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>一份自用的ArchLinux安装指南</title>
     <url>/2023/01/09/Archlinux%20+%20U%E7%9B%98%20%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/</url>
     <content><![CDATA[<p><img src="/images/posts/Archlinux-U%E7%9B%98-%E6%89%93%E9%80%A0%E9%9A%8F%E8%BA%AB%E7%B3%BB%E7%BB%9F%E7%9B%98/Cover.jpg" alt="封面" title="Cover"></p>
@@ -443,8 +330,318 @@ Step 3. 启动,这里推荐用<code>screen</code>或者是你喜欢的什么软�
       </categories>
       <tags>
         <tag>Nginx</tag>
-        <tag>Website</tag>
         <tag>Music</tag>
+        <tag>Website</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>通过控制LFO Speed，使你的音乐更有律动</title>
+    <url>/2022/04/27/FL-Studio-Tips-%E5%88%A9%E7%94%A8LFO-LFO-Speed%E5%81%9A%E5%87%BA%E5%8A%A0%E8%8A%B1%E6%95%88%E6%9E%9C/</url>
+    <content><![CDATA[<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/cover.png" alt="封面" title="Cover"></p>
+<audio id="audio" controls="" preload="none">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBass.mp3">
+</audio>
+<p><em>（音乐来自：FL Studio中DemoSong内Asher Postman-Future Bass）</em></p>
+<p>在了解这之前，您可以点击上方的“播放按钮”，来听一首歌，这首歌用到了我所谓<code>控制 LFO Speed</code>的技巧 (在听之前请注意音量)</p>
+<span id="more"></span>
+<h1>什么是<code>LFO Speed</code>?</h1>
+<p>LFO（Low Frequency Oscillator，低频振荡器）是一种产生周期性信号的调制源，其频率通常低于 20Hz（人类听觉下限），因此无法直接被听到，但可以控制其他参数的变化。例如：</p>
+<p>调制音量：通过周期性增减振幅，产生类似 “脉冲” 的抽吸效果（即震音，Tremolo）。<br>
+调制滤波器截止频率：通过周期性开合滤波器，使声音在高频和低频之间切换，形成 “摇晃” 的抽吸感（如 Dubstep 贝斯）。</p>
+<p>而LFO Speed 决定了振荡的频率，直接影响抽吸效果的节奏。</p>
+<h1>为什么要<code>控制 LFO Speed</code>?</h1>
+<p>在音乐制作中，<strong>控制LFO Speed（低频振荡器速度）</strong> 是创造动态抽吸效果的核心技巧。<br>
+这种效果通过周期性调制声音参数（如音量、滤波器截止频率），使音频产生类似 “呼吸” 或 “脉冲” 的节奏性波动，常见于电子音乐、Future Bass、Dubstep 等风格中。<br>
+通过灵活运用 LFO Speed 和波形设计，制作人可以为声音注入生命般的动态变化。从微妙的音色润色到夸张的特效设计，是一个相对高级的声设技巧。</p>
+<h1>它的效果具体是如何?</h1>
+<p>这是上面那首Demo Song中使用此技巧的一小段 (在听之前请注意音量):</p>
+<audio id="audio" controls="" preload="none">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassLFO2.mp3">
+</audio>
+<p>这是去掉鼓点等干扰的效果:</p>
+<audio id="audio" controls="" preload="none">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassNDLFO2.mp3">
+</audio>
+<p>其实还有一次，是在这里:</p>
+<audio id="audio" controls="" preload="none">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassLFO1.mp3">
+</audio>
+<p>这是去掉鼓点等干扰的效果:</p>
+<audio id="audio" controls="" preload="none">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/FutureBassNDLFO1.mp3">
+</audio>
+<h1>我是如何发现的?</h1>
+<p>其实只要听的歌曲足够多，会发现这种效果用到的风格很多，哪怕是最基础的一个<code>crash下降</code>或是<code>Drop Melody</code>等很多效果，都能用这个技巧营造出很多听众的<code>爽点</code>。<br>
+当然，具体操作的原理以及方式我是通过开头的那首Demo Song Project学到的：</p>
+<p>来自 Asher Postman 的 Future Bass，我的fb启蒙制作者，包括其中的一种SideChain方式也是从这个工程学的。</p>
+<blockquote>
+<p>Title: Future Bass (Stock Plugins Only)<br>
+Author: <a href="https://soundcloud.com/asher-postman">Asher Postman</a><br>
+Copyright © 2018 Asher Postman.</p>
+</blockquote>
+<h2 id="如何实现">如何实现?</h2>
+<p>来看两张图：<br>
+<img src="/images/posts/FL-Studio-Tips-LFO-Speed/1.gif" alt="1" title="1"><br>
+<img src="/images/posts/FL-Studio-Tips-LFO-Speed/2.gif" alt="2" title="2"></p>
+<p>它们都有一个共性：<strong>其中的一个AMC（Automation Clips）均为&quot;LFO Speed&quot;，伴随着LFO Speed的降低，它们所控制的LFO频率也随之降低。</strong></p>
+<p>上面说，“它们所控制的LFO频率”，那么我们首先得创作出一个LFO的AMC，这里FL Studio给大家了一种方法：</p>
+<pre><code>  1.在您要实施此效果的对应旋钮上新建一个 AMC (Create automation clip)
+  2.在 View Playlist 找到它，单击它名字旁边的AMC图标
+  3.点击Channel Settings
+    （1.一个很明显的 LFO 选项，打开它，之后设计您想要的波形（我们先不管speed，您可以设定其他几个值）
+    （2.右键SPEED旋钮，新建一个AMC
+    （3.现在您得到了两个AMC，这正是我们想要的结果，接下来就要靠您的听感了
+  4.在您听感的基础上，调节LFO speed AMC使其满足您的要求
+  5.完成
+</code></pre>
+<h1>实践&amp;展示</h1>
+<h2 id="一-做futurebass的wobblechords-无lfo-speed-amc-当然我们也可以加-：">一，做FutureBass的WobbleChords（无LFO Speed AMC，当然我们也可以加）：</h2>
+<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/1.png" alt="1" title="1"></p>
+<h2 id="二-做hippop的melodysfx：">二，做Hippop的MelodySFX：</h2>
+<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/2.png" alt="2" title="2"></p>
+<blockquote>
+<p>Tips：在这里，我们可以用Wave，Pulse等AMC Point Mode，右键AMC节点选择对应的Mode即可。</p>
+</blockquote>
+<h1>In the End</h1>
+<p>为了显得最后的结束不算很唐突，我用了<a href="https://www.youtube.com/user/OfficialVirtualRiot">Virtual Riot</a> 的采样包，堆叠了一个Melodic Dubstep.<br>
+just for fun，and thank u VR</p>
+<p><img src="/images/posts/FL-Studio-Tips-LFO-Speed/3.png" alt="3" title="3"></br></p>
+<audio id="audio" controls="" preload="none">
+    <source id="mp3" src="/musics/posts/FL-Studio-Tips-LFO-Speed/Md.mp3">
+</audio>
+<p align="right">在最后的最后，感恩</p>
+<p align="right">Romi Brooks♥</p>]]></content>
+      <categories>
+        <category>Music</category>
+      </categories>
+      <tags>
+        <tag>FL-Tips</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nginx中code-server的ws配置</title>
+    <url>/2023/04/01/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p><img src="/images/posts/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/Cover.png" alt="封面" title="Cover"></p>
+<blockquote>
+<p>这个问题已经有很多人出现了,github也有人提出了issues<br>
+<a href="https://github.com/coder/code-server/issues/4443">https://github.com/coder/code-server/issues/4443</a></p>
+</blockquote>
+<span id="more"></span>
+<blockquote>
+<p>可以看到导致这个问题的原因是由于<code>Nginx</code>反向代理并没有接受ws握手导致的<br>
+这里也有很多人给出了答案,但是为了方便我之后部署,我还是决定把它写下来</p>
+</blockquote>
+<p>废话不多说,直接上<code>.conf</code>文件:</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    <span class="comment">#其他选项</span></span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>  http://127.0.0.1:7654;  <span class="comment">#转发地址</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#下面这些就是相关的ws转发,把这些写上了code-server才能正常工作</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> HOST <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Connection upgrade;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Accept-Encoding gzip;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$proxy_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同样,这也是一篇随笔…</p>
+<p align="right">在最后的最后，感恩</p>
+<p align="right">Romi Brooks♥</p>
+]]></content>
+      <categories>
+        <category>WebDev</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
+        <tag>Website</tag>
+        <tag>WebDev</tag>
+        <tag>code-server</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>变更记录</title>
+    <url>/2000/01/01/%E5%8F%98%E6%9B%B4%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h1>2022</h1>
+<h2 id="aug-27-2022">Aug 27, 2022</h2>
+<ul>
+<li>将Blog从旧域名迁移至新域名</li>
+</ul>
+<h2 id="may-2-2022">May 2, 2022</h2>
+<ul>
+<li>将Github Page上托管的Blog仓库迁移至主服务器</li>
+</ul>
+<h2 id="apr-16-2022">Apr 16, 2022</h2>
+<ul>
+<li>上传Blog仓库到Github，并且托管至Github Page</li>
+</ul>
+<hr>
+<h1>2023</h1>
+<h2 id="备考高考">备考高考</h2>
+<h2 id="mar-5-2023">Mar 5, 2023</h2>
+<ul>
+<li>将Blog从旧域名迁移至新域名</li>
+</ul>
+<hr>
+<h1>2024</h1>
+<h2 id="进入大学">进入大学</h2>
+<ul>
+<li>停更</li>
+</ul>
+<h2 id="高考">高考</h2>
+<ul>
+<li>停更</li>
+</ul>
+<hr>
+<h1>2025</h1>
+<h2 id="aug-12-2022">Aug 12, 2022</h2>
+<ul>
+<li>开始更新</li>
+</ul>
+<h2 id="aug-12-2022">Aug 12, 2022</h2>
+<ul>
+<li>将Blog从旧域名迁移至新域名</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>SysRecord</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>利用JACK , 玩转 Reaper For Linux</title>
+    <url>/2022/10/28/%E5%88%A9%E7%94%A8JACK%20,%20%E7%8E%A9%E8%BD%AC%20Reaper%20For%20Linux/</url>
+    <content><![CDATA[<p><img src="../images/posts/JACK-Reaper-For-Linux/Cover.png" alt="Cover"></p>
+<h1>写在前面</h1>
+<p>笔者在这里用的 Linux 发行版是 <code>Arch Linux</code> , 并且使用 <a href="https://www.reaper.fm/">Reaper 官网</a> 所提供的 <code>Linux x86_64</code> 版本。</p>
+<p>不同的系统有不同的操作方式,但是大体逻辑是一样的。这篇Post的目的在于成功的利用Jack在Linux上运行daw。并且由于Reaper在linux有提供Build包,所以我们应当首选Reaper来作为我们要使用的Daw，这样会节省很多时间。</p>
+<span id="more"></span>
+<h1>1.安装，启动并设定<code>JACK2</code></h1>
+<blockquote>
+<p>参考： <a href="https://anclark.github.io/2020/12/08/Linux_Audio_Production/Make_Your_ArchLinux_An_Audio_Workstation_01/">把Arch Linux打造成音乐工作站</a></p>
+</blockquote>
+<p><code>JACK</code> 分为两个版本，分别是：</p>
+<ul>
+<li><code>JACK1</code> 由C编写，这是最初的版本</li>
+<li><code>JACK2</code> 由C++重写</li>
+</ul>
+<p><code>JACK2</code>相比<code>JACK1</code>来说，要方便配置很多，它不需要配置多的用户权限就可以使用，并且可以把<code>PulseAudio</code>,<code>ALSA</code> 桥接到 <code>JACK2</code> 。并且如果你之前在Windows体验过被ASIO4ALL所独占声卡的悲痛，那么<code>JACK1</code>也是如此。<br>
+所以我们果断选择<code>JACK2</code>。</p>
+<h2 id="1-安装">1.安装</h2>
+<h3 id="打开您的terminal-首先安装jack2主程序：">打开您的Terminal，首先安装<code>JACK2</code>主程序：</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo pacman -S jack2</span><br></pre></td></tr></table></figure>
+<h3 id="根据需求安装您需要桥接到jack2的接口：">根据需求安装您需要桥接到<code>JACK2</code>的接口：</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo pacman -S pulseaudio-jack <span class="comment">#这是PulseAudio -&gt; JACK2</span></span><br><span class="line">$ sudo pacman -S zita-ajbridge   <span class="comment">#这是ALSA -&gt; JACK2</span></span><br></pre></td></tr></table></figure>
+<h3 id="安装cadence来托管jack2：">安装<code>Cadence</code>来托管<code>JACK2</code>：</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo pacman -S cadence</span><br></pre></td></tr></table></figure>
+<h3 id="添加您到audio用户组：">添加您到<code>audio</code>用户组：</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo usermod --append -G audio username  <span class="comment">#其中username是您的用户名</span></span><br></pre></td></tr></table></figure>
+<h3 id="final-step：">Final Step：</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ reboot</span><br></pre></td></tr></table></figure>
+<h2 id="2-启动并设定jack2">2.启动并设定<code>JACK2</code></h2>
+<h3 id="启动-cadence-通常来说-它安装到了您的桌面-只需要搜索就可以启动它">启动 <code>Cadence</code>，通常来说，它安装到了您的桌面，只需要搜索就可以启动它。</h3>
+<p><img src="/images/posts/JACK-Reaper-For-Linux/1.png" alt="1.2.1" title="1.2.1"></br></p>
+<h3 id="点击-jack-bridges-中的-bridge-type-来设定桥接-这里根据您所安装的接口来选择-我选择了alsa-jack-：">点击 <code>JACK Bridges</code> 中的 <code>Bridge Type</code> 来设定桥接 （这里根据您所安装的接口来选择，我选择了<code>ALSA -&gt; JACK</code>）：</h3>
+<p><img src="/images/posts/JACK-Reaper-For-Linux/2.png" alt="1.2.2" title="1.2.2"></br></p>
+<h3 id="点击-jack-status-中的-configure-来配置桥接-您设定的桥接是什么接口就选择什么driver-：">点击 <code>JACK Status</code> 中的 <code>Configure</code> 来配置桥接 （您设定的桥接是什么接口就选择什么<code>Driver</code>）：</h3>
+<p><img src="/images/posts/JACK-Reaper-For-Linux/3.png" alt="1.2.3" title="1.2.3"></br></p>
+<h3 id="点击ok-退回到主界面之后点击start即可启动jack2-您也可以点击auto-start-jack-or-ladish-at-login来登陆自动启动jack2-：">点击<code>OK</code> 退回到主界面之后点击<code>Start</code>即可启动<code>JACK2</code>。（您也可以点击<code>Auto-start JACK or LADISH at login</code>来登陆自动启动<code>JACK2</code>）：</h3>
+<p><img src="/images/posts/JACK-Reaper-For-Linux/4.png" alt="1.2.4" title="1.2.4"></br><br>
+看到<code>JACK Status</code> 中的 <code>Server Status</code> 是<code>Start</code>就说明 <code>Cadence</code>已经托管了<code>JACK2</code>并且<code>JACK2</code>也桥接了我们的音频设备。（后续您就可以为<code>Cadence</code>添加自启动项，这样一开机音频驱动就会自动桥接到JACK2啦）</p>
+<h1>2.安装，启动并配置<code>Reaper</code></h1>
+<h2 id="1-安装">1.安装</h2>
+<h3 id="首先去-reaper的官网-然后点击download-reaper-来下载reaper：">首先去 <a href="https://www.reaper.fm/">Reaper的官网</a> 然后点击<code>DOWNLOAD REAPER</code> 来下载<code>Reaper</code>：</h3>
+<blockquote>
+<p>此处根据您的系统架构选择版本（<code>一般选择Linux x86_64</code>）：</p>
+</blockquote>
+<h3 id="解压-进入主程序目录：">解压,进入主程序目录：</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ tar -xvf reaper669_linux_x86_64.tar.xz &amp;&amp; <span class="built_in">rm</span> reaper669_linux_x86_64.tar.xz &amp;&amp; <span class="built_in">cd</span> reaper669_linux_x86_64  <span class="comment">#注意，这里669根据版本号来自行更改哦</span></span><br></pre></td></tr></table></figure>
+<h3 id="在当前目录执行安装脚本：">在当前目录执行安装脚本：</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">chmod</span> +x install-reaper.sh</span><br><span class="line">$ ./install-reaper.sh  </span><br></pre></td></tr></table></figure>
+<p>输入<code>I</code>，之后<code>Reaper</code>会被安装到<code>～/opt/REAPER/</code>目录下</p>
+<h3 id="软连接到-usr-bin">软连接到<code>/usr/bin</code></h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo <span class="built_in">ln</span> -s /home/username/opt/REAPER/reaper /usr/bin/reaper  <span class="comment">#其中username是您的用户名</span></span><br></pre></td></tr></table></figure>
+<h3 id="写desktop-file以便于从桌面启动：">写<code>Desktop File</code>以便于从桌面启动：</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo vim /usr/share/applications/reaper.desktop</span><br></pre></td></tr></table></figure>
+<p>按<code>I</code>进入插入模式，输入：</p>
+<pre><code class="language-bash">[Desktop Entry]  
+Name=Reaper  
+Comment=A Complete Digital Audio Production Application For Linux  
+Exec=/usr/bin/reaper  
+Icon=/home/username/opt/Reaper/reaper.png  #您需要去下载一个reaper的Icon移动到这里，其中username是您的用户名  
+Terminal=false  
+Type=Application  
+Categories=Music;
+</code></pre>
+<h3 id="现在您搜索reaper应该就有匹配项了-如果没有-您可能需要等一小会儿">现在您搜索<code>Reaper</code>应该就有匹配项了（如果没有，您可能需要等一小会儿）</h3>
+<h2 id="2-启动并配置reaper">2.启动并配置<code>Reaper</code></h2>
+<h3 id="打开reaper-无论您是从命令行启动-还是桌面启动">打开<code>Reaper</code>，无论您是从命令行启动，还是桌面启动</h3>
+<h3 id="等待几秒的许可证要求窗口-然后点击still-evaluating">等待几秒的许可证要求窗口，然后点击<code>Still Evaluating</code></h3>
+<p><img src="/images/posts/JACK-Reaper-For-Linux/5.png" alt="2.2.1" title="2.2.1"></br></p>
+<blockquote>
+<p><code>Reaper</code>是一款轻量强大的DAW，如果您觉得它还不错，并且您已经在Windows使用Reaper许久，却还没有注册license的话，请支持制作商<code>Cockos</code>，买一份<code>Reaper</code>的License吧！</p>
+</blockquote>
+<h3 id="点击options-preferences-audio-device-选择audio-system-jack-然后apply即可">点击<code>Options-&gt;Preferences-&gt;Audio-&gt;Device</code>，选择<code>Audio system</code>-&gt;<code>JACK</code>，然后<code>Apply</code>即可。</h3>
+<p><img src="/images/posts/JACK-Reaper-For-Linux/6.png" alt="2.2.2" title="2.2.3"></br></p>
+<h3 id="恭喜您-配置完成了-现在开始reaper已经以jack2为音频驱动-为您工作了">恭喜您，配置完成了！现在开始<code>Reaper</code>已经以<code>JACK2</code>为音频驱动，为您工作了！</h3>
+<h1>Wait… Somethings is Wrong…</h1>
+<p>你有没有发现，我在封面展示的那张图中，显示了中文，但是当您兴冲冲的开始自己的Linux音乐之路的时候，发现您的输入中文或者是其它字符时却出现了方块！</p>
+<h2 id="这个问题的解决方法来自cockos-reaper-中文群的大佬tee">这个问题的解决方法来自<code>Cockos REAPER 中文群</code>的大佬<a href="https://lado.me/">Tee</a></h2>
+<blockquote>
+<p>原帖地址是这里：<a href="https://zhuanlan.zhihu.com/p/364000143">如何在Linux REAPER里显示中文</a></p>
+</blockquote>
+<pre><code class="language-bash">sudo vim /etc/fonts/fonts.conf
+</code></pre>
+<p>按下<code>I</code>，插入以下内容：</p>
+<pre><code class="language-bash">    &lt;!-- REAPER fonts patch --&gt;
+    &lt;match target=&quot;pattern&quot;&gt;
+      &lt;test name=&quot;prgname&quot;&gt;
+       &lt;string&gt;reaper&lt;/string&gt;
+    &lt;/test&gt;
+      &lt;edit name=&quot;family&quot; mode=&quot;assign&quot;&gt;
+       &lt;string&gt;Noto Sans CJK SC&lt;/string&gt;
+      &lt;/edit&gt;
+    &lt;/match&gt;  
+</code></pre>
+<p>注意插入的位置，位于 <strong>fontconfig标签之间。</strong> 这里涉及系统文件，请务必小心。</p>
+<h3 id="现在输入中文-它的显示就会正常了">现在输入中文，它的显示就会正常了！</h3>
+<p align="right">在最后的最后，感恩</p>
+<p align="right">Romi Brooks♥</p>]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>Music</category>
+      </categories>
+      <tags>
+        <tag>Music</tag>
+        <tag>Reaper</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nginx二级域名配置</title>
+    <url>/2023/02/25/Nginx%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<div style="text-align: center;">  
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=2020918656&auto=0&height=66"></iframe>  
+<p><s>YOASOBI 在 2月15号出新专辑了捏</s></p>
+</div>  
+<blockquote>
+<p>在去年Digital Ocean把我的账号突然封禁之后,我甚至没有办法迁移我的数据,所有配置文件只能重写<br>
+这里是为了留一份Nginx中二级域名.conf配置文件的写法,依据我的习惯,仅供参考</p>
+</blockquote>
+<p>Nginx现在的版本应该会在<code>/etc/nginx/</code>目录存在<code>nginx.conf</code><br>
+这里大概是这样</p>
+<span id="more"></span>  
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attribute">user</span>  nginx;</span><br><span class="line"><span class="attribute">worker_processes</span>  auto;</span><br><span class="line"></span><br><span class="line"><span class="attribute">error_log</span>  /var/log/nginx/<span class="literal">error</span>.log <span class="literal">notice</span>;</span><br><span class="line"><span class="attribute">pid</span>        /var/run/nginx.pid;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">events</span> &#123;</span><br><span class="line">    <span class="attribute">worker_connections</span>  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="attribute">include</span>       /etc/nginx/mime.types;</span><br><span class="line">    <span class="attribute">default_type</span>  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">log_format</span>  main  <span class="string">&#x27;<span class="variable">$remote_addr</span> - <span class="variable">$remote_user</span> [<span class="variable">$time_local</span>] &quot;<span class="variable">$request</span>&quot; &#x27;</span></span><br><span class="line">                      <span class="string">&#x27;<span class="variable">$status</span> <span class="variable">$body_bytes_sent</span> &quot;<span class="variable">$http_referer</span>&quot; &#x27;</span></span><br><span class="line">                      <span class="string">&#x27;&quot;<span class="variable">$http_user_agent</span>&quot; &quot;<span class="variable">$http_x_forwarded_for</span>&quot;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">access_log</span>  /var/log/nginx/access.log  main;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">sendfile</span>        <span class="literal">on</span>;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    <span class="attribute">keepalive_timeout</span>  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    <span class="attribute">include</span> /etc/nginx/conf.d/<span class="regexp">*.conf</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可见,<code>nginx.conf</code>引用了<code>/etc/nginx/conf.d/</code>下的所有.conf文件<br>
+这里我习惯把我的个人网站配置文件放在这</p>
+<h1>Start</h1>
+<p>现在假设我想要创建一个名为<code>blog.romichan.me</code>的网站,用来存放我的博客<br>
+首先在你域名的托管商配置<code>DNS解析</code>,可以是A解析,也可以是AAAA解析,需要绑定到服务器上<br>
+接着在<code>/etc/nginx/conf.d/</code>下新建一个名为<code>blog.ssl.conf</code>的文件,他一般是这样的:</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">443</span> ssl;    <span class="comment"># 自从新版本nginx开始,启用ssl隧道得这么写</span></span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/blog.romichan.me/fullchain.pem;   <span class="comment"># 证书文件</span></span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/blog.romichan.me/privkey.pem; <span class="comment"># 证书密钥文件</span></span><br><span class="line">    <span class="attribute">server_name</span>  blog.romichan.me;  <span class="comment">#这里就是要解析到的域名,也就是你在域名托管商的DNS解析里所设置的</span></span><br><span class="line">        <span class="section">location</span> / &#123;</span><br><span class="line">            <span class="attribute">root</span>         /usr/share/webpage/blog; <span class="comment">#这里是博客的根目录.据你的需求,我只需要index.html所以下面的index只写了这些</span></span><br><span class="line">            <span class="attribute">index</span>        index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>而后我们在新建一个文件,它的名字是<code>blog.conf</code>,写入这些:</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">80</span>; <span class="comment"># 不作解释,8080也行</span></span><br><span class="line">    <span class="attribute">server_name</span>  blog.romichan.me; <span class="comment"># 解析到的网站</span></span><br><span class="line">    <span class="attribute">rewrite</span><span class="regexp"> ^(.*)$</span>  https://<span class="variable">$host</span><span class="variable">$1</span> <span class="literal">permanent</span>; <span class="comment"># 重点,这里是把网页强行重定向到https,这样我们上面的证书才可以起到效果!</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>总体就这么多,如果你需要通过二级域名来转发你服务器某个端口的数据 (应该是叫<code>反向代理</code>) ,也是这么写,不过需要修改<code>blog.ssl.conf</code>的一些地方:</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">443</span> ssl;</span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/blog.romichan.me/fullchain.pem;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/blog.romichan.me/privkey.pem;</span><br><span class="line">    <span class="attribute">server_name</span>  blog.romichan.me;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>  http://127.0.0.1:8080; <span class="comment"># 这里就是转发的地址了</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$proxy_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1>That’s all</h1>
+<p>这就是一个随笔</p>
+<p>我当时在搜集这些资料的时候被很多的名字都吓到了,但其实这是一个很简单的东西,完全是一个模板化的东西,只需要记下来,以后应该都是适用的</p>
+<p>大概就这么多,如果你看到了,希望对你有帮助.</p>
+<p align="right">在最后的最后，感恩</p>
+<p align="right">Romi Brooks♥</p>]]></content>
+      <categories>
+        <category>WebDev</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
+        <tag>Website</tag>
+        <tag>WebDev</tag>
       </tags>
   </entry>
   <entry>
@@ -556,8 +753,25 @@ Use <code>torch.tensor()</code> to get a Tensor<br>
 Use <code>tensor.dtype</code> to get tensor’s type<br>
 Use <code>tensor.shape</code> to get tensor’s shape<br>
 Use <code>tensor.device</code> to get tensor’s device</p>
+<p>As for what <code>dtype</code>, <code>shape</code>, and <code>device</code> are here, we shall explain these later.</p>
 <p>E.g.:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">int_tensor = torch.tensor(<span class="number">1</span>) <span class="comment"># Get a tensor</span></span><br><span class="line">get_tensor_info(<span class="string">&quot;int_tensor&quot;</span>, int_tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Or Specify the type explicitly</span></span><br><span class="line">float32_tensor = torch.tensor(<span class="number">1.0</span>, dtype=torch.float32)</span><br><span class="line">get_tensor_info(<span class="string">&quot;float32_tensor&quot;</span>, float32_tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Explicit type conversion</span></span><br><span class="line">float16_tensor = float32_tensor.<span class="built_in">type</span>(torch.float16)</span><br><span class="line">get_tensor_info(<span class="string">&quot;float16_tensor&quot;</span>, float16_tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># More additional condition</span></span><br><span class="line">condition_tensor = torch.tensor([<span class="number">3.0</span>, <span class="number">6.0</span>, <span class="number">8.0</span>],</span><br><span class="line">                                dtype=torch.float32, <span class="comment"># Data type for this tensor</span></span><br><span class="line">                                device=torch.device(<span class="string">&quot;cuda:0&quot;</span>), <span class="comment"># Put this tensor to where ?</span></span><br><span class="line">                                requires_grad=<span class="literal">True</span>) <span class="comment"># Is Track the gradients with this tensor operation ?</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">int_tensor = torch.tensor(<span class="number">1</span>) <span class="comment"># Get a tensor</span></span><br><span class="line">get_tensor_info(<span class="string">&quot;int_tensor&quot;</span>, int_tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Or Specify the type explicitly</span></span><br><span class="line">float32_tensor = torch.tensor(<span class="number">1.0</span>, dtype=torch.float32)</span><br><span class="line">get_tensor_info(<span class="string">&quot;float32_tensor&quot;</span>, float32_tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Explicit type conversion</span></span><br><span class="line">float16_tensor = float32_tensor.<span class="built_in">type</span>(torch.float16)</span><br><span class="line">get_tensor_info(<span class="string">&quot;float16_tensor&quot;</span>, float16_tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># More additional condition</span></span><br><span class="line">condition_tensor = torch.tensor([<span class="number">3.0</span>, <span class="number">6.0</span>, <span class="number">8.0</span>],</span><br><span class="line">                                dtype=torch.float32, <span class="comment"># Data type for this tensor</span></span><br><span class="line">                                device=torch.device(<span class="string">&quot;cuda:0&quot;</span>), <span class="comment"># Put this tensor to where</span></span><br><span class="line">                                requires_grad=<span class="literal">True</span>) <span class="comment"># Is Track the gradients with this tensor operation</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>Tensor’s dtype:<br>
+The official PyTorch documentation provides a detailed list of the possible data types that a tensor can possess: <a href="https://docs.pytorch.org/docs/2.9/tensor_attributes.html#torch.dtype">torch.dtype</a>, which we refer to as dtype. The data type defines the precision of a tensor during computations. If you have experience with programming, you will be familiar with concepts such as int and float types; the data types here are analogous. Further details will be discussed later.<br>
+Generally, in PyTorch, the default data type for tensors is <code>float32</code>.</p>
+</li>
+<li>
+<p>Tensor’s shape:<br>
+We shall explain it here; this is its ref:<a href="#what-is-the-tensors-shape">What is the Tensor’s Shape</a></p>
+</li>
+<li>
+<p>Tensor’s device:<br>
+The <code>device</code> attribute enables developers to specify where tensors and models are executed, such as on the CPU or GPU. This is crucial for optimising code performance and leveraging hardware resources.<br>
+In this example, we store the <code>condition_tensor</code> on my GPU.</p>
+</li>
+</ul>
 <p>This will output content similar to the following:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int_tensor Tensor belong 0 Dimension with Data Type torch.int64 On cpu</span><br><span class="line">and the Shape of int_tensor is torch.Size([])</span><br><span class="line">float32_tensor Tensor belong 0 Dimension with Data Type torch.float32 On cpu</span><br><span class="line">and the Shape of float32_tensor is torch.Size([])</span><br><span class="line">float16_tensor Tensor belong 0 Dimension with Data Type torch.float16 On cpu</span><br><span class="line">and the Shape of float16_tensor is torch.Size([])</span><br></pre></td></tr></table></figure>
 <h2 id="scalar-tensor">Scalar Tensor</h2>
@@ -565,7 +779,7 @@ Use <code>tensor.device</code> to get tensor’s device</p>
 A scalar is a zero-dimensional tensor representing a single numerical value (such as an integer or floating-point number) without spatial dimensions (ndim=0).<br>
 It constitutes one of the most fundamental units within PyTorch’s tensor system, enabling seamless operations with higher-dimensional tensors (vectors, matrices, etc.).</p>
 <p>E.g.:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Scalar</span></span><br><span class="line">scalar = torch.tensor(<span class="number">7</span>)</span><br><span class="line"><span class="comment"># scalar.item() # get that tensor as the python data</span></span><br><span class="line">get_tensor_info(<span class="string">&quot;Scalar&quot;</span>, scalar)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Scalar</span></span><br><span class="line">scalar = torch.tensor(<span class="number">7</span>)</span><br><span class="line"><span class="comment"># scalar.item() # use this method to convert scalar tensors into Python&#x27;s native data types</span></span><br><span class="line">get_tensor_info(<span class="string">&quot;Scalar&quot;</span>, scalar)</span><br></pre></td></tr></table></figure>
 <p>This will output content similar to the following:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Scalar Tensor belong 0 Dimension with Data Type torch.int64 On cpu</span><br><span class="line">and the Shape of Scalar is torch.Size([])</span><br></pre></td></tr></table></figure>
 <h2 id="vector-tensor">Vector Tensor</h2>
@@ -790,194 +1004,6 @@ Should we then require the colour channel to be placed at the front, resulting i
       </tags>
   </entry>
   <entry>
-    <title>变更记录</title>
-    <url>/2000/01/01/%E5%8F%98%E6%9B%B4%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<h1>2022</h1>
-<h2 id="aug-27-2022">Aug 27, 2022</h2>
-<ul>
-<li>将Blog从旧域名迁移至新域名</li>
-</ul>
-<h2 id="may-2-2022">May 2, 2022</h2>
-<ul>
-<li>将Github Page上托管的Blog仓库迁移至主服务器</li>
-</ul>
-<h2 id="apr-16-2022">Apr 16, 2022</h2>
-<ul>
-<li>上传Blog仓库到Github，并且托管至Github Page</li>
-</ul>
-<hr>
-<h1>2023</h1>
-<h2 id="备考高考">备考高考</h2>
-<h2 id="mar-5-2023">Mar 5, 2023</h2>
-<ul>
-<li>将Blog从旧域名迁移至新域名</li>
-</ul>
-<hr>
-<h1>2024</h1>
-<h2 id="进入大学">进入大学</h2>
-<ul>
-<li>停更</li>
-</ul>
-<h2 id="高考">高考</h2>
-<ul>
-<li>停更</li>
-</ul>
-<hr>
-<h1>2025</h1>
-<h2 id="aug-12-2022">Aug 12, 2022</h2>
-<ul>
-<li>开始更新</li>
-</ul>
-<h2 id="aug-12-2022">Aug 12, 2022</h2>
-<ul>
-<li>将Blog从旧域名迁移至新域名</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>SysRecord</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>学习人生之C++进阶</title>
-    <url>/2024/01/01/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BC++%E8%BF%9B%E9%98%B6/</url>
-    <content><![CDATA[<p>注意，不是你卡了，是我还没写任何的内容 :(</p>
-<span id="more"></span>]]></content>
-      <categories>
-        <category>学习人生</category>
-        <category>Language</category>
-        <category>C++</category>
-      </categories>
-      <tags>
-        <tag>Note</tag>
-        <tag>Development</tag>
-        <tag>C++ Lang</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>利用JACK , 玩转 Reaper For Linux</title>
-    <url>/2022/10/28/%E5%88%A9%E7%94%A8JACK%20,%20%E7%8E%A9%E8%BD%AC%20Reaper%20For%20Linux/</url>
-    <content><![CDATA[<p><img src="../images/posts/JACK-Reaper-For-Linux/Cover.png" alt="Cover"></p>
-<h1>写在前面</h1>
-<p>笔者在这里用的 Linux 发行版是 <code>Arch Linux</code> , 并且使用 <a href="https://www.reaper.fm/">Reaper 官网</a> 所提供的 <code>Linux x86_64</code> 版本。</p>
-<p>不同的系统有不同的操作方式,但是大体逻辑是一样的。这篇Post的目的在于成功的利用Jack在Linux上运行daw。并且由于Reaper在linux有提供Build包,所以我们应当首选Reaper来作为我们要使用的Daw，这样会节省很多时间。</p>
-<span id="more"></span>
-<h1>1.安装，启动并设定<code>JACK2</code></h1>
-<blockquote>
-<p>参考： <a href="https://anclark.github.io/2020/12/08/Linux_Audio_Production/Make_Your_ArchLinux_An_Audio_Workstation_01/">把Arch Linux打造成音乐工作站</a></p>
-</blockquote>
-<p><code>JACK</code> 分为两个版本，分别是：</p>
-<ul>
-<li><code>JACK1</code> 由C编写，这是最初的版本</li>
-<li><code>JACK2</code> 由C++重写</li>
-</ul>
-<p><code>JACK2</code>相比<code>JACK1</code>来说，要方便配置很多，它不需要配置多的用户权限就可以使用，并且可以把<code>PulseAudio</code>,<code>ALSA</code> 桥接到 <code>JACK2</code> 。并且如果你之前在Windows体验过被ASIO4ALL所独占声卡的悲痛，那么<code>JACK1</code>也是如此。<br>
-所以我们果断选择<code>JACK2</code>。</p>
-<h2 id="1-安装">1.安装</h2>
-<h3 id="打开您的terminal-首先安装jack2主程序：">打开您的Terminal，首先安装<code>JACK2</code>主程序：</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo pacman -S jack2</span><br></pre></td></tr></table></figure>
-<h3 id="根据需求安装您需要桥接到jack2的接口：">根据需求安装您需要桥接到<code>JACK2</code>的接口：</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo pacman -S pulseaudio-jack <span class="comment">#这是PulseAudio -&gt; JACK2</span></span><br><span class="line">$ sudo pacman -S zita-ajbridge   <span class="comment">#这是ALSA -&gt; JACK2</span></span><br></pre></td></tr></table></figure>
-<h3 id="安装cadence来托管jack2：">安装<code>Cadence</code>来托管<code>JACK2</code>：</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo pacman -S cadence</span><br></pre></td></tr></table></figure>
-<h3 id="添加您到audio用户组：">添加您到<code>audio</code>用户组：</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo usermod --append -G audio username  <span class="comment">#其中username是您的用户名</span></span><br></pre></td></tr></table></figure>
-<h3 id="final-step：">Final Step：</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ reboot</span><br></pre></td></tr></table></figure>
-<h2 id="2-启动并设定jack2">2.启动并设定<code>JACK2</code></h2>
-<h3 id="启动-cadence-通常来说-它安装到了您的桌面-只需要搜索就可以启动它">启动 <code>Cadence</code>，通常来说，它安装到了您的桌面，只需要搜索就可以启动它。</h3>
-<p><img src="/images/posts/JACK-Reaper-For-Linux/1.png" alt="1.2.1" title="1.2.1"></br></p>
-<h3 id="点击-jack-bridges-中的-bridge-type-来设定桥接-这里根据您所安装的接口来选择-我选择了alsa-jack-：">点击 <code>JACK Bridges</code> 中的 <code>Bridge Type</code> 来设定桥接 （这里根据您所安装的接口来选择，我选择了<code>ALSA -&gt; JACK</code>）：</h3>
-<p><img src="/images/posts/JACK-Reaper-For-Linux/2.png" alt="1.2.2" title="1.2.2"></br></p>
-<h3 id="点击-jack-status-中的-configure-来配置桥接-您设定的桥接是什么接口就选择什么driver-：">点击 <code>JACK Status</code> 中的 <code>Configure</code> 来配置桥接 （您设定的桥接是什么接口就选择什么<code>Driver</code>）：</h3>
-<p><img src="/images/posts/JACK-Reaper-For-Linux/3.png" alt="1.2.3" title="1.2.3"></br></p>
-<h3 id="点击ok-退回到主界面之后点击start即可启动jack2-您也可以点击auto-start-jack-or-ladish-at-login来登陆自动启动jack2-：">点击<code>OK</code> 退回到主界面之后点击<code>Start</code>即可启动<code>JACK2</code>。（您也可以点击<code>Auto-start JACK or LADISH at login</code>来登陆自动启动<code>JACK2</code>）：</h3>
-<p><img src="/images/posts/JACK-Reaper-For-Linux/4.png" alt="1.2.4" title="1.2.4"></br><br>
-看到<code>JACK Status</code> 中的 <code>Server Status</code> 是<code>Start</code>就说明 <code>Cadence</code>已经托管了<code>JACK2</code>并且<code>JACK2</code>也桥接了我们的音频设备。（后续您就可以为<code>Cadence</code>添加自启动项，这样一开机音频驱动就会自动桥接到JACK2啦）</p>
-<h1>2.安装，启动并配置<code>Reaper</code></h1>
-<h2 id="1-安装">1.安装</h2>
-<h3 id="首先去-reaper的官网-然后点击download-reaper-来下载reaper：">首先去 <a href="https://www.reaper.fm/">Reaper的官网</a> 然后点击<code>DOWNLOAD REAPER</code> 来下载<code>Reaper</code>：</h3>
-<blockquote>
-<p>此处根据您的系统架构选择版本（<code>一般选择Linux x86_64</code>）：</p>
-</blockquote>
-<h3 id="解压-进入主程序目录：">解压,进入主程序目录：</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ tar -xvf reaper669_linux_x86_64.tar.xz &amp;&amp; <span class="built_in">rm</span> reaper669_linux_x86_64.tar.xz &amp;&amp; <span class="built_in">cd</span> reaper669_linux_x86_64  <span class="comment">#注意，这里669根据版本号来自行更改哦</span></span><br></pre></td></tr></table></figure>
-<h3 id="在当前目录执行安装脚本：">在当前目录执行安装脚本：</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">chmod</span> +x install-reaper.sh</span><br><span class="line">$ ./install-reaper.sh  </span><br></pre></td></tr></table></figure>
-<p>输入<code>I</code>，之后<code>Reaper</code>会被安装到<code>～/opt/REAPER/</code>目录下</p>
-<h3 id="软连接到-usr-bin">软连接到<code>/usr/bin</code></h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo <span class="built_in">ln</span> -s /home/username/opt/REAPER/reaper /usr/bin/reaper  <span class="comment">#其中username是您的用户名</span></span><br></pre></td></tr></table></figure>
-<h3 id="写desktop-file以便于从桌面启动：">写<code>Desktop File</code>以便于从桌面启动：</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo vim /usr/share/applications/reaper.desktop</span><br></pre></td></tr></table></figure>
-<p>按<code>I</code>进入插入模式，输入：</p>
-<pre><code class="language-bash">[Desktop Entry]  
-Name=Reaper  
-Comment=A Complete Digital Audio Production Application For Linux  
-Exec=/usr/bin/reaper  
-Icon=/home/username/opt/Reaper/reaper.png  #您需要去下载一个reaper的Icon移动到这里，其中username是您的用户名  
-Terminal=false  
-Type=Application  
-Categories=Music;
-</code></pre>
-<h3 id="现在您搜索reaper应该就有匹配项了-如果没有-您可能需要等一小会儿">现在您搜索<code>Reaper</code>应该就有匹配项了（如果没有，您可能需要等一小会儿）</h3>
-<h2 id="2-启动并配置reaper">2.启动并配置<code>Reaper</code></h2>
-<h3 id="打开reaper-无论您是从命令行启动-还是桌面启动">打开<code>Reaper</code>，无论您是从命令行启动，还是桌面启动</h3>
-<h3 id="等待几秒的许可证要求窗口-然后点击still-evaluating">等待几秒的许可证要求窗口，然后点击<code>Still Evaluating</code></h3>
-<p><img src="/images/posts/JACK-Reaper-For-Linux/5.png" alt="2.2.1" title="2.2.1"></br></p>
-<blockquote>
-<p><code>Reaper</code>是一款轻量强大的DAW，如果您觉得它还不错，并且您已经在Windows使用Reaper许久，却还没有注册license的话，请支持制作商<code>Cockos</code>，买一份<code>Reaper</code>的License吧！</p>
-</blockquote>
-<h3 id="点击options-preferences-audio-device-选择audio-system-jack-然后apply即可">点击<code>Options-&gt;Preferences-&gt;Audio-&gt;Device</code>，选择<code>Audio system</code>-&gt;<code>JACK</code>，然后<code>Apply</code>即可。</h3>
-<p><img src="/images/posts/JACK-Reaper-For-Linux/6.png" alt="2.2.2" title="2.2.3"></br></p>
-<h3 id="恭喜您-配置完成了-现在开始reaper已经以jack2为音频驱动-为您工作了">恭喜您，配置完成了！现在开始<code>Reaper</code>已经以<code>JACK2</code>为音频驱动，为您工作了！</h3>
-<h1>Wait… Somethings is Wrong…</h1>
-<p>你有没有发现，我在封面展示的那张图中，显示了中文，但是当您兴冲冲的开始自己的Linux音乐之路的时候，发现您的输入中文或者是其它字符时却出现了方块！</p>
-<h2 id="这个问题的解决方法来自cockos-reaper-中文群的大佬tee">这个问题的解决方法来自<code>Cockos REAPER 中文群</code>的大佬<a href="https://lado.me/">Tee</a></h2>
-<blockquote>
-<p>原帖地址是这里：<a href="https://zhuanlan.zhihu.com/p/364000143">如何在Linux REAPER里显示中文</a></p>
-</blockquote>
-<pre><code class="language-bash">sudo vim /etc/fonts/fonts.conf
-</code></pre>
-<p>按下<code>I</code>，插入以下内容：</p>
-<pre><code class="language-bash">    &lt;!-- REAPER fonts patch --&gt;
-    &lt;match target=&quot;pattern&quot;&gt;
-      &lt;test name=&quot;prgname&quot;&gt;
-       &lt;string&gt;reaper&lt;/string&gt;
-    &lt;/test&gt;
-      &lt;edit name=&quot;family&quot; mode=&quot;assign&quot;&gt;
-       &lt;string&gt;Noto Sans CJK SC&lt;/string&gt;
-      &lt;/edit&gt;
-    &lt;/match&gt;  
-</code></pre>
-<p>注意插入的位置，位于 <strong>fontconfig标签之间。</strong> 这里涉及系统文件，请务必小心。</p>
-<h3 id="现在输入中文-它的显示就会正常了">现在输入中文，它的显示就会正常了！</h3>
-<p align="right">在最后的最后，感恩</p>
-<p align="right">Romi Brooks♥</p>]]></content>
-      <categories>
-        <category>Linux</category>
-        <category>Music</category>
-      </categories>
-      <tags>
-        <tag>Music</tag>
-        <tag>Reaper</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>学习人生之数据分析</title>
-    <url>/2025/11/04/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BDataAnalysis/</url>
-    <content><![CDATA[<p>注意，不是你卡了，是我还没写任何的内容 :(</p>
-<span id="more"></span>]]></content>
-      <categories>
-        <category>学习人生</category>
-        <category>Theories</category>
-        <category>数据分析</category>
-      </categories>
-      <tags>
-        <tag>Note</tag>
-        <tag>Python</tag>
-        <tag>DataAnalysis</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>学习人生之初见Vue3</title>
     <url>/2025/11/03/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8B%E5%88%9D%E8%A7%81Vue3/</url>
     <content><![CDATA[<h1>什么是Vue?</h1>
@@ -1001,44 +1027,48 @@ Categories=Music;
       </tags>
   </entry>
   <entry>
-    <title>Nginx二级域名配置</title>
-    <url>/2023/02/25/Nginx%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<div style="text-align: center;">  
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=2020918656&auto=0&height=66"></iframe>  
-<p><s>YOASOBI 在 2月15号出新专辑了捏</s></p>
-</div>  
-<blockquote>
-<p>在去年Digital Ocean把我的账号突然封禁之后,我甚至没有办法迁移我的数据,所有配置文件只能重写<br>
-这里是为了留一份Nginx中二级域名.conf配置文件的写法,依据我的习惯,仅供参考</p>
-</blockquote>
-<p>Nginx现在的版本应该会在<code>/etc/nginx/</code>目录存在<code>nginx.conf</code><br>
-这里大概是这样</p>
-<span id="more"></span>  
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attribute">user</span>  nginx;</span><br><span class="line"><span class="attribute">worker_processes</span>  auto;</span><br><span class="line"></span><br><span class="line"><span class="attribute">error_log</span>  /var/log/nginx/<span class="literal">error</span>.log <span class="literal">notice</span>;</span><br><span class="line"><span class="attribute">pid</span>        /var/run/nginx.pid;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">events</span> &#123;</span><br><span class="line">    <span class="attribute">worker_connections</span>  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="attribute">include</span>       /etc/nginx/mime.types;</span><br><span class="line">    <span class="attribute">default_type</span>  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">log_format</span>  main  <span class="string">&#x27;<span class="variable">$remote_addr</span> - <span class="variable">$remote_user</span> [<span class="variable">$time_local</span>] &quot;<span class="variable">$request</span>&quot; &#x27;</span></span><br><span class="line">                      <span class="string">&#x27;<span class="variable">$status</span> <span class="variable">$body_bytes_sent</span> &quot;<span class="variable">$http_referer</span>&quot; &#x27;</span></span><br><span class="line">                      <span class="string">&#x27;&quot;<span class="variable">$http_user_agent</span>&quot; &quot;<span class="variable">$http_x_forwarded_for</span>&quot;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">access_log</span>  /var/log/nginx/access.log  main;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">sendfile</span>        <span class="literal">on</span>;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    <span class="attribute">keepalive_timeout</span>  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    <span class="attribute">include</span> /etc/nginx/conf.d/<span class="regexp">*.conf</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可见,<code>nginx.conf</code>引用了<code>/etc/nginx/conf.d/</code>下的所有.conf文件<br>
-这里我习惯把我的个人网站配置文件放在这</p>
-<h1>Start</h1>
-<p>现在假设我想要创建一个名为<code>blog.romichan.me</code>的网站,用来存放我的博客<br>
-首先在你域名的托管商配置<code>DNS解析</code>,可以是A解析,也可以是AAAA解析,需要绑定到服务器上<br>
-接着在<code>/etc/nginx/conf.d/</code>下新建一个名为<code>blog.ssl.conf</code>的文件,他一般是这样的:</p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">443</span> ssl;    <span class="comment"># 自从新版本nginx开始,启用ssl隧道得这么写</span></span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/blog.romichan.me/fullchain.pem;   <span class="comment"># 证书文件</span></span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/blog.romichan.me/privkey.pem; <span class="comment"># 证书密钥文件</span></span><br><span class="line">    <span class="attribute">server_name</span>  blog.romichan.me;  <span class="comment">#这里就是要解析到的域名,也就是你在域名托管商的DNS解析里所设置的</span></span><br><span class="line">        <span class="section">location</span> / &#123;</span><br><span class="line">            <span class="attribute">root</span>         /usr/share/webpage/blog; <span class="comment">#这里是博客的根目录.据你的需求,我只需要index.html所以下面的index只写了这些</span></span><br><span class="line">            <span class="attribute">index</span>        index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>而后我们在新建一个文件,它的名字是<code>blog.conf</code>,写入这些:</p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">80</span>; <span class="comment"># 不作解释,8080也行</span></span><br><span class="line">    <span class="attribute">server_name</span>  blog.romichan.me; <span class="comment"># 解析到的网站</span></span><br><span class="line">    <span class="attribute">rewrite</span><span class="regexp"> ^(.*)$</span>  https://<span class="variable">$host</span><span class="variable">$1</span> <span class="literal">permanent</span>; <span class="comment"># 重点,这里是把网页强行重定向到https,这样我们上面的证书才可以起到效果!</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>总体就这么多,如果你需要通过二级域名来转发你服务器某个端口的数据 (应该是叫<code>反向代理</code>) ,也是这么写,不过需要修改<code>blog.ssl.conf</code>的一些地方:</p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">443</span> ssl;</span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/blog.romichan.me/fullchain.pem;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/blog.romichan.me/privkey.pem;</span><br><span class="line">    <span class="attribute">server_name</span>  blog.romichan.me;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>  http://127.0.0.1:8080; <span class="comment"># 这里就是转发的地址了</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$proxy_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1>That’s all</h1>
-<p>这就是一个随笔</p>
-<p>我当时在搜集这些资料的时候被很多的名字都吓到了,但其实这是一个很简单的东西,完全是一个模板化的东西,只需要记下来,以后应该都是适用的</p>
-<p>大概就这么多,如果你看到了,希望对你有帮助.</p>
-<p align="right">在最后的最后，感恩</p>
-<p align="right">Romi Brooks♥</p>]]></content>
+    <title>学习人生之C++进阶</title>
+    <url>/2024/01/01/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BC++%E8%BF%9B%E9%98%B6/</url>
+    <content><![CDATA[<p>注意，不是你卡了，是我还没写任何的内容 :(</p>
+<span id="more"></span>]]></content>
       <categories>
-        <category>WebDev</category>
+        <category>学习人生</category>
+        <category>Language</category>
+        <category>C++</category>
       </categories>
       <tags>
-        <tag>Nginx</tag>
-        <tag>WebDev</tag>
-        <tag>Website</tag>
+        <tag>Note</tag>
+        <tag>Development</tag>
+        <tag>C++ Lang</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>学习人生之数据分析</title>
+    <url>/2025/11/04/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BDataAnalysis/</url>
+    <content><![CDATA[<h1>Intro</h1>
+<p>我所在的学校，专业培养方案在我这一届出现了一些变动，从一开始的传统单一培养方案变成了：<code>Java培养</code>或者是<code>Python培养</code>方案。<br>
+在最开始我承认我是因为Python的简单易入门而选择了Python分流培养方案，不过在选择了之后我细细看了看它所有的专业科目，我发现其实不只是单纯的Python的使用分流，而是一门基于Python的数据分析的课程，这或许与后面的深度学习课程提供了基础。</p>
+<span id="more"></span>
+<p><br>没错，是我想得太简单了，数据分析或是机器学习是一个十分有难度的专业课程。面对很多专业术语，概率分析，量化公式我则会显得手足无措。这篇文章最开始是在25年11月4号创建的，但是我一直在梳理内容，面对这种难度极高的课程，我一直去想我应如何在这种我从未深入理解过的条件下写出有实际意义，浅显，易懂且不冗余的笔记呢？<br>
+于是，在25年11月10号，我心血来潮的写下了这第一段引入，我先打个初稿，就以书本目前所学的<code>分类</code>、<code>聚类</code>、<code>回归分析</code>三个大章开始。私以为应该同时加入Python的<code>NumPy</code>、<code>Matplotlib</code>与<code>Pandas</code>库的使用教学，进行内容上，对于代码使用方面的过度。在之后，如果我找到了一种更加适合的章节组织方式，我也会做出相对应的修改。</p>
+<p>闲暇之余，我也写了一篇文章，记录了PyTorch的学习历程: <a href="https://blog.heyromi.icu/2025/11/07/Pytorch%E5%BC%A0%E9%87%8F%E8%AE%A1%E7%AE%97/">PyTorch张量计算</a>，张量计算对于深度学习领域，也同样是个不可缺少的部分。</p>
+<p>就以现在所订下的大纲开始，在数据分析方面，先拟为五大章：</p>
+<h1>NumPy in Python</h1>
+<h1>Matplotlib in Python</h1>
+<h1>Pandas in Python</h1>
+<h1>分类</h1>
+<h1>聚类</h1>
+<h1>回归分析</h1>
+]]></content>
+      <categories>
+        <category>学习人生</category>
+        <category>Theories</category>
+        <category>数据分析</category>
+      </categories>
+      <tags>
+        <tag>Note</tag>
+        <tag>Python</tag>
+        <tag>DataAnalysis</tag>
       </tags>
   </entry>
 </search>

@@ -89,7 +89,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">3.8k</span>
+            <span class="post-count">4k</span>
         </span>
     </span>
 
@@ -98,7 +98,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">22 分钟</span>
+            <span class="post-count">23 分钟</span>
         </span>
     </span>
 </div>
@@ -219,8 +219,25 @@ Use <code>torch.tensor()</code> to get a Tensor<br>
 Use <code>tensor.dtype</code> to get tensor’s type<br>
 Use <code>tensor.shape</code> to get tensor’s shape<br>
 Use <code>tensor.device</code> to get tensor’s device</p>
+<p>As for what <code>dtype</code>, <code>shape</code>, and <code>device</code> are here, we shall explain these later.</p>
 <p>E.g.:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">int_tensor = torch.tensor(<span class="number">1</span>) <span class="comment"># Get a tensor</span></span><br><span class="line">get_tensor_info(<span class="string">&quot;int_tensor&quot;</span>, int_tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Or Specify the type explicitly</span></span><br><span class="line">float32_tensor = torch.tensor(<span class="number">1.0</span>, dtype=torch.float32)</span><br><span class="line">get_tensor_info(<span class="string">&quot;float32_tensor&quot;</span>, float32_tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Explicit type conversion</span></span><br><span class="line">float16_tensor = float32_tensor.<span class="built_in">type</span>(torch.float16)</span><br><span class="line">get_tensor_info(<span class="string">&quot;float16_tensor&quot;</span>, float16_tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># More additional condition</span></span><br><span class="line">condition_tensor = torch.tensor([<span class="number">3.0</span>, <span class="number">6.0</span>, <span class="number">8.0</span>],</span><br><span class="line">                                dtype=torch.float32, <span class="comment"># Data type for this tensor</span></span><br><span class="line">                                device=torch.device(<span class="string">&quot;cuda:0&quot;</span>), <span class="comment"># Put this tensor to where ?</span></span><br><span class="line">                                requires_grad=<span class="literal">True</span>) <span class="comment"># Is Track the gradients with this tensor operation ?</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">int_tensor = torch.tensor(<span class="number">1</span>) <span class="comment"># Get a tensor</span></span><br><span class="line">get_tensor_info(<span class="string">&quot;int_tensor&quot;</span>, int_tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Or Specify the type explicitly</span></span><br><span class="line">float32_tensor = torch.tensor(<span class="number">1.0</span>, dtype=torch.float32)</span><br><span class="line">get_tensor_info(<span class="string">&quot;float32_tensor&quot;</span>, float32_tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Explicit type conversion</span></span><br><span class="line">float16_tensor = float32_tensor.<span class="built_in">type</span>(torch.float16)</span><br><span class="line">get_tensor_info(<span class="string">&quot;float16_tensor&quot;</span>, float16_tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># More additional condition</span></span><br><span class="line">condition_tensor = torch.tensor([<span class="number">3.0</span>, <span class="number">6.0</span>, <span class="number">8.0</span>],</span><br><span class="line">                                dtype=torch.float32, <span class="comment"># Data type for this tensor</span></span><br><span class="line">                                device=torch.device(<span class="string">&quot;cuda:0&quot;</span>), <span class="comment"># Put this tensor to where</span></span><br><span class="line">                                requires_grad=<span class="literal">True</span>) <span class="comment"># Is Track the gradients with this tensor operation</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>Tensor’s dtype:<br>
+The official PyTorch documentation provides a detailed list of the possible data types that a tensor can possess: <a target="_blank" rel="noopener" href="https://docs.pytorch.org/docs/2.9/tensor_attributes.html#torch.dtype">torch.dtype</a>, which we refer to as dtype. The data type defines the precision of a tensor during computations. If you have experience with programming, you will be familiar with concepts such as int and float types; the data types here are analogous. Further details will be discussed later.<br>
+Generally, in PyTorch, the default data type for tensors is <code>float32</code>.</p>
+</li>
+<li>
+<p>Tensor’s shape:<br>
+We shall explain it here; this is its ref:<a href="#what-is-the-tensors-shape">What is the Tensor’s Shape</a></p>
+</li>
+<li>
+<p>Tensor’s device:<br>
+The <code>device</code> attribute enables developers to specify where tensors and models are executed, such as on the CPU or GPU. This is crucial for optimising code performance and leveraging hardware resources.<br>
+In this example, we store the <code>condition_tensor</code> on my GPU.</p>
+</li>
+</ul>
 <p>This will output content similar to the following:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int_tensor Tensor belong 0 Dimension with Data Type torch.int64 On cpu</span><br><span class="line">and the Shape of int_tensor is torch.Size([])</span><br><span class="line">float32_tensor Tensor belong 0 Dimension with Data Type torch.float32 On cpu</span><br><span class="line">and the Shape of float32_tensor is torch.Size([])</span><br><span class="line">float16_tensor Tensor belong 0 Dimension with Data Type torch.float16 On cpu</span><br><span class="line">and the Shape of float16_tensor is torch.Size([])</span><br></pre></td></tr></table></figure>
 <h2 id="scalar-tensor">Scalar Tensor</h2>
@@ -228,7 +245,7 @@ Use <code>tensor.device</code> to get tensor’s device</p>
 A scalar is a zero-dimensional tensor representing a single numerical value (such as an integer or floating-point number) without spatial dimensions (ndim=0).<br>
 It constitutes one of the most fundamental units within PyTorch’s tensor system, enabling seamless operations with higher-dimensional tensors (vectors, matrices, etc.).</p>
 <p>E.g.:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Scalar</span></span><br><span class="line">scalar = torch.tensor(<span class="number">7</span>)</span><br><span class="line"><span class="comment"># scalar.item() # get that tensor as the python data</span></span><br><span class="line">get_tensor_info(<span class="string">&quot;Scalar&quot;</span>, scalar)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Scalar</span></span><br><span class="line">scalar = torch.tensor(<span class="number">7</span>)</span><br><span class="line"><span class="comment"># scalar.item() # use this method to convert scalar tensors into Python&#x27;s native data types</span></span><br><span class="line">get_tensor_info(<span class="string">&quot;Scalar&quot;</span>, scalar)</span><br></pre></td></tr></table></figure>
 <p>This will output content similar to the following:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Scalar Tensor belong 0 Dimension with Data Type torch.int64 On cpu</span><br><span class="line">and the Shape of Scalar is torch.Size([])</span><br></pre></td></tr></table></figure>
 <h2 id="vector-tensor">Vector Tensor</h2>

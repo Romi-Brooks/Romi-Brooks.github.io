@@ -2,9 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.romichan.icu/_moments/2025-11-10.html</loc>
+    
+    <lastmod>2025-11-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.romichan.icu/2025/11/04/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BDataAnalysis/</loc>
+    
+    <lastmod>2025-11-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.romichan.icu/2025/11/07/Pytorch%E5%BC%A0%E9%87%8F%E8%AE%A1%E7%AE%97/</loc>
     
-    <lastmod>2025-11-08</lastmod>
+    <lastmod>2025-11-09</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -57,15 +75,6 @@
   
   <url>
     <loc>https://blog.romichan.icu/2022/10/28/%E5%88%A9%E7%94%A8JACK%20,%20%E7%8E%A9%E8%BD%AC%20Reaper%20For%20Linux/</loc>
-    
-    <lastmod>2025-11-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.romichan.icu/2025/11/04/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8BDataAnalysis/</loc>
     
     <lastmod>2025-11-07</lastmod>
     
@@ -238,7 +247,7 @@
 
   <url>
     <loc>https://blog.romichan.icu/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -246,168 +255,168 @@
   
   <url>
     <loc>https://blog.romichan.icu/tags/Archlinux/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.romichan.icu/tags/Nvidia/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.romichan.icu/tags/Installation/</loc>
-    <lastmod>2025-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.romichan.icu/tags/Nginx/</loc>
-    <lastmod>2025-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.romichan.icu/tags/WebDev/</loc>
-    <lastmod>2025-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.romichan.icu/tags/Website/</loc>
-    <lastmod>2025-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.romichan.icu/tags/code-server/</loc>
-    <lastmod>2025-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.romichan.icu/tags/FL-Tips/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.romichan.icu/tags/i3wm/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.romichan.icu/tags/Nginx/</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.romichan.icu/tags/Music/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.romichan.icu/tags/Note/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <loc>https://blog.romichan.icu/tags/Website/</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.romichan.icu/tags/AI/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <loc>https://blog.romichan.icu/tags/FL-Tips/</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.romichan.icu/tags/DeepLearning/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <loc>https://blog.romichan.icu/tags/WebDev/</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.romichan.icu/tags/Python/</loc>
-    <lastmod>2025-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.romichan.icu/tags/PyTorch/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <loc>https://blog.romichan.icu/tags/code-server/</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.romichan.icu/tags/SysRecord/</loc>
-    <lastmod>2025-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.romichan.icu/tags/Development/</loc>
-    <lastmod>2025-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.romichan.icu/tags/C-Lang/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.romichan.icu/tags/Reaper/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.romichan.icu/tags/DataAnalysis/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <loc>https://blog.romichan.icu/tags/Note/</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.romichan.icu/tags/AI/</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.romichan.icu/tags/DeepLearning/</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.romichan.icu/tags/Python/</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.romichan.icu/tags/PyTorch/</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.romichan.icu/tags/Development/</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.romichan.icu/tags/Vue3/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.romichan.icu/tags/Javascript/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.romichan.icu/tags/Typescript/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.romichan.icu/tags/frontend/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.romichan.icu/tags/C-Lang/</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.romichan.icu/tags/DataAnalysis/</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -416,84 +425,84 @@
   
   <url>
     <loc>https://blog.romichan.icu/categories/Linux/</loc>
-    <lastmod>2025-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.romichan.icu/categories/WebDev/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.romichan.icu/categories/Music/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <loc>https://blog.romichan.icu/categories/WebDev/</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.romichan.icu/categories/Linux/Music/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Theories/</loc>
-    <lastmod>2025-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Language/</loc>
-    <lastmod>2025-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Theories/%E5%BC%A0%E9%87%8F%E8%AE%A1%E7%AE%97/</loc>
-    <lastmod>2025-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Language/C/</loc>
-    <lastmod>2025-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Theories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/WebDev/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Language/</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Theories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Theories/%E5%BC%A0%E9%87%8F%E8%AE%A1%E7%AE%97/</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/WebDev/Vue/</loc>
-    <lastmod>2025-11-08</lastmod>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Language/C/</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
