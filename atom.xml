@@ -109,6 +109,8 @@
     <category term="Vue" scheme="https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/WebDev/Vue/"/>
     
     
+    <category term="frontend" scheme="https://blog.romichan.icu/tags/frontend/"/>
+    
     <category term="Note" scheme="https://blog.romichan.icu/tags/Note/"/>
     
     <category term="Development" scheme="https://blog.romichan.icu/tags/Development/"/>
@@ -119,7 +121,43 @@
     
     <category term="Typescript" scheme="https://blog.romichan.icu/tags/Typescript/"/>
     
+  </entry>
+  
+  <entry>
+    <title>学习人生之JavaScript简要手册</title>
+    <link href="https://blog.romichan.icu/2025/03/21/JavaScript%20%E7%AE%80%E8%A6%81%E6%89%8B%E5%86%8C/"/>
+    <id>https://blog.romichan.icu/2025/03/21/JavaScript%20%E7%AE%80%E8%A6%81%E6%89%8B%E5%86%8C/</id>
+    <published>2025-03-20T16:00:00.000Z</published>
+    <updated>2026-04-09T13:43:57.437Z</updated>
+    
+    
+    <summary type="html">&lt;h1&gt;JavaScript 简要手册&lt;/h1&gt;
+&lt;h1&gt;&lt;a href=&quot;https://www.runoob.com/js/js-errors.html&quot;&gt;2025.3.21进度 - 异常处理&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id=&quot;引入&quot;&gt;引入&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;可以在HTML文档中放入不限数量的脚本&lt;code&gt;script&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Javascript&lt;/code&gt;脚本代码可被放置在HTML页面的&lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt;部分中&lt;/li&gt;
+&lt;li&gt;HTML中的&lt;code&gt;Javascript&lt;/code&gt;脚本代码必须位于&lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt;与&lt;code&gt;&amp;lt;/script&amp;gt;&lt;/code&gt;标签之间&lt;/li&gt;
+&lt;li&gt;通常的做法是把函数放入&lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt;部分中，或者放在页面底部。这样就可以把它们安置到同一处位置，不会干扰页面的内容&lt;/li&gt;
+&lt;li&gt;可以通过&lt;code&gt;&amp;lt;script src=&amp;quot;JavaScript.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/code&gt;来外部引入&lt;code&gt;JavaScript&lt;/code&gt;脚本&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="学习人生" scheme="https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/"/>
+    
+    <category term="WebDev" scheme="https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/WebDev/"/>
+    
+    <category term="JavaScript" scheme="https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/WebDev/JavaScript/"/>
+    
+    
+    <category term="JavaScript" scheme="https://blog.romichan.icu/tags/JavaScript/"/>
+    
+    <category term="WebDev" scheme="https://blog.romichan.icu/tags/WebDev/"/>
+    
     <category term="frontend" scheme="https://blog.romichan.icu/tags/frontend/"/>
+    
+    <category term="Note" scheme="https://blog.romichan.icu/tags/Note/"/>
     
   </entry>
   
@@ -169,11 +207,11 @@
     <category term="WebDev" scheme="https://blog.romichan.icu/categories/WebDev/"/>
     
     
+    <category term="WebDev" scheme="https://blog.romichan.icu/tags/WebDev/"/>
+    
     <category term="Nginx" scheme="https://blog.romichan.icu/tags/Nginx/"/>
     
     <category term="Website" scheme="https://blog.romichan.icu/tags/Website/"/>
-    
-    <category term="WebDev" scheme="https://blog.romichan.icu/tags/WebDev/"/>
     
     <category term="code-server" scheme="https://blog.romichan.icu/tags/code-server/"/>
     
@@ -200,9 +238,9 @@
     
     <category term="Nginx" scheme="https://blog.romichan.icu/tags/Nginx/"/>
     
-    <category term="Music" scheme="https://blog.romichan.icu/tags/Music/"/>
-    
     <category term="Website" scheme="https://blog.romichan.icu/tags/Website/"/>
+    
+    <category term="Music" scheme="https://blog.romichan.icu/tags/Music/"/>
     
   </entry>
   
@@ -230,11 +268,11 @@
     <category term="WebDev" scheme="https://blog.romichan.icu/categories/WebDev/"/>
     
     
+    <category term="WebDev" scheme="https://blog.romichan.icu/tags/WebDev/"/>
+    
     <category term="Nginx" scheme="https://blog.romichan.icu/tags/Nginx/"/>
     
     <category term="Website" scheme="https://blog.romichan.icu/tags/Website/"/>
-    
-    <category term="WebDev" scheme="https://blog.romichan.icu/tags/WebDev/"/>
     
   </entry>
   
@@ -255,9 +293,9 @@
     
     <category term="Archlinux" scheme="https://blog.romichan.icu/tags/Archlinux/"/>
     
-    <category term="Nvidia" scheme="https://blog.romichan.icu/tags/Nvidia/"/>
-    
     <category term="Installation" scheme="https://blog.romichan.icu/tags/Installation/"/>
+    
+    <category term="Nvidia" scheme="https://blog.romichan.icu/tags/Nvidia/"/>
     
   </entry>
   
@@ -322,9 +360,9 @@
     <category term="Music" scheme="https://blog.romichan.icu/categories/Linux/Music/"/>
     
     
-    <category term="Music" scheme="https://blog.romichan.icu/tags/Music/"/>
-    
     <category term="Reaper" scheme="https://blog.romichan.icu/tags/Reaper/"/>
+    
+    <category term="Music" scheme="https://blog.romichan.icu/tags/Music/"/>
     
   </entry>
   
