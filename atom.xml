@@ -48,11 +48,11 @@
     
     <category term="Note" scheme="https://blog.romichan.icu/tags/Note/"/>
     
+    <category term="Python" scheme="https://blog.romichan.icu/tags/Python/"/>
+    
     <category term="AI" scheme="https://blog.romichan.icu/tags/AI/"/>
     
     <category term="DeepLearning" scheme="https://blog.romichan.icu/tags/DeepLearning/"/>
-    
-    <category term="Python" scheme="https://blog.romichan.icu/tags/Python/"/>
     
     <category term="PyTorch" scheme="https://blog.romichan.icu/tags/PyTorch/"/>
     
@@ -81,9 +81,9 @@
     
     <category term="Note" scheme="https://blog.romichan.icu/tags/Note/"/>
     
-    <category term="Python" scheme="https://blog.romichan.icu/tags/Python/"/>
-    
     <category term="DataAnalysis" scheme="https://blog.romichan.icu/tags/DataAnalysis/"/>
+    
+    <category term="Python" scheme="https://blog.romichan.icu/tags/Python/"/>
     
   </entry>
   
@@ -120,6 +120,28 @@
     <category term="Javascript" scheme="https://blog.romichan.icu/tags/Javascript/"/>
     
     <category term="Typescript" scheme="https://blog.romichan.icu/tags/Typescript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>乐理基础</title>
+    <link href="https://blog.romichan.icu/2025/03/25/%E4%B9%90%E7%90%86%E5%9F%BA%E7%A1%80/"/>
+    <id>https://blog.romichan.icu/2025/03/25/%E4%B9%90%E7%90%86%E5%9F%BA%E7%A1%80/</id>
+    <published>2025-03-24T16:00:00.000Z</published>
+    <updated>2026-04-09T13:52:15.485Z</updated>
+    
+    
+    <summary type="html">&lt;h1&gt;基础乐理&lt;/h1&gt;
+&lt;h2 id=&quot;节奏&quot;&gt;节奏&lt;/h2&gt;
+&lt;h3 id=&quot;拍&quot;&gt;拍&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;拍&lt;/strong&gt;是音乐中用来衡量节奏的基本单位，它代表了音乐进行中的一个基本时间刻度。在乐谱中，拍通常由一个特定的音符时值来表示，如四分音符、八分音符等。例如，在4/4拍的乐曲中，以四分音符为一拍，每小节有四拍，此时四分音符的时值就代表了一拍的时长。拍的时值是一个相对的时间概念，它会根据乐曲的速度而变化。当速度确定后，每拍的实际时间也随之确定，进而决定了其他音符时值的长短。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Music" scheme="https://blog.romichan.icu/categories/Music/"/>
+    
+    
+    <category term="Music" scheme="https://blog.romichan.icu/tags/Music/"/>
     
   </entry>
   
@@ -207,11 +229,11 @@
     <category term="WebDev" scheme="https://blog.romichan.icu/categories/WebDev/"/>
     
     
-    <category term="WebDev" scheme="https://blog.romichan.icu/tags/WebDev/"/>
-    
     <category term="Nginx" scheme="https://blog.romichan.icu/tags/Nginx/"/>
     
     <category term="Website" scheme="https://blog.romichan.icu/tags/Website/"/>
+    
+    <category term="WebDev" scheme="https://blog.romichan.icu/tags/WebDev/"/>
     
     <category term="code-server" scheme="https://blog.romichan.icu/tags/code-server/"/>
     
@@ -238,9 +260,9 @@
     
     <category term="Nginx" scheme="https://blog.romichan.icu/tags/Nginx/"/>
     
-    <category term="Website" scheme="https://blog.romichan.icu/tags/Website/"/>
-    
     <category term="Music" scheme="https://blog.romichan.icu/tags/Music/"/>
+    
+    <category term="Website" scheme="https://blog.romichan.icu/tags/Website/"/>
     
   </entry>
   
@@ -268,11 +290,11 @@
     <category term="WebDev" scheme="https://blog.romichan.icu/categories/WebDev/"/>
     
     
-    <category term="WebDev" scheme="https://blog.romichan.icu/tags/WebDev/"/>
-    
     <category term="Nginx" scheme="https://blog.romichan.icu/tags/Nginx/"/>
     
     <category term="Website" scheme="https://blog.romichan.icu/tags/Website/"/>
+    
+    <category term="WebDev" scheme="https://blog.romichan.icu/tags/WebDev/"/>
     
   </entry>
   
@@ -293,9 +315,9 @@
     
     <category term="Archlinux" scheme="https://blog.romichan.icu/tags/Archlinux/"/>
     
-    <category term="Installation" scheme="https://blog.romichan.icu/tags/Installation/"/>
-    
     <category term="Nvidia" scheme="https://blog.romichan.icu/tags/Nvidia/"/>
+    
+    <category term="Installation" scheme="https://blog.romichan.icu/tags/Installation/"/>
     
   </entry>
   
@@ -360,9 +382,9 @@
     <category term="Music" scheme="https://blog.romichan.icu/categories/Linux/Music/"/>
     
     
-    <category term="Reaper" scheme="https://blog.romichan.icu/tags/Reaper/"/>
-    
     <category term="Music" scheme="https://blog.romichan.icu/tags/Music/"/>
+    
+    <category term="Reaper" scheme="https://blog.romichan.icu/tags/Reaper/"/>
     
   </entry>
   
