@@ -6,7 +6,7 @@
   <link href="https://blog.romichan.icu/atom.xml" rel="self"/>
   
   <link href="https://blog.romichan.icu/"/>
-  <updated>2026-10-27T18:00:16.112Z</updated>
+  <updated>2026-11-05T14:49:24.684Z</updated>
   <id>https://blog.romichan.icu/</id>
   
   <author>
@@ -21,19 +21,13 @@
     <link href="https://blog.romichan.icu/2026/10/28/%E9%A1%BA%E6%89%8B%E5%AD%A6%E4%B8%80%E4%B8%8BLatex%E5%85%AC%E5%BC%8F%E5%86%99%E6%B3%95/"/>
     <id>https://blog.romichan.icu/2026/10/28/%E9%A1%BA%E6%89%8B%E5%AD%A6%E4%B8%80%E4%B8%8BLatex%E5%85%AC%E5%BC%8F%E5%86%99%E6%B3%95/</id>
     <published>2026-10-27T16:00:00.000Z</published>
-    <updated>2026-10-27T18:00:16.112Z</updated>
+    <updated>2026-11-05T14:49:24.684Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;&lt;strong&gt;注意，以下内容只适用于Markdown文档，如果是在纯Latex内，可能并不是最佳实践。&lt;/strong&gt;&lt;/p&gt;
 &lt;h1&gt;行间公式与行内公式的表达&lt;/h1&gt;
 &lt;p&gt;通常对于行间公式（单独占用一行的公式），这样表示：&lt;/p&gt;
-&lt;figure</summary>
-        
-      
+&lt;figure class=&quot;highlight md&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$$&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Latex代码&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$$&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     

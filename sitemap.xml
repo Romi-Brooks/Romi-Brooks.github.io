@@ -4,7 +4,7 @@
   <url>
     <loc>https://blog.romichan.icu/2026/10/28/%E9%A1%BA%E6%89%8B%E5%AD%A6%E4%B8%80%E4%B8%8BLatex%E5%85%AC%E5%BC%8F%E5%86%99%E6%B3%95/</loc>
     
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-11-05</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -272,6 +272,20 @@
 
   
   <url>
+    <loc>https://blog.romichan.icu/tags/Music/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.romichan.icu/tags/Tips/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.romichan.icu/tags/Linux/</loc>
     <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -287,20 +301,6 @@
   
   <url>
     <loc>https://blog.romichan.icu/tags/ArchLinux/</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.romichan.icu/tags/Music/</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.romichan.icu/tags/Tips/</loc>
     <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -356,6 +356,20 @@
   </url>
   
   <url>
+    <loc>https://blog.romichan.icu/tags/Arch/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.romichan.icu/tags/Reaper/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.romichan.icu/tags/AI/</loc>
     <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -384,14 +398,7 @@
   </url>
   
   <url>
-    <loc>https://blog.romichan.icu/tags/Arch/</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.romichan.icu/tags/Reaper/</loc>
+    <loc>https://blog.romichan.icu/tags/MachineLearning/</loc>
     <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -419,13 +426,6 @@
   </url>
   
   <url>
-    <loc>https://blog.romichan.icu/tags/MachineLearning/</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.romichan.icu/tags/LaTeX/</loc>
     <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -435,14 +435,14 @@
 
   
   <url>
-    <loc>https://blog.romichan.icu/categories/Linux/</loc>
+    <loc>https://blog.romichan.icu/categories/Music/</loc>
     <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.romichan.icu/categories/Music/</loc>
+    <loc>https://blog.romichan.icu/categories/Linux/</loc>
     <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -477,13 +477,6 @@
   </url>
   
   <url>
-    <loc>https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Language/</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Theories/</loc>
     <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -498,13 +491,6 @@
   </url>
   
   <url>
-    <loc>https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Language/C/</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Theories/%E5%BC%A0%E9%87%8F%E8%AE%A1%E7%AE%97/</loc>
     <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -513,6 +499,20 @@
   
   <url>
     <loc>https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Theories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Language/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Language/C/</loc>
     <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
