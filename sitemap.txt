@@ -1,5 +1,7 @@
-https://blog.romichan.icu/2022/10/28/%E5%88%A9%E7%94%A8JACK%20,%20%E7%8E%A9%E8%BD%AC%20Reaper%20For%20Linux/
+https://blog.romichan.icu/2026/10/28/%E9%A1%BA%E6%89%8B%E5%AD%A6%E4%B8%80%E4%B8%8BLatex%E5%85%AC%E5%BC%8F%E5%86%99%E6%B3%95/
 https://blog.romichan.icu/2025/11/04/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8B%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/
+https://blog.romichan.icu/2000/01/01/%E5%8F%98%E6%9B%B4%E8%AE%B0%E5%BD%95/
+https://blog.romichan.icu/2022/10/28/%E5%88%A9%E7%94%A8JACK%20,%20%E7%8E%A9%E8%BD%AC%20Reaper%20For%20Linux/
 https://blog.romichan.icu/about/index.html
 https://blog.romichan.icu/2022/04/27/FL-Studio-Tips-%E5%88%A9%E7%94%A8LFO-LFO-Speed%E5%81%9A%E5%87%BA%E5%8A%A0%E8%8A%B1%E6%95%88%E6%9E%9C/
 https://blog.romichan.icu/2023/01/20/Arch%20Linux%20%E4%B8%8B%20Nvidia%20%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%AE%89%E8%A3%85/
@@ -12,8 +14,6 @@ https://blog.romichan.icu/2024/01/01/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%
 https://blog.romichan.icu/_moments/2025-11-07.html
 https://blog.romichan.icu/_moments/2025-11-06.html
 https://blog.romichan.icu/_moments/2025-11-05.html
-https://blog.romichan.icu/2000/01/01/%E5%8F%98%E6%9B%B4%E8%AE%B0%E5%BD%95/
-https://blog.romichan.icu/2025/11/03/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8B%E5%88%9D%E8%A7%81Vue3/
 https://blog.romichan.icu/2023/04/01/Nginx%E4%B8%ADcode-server%E7%9A%84ws%E9%85%8D%E7%BD%AE/
 https://blog.romichan.icu/2023/02/25/Nginx%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE/
 https://blog.romichan.icu/2023/03/04/Navidrome%EF%BC%8C%E5%AE%9A%E4%B9%89%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E7%A6%BB%E7%BA%BF%E6%92%AD%E6%94%BE%E5%99%A8/
@@ -49,11 +49,8 @@ https://blog.romichan.icu/tags/Reaper/
 https://blog.romichan.icu/tags/SysRecord/
 https://blog.romichan.icu/tags/Development/
 https://blog.romichan.icu/tags/C-Lang/
-https://blog.romichan.icu/tags/Vue3/
-https://blog.romichan.icu/tags/Javascript/
-https://blog.romichan.icu/tags/Typescript/
-https://blog.romichan.icu/tags/frontend/
 https://blog.romichan.icu/tags/MachineLearning/
+https://blog.romichan.icu/tags/LaTeX/
 https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/
 https://blog.romichan.icu/categories/Music/
 https://blog.romichan.icu/categories/WebDev/
@@ -64,6 +61,6 @@ https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/WebDev
 https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Theories/%E5%BC%A0%E9%87%8F%E8%AE%A1%E7%AE%97/
 https://blog.romichan.icu/categories/Linux/Music/
 https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Language/
-https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/WebDev/Vue/
 https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Theories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/
 https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Language/C/
+https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Language/LaTeX/

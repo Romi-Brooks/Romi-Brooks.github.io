@@ -1264,11 +1264,21 @@ Categories=Music;
 </ul>
 <hr>
 <h1>2025</h1>
-<h2 id="aug-12-2022">Aug 12, 2022</h2>
+<h2 id="aug-12-2025">Aug 12, 2025</h2>
 <ul>
 <li>开始更新</li>
 </ul>
-<h2 id="aug-12-2022">Aug 12, 2022</h2>
+<h2 id="aug-12-2025">Aug 12, 2025</h2>
+<ul>
+<li>将Blog从旧域名迁移至新域名</li>
+</ul>
+<hr>
+<h1>2026</h1>
+<h2 id="sept-xx-2026">Sept xx, 2026</h2>
+<ul>
+<li>尝试维护Ayer和博客</li>
+</ul>
+<h2 id="oct-28-2026">Oct 28, 2026</h2>
 <ul>
 <li>将Blog从旧域名迁移至新域名</li>
 </ul>
@@ -1397,45 +1407,16 @@ Categories=Music;
       </tags>
   </entry>
   <entry>
-    <title>学习人生之初见Vue3</title>
-    <url>/2025/11/03/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8B%E5%88%9D%E8%A7%81Vue3/</url>
-    <content><![CDATA[<h1>什么是Vue?</h1>
-<p>Vue 是一套用于构建用户界面的渐进式 JavaScript 框架，其特点：易学易用，性能出色，适用场景丰富的 Web 前端框架。</p>
-<p>Vue基于 Nodejs，目前 Vue 的最新稳定版本是 Vue 3，引入了 Composition API、TypeScript 支持等新特性。</p>
-<p>本文基于Vue3，记录从零开始学习Vue3框架的历程。</p>
-<span id="more"></span>
-]]></content>
-      <categories>
-        <category>学习人生</category>
-        <category>WebDev</category>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Note</tag>
-        <tag>Development</tag>
-        <tag>Vue3</tag>
-        <tag>Javascript</tag>
-        <tag>Typescript</tag>
-        <tag>frontend</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>学习人生之机器学习</title>
     <url>/2025/11/04/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8B%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h1>Intro</h1>
 <p>我所在的学校，专业培养方案在我这一届出现了一些变动，从一开始的传统单一培养方案变成了：<code>Java培养</code>或者是<code>Python培养</code>方案。<br>
 在最开始我承认我是因为Python的简单易入门而选择了Python分流培养方案，不过在选择了之后我细细看了看它所有的专业科目，我发现其实不只是单纯的Python的使用分流，而是一门基于Python的数据分析的课程，这或许与后面的深度学习课程提供了基础。</p>
 <span id="more"></span>
-<p><br>没错，是我想得太简单了，数据分析或是机器学习是一个十分有难度的专业课程。面对很多专业术语，概率分析，量化公式我则会显得手足无措。这篇文章最开始是在25年11月4号创建的，但是我一直在梳理内容，面对这种难度极高的课程，我一直去想我应如何在这种我从未深入理解过的条件下写出有实际意义，浅显，易懂且不冗余的笔记呢？<br>
-于是，在25年11月10号，我心血来潮的写下了这第一段引入，我先打个初稿，就以书本目前所学的<code>分类</code>、<code>聚类</code>、<code>回归分析</code>三个大章开始。私以为应该同时加入Python的<code>NumPy</code>、<code>Matplotlib</code>与<code>Pandas</code>库的使用教学，进行内容上，对于代码使用方面的过度。在之后，如果我找到了一种更加适合的章节组织方式，我也会做出相对应的修改。</p>
+<p>没错，是我想得太简单了，数据分析或是机器学习是一个十分有难度的专业课程。面对很多专业术语，概率分析，量化公式我则会显得手足无措。这篇文章最开始是在25年11月4号创建的，但是我一直在梳理内容，面对这种难度极高的课程，我一直去想我应如何在这种我从未深入理解过的条件下写出有实际意义，浅显，易懂且不冗余的笔记呢？</p>
+<p>于是，在25年11月10号，我心血来潮的写下了这第一段引入，我先打个初稿，尝试通过书本目前所学的<code>分类</code>、<code>聚类</code>、<code>回归分析</code>三个大章开始。同时加入Python的<code>NumPy</code>、<code>Matplotlib</code>与<code>Pandas</code>库的使用教学。</p>
 <p>闲暇之余，我也写了一篇文章，记录了PyTorch的学习历程: <a href="https://blog.heyromi.icu/2025/11/07/Pytorch%E5%BC%A0%E9%87%8F%E8%AE%A1%E7%AE%97/">PyTorch张量计算</a>，张量计算对于深度学习领域，也同样是个不可缺少的部分。</p>
-<p><em>paused on 2026</em></p>
-<h1>NumPy in Python</h1>
-<h1>Matplotlib in Python</h1>
-<h1>Pandas in Python</h1>
-<h1>分类</h1>
-<h1>聚类</h1>
-<h1>回归分析</h1>
+<p><em>paused on 2026</em>：后续可能会缓慢更新，目前维护的项目和事情有些多。</p>
 ]]></content>
       <categories>
         <category>学习人生</category>
@@ -1446,6 +1427,76 @@ Categories=Music;
         <tag>Note</tag>
         <tag>Python</tag>
         <tag>MachineLearning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>顺手学一下LaTeX公式写法</title>
+    <url>/2026/10/28/%E9%A1%BA%E6%89%8B%E5%AD%A6%E4%B8%80%E4%B8%8BLatex%E5%85%AC%E5%BC%8F%E5%86%99%E6%B3%95/</url>
+    <content><![CDATA[<p><strong>注意，以下内容只适用于Markdown文档，如果是在纯Latex内，可能并不是最佳实践。</strong></p>
+<h1>行间公式与行内公式的表达</h1>
+<p>通常对于行间公式（单独占用一行的公式），这样表示：</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">Latex代码</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<p>比如我们可以使用这种方式书写一个公式：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>+</mo><mi>β</mi><mo>=</mo><mi>θ</mi><mspace linebreak="newline"></mspace></mrow><annotation encoding="application/x-tex">\alpha + \beta = \theta \\ 
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span></span><span class="mspace newline"></span></span></span></span></p>
+<p>如果是行内公式（尾随内容，不换行的公式），使用这个：</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">$</span><br><span class="line">Latex代码</span><br><span class="line">$</span><br></pre></td></tr></table></figure>
+<p>比如我们可以使用这种方式书写一个公式：$\alpha + \beta = \theta $</p>
+<p>注意，当一行公式被完成时，如果需要换行，通常使用<code>\\</code>符号作为换行符</p>
+<h1>希腊字母</h1>
+<p>在Latex中，使用<code>\</code>起手，加上希腊字母的英文表达（标准英文）就可以自动渲染出对应内容，比如alpha: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span></span></span></span>：</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">\alpha\\</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<p>如果是需要大写的希腊字母，那就首字母大写即可，比如Delta: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi></mrow><annotation encoding="application/x-tex">\Delta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Δ</span></span></span></span>：</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">\Delta\\</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<p>By the way，如果输入法支持直接输入希腊字母，那么直接输入也是可以正常渲染的，比如pi：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">π</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">π</span></span></span></span>：</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">π\\</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<p>因为有一些特殊的希腊字母存在变体（<strong>Var</strong>iant），所以对于变体希腊字母，使用<code>varXxx</code>表达，比如Sigma：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Σ</mi></mrow><annotation encoding="application/x-tex">\Sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Σ</span></span></span></span> 和 varSigma：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Σ</mi></mrow><annotation encoding="application/x-tex">\varSigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord"><span class="mord mathit">Σ</span></span></span></span></span>：</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">\varSigma\\</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<p>这是一份希腊字母表，需要的时候可以自行查阅：</p>
+<p><img src="/images/posts/%E9%A1%BA%E6%89%8B%E5%AD%A6%E4%B8%80%E4%B8%8BLatex%E5%85%AC%E5%BC%8F%E5%86%99%E6%B3%95/%E5%B8%8C%E8%85%8A%E5%AD%97%E6%AF%8D%E9%9B%86%E5%90%88.png" alt="希腊字母集合"></p>
+<h1>上下标</h1>
+<p>使用<code>*</code>和<code>_</code>来表示上标和下标，比如：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">a^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">a_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>：</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">a^2\\</span><br><span class="line">a<span class="emphasis">_1\\</span></span><br><span class="line"><span class="emphasis">$$</span></span><br></pre></td></tr></table></figure>
+<p>上下标的多字符嵌套通常使用<code>&#123;&#125;</code>，<strong>这个也表示运算优先级</strong>。比如：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mrow><mi>y</mi><mo>+</mo><mi>z</mi></mrow></msup></mrow><annotation encoding="application/x-tex">x^{y+z}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.771331em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span><span class="mbin mtight">+</span><span class="mord mathdefault mtight" style="margin-right:0.04398em;">z</span></span></span></span></span></span></span></span></span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">A_{ij}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>：</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">x^&#123;y+z&#125;\\</span><br><span class="line">A<span class="emphasis">_&#123;ij&#125;\\</span></span><br><span class="line"><span class="emphasis">$$</span></span><br></pre></td></tr></table></figure>
+<p>如果想要同时使用上标加下标，注意<code>运算符优先级</code>即可，比如：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>a</mi><mi>i</mi><mi>x</mi></msubsup></mrow><annotation encoding="application/x-tex">{a^x_i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.923056em;vertical-align:-0.258664em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-2.441336em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.258664em;"><span></span></span></span></span></span></span></span></span></span></span>：</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">&#123;a^x<span class="emphasis">_i&#125;\\</span></span><br><span class="line"><span class="emphasis">$$</span></span><br></pre></td></tr></table></figure>
+<p>顺序不重要，可以先下标再上标，这是一致的</p>
+<h1>直立体与斜体</h1>
+<p>通常来说，我们使用斜体来表示变量，使用直立体来表示常量（姑且可以这么理解）</p>
+<p>在Latex中，使用<code>\rm</code>（<strong>R</strong>o<strong>m</strong>an）或者<code>\text</code>来表示直立体，比如我想要表示<code>自然对数的底数e的i次方</code>：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="normal">e</mi><mi>i</mi></msup></mrow><annotation encoding="application/x-tex">{\rm e}^i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.824664em;vertical-align:0em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord mathrm">e</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.824664em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span></span></span></span></span></span></span>：</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">&#123;\rm e&#125;^i\\</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<p>但是<code>rm</code>只适用于单个字符的直立显示，如果有<code>A</code>和<code>B</code>两个字符，并且这时候我还想要显示之间的空格</p>
+<p>那么这时候就可以用<code>\text</code>，比如：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>A B</mtext></mrow><annotation encoding="application/x-tex">\text {A B}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text"><span class="mord">A B</span></span></span></span></span>：</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">\text &#123;A B&#125;\\</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<h1>分式与根式</h1>
+<p>使用<code>\frac&#123;分子&#125; &#123;分母&#125;</code>（<strong>Frac</strong>tion）来表示分数，比如：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac {1} {2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>：</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">\frac &#123;1&#125; &#123;2&#125;\\</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<p>通常来说，如果出现分数中还有分数的情况，那么内层的分数会显示的比较小，使用<code>\dfrac</code>（d:Display-Style）可以使其显示的大一些，比如<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mstyle displaystyle="true" scriptlevel="0"><mfrac><mi>x</mi><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow></mfrac></mstyle><mrow><mi>y</mi><mo>+</mo><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac {\dfrac {x} {x-1}} {y+x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.788998em;vertical-align:-0.481108em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.30789em;"><span style="top:-2.8175600000000003em;"><span class="pstrut" style="height:3.16256em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span><span class="mbin mtight">+</span><span class="mord mathdefault mtight">x</span></span></span></span><span style="top:-3.39256em;"><span class="pstrut" style="height:3.16256em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-4.30789em;"><span class="pstrut" style="height:3.16256em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord sizing reset-size3 size6 mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.16256em;"><span style="top:-2.248em;"><span class="pstrut" style="height:3em;"></span><span class="mord mtight"><span class="mord mathdefault mtight">x</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span><span style="top:-3.2255em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.732em;"><span class="pstrut" style="height:3em;"></span><span class="mord mtight"><span class="mord mathdefault mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.83533em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.481108em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>：</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">\frac &#123;\dfrac &#123;x&#125; &#123;x-1&#125;&#125; &#123;y+x&#125;\\</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<p>使用<code>\sqrt [次数] &#123;值&#125;</code>（<strong>Sq</strong>uare <strong>R</strong>oo<strong>t</strong>）来表示根式，<strong>默认次数为2</strong>，比如：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mroot><mn>9</mn><mn>3</mn></mroot></mrow><annotation encoding="application/x-tex">\sqrt [3] {9}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.13278em;"></span><span class="mord sqrt"><span class="root"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7868839999999999em;"><span style="top:-2.964664em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size6 size1 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.90722em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord">9</span></span></span><span style="top:-2.86722em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.13278em;"><span></span></span></span></span></span></span></span></span>：</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">\sqrt [3] &#123;9&#125;\\</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<h1>普通运算符</h1>
+]]></content>
+      <categories>
+        <category>学习人生</category>
+        <category>Language</category>
+        <category>LaTeX</category>
+      </categories>
+      <tags>
+        <tag>Note</tag>
+        <tag>LaTeX</tag>
       </tags>
   </entry>
 </search>

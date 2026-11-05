@@ -6,7 +6,7 @@
   <link href="https://blog.romichan.icu/atom.xml" rel="self"/>
   
   <link href="https://blog.romichan.icu/"/>
-  <updated>2025-11-09T17:20:14.690Z</updated>
+  <updated>2026-10-27T18:00:16.112Z</updated>
   <id>https://blog.romichan.icu/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>顺手学一下LaTeX公式写法</title>
+    <link href="https://blog.romichan.icu/2026/10/28/%E9%A1%BA%E6%89%8B%E5%AD%A6%E4%B8%80%E4%B8%8BLatex%E5%85%AC%E5%BC%8F%E5%86%99%E6%B3%95/"/>
+    <id>https://blog.romichan.icu/2026/10/28/%E9%A1%BA%E6%89%8B%E5%AD%A6%E4%B8%80%E4%B8%8BLatex%E5%85%AC%E5%BC%8F%E5%86%99%E6%B3%95/</id>
+    <published>2026-10-27T16:00:00.000Z</published>
+    <updated>2026-10-27T18:00:16.112Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;注意，以下内容只适用于Markdown文档，如果是在纯Latex内，可能并不是最佳实践。&lt;/strong&gt;&lt;/p&gt;
+&lt;h1&gt;行间公式与行内公式的表达&lt;/h1&gt;
+&lt;p&gt;通常对于行间公式（单独占用一行的公式），这样表示：&lt;/p&gt;
+&lt;figure</summary>
+        
+      
+    
+    
+    
+    <category term="学习人生" scheme="https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/"/>
+    
+    <category term="Language" scheme="https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Language/"/>
+    
+    <category term="LaTeX" scheme="https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/Language/LaTeX/"/>
+    
+    
+    <category term="Note" scheme="https://blog.romichan.icu/tags/Note/"/>
+    
+    <category term="LaTeX" scheme="https://blog.romichan.icu/tags/LaTeX/"/>
+    
+  </entry>
   
   <entry>
     <title>Pytorch 张量计算</title>
@@ -63,7 +97,7 @@
     <link href="https://blog.romichan.icu/2025/11/04/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8B%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     <id>https://blog.romichan.icu/2025/11/04/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8B%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</id>
     <published>2025-11-03T16:00:00.000Z</published>
-    <updated>2026-04-21T12:09:16.479Z</updated>
+    <updated>2026-10-27T16:51:48.575Z</updated>
     
     
     <summary type="html">&lt;h1&gt;Intro&lt;/h1&gt;
@@ -84,42 +118,6 @@
     <category term="Python" scheme="https://blog.romichan.icu/tags/Python/"/>
     
     <category term="MachineLearning" scheme="https://blog.romichan.icu/tags/MachineLearning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>学习人生之初见Vue3</title>
-    <link href="https://blog.romichan.icu/2025/11/03/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8B%E5%88%9D%E8%A7%81Vue3/"/>
-    <id>https://blog.romichan.icu/2025/11/03/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F%E4%B9%8B%E5%88%9D%E8%A7%81Vue3/</id>
-    <published>2025-11-02T16:00:00.000Z</published>
-    <updated>2025-11-04T10:12:59.575Z</updated>
-    
-    
-    <summary type="html">&lt;h1&gt;什么是Vue?&lt;/h1&gt;
-&lt;p&gt;Vue 是一套用于构建用户界面的渐进式 JavaScript 框架，其特点：易学易用，性能出色，适用场景丰富的 Web 前端框架。&lt;/p&gt;
-&lt;p&gt;Vue基于 Nodejs，目前 Vue 的最新稳定版本是 Vue 3，引入了 Composition API、TypeScript 支持等新特性。&lt;/p&gt;
-&lt;p&gt;本文基于Vue3，记录从零开始学习Vue3框架的历程。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学习人生" scheme="https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/"/>
-    
-    <category term="WebDev" scheme="https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/WebDev/"/>
-    
-    <category term="Vue" scheme="https://blog.romichan.icu/categories/%E5%AD%A6%E4%B9%A0%E4%BA%BA%E7%94%9F/WebDev/Vue/"/>
-    
-    
-    <category term="Note" scheme="https://blog.romichan.icu/tags/Note/"/>
-    
-    <category term="Development" scheme="https://blog.romichan.icu/tags/Development/"/>
-    
-    <category term="Vue3" scheme="https://blog.romichan.icu/tags/Vue3/"/>
-    
-    <category term="Javascript" scheme="https://blog.romichan.icu/tags/Javascript/"/>
-    
-    <category term="Typescript" scheme="https://blog.romichan.icu/tags/Typescript/"/>
-    
-    <category term="frontend" scheme="https://blog.romichan.icu/tags/frontend/"/>
     
   </entry>
   
@@ -417,7 +415,7 @@
     <link href="https://blog.romichan.icu/2000/01/01/%E5%8F%98%E6%9B%B4%E8%AE%B0%E5%BD%95/"/>
     <id>https://blog.romichan.icu/2000/01/01/%E5%8F%98%E6%9B%B4%E8%AE%B0%E5%BD%95/</id>
     <published>1999-12-31T16:00:00.000Z</published>
-    <updated>2025-11-04T17:00:22.031Z</updated>
+    <updated>2026-10-27T16:46:24.614Z</updated>
     
     
       
